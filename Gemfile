@@ -9,6 +9,8 @@ gem 'puma', '~> 4.1'
 gem 'webpacker', '~> 4.0'
 gem 'jbuilder', '~> 2.7'
 gem 'devise'
+gem 'carrierwave'
+gem 'rmagick'
 
 group :development, :test do
   gem 'pry', '~> 0.13.1'

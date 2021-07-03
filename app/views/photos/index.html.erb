@@ -1,6 +1,6 @@
 <h1>Photos</h1>
 
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th colspan="3"></th>
@@ -8,16 +8,25 @@
   </thead>
 
   <tbody>
-    <% @photos.each do |photo| %>
+    <%# @photos.each do |photo| %>
       <tr>
-        <td><%= photo.photo %></td>
-        <td><%= photo.description %> </td>
-        <td><%= link_to 'Show', photo %> |</td>
-        <td><%= link_to 'Edit', edit_photo_path(photo) %> |</td>
-        <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <div class="row">
+            <%#= render partial: 'photos/photo', collection: current_user.photos %>
+          </div>
+
+        <%#= photo.description %>
+        <%#= link_to 'Show', photo %> |
+        <%#= link_to 'Edit', edit_photo_path(photo) %> |
+        <%#= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
-    <% end %>
+    <%# end %>
   </tbody>
-</table>
+</table> -->
+
+          <div class="row">
+            <%= render partial: 'photos/photo', collection: @photos %>
+          </div>
 
 <br>
