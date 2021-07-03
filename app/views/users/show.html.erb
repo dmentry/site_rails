@@ -1,0 +1,8 @@
+<div class="text-center">
+  <h1>Админ: <%= @user.email %></h1>
+
+  <p class="buffer-top">
+  <%#= link_to "Редактировать профиль", edit_user_path(@user), class: 'btn btn-primary' %>
+  <%= link_to 'Редактировать профиль', edit_user_registration_path %>
+  </p>
+</div>
