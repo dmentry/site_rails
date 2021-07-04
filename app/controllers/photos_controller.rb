@@ -43,7 +43,7 @@ class PhotosController < ApplicationController
   # PATCH/PUT /photos/1
   def update
     if @photo.update(photo_params)
-      redirect_to @photo, notice: "Photo was successfully updated."
+      redirect_to :root, notice: "Photo was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end

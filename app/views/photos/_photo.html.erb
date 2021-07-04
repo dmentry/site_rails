@@ -1,7 +1,18 @@
-<div class="buffer-both mx-1">
-  <%= link_to image_tag(photo.photo.thumb.url, title: photo.description), photo.photo.url%><br>
-  <br>
+<div class="margins-images">
+  <% if user_signed_in? %>
+    <% trash_button = link_to 'X', photo_path(photo), method: :delete, data: { confirm: 'Вы уверены?' } %>
+  <% end %>
+
+  <% image_title = "#{photo.description} #{trash_button}" %>
+
+  <%= link_to photo.photo.url, data: { toggle: "lightbox", title: image_title, gallery: "img-gallery" } do %>
+    <div class='zoom'>
+      <%= image_tag photo.photo.thumb.url %>
+    </div>
+  <% end %>
+  <div class='center'>
   <%= link_to 'Show |', photo.photo.url if user_signed_in? %>
   <%= link_to 'Edit |', edit_photo_path(photo) if user_signed_in? %>
   <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } if user_signed_in? %>
+  </div>
 </div>

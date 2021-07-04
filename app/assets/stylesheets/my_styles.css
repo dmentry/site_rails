@@ -1,0 +1,99 @@
+.logo {
+    opacity: .4;
+    position: absolute;
+    top: 0;
+    padding: 3px 1px 0 3px;
+    margin-left: -50px;
+}
+
+.logo img{
+  width: 40px;
+}
+
+.headername {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    position: absolute;
+    padding: 60px 1px 0 14px;
+    z-index: 8;
+    text-decoration: none;
+    color: black;
+    outline: none;
+}
+
+.header img{
+    opacity: .15;
+    position: absolute;
+    width: 100%;
+}
+
+.lang {
+  margin-left: 40px;
+  opacity: .5;
+  width: 30px;
+}
+
+.zoom {
+  overflow: hidden;
+}
+.zoom img {
+  display: block;  /* Убираем отступ снизу */
+  transition: .2s; /* Время перехода */
+}
+
+.zoom img:hover {
+  transform: scale(1.07);
+}
+
+.center {
+  text-align: center;
+  margin-top: -3px;
+}
+
+.row {
+  justify-content: center;
+}
+
+.margins-images {
+  margin-left: 4px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+}
+
+.footer {
+  text-align: center;
+  padding: 1px 0px 5px 0px;
+  font-size: 60%;
+  color: grey;
+  background-color: #dadada;
+  clear: both;
+  margin-bottom: 10px;
+}
+
+.dackbottomicons p{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.dackbottomicons a{
+    padding-right:4px;
+    padding-left: 7px;
+    padding-bottom: 3px;
+    opacity: 0.5;
+}
+
+.dackbottomicons a:hover {
+    opacity: 1;
+}
+
+.selected {
+    font-weight: bold;
+    color: #afafaf;
+    cursor: default;
+}
+
+.buffer-bottom {
+margin-bottom: 8px;
+}
+
