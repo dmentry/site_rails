@@ -16,6 +16,12 @@
     <%#= form.text_field :photo, class: 'form-control' %>
   </div> -->
 
+<div>
+  <% if photo.created_at %>
+    Загружена: <%= photo.created_at %>
+  <% end %>
+</div><br/>
+
   <div class="form-group">
     <%= form.label :photo %>
     <%= form.file_field :photo %>
@@ -27,7 +33,7 @@
   </div>
 
   <div class="form-group">
-      <%= form.label :type_id %><br />
+      <%= form.label :type_id %><br/>
       <%= form.collection_select :type_id, Type.all, :id, :photo_type %>
   </div>
 

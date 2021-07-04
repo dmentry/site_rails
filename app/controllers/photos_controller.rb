@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
 
   # GET /photos
   def index
-    @photos = Photo.all
+    @photos = Photo.order(created_at: :desc).limit(4)
   end
 
   # GET /photos/1
@@ -49,7 +49,7 @@ class PhotosController < ApplicationController
     end
   end
 
-  # DELETE /photos/1 or /photos/1.json
+  # DELETE /photos/1
   def destroy
     if user_signed_in?
       @photo.destroy
@@ -68,6 +68,6 @@ class PhotosController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def photo_params
-    params.require(:photo).permit(:photo, :description, :type_id)
+    params.require(:photo).permit(:photo, :description, :type_id, :recent)
   end
 end
