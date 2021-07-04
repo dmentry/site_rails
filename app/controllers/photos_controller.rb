@@ -5,7 +5,13 @@ class PhotosController < ApplicationController
 
   # GET /photos
   def index
-    @photos = Photo.order(created_at: :desc).limit(4)
+    @photos = Photo.order(created_at: :desc).limit(5)
+
+    @types = Type.select(:photo_type)
+
+    @header = 'Недавние'
+
+    render :universal_page
   end
 
   # GET /photos/1
@@ -58,6 +64,69 @@ class PhotosController < ApplicationController
     else
       redirect_to(:root, alert: "Это нельзя!")
     end
+  end
+
+  #страницы категорий фоток
+  def all_page
+    @photos = Photo.all
+
+    @header = 'Все'
+
+    render :universal_page
+  end
+
+  def macro_page
+    @photos = Photo.where(type_id: 1)
+
+    @header = 'Макро'
+
+    render :universal_page
+  end
+
+  def landscape_page
+    @photos = Photo.where(type_id: 2)
+
+    @header = 'Пейзажи'
+
+    render :universal_page
+  end
+
+  def portrait_page
+    @photos = Photo.where(type_id: 3)
+
+    @header = 'Портреты'
+
+    render :universal_page
+  end
+
+  def drone_page
+    @photos = Photo.where(type_id: 4)
+
+    @header = 'С квадрокоптера'
+
+    render :universal_page
+  end
+
+  def collage_page
+    @photos = Photo.where(type_id: 5)
+
+    @header = 'Коллажи'
+
+    render :universal_page
+  end
+
+  def other_page
+    @photos = Photo.where(type_id: 6)
+
+    @header = 'Остальное'
+
+    render :universal_page
+  end
+
+  def about_page
+  end
+
+  def blog_page
   end
 
   private

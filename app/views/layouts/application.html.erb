@@ -31,13 +31,31 @@
         <%= link_to DackSite, root_path, class: 'navbar-brand' %>
         <div class="navbar navbar-responsive">
           <ul class="navbar-nav">
+            <%=link_to "Недавние", root_path, class: "btn" %>
+
+            <li class="dropdown">
+              <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Фотографии</button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%=link_to "Макро", macro_page_path, class: "dropdown-item" %>
+                <%=link_to "Пейзажи", landscape_page_path, class: "dropdown-item" %>
+                <%=link_to "Портреты", portrait_page_path, class: "dropdown-item" %>
+                <%=link_to "С квадрокоптера", drone_page_path, class: "dropdown-item" %>
+                <%=link_to "Коллажи", collage_page_path, class: "dropdown-item" %>
+                <%=link_to "Остальное", other_page_path, class: "dropdown-item" %>
+              </div>
+            </li>
+            <%=link_to "Блог", blog_page_path, class: "btn" %>
+            <%=link_to "Обо мне", about_page_path, class: "btn" %>
+
             <% if user_signed_in? %>
-              <li class="buffer-left-right color-text "><%=link_to "Загрузить фотку", new_photo_path %></li> |
-              <li class="buffer-left-right color-text "><%=link_to "Профиль", current_user %></li> |
-              <li class="buffer-left-right"><%= link_to "Выйти", destroy_user_session_path, :method => :delete %></li>
+              <li class=""><%=link_to "Все", all_page_path, class: "btn" %></li>
+              <li class=""><%=link_to "Загрузить", new_photo_path, class: "btn" %></li>
+              <li class=""><%=link_to "Профиль", current_user, class: "btn" %></li>
+              <li class=""><%= link_to "Выйти", destroy_user_session_path, :method => :delete, class: "btn" %></li>
             <% else %>
-              <li class="buffer-left-right"><%=link_to "Для админа", new_user_session_path %></li>
+              <%=link_to "Для админа", new_user_session_path, class: "btn" %>
             <% end %>
+
             <li><img class="lang" src="eng.jpg"></li>
           </ul>
         </div>
