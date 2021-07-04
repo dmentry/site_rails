@@ -56,9 +56,8 @@
 }
 
 .margins-images {
-  margin-left: 4px;
-  margin-bottom: 3px;
-  margin-top: 3px;
+  margin: 3px, 2px, 3px, 2px;
+  padding: 3px;
 }
 
 .footer {
@@ -97,3 +96,6 @@
 margin-bottom: 8px;
 }
 
+.gallery img {
+  max-width: 100%;
+}
