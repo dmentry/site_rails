@@ -1,4 +1,4 @@
-.logo {
+logo {
     opacity: .4;
     position: absolute;
     top: 0;
@@ -6,8 +6,9 @@
     margin-left: -50px;
 }
 
-.logo img{
+.logo {
   width: 40px;
+  height: auto;
 }
 
 .headername {
@@ -76,10 +77,13 @@
 }
 
 .dackbottomicons a{
+    opacity: 0.5;
+}
+
+.dackbottomicons-range {
     padding-right:4px;
     padding-left: 7px;
     padding-bottom: 3px;
-    opacity: 0.5;
 }
 
 .dackbottomicons a:hover {
@@ -90,6 +94,11 @@
     font-weight: bold;
     color: #afafaf;
     cursor: default;
+}
+
+.buffer-top {
+margin-top: 8px;
+padding-top: 5px;
 }
 
 .buffer-bottom {

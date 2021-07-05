@@ -26,16 +26,23 @@
 
   <body id="up">
     <div class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <div class="logo"><img src="./logo.png" alt="logo"></div>
-        <%= link_to DackSite, root_path, class: 'navbar-brand' %>
+      <div class="container-fluid">
+
+        <div class="navbar navbar-responsive">
+          <img src="logo.png" alt="logo" class="logo">
+          <ul class="navbar-nav">
+            <%= link_to "Дмитрий Архипов", root_path, class: 'btn' %>
+           </ul>
+        </div>
+
         <div class="navbar navbar-responsive">
           <ul class="navbar-nav">
-            <%=link_to "Недавние", root_path, class: "btn" %>
+
 
             <li class="dropdown">
               <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Фотографии</button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%=link_to "Недавние", root_path, class: "dropdown-item" %>
                 <%=link_to "Макро", macro_page_path, class: "dropdown-item" %>
                 <%=link_to "Пейзажи", landscape_page_path, class: "dropdown-item" %>
                 <%=link_to "Портреты", portrait_page_path, class: "dropdown-item" %>
@@ -49,10 +56,10 @@
             <%=link_to "Обратная связь", feedback_page_path, class: "btn" %>
 
             <% if user_signed_in? %>
-              <li class=""><%=link_to "Все", all_page_path, class: "btn" %></li>
-              <li class=""><%=link_to "Загрузить", new_photo_path, class: "btn" %></li>
-              <li class=""><%=link_to "Профиль", current_user, class: "btn" %></li>
-              <li class=""><%= link_to "Выйти", destroy_user_session_path, :method => :delete, class: "btn" %></li>
+              <li><%=link_to "Все", all_page_path, class: "btn" %></li>
+              <li><%=link_to "Загрузить", new_photo_path, class: "btn" %></li>
+              <li><%=link_to "Профиль", current_user, class: "btn" %></li>
+              <li><%= link_to "Выйти", destroy_user_session_path, :method => :delete, class: "btn" %></li>
             <% else %>
               <%=link_to "Для админа", new_user_session_path, class: "btn" %>
             <% end %>
@@ -76,7 +83,7 @@
 
 
     <footer>
-      <div class="dackbottomicons">
+      <div class="dackbottomicons dackbottomicons-range">
         <div class="text-center buffer-bottom">
           <p>&copy; Dack9  <%= Time.now.year %></p>
           <a href="https://vk.com/dack9" target="blanc" rel="noreferrer" title="VK"><img src="vk.png" alt=""></a>
