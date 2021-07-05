@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'other_page' => 'photos#other_page', as: :other_page
   get 'about_page' => 'photos#about_page', as: :about_page
   get 'blog_page' => 'photos#blog_page', as: :blog_page
+  get 'feedback_page' => 'photos#feedback_page', as: :feedback_page
 
   root 'photos#index'
 end

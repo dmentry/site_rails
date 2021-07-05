@@ -8,4 +8,12 @@ class ApplicationController < ActionController::Base
       keys: [:password, :password_confirmation, :current_password]
     )
   end
+
+  def photo_types_arr(type)
+    photos = Photo.photos_by_type(type)
+
+    header = Type.find(type).photo_type
+
+    return photos, header
+  end
 end

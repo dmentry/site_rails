@@ -7,8 +7,6 @@ class PhotosController < ApplicationController
   def index
     @photos = Photo.order(created_at: :desc).limit(5)
 
-    @types = Type.select(:photo_type)
-
     @header = 'Недавние'
 
     render :universal_page
@@ -66,7 +64,7 @@ class PhotosController < ApplicationController
     end
   end
 
-  #страницы категорий фоток
+  #страницы
   def all_page
     @photos = Photo.all
 
@@ -76,49 +74,43 @@ class PhotosController < ApplicationController
   end
 
   def macro_page
-    @photos = Photo.where(type_id: 1)
+    # @photos = Photo.where(type_id: 1)
 
-    @header = 'Макро'
+    # @photos = Photo.photos_by_type(1)
+
+    # @header = 'Макро'
+
+    @photos, @header = photo_types_arr(1)
 
     render :universal_page
   end
 
   def landscape_page
-    @photos = Photo.where(type_id: 2)
-
-    @header = 'Пейзажи'
+    @photos, @header = photo_types_arr(2)
 
     render :universal_page
   end
 
   def portrait_page
-    @photos = Photo.where(type_id: 3)
-
-    @header = 'Портреты'
+    @photos, @header = photo_types_arr(3)
 
     render :universal_page
   end
 
   def drone_page
-    @photos = Photo.where(type_id: 4)
-
-    @header = 'С квадрокоптера'
+    @photos, @header = photo_types_arr(4)
 
     render :universal_page
   end
 
   def collage_page
-    @photos = Photo.where(type_id: 5)
-
-    @header = 'Коллажи'
+    @photos, @header = photo_types_arr(5)
 
     render :universal_page
   end
 
   def other_page
-    @photos = Photo.where(type_id: 6)
-
-    @header = 'Остальное'
+    @photos, @header = photo_types_arr(6)
 
     render :universal_page
   end
@@ -127,6 +119,9 @@ class PhotosController < ApplicationController
   end
 
   def blog_page
+  end
+
+  def feedback_page
   end
 
   private

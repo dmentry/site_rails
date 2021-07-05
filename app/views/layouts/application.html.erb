@@ -46,6 +46,7 @@
             </li>
             <%=link_to "Блог", blog_page_path, class: "btn" %>
             <%=link_to "Обо мне", about_page_path, class: "btn" %>
+            <%=link_to "Обратная связь", feedback_page_path, class: "btn" %>
 
             <% if user_signed_in? %>
               <li class=""><%=link_to "Все", all_page_path, class: "btn" %></li>
