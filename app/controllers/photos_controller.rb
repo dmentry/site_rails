@@ -80,39 +80,27 @@ class PhotosController < ApplicationController
 
     # @header = 'Макро'
 
-    @photos, @header = photo_types_arr(1)
-
-    render :universal_page
+    collect_photos_and_type(1)
   end
 
   def landscape_page
-    @photos, @header = photo_types_arr(2)
-
-    render :universal_page
+    collect_photos_and_type(2)
   end
 
   def portrait_page
-    @photos, @header = photo_types_arr(3)
-
-    render :universal_page
+    collect_photos_and_type(3)
   end
 
   def drone_page
-    @photos, @header = photo_types_arr(4)
-
-    render :universal_page
+    collect_photos_and_type(4)
   end
 
   def collage_page
-    @photos, @header = photo_types_arr(5)
-
-    render :universal_page
+    collect_photos_and_type(5)
   end
 
   def other_page
-    @photos, @header = photo_types_arr(6)
-
-    render :universal_page
+    collect_photos_and_type(6)
   end
 
   def about_page
@@ -128,6 +116,12 @@ class PhotosController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_photo
     @photo = Photo.find(params[:id])
+  end
+
+  def collect_photos_and_type(type)
+    @photos, @header = photos_and_type(type)
+
+    render :universal_page
   end
 
   # Only allow a list of trusted parameters through.

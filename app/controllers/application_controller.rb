@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     )
   end
 
-  def photo_types_arr(type)
+  def photos_and_type(type)
     photos = Photo.photos_by_type(type)
 
     header = Type.find(type).photo_type
