@@ -106,9 +106,6 @@ class PhotosController < ApplicationController
   def about_page
   end
 
-  def blog_page
-  end
-
   def feedback_page
   end
 
@@ -126,6 +123,6 @@ class PhotosController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def photo_params
-    params.require(:photo).permit(:photo, :description, :type_id, :recent)
+    params.require(:photo).permit(:photo, :description, :type_id)
   end
 end

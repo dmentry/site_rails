@@ -3,21 +3,20 @@
   <div class="row mt-3">
     <div class="col-lg-3 order-lg-2 text-left mt-1 dackbottomicons">
       Принимаю заказы на проведение фотосессий:<br> портретная съемка, предметная, макро.<br><br> По вопросам сотрудничества со мной можно связаться:<br>
-      <a href="https://vk.com/dack9" target="blanc" rel="noreferrer" title="VK"><img src="vk.png" alt=""></a>
-      <a href="https://t.me/Dack99" target="_blanc" rel="noreferrer" title="telegram"><img src="telegram.png" alt=""></a><br>
+      <%= link_to image_pack_tag("vk.png", alt: 'vk'), "https://vk.com/dack9", target: "blanc", rel: "noreferrer", title: "VK" %>
+      <%= link_to image_pack_tag("telegram.png", alt: 'telegram'), "https://t.me/Dack99", target: "blanc", rel: "noreferrer", title: "Telegram" %><br>
       Я на других ресурсах:<br>
-      <a href="https://www.instagram.com/dack9/" target="_blanc" rel="noreferrer" title="instagram"><img src="instagram.png" alt=""></a>
-      <a href="https://www.deviantart.com/dack99" target="_blanc" rel="noreferrer" title="deviantart"><img src="deviant.png" alt=""></a>
-      <a href="https://pikabu.ru/@Dack9" target="_blanc" rel="noreferrer" title="pikabu"><img src="pikabu.png" alt=""></a>
-      <a href="https://d-a-ck9.livejournal.com/" target="_blanc" rel="noreferrer" title="lj"><img src="lj.png" alt=""></a>
-      <a href="https://500px.com/d_a_ck9" target="_blanc" rel="noreferrer" title="500px"><img src="500px.png" alt=""></a>
-      <a href="https://35photo.pro/dack9" target="_blanc" rel="noreferrer" title="35photo"><img src="35photo.png" alt=""></a>
+      <%= link_to image_pack_tag("instagram.png", alt: 'instagram'), "https://www.instagram.com/dack9/", target: "blanc", rel: "noreferrer", title: "Instagram" %>
+      <%= link_to image_pack_tag("deviant.png", alt: 'deviantart'), "https://www.deviantart.com/dack99", target: "blanc", rel: "noreferrer", title: "Deviantart" %>
+      <%= link_to image_pack_tag("pikabu.png", alt: 'pikabu'), "https://pikabu.ru/@Dack9", target: "blanc", rel: "noreferrer", title: "Pikabu" %>
+      <%= link_to image_pack_tag("500px.png", alt: '500px'), "https://d-a-ck9.livejournal.com/", target: "blanc", rel: "noreferrer", title: "500px" %>
+      <%= link_to image_pack_tag("35photo.png", alt: '35photo'), "https://35photo.pro/dack9", target: "blanc", rel: "noreferrer", title: "35photo" %>
     </div>
 
     <div class="col-lg-8 order-lg-1">
       <div class="row">
         <div class="col mt-2">
-          <img class="img-fluid float-left mx-1" src="Me_3.jpg">
+          <%= image_pack_tag("Me_3.jpg", alt: 'me', class: 'img-fluid float-left mx-1') %>
         </div>
         <div class="mx-3 text-left">
           Приветствую!<br>

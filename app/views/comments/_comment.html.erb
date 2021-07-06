@@ -1,0 +1,8 @@
+<div class="buffer-bottom">
+  <p><%= comment.comment_body %></p>
+  <p>
+    <em><%= comment.created_at %></em>
+
+      <%= link_to 'X', article_comment_path(comment.article, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+</div>

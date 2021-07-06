@@ -1,0 +1,19 @@
+<h1 class="center">Блог</h1>
+<div class="container bg-light">
+  <div class="row mt-3">
+  <div class="col-6">
+
+<%= @article.article_title %><br>
+<%= @article.article_body %><br>
+
+
+    <%= render partial: 'comments/comment', collection: @article.comments.except(@new_comment) %>
+
+    <%= render partial: 'comments/form', locals: {comment: @new_comment || @article.comments.build}  %>
+
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
+</div>
+  </div>
+</div>

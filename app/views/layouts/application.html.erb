@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Фотограф Дмитрий Dack9 Архипов</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+    <%= favicon_link_tag %>
 
     <meta name="robots" content="index, follow">
     <meta name="description" content="Персональный сайт фотографа Дмитрия Dack9 Архипова. Сотрудничество: фотосессии и фотосъемка (макро, предметная)">
@@ -29,9 +30,9 @@
       <div class="container-fluid">
 
         <div class="navbar navbar-responsive">
-          <img src="logo.png" alt="logo" class="logo">
+          <%= image_pack_tag("logo.png", alt: 'logo', class: 'mt-0 logo') %>
           <ul class="navbar-nav">
-            <%= link_to "Дмитрий Архипов", root_path, class: 'btn' %>
+            <%= link_to "Дмитрий Архипов", root_path, class: 'btn', title: "На главную" %>
            </ul>
         </div>
 
@@ -51,7 +52,7 @@
                 <%=link_to "Остальное", other_page_path, class: "dropdown-item" %>
               </div>
             </li>
-            <%=link_to "Блог", blog_page_path, class: "btn" %>
+            <%=link_to "Блог", articles_path, class: "btn" %>
             <%=link_to "Обо мне", about_page_path, class: "btn" %>
             <%=link_to "Обратная связь", feedback_page_path, class: "btn" %>
 
@@ -64,7 +65,7 @@
               <%=link_to "Для админа", new_user_session_path, class: "btn" %>
             <% end %>
 
-            <li><img class="lang" src="eng.jpg"></li>
+            <%= link_to image_pack_tag("eng.jpg", alt: 'eng'), '#', title: "ENG version", class: 'mt-1' %>
           </ul>
         </div>
       </div>
@@ -81,14 +82,13 @@
 
     <%= yield %>
 
-
     <footer>
       <div class="dackbottomicons dackbottomicons-range">
         <div class="text-center buffer-bottom">
           <p>&copy; Dack9  <%= Time.now.year %></p>
-          <a href="https://vk.com/dack9" target="blanc" rel="noreferrer" title="VK"><img src="vk.png" alt=""></a>
-          <a href="https://t.me/Dack99" target="blanc" rel="noreferrer" title="telegram"><img src="telegram.png" alt=""></a>
-          <a href="https://www.instagram.com/dack9/" target="blanc" rel="noreferrer" title="instagram"><img src="instagram.png" alt=""></a>
+          <%= link_to image_pack_tag("vk.png", alt: 'vk'), "https://vk.com/dack9", target: "blanc", rel: "noreferrer", title: "VK" %>
+          <%= link_to image_pack_tag("telegram.png", alt: 'telegram'), "https://t.me/Dack99", target: "blanc", rel: "noreferrer", title: "Telegram" %>
+          <%= link_to image_pack_tag("instagram.png", alt: 'instagram'), "https://www.instagram.com/dack9/", target: "blanc", rel: "noreferrer", title: "Instagram" %>
         </div>
       </div>
     </footer>
