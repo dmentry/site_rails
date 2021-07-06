@@ -11,9 +11,11 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'fog-aws'
 
 group :development, :test do
   gem 'pry', '~> 0.13.1'
+  gem "letter_opener"
 end
 
 group :development do
