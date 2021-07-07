@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :update, :destroy, :show]
 
+  # Предохранитель от потери авторизации в нужных экшенах
+  after_action :verify_authorized, only: [:new, :create, :edit, :update, :destroy]
+
   # GET /articles
   def index
     @articles = Article.all.order(created_at: :asc)
@@ -15,15 +18,20 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
+
+    authorize @article
   end
 
   # GET /articles/1/edit
   def edit
+    authorize @article
   end
 
   # POST /articles
   def create
     @article = Article.new(article_params)
+
+    authorize @article
 
     if @article.save
       redirect_to @article, notice: "Article was successfully created."
@@ -34,6 +42,8 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1
   def update
+    authorize @article
+
     if @article.update(article_params)
       redirect_to @article, notice: "Article was successfully updated."
     else
@@ -43,15 +53,11 @@ class ArticlesController < ApplicationController
 
   # DELETE /articles/1
   def destroy
-    message = { notice: I18n.t('Комментарий удален') }
+    authorize @article
 
-    if user_signed_in?
-      @article.destroy
-    else
-      message = { alert: I18n.t('Вам такое нельзя!') }
-    end
+    @article.destroy
 
-    redirect_to root_path, message
+    redirect_to root_path, notice: ('Статья удалена')
   end
 
   private

@@ -16,15 +16,11 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1
   def destroy
-    message = { notice: I18n.t('Комментарий удален') }
+    authorize @comment
 
-    if user_signed_in?
-      @comment.destroy
-    else
-      message = { alert: I18n.t('Вам такое нельзя!') }
-    end
+    @comment.destroy
 
-    redirect_to @article, message
+    redirect_to @article, notice: ('Коммент удален')
   end
 
   private

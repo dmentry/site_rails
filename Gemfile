@@ -11,7 +11,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
-gem 'fog-aws'
+gem 'pundit'
+# gem 'fog-aws'
 
 group :development, :test do
   gem 'pry', '~> 0.13.1'

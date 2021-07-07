@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update ]
 
   # GET /users or /users.json
   # def index
@@ -8,7 +8,8 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
-    current_user
+    authorize @user
+    # current_user
   end
 
   # GET /users/new
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    authorize @user
   end
 
   # POST /users or /users.json
@@ -35,6 +37,8 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    authorize @user
+
     if @user.update(user_params)
       redirect_to @user, notice: "User was successfully updated."
     else

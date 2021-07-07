@@ -1,11 +1,12 @@
 class PhotosController < ApplicationController
-  # before_action :set_user, only: [:create, :destroy]
-  # before_action :authenticate_user!, except: [:show, :index]
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
+
+  # Предохранитель от потери авторизации в нужных экшенах
+  after_action :verify_authorized, only: [:new, :create, :edit, :update, :destroy, :all_page]
 
   # GET /photos
   def index
-    @photos = Photo.order(created_at: :desc).limit(5)
+    @photos = Photo.order(created_at: :desc).limit(20)
 
     @header = 'Недавние'
 
@@ -18,16 +19,14 @@ class PhotosController < ApplicationController
 
   # GET /photos/new
   def new
-    if user_signed_in?
-      @photo = Photo.new
-    else
-      redirect_to(:root, alert: "Это нельзя!")
-    end
+    @photo = Photo.new
+
+    authorize @photo
   end
 
   # GET /photos/1/edit
   def edit
-    redirect_to(:root, alert: "Это нельзя!") unless user_signed_in?
+    authorize @photo
   end
 
   # POST /photos
@@ -35,6 +34,8 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
 
     @photo.user = current_user
+
+    authorize @photo
 
     if @photo.save
       # redirect_to @photo, notice: "Photo was successfully created."
@@ -46,6 +47,8 @@ class PhotosController < ApplicationController
 
   # PATCH/PUT /photos/1
   def update
+    authorize @photo
+
     if @photo.update(photo_params)
       redirect_to :root, notice: "Photo was successfully updated."
     else
@@ -55,13 +58,11 @@ class PhotosController < ApplicationController
 
   # DELETE /photos/1
   def destroy
-    if user_signed_in?
-      @photo.destroy
+    authorize @photo
 
-      redirect_to photos_url, notice: "Photo was successfully destroyed."
-    else
-      redirect_to(:root, alert: "Это нельзя!")
-    end
+    @photo.destroy!
+
+    redirect_to photos_url, notice: "Photo was successfully destroyed."
   end
 
   #страницы
@@ -69,6 +70,8 @@ class PhotosController < ApplicationController
     @photos = Photo.all
 
     @header = 'Все'
+
+    authorize @photos
 
     render :universal_page
   end
@@ -110,7 +113,6 @@ class PhotosController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
   def set_photo
     @photo = Photo.find(params[:id])
   end
@@ -121,7 +123,6 @@ class PhotosController < ApplicationController
     render :universal_page
   end
 
-  # Only allow a list of trusted parameters through.
   def photo_params
     params.require(:photo).permit(:photo, :description, :type_id)
   end
