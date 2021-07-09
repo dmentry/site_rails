@@ -59,7 +59,7 @@
             <%=link_to "Обратная связь", feedback_page_path, class: "btn" %>
 
             <% if user_signed_in? %>
-              <li><%=link_to "Загрузить", new_photo_path, class: "btn" %></li>
+              <li><%=link_to "Загрузить фотку", new_photo_path, class: "btn" %></li>
               <li><%=link_to "Профиль", current_user, class: "btn" %></li>
               <li><%= link_to "Выйти", destroy_user_session_path, :method => :delete, class: "btn" %></li>
             <% else %>
