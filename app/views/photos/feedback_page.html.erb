@@ -1,8 +1,13 @@
-<h1>Форма обратной связи</h1>
+<h1 class="center">Форма обратной связи</h1>
 <div class="container bg-light">
-  <div class="col-lg-8 order-lg-1">
 
-<%= render 'feedback_form', feedback: @feedback %>
-<%= link_to 'Back', root_path %>
+
+
+
+    <div class="row justify-content-center">
+      <div class="col-8">
+    <%= render 'feedback_form', feedback: @feedback %>
+    <%= link_to 'Back', root_path %>
+  </div>
 </div>
 </div>

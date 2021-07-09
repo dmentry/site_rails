@@ -5,7 +5,9 @@ class Feedback
 
   validates_presence_of :feedback_body
 
-  validates_format_of :feedback_email,:with => Devise::email_regexp
+  validates :feedback_email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  validates_length_of :feedback_body, :maximum => 500
+  # validates_format_of :feedback_email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+
+  validates_length_of :feedback_body, maximum: 500
 end
