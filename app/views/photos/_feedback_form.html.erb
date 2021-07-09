@@ -1,0 +1,28 @@
+<%= form_for feedback, url: feedback_page_send_path do |form| %>
+
+  <% if feedback.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+
+      <ul>
+        <% feedback.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :feedback_email %>
+    <%= form.text_field :feedback_email, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :feedback_body %>
+    <%= form.text_area :feedback_body, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Отправить', class: 'btn btn-primary' %>
+  </div>
+<% end %>

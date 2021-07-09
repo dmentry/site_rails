@@ -4,6 +4,8 @@ class PhotosController < ApplicationController
   # Предохранитель от потери авторизации в нужных экшенах
   after_action :verify_authorized, only: [:new, :create, :edit, :update, :destroy, :all_page]
 
+  attr_accessor :feedback_email, :feedback_text
+
   # GET /photos
   def index
     @photos = Photo.order(created_at: :desc).limit(20)
@@ -110,9 +112,27 @@ class PhotosController < ApplicationController
   end
 
   def feedback_page
+    @feedback = Feedback.new()
+  end
+
+  def feedback_page_send
+    @feedback = Feedback.new(feedback_params)
+
+    if @feedback.valid?
+      flash[:notice] = "Сообщение успешно отправлено!"
+
+      FeedbackMailer.feedback_message(@feedback).deliver_now
+
+      redirect_to :root
+    else
+      flash[:alert] = "Сообщение не отправлено"
+
+      render :feedback_page
+    end
   end
 
   private
+
   def set_photo
     @photo = Photo.find(params[:id])
   end
@@ -125,5 +145,9 @@ class PhotosController < ApplicationController
 
   def photo_params
     params.require(:photo).permit(:photo, :description, :type_id)
+  end
+
+  def feedback_params
+    params.require(:feedback).permit(:feedback_email, :feedback_body)
   end
 end
