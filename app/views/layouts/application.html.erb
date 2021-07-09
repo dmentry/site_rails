@@ -39,10 +39,12 @@
         <div class="navbar navbar-responsive">
           <ul class="navbar-nav">
 
-
             <li class="dropdown">
               <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Фотографии</button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <% if user_signed_in? %>
+                  <%=link_to "Все", all_page_path, class: "dropdown-item" %>
+                <% end %>
                 <%=link_to "Недавние", root_path, class: "dropdown-item" %>
                 <%=link_to "Макро", macro_page_path, class: "dropdown-item" %>
                 <%=link_to "Пейзажи", landscape_page_path, class: "dropdown-item" %>
@@ -57,7 +59,6 @@
             <%=link_to "Обратная связь", feedback_page_path, class: "btn" %>
 
             <% if user_signed_in? %>
-              <li><%=link_to "Все", all_page_path, class: "btn" %></li>
               <li><%=link_to "Загрузить", new_photo_path, class: "btn" %></li>
               <li><%=link_to "Профиль", current_user, class: "btn" %></li>
               <li><%= link_to "Выйти", destroy_user_session_path, :method => :delete, class: "btn" %></li>
