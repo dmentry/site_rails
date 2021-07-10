@@ -2,7 +2,7 @@
 lock "~> 3.16.0"
 
 # Это имя приложения
-set :application, 'photo.dack9.ru'
+set :application, 'photo'
 
 # Это url вашего репозитория, откуда Capistrano будет брать свежие версии исходников
 set :repo_url, 'git@github.com:dmentry/site_rails.git'

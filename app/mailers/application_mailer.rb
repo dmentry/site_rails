@@ -1,7 +1,7 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'robot_feedback@edu.dack9.ru'
+  default from: Rails.application.credentials.dig(Rails.env.to_sym, :mail, :default_from)
 
-  EMAIL_TO = 'lorien97@mail.ru'
+  EMAIL_TO = Rails.application.credentials.dig(Rails.env.to_sym, :mail, :default_to)
 
   layout 'mailer'
 end

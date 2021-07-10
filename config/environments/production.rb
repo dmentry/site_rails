@@ -56,7 +56,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   # Setup the mailer config
-  config.action_mailer.default_url_options = { host: 'dack9.ru', subdomain: "edu"}
+  config.action_mailer.default_url_options = { host: 'dack9.ru', subdomain: "photo"}
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_deliveries = true
 
@@ -103,4 +103,7 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  #Отправка мейлов через postfix
+  config.action_mailer.delivery_method = :sendmail
 end
