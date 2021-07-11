@@ -16,7 +16,9 @@
     <%= form.text_area :comment_body, class: 'form-control' %>
   </div>
 
-  <div class="actions">
+  <%= recaptcha_tags %>
+
+  <div class="actions my-3">
     <%= form.submit %>
   </div>
 <% end %>

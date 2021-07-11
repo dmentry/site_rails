@@ -12,6 +12,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'pundit'
+gem 'recaptcha'
 # gem 'fog-aws'
 
 group :development, :test do
