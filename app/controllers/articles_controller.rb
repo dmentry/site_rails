@@ -36,6 +36,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article, notice: "Article was successfully created."
     else
+      flash.now[:alert] = 'Статью добавить не удалось!'
       render :new, status: :unprocessable_entity
     end
   end
@@ -47,6 +48,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article, notice: "Article was successfully updated."
     else
+      flash.now[:alert] = 'Статью обновить не удалось!'
       render :edit, status: :unprocessable_entity
     end
   end

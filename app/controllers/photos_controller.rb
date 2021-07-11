@@ -43,7 +43,8 @@ class PhotosController < ApplicationController
       # redirect_to @photo, notice: "Photo was successfully created."
       redirect_to :root, notice: "Photo was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      flash.now[:alert] = 'Фотку создать не удалось!'
+      render :new
     end
   end
 
@@ -54,7 +55,8 @@ class PhotosController < ApplicationController
     if @photo.update(photo_params)
       redirect_to :root, notice: "Photo was successfully updated."
     else
-      render :edit, status: :unprocessable_entity
+      flash.now[:alert] = 'Фотку изменить не удалось!'
+      render :edit
     end
   end
 
@@ -117,9 +119,8 @@ class PhotosController < ApplicationController
 
   def feedback_page_send
     @feedback = Feedback.new(feedback_params)
-
+    # if @feedback.valid?
     if verify_recaptcha(model: @feedback) && @feedback.valid?
-    # if check_captcha(@feedback) && @feedback.valid?
       flash[:notice] = "Сообщение успешно отправлено!"
 
       FeedbackMailer.feedback_message(@feedback).deliver_now

@@ -4,6 +4,6 @@ class FeedbackMailer < ApplicationMailer
 
     @feedback_body = feedback.feedback_body
 
-    mail to: EMAIL_TO, subject: "Новое сообщение с фотосайта"
+    mail(to: EMAIL_TO, subject: "Новое сообщение с фотосайта")
   end
 end

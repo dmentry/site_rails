@@ -1,4 +1,5 @@
 <%= form_with(model: [@article, @article.comments.build], local: true) do |form| %>
+
   <% if comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -11,20 +12,25 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label "Новый комментарий" %>
-    <%= form.text_area :comment_body, class: 'form-control' %>
-  </div>
+  <div class="border my-2">
+    <div class="m-2">
+      <div class="form-group">
+        <%= form.label "Ваш email" %>
+        <%= form.text_field :comment_email, class: 'form-control' %>
+      </div>
 
-  <div class="mb-3">
-    <%= recaptcha_tags %>
-  </div>
+      <div class="form-group">
+        <%= form.label "Ваш комментарий" %>
+        <%= form.text_area :comment_body, class: 'form-control' %>
+      </div>
 
-  <div class="actions my-3">
-    <%= form.submit %>
+      <div class="mb-3">
+        <%= recaptcha_tags %>
+      </div>
+
+      <div class="actions my-3">
+        <%= form.submit %>
+      </div>
+    </div>
   </div>
 <% end %>
-
-
-
-

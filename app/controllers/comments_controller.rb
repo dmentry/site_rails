@@ -8,10 +8,11 @@ class CommentsController < ApplicationController
     @new_comment = @article.comments.build(comment_params)
 
     if verify_recaptcha(model: @new_comment) && @new_comment.save
-    # if check_captcha(@new_comment) && @new_comment.save
+    # if @new_comment.save
       redirect_to @article, notice: 'Comment was successfully created.'
     else
-      render 'articles/show', alert: 'Комментарий добавить не удалось!'
+      flash.now[:alert] = 'Комментарий добавить не удалось!'
+      render 'articles/show'
     end
   end
 
@@ -35,6 +36,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:comment_body)
+    params.require(:comment).permit(:comment_body, :comment_email)
   end
 end
