@@ -6,12 +6,11 @@
 
       <%= raw(@article.article_body) %><br>
 
+      <%= link_to 'Обратно к списку', articles_path, class: 'btn btn-secondary mb-3' %>
+
       <% if current_user %>
-        <%= link_to 'Edit', edit_article_path(@article) %> |
+        <%= link_to 'Edit', edit_article_path(@article) %>
       <% end %>
-
-  <%= link_to 'Обратно к списку', articles_path, class: 'btn btn-secondary mb-3' %>
-
 
     </div>
   </div>
