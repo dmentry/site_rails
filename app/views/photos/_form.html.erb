@@ -1,8 +1,7 @@
-<%= form_with(model: photo, local: true, html: {multipart: true}) do |form| %>
+<%= form_with(model: photo, local: true, html: { multipart: true }) do |form| %>
   <% if photo.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
-
       <ul>
         <% photo.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -11,16 +10,11 @@
     </div>
   <% end %>
 
-<!--   <div class="form-group">
-    <%#= form.label :photo %>
-    <%#= form.text_field :photo, class: 'form-control' %>
-  </div> -->
-
-<div>
-  <% if photo.created_at %>
-    Загружена: <%= photo.created_at %>
-  <% end %>
-</div><br/>
+  <div>
+    <% if photo.created_at %>
+      Загружена: <%= photo.created_at %>
+    <% end %>
+  </div><br/>
 
   <div class="form-group">
     <%= form.label :photo %>
@@ -33,8 +27,8 @@
   </div>
 
   <div class="form-group">
-      <%= form.label :type_id %><br/>
-      <%= form.collection_select :type_id, Type.all, :id, :photo_type %>
+    <%= form.label :type_id %><br/>
+    <%= form.collection_select :type_id, Type.all, :id, :photo_type %>
   </div>
 
   <div class="actions">

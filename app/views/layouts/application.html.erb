@@ -33,7 +33,7 @@
           <%= image_pack_tag("logo.png", alt: 'logo', class: 'mt-0 logo') %>
           <ul class="navbar-nav">
             <%= link_to "Дмитрий Архипов", root_path, class: 'btn', title: "На главную" %>
-           </ul>
+          </ul>
         </div>
 
         <div class="navbar navbar-responsive">
@@ -41,7 +41,7 @@
             <li class="dropdown">
               <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Фотографии</button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <% if user_signed_in? %>
+                <% if current_user %>
                   <%=link_to "Все", all_page_path, class: "dropdown-item" %>
                 <% end %>
                 <%=link_to "Недавние", root_path, class: "dropdown-item" %>
@@ -57,7 +57,7 @@
             <%=link_to "Обо мне", about_page_path, class: "btn" %>
             <%=link_to "Обратная связь", feedback_page_path, class: "btn" %>
 
-            <% if user_signed_in? %>
+            <% if current_user %>
               <li><%=link_to "Загрузить фотку", new_photo_path, class: "btn" %></li>
               <li><%=link_to "Профиль", current_user, class: "btn" %></li>
               <li><%= link_to "Выйти", destroy_user_session_path, :method => :delete, class: "btn" %></li>
