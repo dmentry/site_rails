@@ -22,7 +22,9 @@
     <%= form.text_area :feedback_body, class: 'form-control' %>
   </div>
 
-  <%= recaptcha_tags %>
+  <div class="mb-3">
+    <%= recaptcha_tags %>
+  </div>
 
   <div class="actions">
     <%= form.submit 'Отправить', class: 'btn btn-primary' %>

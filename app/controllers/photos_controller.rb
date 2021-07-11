@@ -118,7 +118,8 @@ class PhotosController < ApplicationController
   def feedback_page_send
     @feedback = Feedback.new(feedback_params)
 
-    if check_captcha(@feedback) && @feedback.valid?
+    if verify_recaptcha(model: @feedback) && @feedback.save
+    # if check_captcha(@feedback) && @feedback.valid?
       flash[:notice] = "Сообщение успешно отправлено!"
 
       FeedbackMailer.feedback_message(@feedback).deliver_now

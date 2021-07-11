@@ -7,7 +7,8 @@ class CommentsController < ApplicationController
   def create
     @new_comment = @article.comments.build(comment_params)
 
-    if check_captcha(@new_comment) && @new_comment.save
+    if verify_recaptcha(model: @new_comment) && @new_comment.save
+    # if check_captcha(@new_comment) && @new_comment.save
       redirect_to @article, notice: "Comment was successfully created."
     else
       render 'articles/show', alert: I18n.t('Комментарий добавить не удалось!')
