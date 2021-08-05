@@ -16,7 +16,7 @@ logo {
     font-weight: bold;
     letter-spacing: 1px;
     position: absolute;
-    padding: 60px 1px 0 14px;
+    padding: 160px 1px 0 14px;
     z-index: 8;
     text-decoration: none;
     color: black;
@@ -107,4 +107,17 @@ margin-bottom: 8px;
 
 .gallery img {
   max-width: 100%;
+}
+
+/* .but_menu {
+  display: none;
+}
+ */
+@media (max-width: 991px) {
+/* .but_menu {
+  display: inline;
+} */
+}
+
+@media (max-width: 1200px) {
 }

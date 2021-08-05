@@ -5,7 +5,7 @@
  <% @articles.each do |article| %>
       <div>
         <h2 class="mt-3"><%= article.article_title %></h2><br>
-        <%= raw(article.article_body[0..30]) %><br>
+        <%= raw(article.article_body[0..50]) %><br>
 
         <%= link_to 'Читать полностью', article, class: 'btn btn-secondary mt-2' %>
         <% if current_user %>
