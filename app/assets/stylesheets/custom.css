@@ -109,14 +109,20 @@ margin-bottom: 8px;
   max-width: 100%;
 }
 
-/* .but_menu {
-  display: none;
-}
- */
 @media (max-width: 991px) {
-/* .but_menu {
-  display: inline;
-} */
+  .my_control {
+    display: block;
+    border: none;
+    background-color: #f8f9fa;
+  }
+
+  .logo_my_class {
+    display: none;
+  }
+
+  .my_font_size {
+    font-size: 120%;
+  }
 }
 
 @media (max-width: 1200px) {
