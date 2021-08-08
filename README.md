@@ -1,24 +1,20 @@
-# README
+# Фотосайт
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+В свободное время конструирую свой фотосайт. Заодно этот проект является моим "полигоном", где я пробую новые и интересные для меня решения. Что-то оставляю, что-то убираю.
 
-Things you may want to cover:
+Сделано:
+* Создание превьюшек загружаемых фотографий
+* Прикручена Light Gallery для просмотра
+* Раздел статей с возможностью добавления комментариев
+* Форма обратной связи
+* Прикручена Google reCAPTCHA
 
-* Ruby version
+В планах:
+* Наполнить содержимым
+* Оптимизировать под разные экраны
+* Сделать англоязычную локаль
+* Поиск по сайту
+* Настроить деплой с помощью Capistrano
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Посмотреть:
+http://photo.dack9.ru
