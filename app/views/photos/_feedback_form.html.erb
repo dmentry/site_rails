@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-  <div class="form-group">
+  <div class="form-group mt-3">
     <%= form.label :feedback_email %>
     <%= form.text_field :feedback_email, class: 'form-control' %>
   </div>
@@ -26,7 +26,7 @@
     <%= recaptcha_tags %>
   </div>
 
-  <div class="actions">
+  <div class="actions mb-3">
     <%= form.submit 'Отправить', class: 'btn btn-secondary' %>
   </div>
 <% end %>

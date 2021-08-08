@@ -27,65 +27,61 @@
 
   <body>
 
-<div id="collapseMenu" class="collapse d-lg-block">
-
-    <div class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top">
-
-      <div class="container-fluid">
-
-<!-- <div class="d-md-block"> -->
-  
-
-        <div class="navbar navbar-responsive logo_my_class">
-          <%= image_pack_tag("logo.png", alt: 'logo', class: 'mt-0 logo') %>
-          <!-- <ul class="navbar navbar-responsive"> -->
+    <div id="collapseMenu" class="collapse d-lg-block">
+      <div class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top">
+        <div class="container-fluid">
+          <div class="navbar navbar-responsive logo_my_class">
+            <%= image_pack_tag("logo.png", alt: 'logo', class: 'mt-0 logo') %>
+              <ul class="navbar-nav">
+                <%= link_to "Дмитрий Архипов", root_path, class: 'btn bg-light', title: "На главную" %>
+              </ul>
+          </div>
+          <div class="navbar navbar-responsive d-md-block">
             <ul class="navbar-nav">
-            <%= link_to "Дмитрий Архипов", root_path, class: 'btn bg-light', title: "На главную" %>
-          </ul>
-        </div>
-<!-- </div> -->
-        <div class="navbar navbar-responsive d-md-block">
-          <ul class="navbar-nav">
-            <li class="dropdown">
-              <button type="button" class="btn dropdown-toggle my_font_size" data-toggle="dropdown">Фотографии</button>
-              <div class="dropdown-menu my_control my_font_size" aria-labelledby="dropdownMenuButton">
-                <% if current_user %>
-                  <%=link_to "Все", all_page_path, class: "dropdown-item" %>
-                <% end %>
-                <%=link_to "Недавние", root_path, class: "dropdown-item" %>
-                <%=link_to "Макро", macro_page_path, class: "dropdown-item" %>
-                <%=link_to "Пейзажи", landscape_page_path, class: "dropdown-item" %>
-                <%=link_to "Портреты", portrait_page_path, class: "dropdown-item" %>
-                <%=link_to "С квадрокоптера", drone_page_path, class: "dropdown-item" %>
-                <%= link_to "Коллажи", collage_page_path, class: "dropdown-item" %>
-                <%= link_to "Остальное", other_page_path, class: "dropdown-item" %>
-              </div>
-            </li>
-            <li> <%= link_to "Блог", articles_path, class: "btn my_font_size" %> </li>
-            <li> <%= link_to "Обо мне", about_page_path, class: "btn my_font_size" %> </li>
-            <li> <%= link_to "Обратная связь", feedback_page_path, class: "btn my_font_size" %> </li>
+              <li class="dropdown">
+                <button type="button" class="btn dropdown-toggle my_font_size remove_padding" data-toggle="dropdown">Фотографии</button>
+                <div class="dropdown-menu my_control my_font_size" aria-labelledby="dropdownMenuButton">
 
-            <% if current_user %>
-              <li> <%= link_to "Загрузить фотку", new_photo_path, class: "btn" %> </li>
-              <li> <%= link_to "Профиль", current_user, class: "btn" %> </li>
-              <li> <%= link_to "Выйти", destroy_user_session_path, :method => :delete, class: "btn" %> </li>
-            <% else %>
-              <li> <%= link_to "Для админа", new_user_session_path, class: "btn" %> </li>
-            <% end %>
-            <li> <%= link_to image_pack_tag("eng.jpg", alt: 'eng',  class: "btn"), '#', title: "ENG version. This feature is under construction.", class: 'mt-1' %> </li>
-          </ul>
+                  <% if current_user %>
+                    <%=link_to "Все", all_page_path, class: "dropdown-item my_dropdown_item" %>
+                  <% end %>
+
+                  <%= link_to "Недавние", root_path, class: "dropdown-item my_dropdown_item" %>
+                  <%= link_to "Макро", macro_page_path, class: "dropdown-item my_dropdown_item" %>
+                  <%= link_to "Пейзажи", landscape_page_path, class: "dropdown-item my_dropdown_item" %>
+                  <%= link_to "Портреты", portrait_page_path, class: "dropdown-item my_dropdown_item" %>
+                  <%= link_to "С квадрокоптера", drone_page_path, class: "dropdown-item my_dropdown_item" %>
+                  <%= link_to "Коллажи", collage_page_path, class: "dropdown-item my_dropdown_item" %>
+                  <%= link_to "Остальное", other_page_path, class: "dropdown-item my_dropdown_item" %>
+                </div>
+              </li>
+              <li> <%= link_to "Блог", articles_path, class: "btn my_font_size remove_padding" %> </li>
+              <li> <%= link_to "Обо мне", about_page_path, class: "btn my_font_size remove_padding" %> </li>
+              <li> <%= link_to "Обратная связь", feedback_page_path, class: "btn my_font_size remove_padding" %> </li>
+
+              <% if current_user %>
+                <li> <%= link_to "Загрузить фотку", new_photo_path, class: "btn" %> </li>
+                <li> <%= link_to "Профиль", current_user, class: "btn" %> </li>
+                <li> <%= link_to "Выйти", destroy_user_session_path, :method => :delete, class: "btn" %> </li>
+              <% else %>
+
+                <li> <%= link_to "Для админа", new_user_session_path, class: "btn my_font_size remove_padding" %> </li>
+              <% end %>
+              <li> <%= link_to image_pack_tag("eng.jpg", alt: 'eng',  class: "btn flag_position"), '#', title: "ENG version. This feature is under construction.", class: 'mt-1' %> </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
+<!--     <button class="navbar-toggler bg-light d-lg-none butt" type="button" data-toggle="collapse" data-target="#collapseMenu" aria-controls="collapseMenu" aria-expanded="false">
+      <%= image_pack_tag("menu-4x.png", alt: 'menu',  class: "my_color") %>
+    </button> -->
 
-    <button class="navbar-toggler bg-light d-lg-none" type="button" data-toggle="collapse" data-target="#collapseMenu" aria-controls="collapseMenu" aria-expanded="false">
-      <!-- Menu -->
-      <%= image_pack_tag("menu-6x.png", alt: 'menu',  class: "") %>
-    </button>
-
-
+    <a class="navbar-toggler bg-light d-lg-none" data-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false" aria-controls="collapseMenu">
+      <%= image_pack_tag("menu-4x.png", alt: 'menu',  class: "my_color") %>
+    </a>
+  
     <% flash.each do |key, value| %>
       <div class="<%= flash_class(key) %>" role="alert">
         <%= value %>
