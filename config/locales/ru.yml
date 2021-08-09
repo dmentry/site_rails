@@ -313,3 +313,33 @@ ru:
       feedback_page_send:
         success: Сообщение успешно отправлено!
         fail: Сообщение не отправлено!
+  views:
+    articles:
+      index:
+        blog: Блог
+        article:
+          read: Читать полностью
+          edit: Редактировать
+          destroy: Удалить
+          sure: Вы уверены?
+          new: Новый пост
+      form:
+        save: Сохранить
+      new:
+        new_article: Новый пост
+        back: Обратно
+    photos:
+      about:
+        title: Обо мне
+    feedback:
+      title: Форма обратной связи
+      send: Отправить
+  models:
+    article:
+      article_title: Заголовок поста
+      article_body: Пост
+    feedback:
+      feedback_email: Ваш мейл
+      feedback_body: Сообщение
+
+

@@ -259,3 +259,31 @@ en:
       feedback_page_send:
         success: Message is sent successfully!
         fail: Message is not sent!
+  views:
+    articles:
+      index:
+        blog: Blog
+        article:
+          read: Read full
+          edit: Edit
+          destroy: Destroy
+          sure: Are you sure?
+          new: New article
+      form:
+        save: Save
+      new:
+        new_article: New article
+        back: Back
+    photos:
+      about:
+        title: About
+    feedback:
+      title: Feedback form
+      send: Send
+  models:
+    article:
+      article_title: Article title
+      article_body: Article body
+    feedback:
+      feedback_email: Your email
+      feedback_body: Message

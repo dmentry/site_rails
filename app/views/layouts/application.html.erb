@@ -69,7 +69,7 @@
               <% end %>
               <!-- <li> <%= link_to image_pack_tag("eng.jpg", alt: 'eng',  class: "btn flag_position"), '#', title: "ENG version. This feature is under construction.", class: 'mt-1' %> </li> -->
 
-              <% if params[:locale] == 'ru' %>
+              <% if params[:locale] == 'ru' || params[:locale] == nil %>
                 <% locale_class_eng = '' %>
                 <% locale_class_ru = 'locale_class_na' %>
               <% else %>

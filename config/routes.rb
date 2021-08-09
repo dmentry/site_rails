@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get 'feedback_page' => 'photos#feedback_page', as: :feedback_page
     post 'feedback_page_send' => 'photos#feedback_page_send', as: :feedback_page_send
 
-    root 'photos#index'
+    root to: 'photos#index'
+
   end
 end

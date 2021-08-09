@@ -13,12 +13,12 @@
   <% end %>
 
   <div class="form-group mt-3">
-    <%= form.label :feedback_email %>
+    <%= form.label t('models.feedback.feedback_email') %>
     <%= form.text_field :feedback_email, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :feedback_body %>
+    <%= form.label t('models.feedback.feedback_body') %>
     <%= form.text_area :feedback_body, class: 'form-control my_height' %>
   </div>
 
@@ -27,6 +27,6 @@
   </div>
 
   <div class="actions mb-3">
-    <%= form.submit 'Отправить', class: 'btn btn-secondary' %>
+    <%= form.submit t('views.feedback.send'), class: 'btn btn-secondary' %>
   </div>
 <% end %>

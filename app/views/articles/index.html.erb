@@ -1,4 +1,4 @@
-<h1 class="center">Блог</h1>
+<h1 class="center"><%= t('views.articles.index.blog') %></h1>
 <div class="container bg-light">
   <div class="row mt-3">
     <div class="col-sm-12 col-md-10">
@@ -8,10 +8,10 @@
 
           <%= raw(article.article_body[0..53]) %><br>
 
-          <%= link_to 'Читать полностью', article, class: 'btn btn-secondary mt-2' %>
+          <%= link_to t('views.articles.index.article.read'), article, class: 'btn btn-secondary mt-2' %>
           <% if current_user %>
-            <%= link_to 'Edit', edit_article_path(article) %> |
-            <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to t('views.articles.index.article.edit'), edit_article_path(article) %> |
+            <%= link_to t('views.articles.index.article.destroy'), article, method: :delete, data: { confirm: t('views.articles.index.article.sure') } %>
           <% end %>
 
         </div>
@@ -21,7 +21,7 @@
       <br>
 
       <% if current_user %>
-        <%= link_to 'New Article', new_article_path %>
+        <%= link_to t('views.articles.index.article.new'), new_article_path %>
       <% end %>
     </div>
   </div>
