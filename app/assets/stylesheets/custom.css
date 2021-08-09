@@ -126,6 +126,10 @@ margin-bottom: 8px;
   background-color: #e1e6ea;
 }
 
+.locale_class_na {
+  display: none;
+}
+
 @media (max-width: 991px) {
   .my_control {
     display: block;

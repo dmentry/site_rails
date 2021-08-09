@@ -60,16 +60,26 @@
               <li> <%= link_to t('app.navbar.menu.feedback'), feedback_page_path, class: "btn my_font_size remove_padding" %> </li>
 
               <% if current_user %>
-                <li> <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: "btn" %> </li>
-                <li> <%= link_to t('app.navbar.menu.profile'), current_user, class: "btn" %> </li>
-                <li> <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: "btn" %> </li>
+                <li> <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: "btn my_font_size remove_padding" %> </li>
+                <li> <%= link_to t('app.navbar.menu.profile'), current_user, class: "btn my_font_size remove_padding" %> </li>
+                <li> <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: "btn my_font_size remove_padding" %> </li>
               <% else %>
 
                 <li> <%= link_to t('app.navbar.menu.admin'), new_user_session_path, class: "btn my_font_size remove_padding" %> </li>
               <% end %>
               <!-- <li> <%= link_to image_pack_tag("eng.jpg", alt: 'eng',  class: "btn flag_position"), '#', title: "ENG version. This feature is under construction.", class: 'mt-1' %> </li> -->
-              <li><%= link_to 'English', root_path(locale: :en), class: "btn" %></li>
-              <li><%= link_to 'Русский', root_path(locale: :ru), class: "btn"%></li>
+
+              <% if params[:locale] == 'ru' %>
+                <% locale_class_eng = '' %>
+                <% locale_class_ru = 'locale_class_na' %>
+              <% else %>
+                <% locale_class_eng = 'locale_class_na' %>
+                <% locale_class_ru = '' %>
+              <% end %>
+
+              <li><%= link_to image_pack_tag("rus.jpg", alt: 'rus',  class: "btn flag_position"), root_path(locale: :ru), class: "mt-1 #{locale_class_ru}", title: 'Переключиться на русский' %></li>
+              <li><%= link_to image_pack_tag("eng.jpg", alt: 'eng',  class: "btn flag_position"), root_path(locale: :en), class: "mt-1 #{locale_class_eng}", title: 'Switch to english' %></li>
+              <!-- <li><%= link_to 'Русский', root_path(locale: :ru), class: "btn #{locale_class_ru}"%></li> -->
             </ul>
           </div>
         </div>
