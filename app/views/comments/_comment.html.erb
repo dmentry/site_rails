@@ -1,13 +1,15 @@
-<div class="container-fluid border my-2">
+<div class="container-fluid border my-2 comment_color">
   <p>
-    <em><%= comment.created_at %></em>
+    <em><%= l comment.created_at, format: :short %></em>
 
     <% if current_user %>
       <%= link_to 'X', article_comment_path(comment.article, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
   </p>
+
   <% if current_user %>
     <p><%= comment.comment_email %></p>
   <% end %>
+
   <p><%= comment.comment_body %></p>
 </div>

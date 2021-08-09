@@ -114,7 +114,16 @@ margin-bottom: 8px;
 }
 
 .my_height {
-  height: 450px !important;
+  height: 400px !important;
+}
+
+.bottom_line {
+  border-bottom: 1px solid black;
+  padding-top: 8px;
+}
+
+.comment_color {
+  background-color: #e1e6ea;
 }
 
 @media (max-width: 991px) {
@@ -146,7 +155,4 @@ margin-bottom: 8px;
     padding: 0 0 0 0;
     margin: 0 0 0 0;    
   }
-}
-
-@media (max-width: 1200px) {
 }

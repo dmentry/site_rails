@@ -1,4 +1,11 @@
 class ApplicationController < ActionController::Base
+  # переключение локалей
+  around_action :switch_locale
+  # передача параметра текущей локали через запросы
+  def default_url_options
+    {locale: I18n.locale}
+  end
+
   # Позволяем использовать возможности пандита во всех контроллерах
   include Pundit
   # Настройка для работы Девайза, когда юзер правит профиль
@@ -14,7 +21,9 @@ class ApplicationController < ActionController::Base
   def photos_and_type(type)
     photos = Photo.photos_by_type(type)
 
-    header = Type.find(type).photo_type
+    photo_type = Type.find(type).photo_type
+
+    header = t("controllers.photos.type.#{photo_type}")
 
     return photos, header
   end
@@ -23,6 +32,11 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private
+
+  def switch_locale(&action)
+    locale = params[:locale] || I18n.default_locale
+    I18n.with_locale(locale, &action)
+  end
 
   def user_not_authorized
     # Перенаправляем юзера откуда пришел (или в корень сайта) с сообщением об ошибке

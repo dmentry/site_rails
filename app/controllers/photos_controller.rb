@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
   def index
     @photos = Photo.order(created_at: :desc).limit(20)
 
-    @header = 'Недавние'
+    @header = t('controllers.photos.index.header')
 
     render :universal_page
   end
@@ -41,9 +41,9 @@ class PhotosController < ApplicationController
 
     if @photo.save
       # redirect_to @photo, notice: "Photo was successfully created."
-      redirect_to :root, notice: "Photo was successfully created."
+      redirect_to :root, notice: t('controllers.photos.create.success')
     else
-      flash.now[:alert] = 'Фотку создать не удалось!'
+      flash.now[:alert] = t('controllers.photos.create.fail')
       render :new
     end
   end
@@ -53,9 +53,9 @@ class PhotosController < ApplicationController
     authorize @photo
 
     if @photo.update(photo_params)
-      redirect_to :root, notice: "Photo was successfully updated."
+      redirect_to :root, notice: t('controllers.photos.update.success')
     else
-      flash.now[:alert] = 'Фотку изменить не удалось!'
+      flash.now[:alert] = t('controllers.photos.update.fail')
       render :edit
     end
   end
@@ -66,14 +66,14 @@ class PhotosController < ApplicationController
 
     @photo.destroy!
 
-    redirect_to photos_url, notice: "Photo was successfully destroyed."
+    redirect_to photos_url, notice: t('controllers.photos.destroy.success')
   end
 
   #страницы
   def all_page
     @photos = Photo.all
 
-    @header = 'Все'
+    @header = t('controllers.photos.all_page.header')
 
     authorize @photos
 
@@ -121,13 +121,13 @@ class PhotosController < ApplicationController
     @feedback = Feedback.new(feedback_params)
     # if @feedback.valid?
     if verify_recaptcha(model: @feedback) && @feedback.valid?
-      flash[:notice] = "Сообщение успешно отправлено!"
+      flash[:notice] = t('controllers.photos.feedback_page_send.success')
 
       FeedbackMailer.feedback_message(@feedback).deliver_now
 
       redirect_to :root
     else
-      flash[:alert] = "Сообщение не отправлено"
+      flash[:alert] = t('controllers.photos.feedback_page_send.fail')
 
       render :feedback_page
     end

@@ -9,5 +9,5 @@ class Feedback
 
   # validates_format_of :feedback_email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
-  validates_length_of :feedback_body, maximum: 500
+  validates_length_of :feedback_body, maximum: 1000
 end

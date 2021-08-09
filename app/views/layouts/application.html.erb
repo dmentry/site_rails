@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Фотограф Дмитрий Dack9 Архипов</title>
+    <title><%= t('app.tab') %></title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <%= favicon_link_tag %>
 
     <meta name="robots" content="index, follow">
     <meta name="description" content="Персональный сайт фотографа Дмитрия Dack9 Архипова. Сотрудничество: фотосессии и фотосъемка (макро, предметная)">
     <meta name="keywords" content="dack9, фотограф, макрофотография, фотосессия, macro, macrophoto">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="author" content="Дмитрий Архипов aka Dack9">
 
     <%= csrf_meta_tags %>
@@ -33,41 +33,43 @@
           <div class="navbar navbar-responsive logo_my_class">
             <%= image_pack_tag("logo.png", alt: 'logo', class: 'mt-0 logo') %>
               <ul class="navbar-nav">
-                <%= link_to "Дмитрий Архипов", root_path, class: 'btn bg-light', title: "На главную" %>
+                <%= link_to t('app.navbar.logo_name'), root_path, class: 'btn bg-light', title: t('app.navbar.logo_name_caption') %>
               </ul>
           </div>
           <div class="navbar navbar-responsive d-md-block">
             <ul class="navbar-nav">
               <li class="dropdown">
-                <button type="button" class="btn dropdown-toggle my_font_size remove_padding" data-toggle="dropdown">Фотографии</button>
+                <button type="button" class="btn dropdown-toggle my_font_size remove_padding" data-toggle="dropdown"><%= t('app.navbar.menu.drop_down.photos') %></button>
                 <div class="dropdown-menu my_control my_font_size" aria-labelledby="dropdownMenuButton">
 
                   <% if current_user %>
-                    <%=link_to "Все", all_page_path, class: "dropdown-item my_dropdown_item" %>
+                    <%=link_to t('app.navbar.menu.drop_down.all'), all_page_path, class: "dropdown-item my_dropdown_item" %>
                   <% end %>
 
-                  <%= link_to "Недавние", root_path, class: "dropdown-item my_dropdown_item" %>
-                  <%= link_to "Макро", macro_page_path, class: "dropdown-item my_dropdown_item" %>
-                  <%= link_to "Пейзажи", landscape_page_path, class: "dropdown-item my_dropdown_item" %>
-                  <%= link_to "Портреты", portrait_page_path, class: "dropdown-item my_dropdown_item" %>
-                  <%= link_to "С квадрокоптера", drone_page_path, class: "dropdown-item my_dropdown_item" %>
-                  <%= link_to "Коллажи", collage_page_path, class: "dropdown-item my_dropdown_item" %>
-                  <%= link_to "Остальное", other_page_path, class: "dropdown-item my_dropdown_item" %>
+                  <%= link_to t('app.navbar.menu.drop_down.recent'), root_path, class: "dropdown-item my_dropdown_item" %>
+                  <%= link_to t('app.navbar.menu.drop_down.macro'), macro_page_path, class: "dropdown-item my_dropdown_item" %>
+                  <%= link_to t('app.navbar.menu.drop_down.landscape'), landscape_page_path, class: "dropdown-item my_dropdown_item" %>
+                  <%= link_to t('app.navbar.menu.drop_down.portrait'), portrait_page_path, class: "dropdown-item my_dropdown_item" %>
+                  <%= link_to t('app.navbar.menu.drop_down.drone'), drone_page_path, class: "dropdown-item my_dropdown_item" %>
+                  <%= link_to t('app.navbar.menu.drop_down.collage'), collage_page_path, class: "dropdown-item my_dropdown_item" %>
+                  <%= link_to t('app.navbar.menu.drop_down.other'), other_page_path, class: "dropdown-item my_dropdown_item" %>
                 </div>
               </li>
-              <li> <%= link_to "Блог", articles_path, class: "btn my_font_size remove_padding" %> </li>
-              <li> <%= link_to "Обо мне", about_page_path, class: "btn my_font_size remove_padding" %> </li>
-              <li> <%= link_to "Обратная связь", feedback_page_path, class: "btn my_font_size remove_padding" %> </li>
+              <li> <%= link_to t('app.navbar.menu.blog'), articles_path, class: "btn my_font_size remove_padding" %> </li>
+              <li> <%= link_to t('app.navbar.menu.about'), about_page_path, class: "btn my_font_size remove_padding" %> </li>
+              <li> <%= link_to t('app.navbar.menu.feedback'), feedback_page_path, class: "btn my_font_size remove_padding" %> </li>
 
               <% if current_user %>
-                <li> <%= link_to "Загрузить фотку", new_photo_path, class: "btn" %> </li>
-                <li> <%= link_to "Профиль", current_user, class: "btn" %> </li>
-                <li> <%= link_to "Выйти", destroy_user_session_path, :method => :delete, class: "btn" %> </li>
+                <li> <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: "btn" %> </li>
+                <li> <%= link_to t('app.navbar.menu.profile'), current_user, class: "btn" %> </li>
+                <li> <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: "btn" %> </li>
               <% else %>
 
-                <li> <%= link_to "Для админа", new_user_session_path, class: "btn my_font_size remove_padding" %> </li>
+                <li> <%= link_to t('app.navbar.menu.admin'), new_user_session_path, class: "btn my_font_size remove_padding" %> </li>
               <% end %>
-              <li> <%= link_to image_pack_tag("eng.jpg", alt: 'eng',  class: "btn flag_position"), '#', title: "ENG version. This feature is under construction.", class: 'mt-1' %> </li>
+              <!-- <li> <%= link_to image_pack_tag("eng.jpg", alt: 'eng',  class: "btn flag_position"), '#', title: "ENG version. This feature is under construction.", class: 'mt-1' %> </li> -->
+              <li><%= link_to 'English', root_path(locale: :en), class: "btn" %></li>
+              <li><%= link_to 'Русский', root_path(locale: :ru), class: "btn"%></li>
             </ul>
           </div>
         </div>
