@@ -17,21 +17,21 @@
   </div><br/>
 
   <div class="form-group">
-    <%= form.label :photo %>
+    <%= form.label t('models.photo.photo') %>
     <%= form.file_field :photo %>
   </div>
 
   <div class="form-group">
-    <%= form.label :description %>
+    <%= form.label t('models.photo.description') %>
     <%= form.text_area :description, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :type_id %><br/>
+    <%= form.label t('models.photo.type_id') %><br/>
     <%= form.collection_select :type_id, Type.all, :id, :photo_type %>
   </div>
 
   <div class="actions">
-    <%= form.submit 'Сохранить', class: 'btn btn-secondary' %>
+    <%= form.submit t('views.photos.form.save'), class: 'btn btn-secondary' %>
   </div>
 <% end %>

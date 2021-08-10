@@ -277,6 +277,10 @@ en:
     photos:
       about:
         title: About
+      form:
+        save: Сохранить
+      blog:
+        blog: Блог
     feedback:
       title: Feedback form
       send: Send
@@ -287,3 +291,7 @@ en:
     feedback:
       feedback_email: Your email
       feedback_body: Message
+    photo:
+      photo: Фотка
+      description: Описание
+      type_id: Тип

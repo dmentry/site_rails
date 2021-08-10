@@ -1,9 +1,9 @@
-Type.create!(photo_type: 'Макро')
-Type.create!(photo_type: 'Пейзажи')
-Type.create!(photo_type: 'Портреты')
-Type.create!(photo_type: 'С квадрокоптера')
-Type.create!(photo_type: 'Коллажи')
-Type.create!(photo_type: 'Остальное')
+Type.create!(photo_type: 'macro')
+Type.create!(photo_type: 'landscape')
+Type.create!(photo_type: 'portrait')
+Type.create!(photo_type: 'drone')
+Type.create!(photo_type: 'collage')
+Type.create!(photo_type: 'other')
 
 Article.create!(article_title: 'Макро: от большого к малому', article_body: '
   <img src="/blog/macro_post1/1.jpg" class="img-fluid">

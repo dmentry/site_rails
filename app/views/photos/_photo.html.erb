@@ -1,6 +1,6 @@
 <div class="margins-images">
   <% if current_user %>
-    <% trash_button = link_to 'X', photo_path(photo), method: :delete, data: { confirm: 'Вы уверены?' } %>
+    <% trash_button = link_to 'X', photo_path(photo), method: :delete, data: { confirm: t('views.articles.index.article.sure') } %>
   <% end %>
 
   <% image_title = "#{photo.description} #{trash_button}" %>
@@ -15,7 +15,7 @@
     <div class='center'>
       <%= link_to 'Show |', photo.photo.url %>
       <%= link_to 'Edit |', edit_photo_path(photo) %>
-      <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Destroy', photo, method: :delete, data: { confirm: t('views.articles.index.article.sure') } %>
     </div>
   <% end %>
 </div>

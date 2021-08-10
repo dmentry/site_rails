@@ -159,4 +159,12 @@ margin-bottom: 8px;
     padding: 0 0 0 0;
     margin: 0 0 0 0;    
   }
+
+  .text_size {
+    font-size: 120%;
+  }
+
+.my_height {
+  height: 220px !important;
+}
 }

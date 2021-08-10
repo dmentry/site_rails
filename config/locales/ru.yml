@@ -331,6 +331,10 @@ ru:
     photos:
       about:
         title: Обо мне
+      form:
+        save: Сохранить
+      blog:
+        blog: Блог
     feedback:
       title: Форма обратной связи
       send: Отправить
@@ -341,5 +345,9 @@ ru:
     feedback:
       feedback_email: Ваш мейл
       feedback_body: Сообщение
+    photo:
+      photo: Фотка
+      description: Описание
+      type_id: Тип
 
 
