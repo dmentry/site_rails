@@ -135,6 +135,16 @@ margin-bottom: 8px;
   padding-left: 0;
 }
 
+.warn_ru_size {
+  width: 84px;
+  padding-left: 0;  
+}
+
+.warn_en_size {
+  width: 79px;
+  padding-left: 0;  
+}
+
 @media (max-width: 991px) {
   .my_control {
     display: block;

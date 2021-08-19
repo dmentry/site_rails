@@ -363,6 +363,9 @@ ru:
         title: Оставь надежду, всяк сюда входящий...
         remember: Я тебя запомню
         enter: Войти
+      passwords:
+        title: Даже не пробуй
+        push: Не нажимай
   models:
     article:
       article_title: Заголовок поста

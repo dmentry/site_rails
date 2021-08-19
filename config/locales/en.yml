@@ -309,6 +309,9 @@ en:
         title: Give up hope, everyone who enters here...
         remember: I'll remember you
         enter: Enter
+      passwords:
+        title: Even do not try
+        push: Don't push
   models:
     article:
       article_title: Article title

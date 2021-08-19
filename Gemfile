@@ -13,7 +13,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'pundit'
 gem 'recaptcha'
-gem 'devise-i18n'
+# gem 'devise-i18n'
 gem 'traco'
 # gem 'fog-aws'
 

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   # переключение локалей
-  around_action :switch_locale
+    before_action :switch_locale
   # передача параметра текущей локали через запросы
   def default_url_options
     {locale: I18n.locale}
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
 
   def switch_locale(&action)
     locale = params[:locale] || I18n.default_locale
-    I18n.with_locale(locale, &action)
+    I18n.locale = locale
   end
 
   def user_not_authorized
