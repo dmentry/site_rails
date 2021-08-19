@@ -56,7 +56,11 @@
                 </div>
               </li>
               <li> <%= link_to t('app.navbar.menu.blog'), articles_path, class: "btn my_font_size remove_padding" %> </li>
-              <li> <%= link_to t('app.navbar.menu.about'), about_page_path, class: "btn my_font_size remove_padding" %> </li>
+              <% if I18n.locale == :ru %>
+                <li> <%= link_to t('app.navbar.menu.about'), '/ru/abouts/1', class: "btn my_font_size remove_padding" %> </li>
+              <% else %>
+                <li> <%= link_to t('app.navbar.menu.about'), '/en/abouts/1', class: "btn my_font_size remove_padding" %> </li>
+              <% end %>
               <li> <%= link_to t('app.navbar.menu.feedback'), feedback_page_path, class: "btn my_font_size remove_padding" %> </li>
 
               <% if current_user %>
@@ -67,7 +71,6 @@
 
                 <li> <%= link_to t('app.navbar.menu.admin'), new_user_session_path, class: "btn my_font_size remove_padding" %> </li>
               <% end %>
-              <!-- <li> <%= link_to image_pack_tag("eng.jpg", alt: 'eng',  class: "btn flag_position"), '#', title: "ENG version. This feature is under construction.", class: 'mt-1' %> </li> -->
 
               <% if params[:locale] == 'ru' || params[:locale] == nil %>
                 <% locale_class_eng = '' %>
@@ -79,7 +82,6 @@
 
               <li><%= link_to image_pack_tag("rus.jpg", alt: 'rus',  class: "btn flag_position"), root_path(locale: :ru), class: "mt-1 #{locale_class_ru}", title: 'Переключиться на русский' %></li>
               <li><%= link_to image_pack_tag("eng.jpg", alt: 'eng',  class: "btn flag_position"), root_path(locale: :en), class: "mt-1 #{locale_class_eng}", title: 'Switch to english' %></li>
-              <!-- <li><%= link_to 'Русский', root_path(locale: :ru), class: "btn #{locale_class_ru}"%></li> -->
             </ul>
           </div>
         </div>

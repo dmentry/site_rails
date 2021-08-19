@@ -274,9 +274,9 @@ en:
       new:
         new_article: New article
         back: Back
+      show:
+        back: Back
     photos:
-      about:
-        title: About
       form:
         save: Сохранить
       blog:
@@ -284,6 +284,13 @@ en:
     feedback:
       title: Feedback form
       send: Send
+    abouts:
+      show:
+        title: About
+    comments:
+      email: Your email
+      comment: Your comment
+      submit: Submit
   models:
     article:
       article_title: Article title

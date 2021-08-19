@@ -1,0 +1,22 @@
+<%= form_with(model: about, local: true) do |form| %>
+  <% if about.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this about from being saved:</h2>
+
+      <ul>
+        <% about.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group mt-3">
+    <%= form.label t('views.about.main_text') %>
+    <%= form.text_area :main_text, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit t('views.abouts.form.save'), class: 'btn btn-secondary mt-2' %>
+  </div>
+<% end %>

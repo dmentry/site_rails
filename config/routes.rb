@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update]
     resources :photos
     resources :types
+    resources :abouts
     resources :articles do
       # Вложенный ресурс комментов. Понадобится два экшена: create и destroy
       resources :comments, only: [:create, :destroy]
@@ -20,9 +21,10 @@ Rails.application.routes.draw do
     get 'drone_page' => 'photos#drone_page', as: :drone_page
     get 'collage_page' => 'photos#collage_page', as: :collage_page
     get 'other_page' => 'photos#other_page', as: :other_page
-    get 'about_page' => 'photos#about_page', as: :about_page
     get 'feedback_page' => 'photos#feedback_page', as: :feedback_page
     post 'feedback_page_send' => 'photos#feedback_page_send', as: :feedback_page_send
+
+    # get 'about_page' => 'abouts#main', as: :about_page
 
     root to: 'photos#index'
 

@@ -328,9 +328,10 @@ ru:
       new:
         new_article: Новый пост
         back: Обратно
+      show:
+        back: Обратно
+        blog: Блог
     photos:
-      about:
-        title: Обо мне
       form:
         save: Сохранить
       blog:
@@ -338,6 +339,13 @@ ru:
     feedback:
       title: Форма обратной связи
       send: Отправить
+    abouts:
+      show:
+        title: Обо мне
+    comments:
+      email: Ваш email
+      comment: Ваш комментарий
+      submit: Отправить
   models:
     article:
       article_title: Заголовок поста
@@ -349,5 +357,3 @@ ru:
       photo: Фотка
       description: Описание
       type_id: Тип
-
-

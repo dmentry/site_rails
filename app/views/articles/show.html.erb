@@ -1,4 +1,4 @@
-<h1 class="center">Блог</h1>
+<h1 class="center"><%= t('views.articles.show.blog') %></h1>
 <div class="container bg-light">
   <div class="row mt-3">
     <div class="col-sm-12 col-md-10">
@@ -6,7 +6,7 @@
 
       <%= raw(@article.article_body) %><br>
 
-      <%= link_to 'Обратно к списку', articles_path, class: 'btn btn-secondary mb-3' %>
+      <%= link_to t('views.articles.show.back'), articles_path, class: 'btn btn-secondary my-3' %>
 
       <% if current_user %>
         <%= link_to 'Edit', edit_article_path(@article) %>

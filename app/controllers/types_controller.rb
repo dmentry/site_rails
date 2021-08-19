@@ -12,5 +12,4 @@ class TypesController < ApplicationController
 
     @recent
   end
-
 end

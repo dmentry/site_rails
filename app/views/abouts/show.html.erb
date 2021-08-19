@@ -1,0 +1,14 @@
+<h1 class="center"><%= t('views.abouts.show.title') %></h1>
+<div class="container bg-light">
+  <div class="row mt-3">
+    <!-- <div class="col-sm-12 col-md-10"> -->
+
+      <%= raw(@about.main_text) %><br>
+
+      <% if current_user %>
+        <%= link_to 'Edit', edit_about_path(@about) %>
+      <% end %>
+
+    <!-- </div> -->
+  </div>
+</div>
