@@ -16,6 +16,16 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bund
 
 Rake::Task["deploy:assets:backup_manifest"].clear_actions
 
+# Копировать папку blog рекурсивно на сервер
+namespace :blog do
+  desc 'Blog photos copy'
+  task :copy do
+    run_locally do
+      execute "scp -r /home/dmitry/RoR/Apps/site_rails/public/blog deploy@185.12.127.17:/home/deploy/www/photo/current/public/"
+    end
+  end
+end
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
