@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
 
   # Настроить маршруты, чтобы URL с локалью выглядел так: /ru/articles, а не так: /articles/?locale=ru
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
-
-    # resources :users, except: [:create, :delete]
+    devise_for :users
     resources :users, only: [:show, :edit, :update]
     resources :photos
     resources :types
@@ -24,9 +22,6 @@ Rails.application.routes.draw do
     get 'feedback_page' => 'photos#feedback_page', as: :feedback_page
     post 'feedback_page_send' => 'photos#feedback_page_send', as: :feedback_page_send
 
-    # get 'about_page' => 'abouts#main', as: :about_page
-
     root to: 'photos#index'
-
   end
 end

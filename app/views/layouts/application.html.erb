@@ -80,17 +80,15 @@
                 <% locale_class_ru = '' %>
               <% end %>
 
-              <li><%= link_to image_pack_tag("rus.jpg", alt: 'rus',  class: "btn flag_position"), root_path(locale: :ru), class: "mt-1 #{locale_class_ru}", title: 'Переключиться на русский' %></li>
-              <li><%= link_to image_pack_tag("eng.jpg", alt: 'eng',  class: "btn flag_position"), root_path(locale: :en), class: "mt-1 #{locale_class_eng}", title: 'Switch to english' %></li>
+              <li><%= link_to image_pack_tag("rus.jpg", alt: 'rus',  class: "btn flag_position #{locale_class_ru}"), controller: controller_name, action: action_name, locale: "ru", title: 'Переключиться на русский' %></li>
+
+              <li><%= link_to image_pack_tag("eng.jpg", alt: 'eng',  class: "btn flag_position #{locale_class_eng}"), controller: controller_name, action: action_name, locale: "en", title: 'Switch to english' %></li>
+
             </ul>
           </div>
         </div>
       </div>
     </div>
-
-<!--     <button class="navbar-toggler bg-light d-lg-none butt" type="button" data-toggle="collapse" data-target="#collapseMenu" aria-controls="collapseMenu" aria-expanded="false">
-      <%= image_pack_tag("menu-4x.png", alt: 'menu',  class: "my_color") %>
-    </button> -->
 
     <a class="navbar-toggler bg-light d-lg-none" data-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false" aria-controls="collapseMenu">
       <%= image_pack_tag("menu-4x.png", alt: 'menu',  class: "my_color") %>

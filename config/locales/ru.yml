@@ -358,6 +358,11 @@ ru:
       email: Ваш email
       comment: Ваш комментарий
       submit: Отправить
+    devise:
+      session:
+        title: Оставь надежду, всяк сюда входящий...
+        remember: Я тебя запомню
+        enter: Войти
   models:
     article:
       article_title: Заголовок поста

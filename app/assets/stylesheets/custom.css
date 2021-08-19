@@ -169,7 +169,7 @@ margin-bottom: 8px;
     font-size: 120%;
   }
 
-.my_height {
-  height: 220px !important;
-}
+  .my_height {
+    height: 220px !important;
+  }
 }

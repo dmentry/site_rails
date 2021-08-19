@@ -304,6 +304,11 @@ en:
       email: Your email
       comment: Your comment
       submit: Submit
+    devise:
+      session:
+        title: Give up hope, everyone who enters here...
+        remember: I'll remember you
+        enter: Enter
   models:
     article:
       article_title: Article title
