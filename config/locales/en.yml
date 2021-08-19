@@ -286,8 +286,20 @@ en:
       title: Feedback form
       send: Send
     abouts:
+      index:
+        edit: Edit
+        destroy: Destroy
+        sure: Are you sure?
+        new: New text
+        about: Text about me
       show:
         title: About
+      edit:
+        title: Edit
+        back: Back
+      form:
+        main_text: Text
+        save: Save
     comments:
       email: Your email
       comment: Your comment

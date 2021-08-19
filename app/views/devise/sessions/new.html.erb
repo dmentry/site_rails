@@ -23,6 +23,11 @@
           <div class="actions mb-3">
             <%= f.submit "Войти", class: 'btn btn-secondary' %>
           </div>
+
+          <%#= render "devise/shared/links" %>
+
+          <%= link_to image_pack_tag("not_enter.png", alt: 'prohibited',  class: "btn prohibited"), new_user_password_path, class: "mt-1", title: 'Не влезай!' %>
+
         <% end %>
 
       </div>

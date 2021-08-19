@@ -340,8 +340,20 @@ ru:
       title: Форма обратной связи
       send: Отправить
     abouts:
+      index:
+        edit: Редактировать
+        destroy: Удалить
+        sure: Вы уверены?
+        new: Новый текст
+        about: Текст обо мне
       show:
         title: Обо мне
+      edit:
+        title: Редактировать
+        back: Обратно
+      form:
+        main_text: Текст
+        save: Сохранить
     comments:
       email: Ваш email
       comment: Ваш комментарий

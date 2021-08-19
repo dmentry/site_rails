@@ -1,22 +1,20 @@
-<h1 class="center text_size">Обо мне индекс</h1>
+<h1 class="center text_size"><%= t('views.abouts.index.about') %></h1>
 <div class="container bg-light">
   <div class="row mt-3">
     <div class="col-sm-12 col-md-10">
 
-      <% if current_user %>
-        <%= link_to t('views.abouts.index.about.new'), new_about_path %>
-      <% end %>
-      
       <% @abouts.each do |about| %>
         <div>
-          <%= raw(about.main_text[0..53]) %><br>
-
-          <% if current_user %>
-            <%= link_to t('views.articles.index.article.edit'), edit_about_path(about) %> |
-            <%= link_to t('views.articles.index.article.destroy'), about, method: :delete, data: { confirm: t('views.articles.index.article.sure') } %>
-          <% end %>
-
+          id: <%= about.id %><br>
+          <%= raw(about.main_text[0..200]) %><br>
         </div>
+
+        <% if current_user %>
+          <%= link_to t('views.abouts.index.new'), new_about_path %> |
+          <%= link_to t('views.abouts.index.edit'), edit_about_path(about) %> |
+          <%= link_to t('views.abouts.index.destroy'), about, method: :delete, data: { confirm: t('views.articles.index.article.sure') } %>
+        <% end %>
+
         <div class="bottom_line"></div>
         <br>
       <% end %>

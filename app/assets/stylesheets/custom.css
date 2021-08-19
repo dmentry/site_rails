@@ -130,6 +130,11 @@ margin-bottom: 8px;
   display: none;
 }
 
+.prohibited {
+  width: 84px;
+  padding-left: 0;
+}
+
 @media (max-width: 991px) {
   .my_control {
     display: block;
