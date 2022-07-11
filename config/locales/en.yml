@@ -228,6 +228,7 @@ en:
           drone: From above
           collage: Collages
           other: Others
+          photohosting: Photohosting
         blog: Blog
         about: About me
         feedback: Feedback
@@ -256,6 +257,7 @@ en:
         drone: From above
         collage: Collages
         other: Others
+        photohosting: Photohosting
       feedback_page_send:
         success: Message is sent successfully!
         fail: Message is not sent!

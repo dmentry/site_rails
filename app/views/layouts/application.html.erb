@@ -6,7 +6,7 @@
 
     <title><%= t('app.tab') %></title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <%= favicon_link_tag %>
+    <%#= favicon_link_tag %>
 
     <meta name="robots" content="index, follow">
     <meta name="description" content="Персональный сайт фотографа Дмитрия Dack9 Архипова. Сотрудничество: фотосессии и фотосъемка (макро, предметная)">
@@ -44,6 +44,7 @@
 
                   <% if current_user %>
                     <%=link_to t('app.navbar.menu.drop_down.all'), all_page_path, class: "dropdown-item my_dropdown_item" %>
+                    <%=link_to t('app.navbar.menu.drop_down.photohosting'), photohosting_page_path, class: "dropdown-item my_dropdown_item" %>
                   <% end %>
 
                   <%= link_to t('app.navbar.menu.drop_down.recent'), root_path, class: "dropdown-item my_dropdown_item" %>
@@ -90,7 +91,7 @@
       </div>
     </div>
 
-    <a class="navbar-toggler bg-light d-lg-none" data-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false" aria-controls="collapseMenu">
+    <a class="navbar-toggler d-lg-none" data-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false" aria-controls="collapseMenu">
       <%= image_pack_tag("menu-4x.png", alt: 'menu',  class: "my_color") %>
     </a>
   

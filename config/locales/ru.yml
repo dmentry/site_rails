@@ -282,6 +282,7 @@ ru:
           drone: С квадрокоптера
           collage: Коллажи
           other: Остальное
+          photohosting: Фотохостинг
         blog: Блог
         about: Обо мне
         feedback: Обратная связь
@@ -310,6 +311,7 @@ ru:
         drone: С квадрокоптера
         collage: Коллажи
         other: Остальное
+        photohosting: Фотохостинг
       feedback_page_send:
         success: Сообщение успешно отправлено!
         fail: Сообщение не отправлено!

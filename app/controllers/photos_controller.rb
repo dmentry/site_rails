@@ -8,7 +8,11 @@ class PhotosController < ApplicationController
 
   # GET /photos
   def index
-    @photos = Photo.order(created_at: :desc).limit(20)
+    if current_user
+      @photos = Photo.order(created_at: :desc).limit(20)
+    else
+      @photos = Photo.without_photohosting.order(created_at: :desc).limit(20)
+    end
 
     @header = t('controllers.photos.index.header')
 
@@ -71,7 +75,7 @@ class PhotosController < ApplicationController
 
   #страницы
   def all_page
-    @photos = Photo.all
+    @photos = Photo.order(created_at: :desc)
 
     @header = t('controllers.photos.all_page.header')
 
@@ -108,6 +112,10 @@ class PhotosController < ApplicationController
 
   def other_page
     collect_photos_and_type(6)
+  end
+
+  def photohosting_page
+    collect_photos_and_type(7)
   end
 
   def about_page

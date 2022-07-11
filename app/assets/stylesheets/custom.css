@@ -182,4 +182,8 @@ margin-bottom: 8px;
   .my_height {
     height: 220px !important;
   }
+
+  .bg-light {
+    background-color: white !important;
+  }
 }

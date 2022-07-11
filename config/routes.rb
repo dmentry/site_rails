@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'drone_page' => 'photos#drone_page', as: :drone_page
     get 'collage_page' => 'photos#collage_page', as: :collage_page
     get 'other_page' => 'photos#other_page', as: :other_page
+    get 'photohosting_page' => 'photos#photohosting_page', as: :photohosting_page
     get 'feedback_page' => 'photos#feedback_page', as: :feedback_page
     post 'feedback_page_send' => 'photos#feedback_page_send', as: :feedback_page_send
 
