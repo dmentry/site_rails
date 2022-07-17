@@ -117,6 +117,8 @@ class PhotosController < ApplicationController
   end
 
   def photohosting_page
+    authorize Photo
+
     type_id = Type.where(photo_type: 'photohosting').first.id
     collect_photos_and_type(type_id)
   end

@@ -19,6 +19,10 @@ class PhotoPolicy < ApplicationPolicy
     create?
   end
 
+  def photohosting_page?
+    create?
+  end
+
   class Scope < Scope
     def resolve
       scope.all
