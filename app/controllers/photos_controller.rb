@@ -8,11 +8,7 @@ class PhotosController < ApplicationController
 
   # GET /photos
   def index
-    if current_user
-      @photos = Photo.order(created_at: :desc).limit(20)
-    else
-      @photos = Photo.without_photohosting.order(created_at: :desc).limit(20)
-    end
+    @photos = Photo.without_photohosting.order(created_at: :desc).limit(20)
 
     @header = t('controllers.photos.index.header')
 
@@ -91,31 +87,38 @@ class PhotosController < ApplicationController
 
     # @header = 'Макро'
 
-    collect_photos_and_type(1)
+    type_id = Type.where(photo_type: 'macro').first.id
+    collect_photos_and_type(type_id)
   end
 
   def landscape_page
-    collect_photos_and_type(2)
+    type_id = Type.where(photo_type: 'landscape').first.id
+    collect_photos_and_type(type_id)
   end
 
   def portrait_page
-    collect_photos_and_type(3)
+    type_id = Type.where(photo_type: 'portrait').first.id
+    collect_photos_and_type(type_id)
   end
 
   def drone_page
-    collect_photos_and_type(4)
+    type_id = Type.where(photo_type: 'drone').first.id
+    collect_photos_and_type(type_id)
   end
 
   def collage_page
-    collect_photos_and_type(5)
+    type_id = Type.where(photo_type: 'collage').first.id
+    collect_photos_and_type(type_id)
   end
 
   def other_page
-    collect_photos_and_type(6)
+    type_id = Type.where(photo_type: 'other').first.id
+    collect_photos_and_type(type_id)
   end
 
   def photohosting_page
-    collect_photos_and_type(Type.where(photo_type: 'photohosting').first.id)
+    type_id = Type.where(photo_type: 'photohosting').first.id
+    collect_photos_and_type(type_id)
   end
 
   def about_page
