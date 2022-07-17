@@ -115,7 +115,7 @@ class PhotosController < ApplicationController
   end
 
   def photohosting_page
-    collect_photos_and_type(7)
+    collect_photos_and_type(Photo.where(photo_type: 'photohosting').id)
   end
 
   def about_page
