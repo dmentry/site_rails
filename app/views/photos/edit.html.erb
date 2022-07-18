@@ -1,6 +1,6 @@
-<h1 class="text_size">Editing Photo</h1>
+<h1 class="text_size"><%= t('views.photos.edit.header') %></h1>
 
 <%= render 'form', photo: @photo %>
 
-<%= link_to 'Show', @photo.photo.url %> |
-<%= link_to 'Back', photos_path %>
+<%= link_to "#{t('views.photos.show.show')} | ", @photo.photo.url %>
+<%= link_to t('views.photos.show.back'), photos_path %>

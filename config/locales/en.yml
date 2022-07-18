@@ -281,9 +281,19 @@ en:
         blog: Blog
     photos:
       form:
-        save: Сохранить
+        uploaded: Uploaded
+        save: Save
       blog:
         blog: Блог
+      show:
+        show: Show
+        edit: Edit
+        destroy: Destroy
+        back: Back
+      edit:
+        header: Editing photo
+      new:
+        header: Upload photo
     feedback:
       title: Feedback form
       send: Send
@@ -322,6 +332,14 @@ en:
       feedback_email: Your email
       feedback_body: Message
     photo:
-      photo: Фотка
-      description: Описание
-      type_id: Тип
+      photo: Photo
+      description: Description
+      type_id: Type
+    type:
+      macro: Macro
+      landscape: Landscape
+      portrait: Portrait
+      drone: Drone
+      collage: Collage
+      other: Other
+      photohosting: Photohosting

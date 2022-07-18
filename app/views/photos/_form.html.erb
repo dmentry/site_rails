@@ -12,7 +12,7 @@
 
   <div>
     <% if photo.created_at %>
-      Загружена: <%= photo.created_at %>
+      <%= "#{ t('views.photos.form.uploaded') }: #{ l(photo.created_at, format: "%d.%m.%Y, %H:%M") }" %>
     <% end %>
   </div><br/>
 
@@ -28,7 +28,7 @@
 
   <div class="form-group">
     <%= form.label t('models.photo.type_id') %><br/>
-    <%= form.collection_select :type_id, Type.all, :id, :photo_type %>
+    <%= form.collection_select :type_id, Type.all, :id, :translated_name %>
   </div>
 
   <div class="actions">

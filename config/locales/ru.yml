@@ -335,9 +335,19 @@ ru:
         blog: Блог
     photos:
       form:
+        uploaded: Загружена
         save: Сохранить
       blog:
         blog: Блог
+      show:
+        show: Посмотреть
+        edit: Редактировать
+        destroy: Удалить
+        back: Обратно
+      edit:
+        header: Редактировать фотографию
+      new:
+        header: Загрузить фотографию
     feedback:
       title: Форма обратной связи
       send: Отправить
@@ -379,3 +389,11 @@ ru:
       photo: Фотка
       description: Описание
       type_id: Тип
+    type:
+      macro: Макро
+      landscape: Пейзажи
+      portrait: Портреты
+      drone: С квадрокоптера
+      collage: Коллажи
+      other: Остальное
+      photohosting: Фотохостинг
