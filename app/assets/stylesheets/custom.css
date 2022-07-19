@@ -90,6 +90,10 @@ logo {
     opacity: 1;
 }
 
+.drop_down_button_my {
+  display: block;
+}
+
 .selected {
     font-weight: bold;
     color: #afafaf;
@@ -109,12 +113,20 @@ margin-bottom: 8px;
   max-width: 100%;
 }
 
+#menu_pic {
+  display: none;
+}
+
 .my_color {
   background-color: transparent;
 }
 
 .my_height {
   height: 380px !important;
+}
+
+.my_dropdown_item {
+  display: block;
 }
 
 .bottom_line {
@@ -146,11 +158,22 @@ margin-bottom: 8px;
 }
 
 @media (max-width: 991px) {
+  .drop_down_button_my {
+    display: none;
+  }
+
   .my_control {
     display: block;
     border: none;
-    background-color: #f8f9fa;
-    padding: 0 0 0 0;
+    padding: 0;
+  }
+
+  .gallery_top_buffer {
+    margin-top: 16px;
+  }
+
+  .header_top_buffer {
+    margin-top: 10px;
   }
 
   .logo_my_class {
@@ -161,9 +184,16 @@ margin-bottom: 8px;
     font-size: 120%;
   }
 
-  .my_dropdown_item {
+/*   .my_dropdown_item {
     padding: 0 0 0 25px;
     margin: 0 0 0 0;
+  } */
+
+  .my_dropdown_item {
+    display: block;
+    padding-left: 13px;
+    padding-top: 7px;
+    padding-bottom: 7px;
   }
 
   .remove_padding {
@@ -183,7 +213,11 @@ margin-bottom: 8px;
     height: 220px !important;
   }
 
-  .bg-light {
-    background-color: white !important;
+  #menu_pic {
+    display: block;
+    position: absolute;
+    z-index: 1000;
+    top: 2px;
+    left: 1px;
   }
 }

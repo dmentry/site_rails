@@ -1,8 +1,15 @@
-<div class="text-center">
-  <h1>Админ: <%= @user.email %></h1>
+<h1 class="center text_size header_top_buffer">Профиль админа</h1>
+<div class="container bg-light">
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-10">
+      <div class="text-center">
+        <h4>Админ: <%= @user.email %></h1>
 
-  <p class="buffer-top">
-  <%#= link_to "Редактировать профиль", edit_user_path(@user), class: 'btn btn-primary' %>
-  <%= link_to 'Редактировать профиль', edit_user_registration_path, class: 'btn btn-secondary' %>
-  </p>
+        <p class="buffer-top">
+        <%#= link_to "Редактировать профиль", edit_user_path(@user), class: 'btn btn-primary' %>
+        <%= link_to 'Редактировать профиль', edit_user_registration_path, class: 'btn btn-secondary' %>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
