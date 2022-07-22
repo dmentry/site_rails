@@ -113,7 +113,7 @@ margin-bottom: 8px;
   max-width: 100%;
 }
 
-#menu_pic {
+#menu_pic, .menu_close_img {
   display: none;
 }
 
@@ -162,6 +162,13 @@ margin-bottom: 8px;
     display: none;
   }
 
+  .menu_close_img {
+    position: absolute;
+    z-index: 1000;
+    top: 18px;
+    right: 10px;    
+  }
+
   .my_control {
     display: block;
     border: none;
@@ -183,11 +190,6 @@ margin-bottom: 8px;
   .my_font_size {
     font-size: 120%;
   }
-
-/*   .my_dropdown_item {
-    padding: 0 0 0 25px;
-    margin: 0 0 0 0;
-  } */
 
   .my_dropdown_item {
     display: block;
