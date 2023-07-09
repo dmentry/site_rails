@@ -58,9 +58,9 @@
               </li>
               <li> <%= link_to t('app.navbar.menu.blog'), articles_path, class: "btn my_font_size remove_padding" %> </li>
               <% if I18n.locale == :ru %>
-                <li> <%= link_to t('app.navbar.menu.about'), '/ru/abouts/1', class: "btn my_font_size remove_padding" %> </li>
+                <li> <%= link_to t('app.navbar.menu.about'), "/ru/abouts/#{ About.first.id }", class: "btn my_font_size remove_padding" %> </li>
               <% else %>
-                <li> <%= link_to t('app.navbar.menu.about'), '/en/abouts/1', class: "btn my_font_size remove_padding" %> </li>
+                <li> <%= link_to t('app.navbar.menu.about'), "/ru/abouts/#{ About.first.id }", class: "btn my_font_size remove_padding" %> </li>
               <% end %>
               <li> <%= link_to t('app.navbar.menu.feedback'), feedback_page_path, class: "btn my_font_size remove_padding" %> </li>
 
