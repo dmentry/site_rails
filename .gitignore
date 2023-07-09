@@ -38,3 +38,7 @@ yarn-debug.log*
 .yarn-integrity
 instructions.txt
 translations.txt
+
+/config/credentials/development.key
+
+passwords.txt
