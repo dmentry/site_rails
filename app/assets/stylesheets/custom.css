@@ -110,7 +110,13 @@ margin-bottom: 8px;
 }
 
 .gallery img {
-  max-width: 100%;
+  /* max-width: 100%; */
+  height: 300px;
+}
+
+.gallery_img_borders {
+  margin-left: -2px;
+  margin-right: -2px;
 }
 
 #menu_pic, .menu_close_img {
@@ -173,6 +179,10 @@ margin-bottom: 8px;
     display: block;
     border: none;
     padding: 0;
+  }
+
+  .gallery img {
+    width: 500px;
   }
 
   .gallery_top_buffer {
