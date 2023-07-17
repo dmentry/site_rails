@@ -116,8 +116,8 @@ margin-bottom: 8px;
 }
 
 .gallery_img_borders {
-  margin-left: -2px;
-  margin-right: -2px;
+  margin-left: 1px;
+  margin-right: 1px;
 }
 
 #menu_pic, .menu_close_img {
@@ -183,7 +183,7 @@ margin-bottom: 8px;
   }
 
   .gallery img {
-    width: 500px;
+    width: 432px;
     height: 100%;
   }
 
