@@ -1,19 +1,12 @@
 <h1 class="center text_size header_top_buffer"><%= t('views.abouts.show.title') %></h1>
 <div class="container bg-light">
   <div class="row mt-3">
-    <!-- <div class="col-sm-12 col-md-10"> -->
-      
-
       <%= raw(@about.main_text) %><br>
 
       <% if current_user %>
-
         <div class="container bg-light">
-     
-        <%= link_to t('views.abouts.index.edit'), edit_about_path(@about)%>
-</div>
+          <%= link_to t('views.abouts.index.edit'), edit_about_path(@about)%>
+        </div>
       <% end %>
-
-    <!-- </div> -->
   </div>
 </div>
