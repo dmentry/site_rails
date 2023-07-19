@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+<div class='center_image'>
+  <%= image_tag(@photo.photo.url, style: "height: 86vh") %>
+</div>

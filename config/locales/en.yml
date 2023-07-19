@@ -230,6 +230,7 @@ en:
           other: Others
           photohosting: Photohosting
         blog: Blog
+        map: Map
         about: About me
         feedback: Feedback
         load_photo: Load photo
@@ -294,6 +295,8 @@ en:
         header: Editing photo
       new:
         header: Upload photo
+    map:
+      header: Photos on the map
     feedback:
       title: Feedback form
       send: Send
@@ -335,6 +338,8 @@ en:
       photo: Photo
       description: Description
       type_id: Type
+      lat: Latitude
+      long: Longitude
     type:
       macro: Macro
       landscape: Landscape

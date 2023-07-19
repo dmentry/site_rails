@@ -17,6 +17,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/1
   def show
+    @photos = Photo.where(id: params[:id])
   end
 
   # GET /photos/new
@@ -146,6 +147,51 @@ class PhotosController < ApplicationController
     end
   end
 
+  def map
+    marks             = {}
+    marks['type']     = 'FeatureCollection'
+    marks['features'] = []
+
+    out = {}
+
+    photos = Photo.where.not(lat: [nil, false])
+
+    photos.each do |photo|
+      marks['features'] << {
+                            type: 'Feature',
+                            id: photo.id,
+                            geometry: { type: 'Point', coordinates: [photo.lat, photo.long] },
+                            properties: { hintContent: "#{ photo.description }" }
+                           }
+    end
+
+    out.merge!({ marks: marks })
+
+    respond_to do |format|
+      format.html do
+        respond_with nil
+      end
+
+      format.json do
+        response.headers['Vary'] = 'Accept'
+        respond_with out.to_json
+      end
+    end
+  end
+
+  def ym_balloon_data
+    photo = Photo.find(params[:id])
+
+    out               = {}
+    # out[:photo]       = "<img class='ym_balloon_photo' src='#{ photo.photo.thumb.url }' alt='Фотография'/>"
+    out[:photo]       = "#{ ActionController::Base.helpers.link_to(ActionController::Base.helpers.image_tag(photo.photo.thumb.url, style: 'width: 100px', alt: 'Фото'), photo_path(photo), target: '_blank', rel: 'nofollow') }"
+    # out[:photo]       = "#{ ActionController::Base.helpers.link_to(photo.description, photo_path(photo), target: '_blank', rel: 'nofollow') }"
+    out[:description] = "<b>#{ photo.description }</b>"
+    # out[:description] = "<b>#{ ActionController::Base.helpers.link_to(photo.description, photo_path(photo), target: '_blank', rel: 'nofollow') } </b>"
+
+    respond_with out.to_json
+  end
+
   private
 
   def set_photo
@@ -159,7 +205,7 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.require(:photo).permit(:photo, :description, :type_id)
+    params.require(:photo).permit(:photo, :description, :type_id, :lat, :long)
   end
 
   def feedback_params
