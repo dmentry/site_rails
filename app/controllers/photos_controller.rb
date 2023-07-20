@@ -183,11 +183,8 @@ class PhotosController < ApplicationController
     photo = Photo.find(params[:id])
 
     out               = {}
-    # out[:photo]       = "<img class='ym_balloon_photo' src='#{ photo.photo.thumb.url }' alt='Фотография'/>"
     out[:photo]       = "#{ ActionController::Base.helpers.link_to(ActionController::Base.helpers.image_tag(photo.photo.thumb.url, style: 'width: 100px', alt: 'Фото'), photo_path(photo), target: '_blank', rel: 'nofollow') }"
-    # out[:photo]       = "#{ ActionController::Base.helpers.link_to(photo.description, photo_path(photo), target: '_blank', rel: 'nofollow') }"
     out[:description] = "<b>#{ photo.description }</b>"
-    # out[:description] = "<b>#{ ActionController::Base.helpers.link_to(photo.description, photo_path(photo), target: '_blank', rel: 'nofollow') } </b>"
 
     respond_with out.to_json
   end
