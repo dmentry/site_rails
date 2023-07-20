@@ -61,11 +61,11 @@
 
         $.ajax({ data: { id: objectId }, dataType: "json", url: "/ym_balloon_data" })
                 .done(function (data) {
-                                        obj.properties.balloonContentBody = '<div class="ym_balloon_photo_div">' + data['photo'] + '</div>' + '<div class="ym_balloon_text">' + data['description'] + '</div>';
+                                        obj.properties.balloonContentBody = '<div class="ym_balloon_text">' + data['description'] + '</div>' + '<div class="ym_balloon_photo_div">' + data['photo'] + '</div>';
 
                                        objectManagerMarks.objects.balloon.setData(obj);
                                        // Костыль для увеличения полезного места в балуне. Версия в классе ymaps-2-1-79-balloon__content как бы намекает... Если отображение фотки СКО и ее описание в балуне сломается, нужно будет изменить имя класса на актуальное/скорректировать значениея этих свойств и, возможно, классы в style.css
-                                       $('.ymaps-2-1-79-balloon__content').css({'padding-left': '1px', 'padding-top': '13px', 'padding-bottom': '1px', 'margin-right': '23px'});
+                                       $('.ymaps-2-1-79-balloon__content').css({'padding-left': '1px', 'padding-top': '6px', 'padding-bottom': '1px', 'margin-right': '23px'});
                                       });
         previousObjectId = objectId;
     });      
