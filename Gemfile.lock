@@ -179,7 +179,6 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    rmagick (4.2.2)
     ruby-vips (2.1.2)
       ffi (~> 1.12)
     sprockets (4.0.2)
@@ -230,13 +229,13 @@ DEPENDENCIES
   ed25519 (>= 1.2, < 2.0)
   jbuilder (~> 2.7)
   letter_opener
+  mini_magick
   pg (>= 0.18, < 2.0)
   pry (~> 0.13.1)
   puma (~> 4.1)
   pundit
   rails (~> 6.0.3, >= 6.0.3.4)
   recaptcha
-  rmagick
   traco
   web-console (>= 3.3.0)
   webpacker (~> 4.0)
@@ -245,4 +244,4 @@ RUBY VERSION
    ruby 2.7.0p0
 
 BUNDLED WITH
-   2.2.21
+   2.2.27
