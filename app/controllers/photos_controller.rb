@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  # require 'RMagick'
+  before_action :set_photo, only: [:show, :edit, :update, :destroy, :ym_balloon_data]
 
   # Предохранитель от потери авторизации в нужных экшенах
   after_action :verify_authorized, only: [:new, :create, :edit, :update, :destroy, :all_page]
@@ -17,7 +18,6 @@ class PhotosController < ApplicationController
 
   # GET /photos/1
   def show
-    @photos = Photo.where(id: params[:id])
   end
 
   # GET /photos/new
@@ -39,6 +39,11 @@ class PhotosController < ApplicationController
     @photo.user = current_user
 
     authorize @photo
+
+# Читать координаты и записывать их, если есть
+# img = Magick::Image.read(Rails.root.to_s + '/public/' + @photo.photo.thumb.url).first
+# img['icc:copyright'] = '1111111'
+# img.write(Rails.root.to_s + '/public/' + @photo.photo.thumb.url)
 
     if @photo.save
       # redirect_to @photo, notice: "Photo was successfully created."
@@ -180,11 +185,14 @@ class PhotosController < ApplicationController
   end
 
   def ym_balloon_data
-    photo = Photo.find(params[:id])
-
     out               = {}
-    out[:photo]       = "#{ ActionController::Base.helpers.link_to(ActionController::Base.helpers.image_tag(photo.photo.thumb.url, style: 'width: 100px', alt: 'Фото'), photo_path(photo), target: '_blank', rel: 'nofollow') }"
-    out[:description] = "<b>#{ photo.description }</b>"
+    out[:photo]       = "#{ 
+                            ActionController::Base.helpers.link_to(
+                              ActionController::Base.helpers.image_tag(
+                                @photo.photo.thumb.url, style: 'width: 100px', alt: 'Фото'), photo_path(@photo), target: '_blank', rel: 'nofollow'
+                            ) 
+                          }"
+    out[:description] = @photo.description
 
     respond_with out.to_json
   end
