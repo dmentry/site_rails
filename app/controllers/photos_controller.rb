@@ -193,7 +193,7 @@ class PhotosController < ApplicationController
                               ), photo_path(@photo), target: '_blank', rel: 'nofollow'
                             ) 
                           }"
-    out[:description] = @photo.description
+    out[:description] = "<b>#{ @photo.description }</b>"
 
     respond_with out.to_json
   end

@@ -155,6 +155,11 @@ margin-bottom: 8px;
   display: block;
 }
 
+.img_max_height {
+  height: 85vh;
+  width: auto;
+}
+
 .bottom_line {
   border-bottom: 1px solid black;
   padding-top: 8px;
@@ -232,6 +237,11 @@ margin-bottom: 8px;
 
   .header_top_buffer {
     margin-top: 10px;
+  }
+
+  .img_max_height {
+    width: 99vw;
+    height: auto;
   }
 
   .logo_my_class {
