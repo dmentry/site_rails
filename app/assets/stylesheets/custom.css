@@ -155,10 +155,10 @@ margin-bottom: 8px;
   display: block;
 }
 
-.img_max_height {
+/* .img_max_height {
   height: 85vh;
   width: auto;
-}
+} */
 
 .bottom_line {
   border-bottom: 1px solid black;
@@ -193,7 +193,7 @@ margin-bottom: 8px;
 }
 
 .ym_balloon_photo_div {
-  float: left;
+  /* float: left; */
   margin: 0;
   /* width: 150px; */
   margin-right: 5px;
@@ -206,6 +206,20 @@ margin-bottom: 8px;
   margin: 0;
   line-height: 1.5;
   font-size: 90%;
+}
+
+@media (orientation: landscape) {
+  .img_max_height {
+    height: 85vh;
+    width: auto;
+  }
+}
+
+@media (orientation: portrait) {
+  .img_max_height {
+    width: 99vw;
+    height: auto;
+  }
 }
 
 @media (max-width: 991px) {
@@ -237,11 +251,6 @@ margin-bottom: 8px;
 
   .header_top_buffer {
     margin-top: 10px;
-  }
-
-  .img_max_height {
-    width: 99vw;
-    height: auto;
   }
 
   .logo_my_class {
