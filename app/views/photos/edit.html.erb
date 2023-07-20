@@ -4,7 +4,7 @@
     <div class="col-sm-12 col-md-10">
       <%= render 'form', photo: @photo %>
 
-      <%= link_to "#{t('views.photos.show.show')} | ", @photo.photo.url %>
+      <%= link_to "#{t('views.photos.show.show')} | ", @photo.photo.url, target: '_blank', rel: 'nofollow' %>
       <%= link_to t('views.photos.show.back'), photos_path %>
     </div>
   </div>

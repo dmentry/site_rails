@@ -189,7 +189,8 @@ class PhotosController < ApplicationController
     out[:photo]       = "#{ 
                             ActionController::Base.helpers.link_to(
                               ActionController::Base.helpers.image_tag(
-                                @photo.photo.thumb.url, style: 'width: 100px', alt: 'Фото'), photo_path(@photo), target: '_blank', rel: 'nofollow'
+                                @photo.photo.thumb.url, style: 'width: 100px', alt: 'Фото'
+                              ), photo_path(@photo), target: '_blank', rel: 'nofollow'
                             ) 
                           }"
     out[:description] = @photo.description
