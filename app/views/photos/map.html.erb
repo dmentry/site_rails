@@ -1,0 +1,73 @@
+<h1 class="center text_size header_top_buffer"><%= t('views.map.header') %></h1>
+<div class="container bg-light">
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-10">
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
+
+<div id="loading_process_overlay"></div>
+
+<script type="text/javascript">
+    ymaps.ready(init);
+    function init(){
+      let previousObjectId;
+
+      var myMap = new ymaps.Map("map", {
+          center: [53.46, 83.72],
+          zoom: 2,
+          controls: ['zoomControl']
+      });
+
+      let objectManagerMarks = new ymaps.ObjectManager({ clusterize: true });
+      // Задать опции кластерам
+      objectManagerMarks.clusters.options.set({ preset: 'islands#darkBlueClusterIcons' });
+      // Задать опции меткам
+      objectManagerMarks.objects.options.set({ 
+                                          hintOpenTimeout: 0, 
+                                          hideIconOnBalloonOpen: false, 
+                                          balloonOffset: [-2, -17], 
+                                          openBalloonOnClick: false,
+                                          preset: 'islands#darkBlueCircleDotIcon'
+                                        });
+
+      $("#loading_process_overlay").fadeIn(300);
+
+      $.ajax({ dataType: "json", url: "/map" }).done(function(out) {
+                                                        objectManagerMarks.add(out.marks);
+
+                                                        myMap.geoObjects.add(objectManagerMarks);
+
+                                                        myMap.setBounds(myMap.geoObjects.getBounds());
+
+                                                        if (out.marks.features.length == 1) { myMap.setZoom(10) }
+                                                      });
+
+      $("#loading_process_overlay").fadeOut(300);
+
+      objectManagerMarks.objects.events.add('click', function (e) {
+        let objectId = e.get('objectId');
+        let obj = objectManagerMarks.objects.getById(objectId);
+
+        if (previousObjectId) { 
+          objectManagerMarks.objects.setObjectOptions(previousObjectId, { preset: "islands#darkBlueCircleDotIcon" })
+        }
+
+        objectManagerMarks.objects.setObjectOptions(objectId, { preset: "islands#lightBlueCircleDotIcon" });
+
+        obj.properties.balloonContent = "Идет загрузка данных...";
+        objectManagerMarks.objects.balloon.open(objectId);
+
+        $.ajax({ data: { id: objectId }, dataType: "json", url: "/ym_balloon_data" })
+                .done(function (data) {
+                                        obj.properties.balloonContentBody = '<div class="ym_balloon_photo_div">' + data['photo'] + '</div>' + '<div class="ym_balloon_text">' + data['description'] + '</div>';
+
+                                       objectManagerMarks.objects.balloon.setData(obj);
+                                       // Костыль для увеличения полезного места в балуне. Версия в классе ymaps-2-1-79-balloon__content как бы намекает... Если отображение фотки СКО и ее описание в балуне сломается, нужно будет изменить имя класса на актуальное/скорректировать значениея этих свойств и, возможно, классы в style.css
+                                       $('.ymaps-2-1-79-balloon__content').css({'padding-left': '1px', 'padding-top': '13px', 'padding-bottom': '1px', 'margin-right': '23px'});
+                                      });
+        previousObjectId = objectId;
+    });      
+    }
+</script>

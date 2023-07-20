@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  respond_to :html, :json
   # переключение локалей
     before_action :switch_locale
   # передача параметра текущей локали через запросы

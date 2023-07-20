@@ -15,7 +15,6 @@ gem 'pundit'
 gem 'recaptcha'
 # gem 'devise-i18n'
 gem 'traco'
-# gem 'fog-aws'
 
 group :development, :test do
   gem 'pry', '~> 0.13.1'

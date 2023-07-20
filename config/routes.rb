@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     get 'feedback_page' => 'photos#feedback_page', as: :feedback_page
     post 'feedback_page_send' => 'photos#feedback_page_send', as: :feedback_page_send
 
+    get 'map' => 'photos#map', as: :map
+    get 'ym_balloon_data' => 'photos#ym_balloon_data', defaults: { format: :json }
+
     root to: 'photos#index'
   end
 end

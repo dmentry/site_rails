@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  # require 'RMagick'
+  before_action :set_photo, only: [:show, :edit, :update, :destroy, :ym_balloon_data]
 
   # Предохранитель от потери авторизации в нужных экшенах
   after_action :verify_authorized, only: [:new, :create, :edit, :update, :destroy, :all_page]
@@ -38,6 +39,11 @@ class PhotosController < ApplicationController
     @photo.user = current_user
 
     authorize @photo
+
+# Читать координаты и записывать их, если есть
+# img = Magick::Image.read(Rails.root.to_s + '/public/' + @photo.photo.thumb.url).first
+# img['icc:copyright'] = '1111111'
+# img.write(Rails.root.to_s + '/public/' + @photo.photo.thumb.url)
 
     if @photo.save
       # redirect_to @photo, notice: "Photo was successfully created."
@@ -146,6 +152,51 @@ class PhotosController < ApplicationController
     end
   end
 
+  def map
+    marks             = {}
+    marks['type']     = 'FeatureCollection'
+    marks['features'] = []
+
+    out = {}
+
+    photos = Photo.where.not(lat: [nil, false])
+
+    photos.each do |photo|
+      marks['features'] << {
+                            type: 'Feature',
+                            id: photo.id,
+                            geometry: { type: 'Point', coordinates: [photo.lat, photo.long] },
+                            properties: { hintContent: "#{ photo.description }" }
+                           }
+    end
+
+    out.merge!({ marks: marks })
+
+    respond_to do |format|
+      format.html do
+        respond_with nil
+      end
+
+      format.json do
+        response.headers['Vary'] = 'Accept'
+        respond_with out.to_json
+      end
+    end
+  end
+
+  def ym_balloon_data
+    out               = {}
+    out[:photo]       = "#{ 
+                            ActionController::Base.helpers.link_to(
+                              ActionController::Base.helpers.image_tag(
+                                @photo.photo.thumb.url, style: 'width: 100px', alt: 'Фото'), photo_path(@photo), target: '_blank', rel: 'nofollow'
+                            ) 
+                          }"
+    out[:description] = @photo.description
+
+    respond_with out.to_json
+  end
+
   private
 
   def set_photo
@@ -159,7 +210,7 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.require(:photo).permit(:photo, :description, :type_id)
+    params.require(:photo).permit(:photo, :description, :type_id, :lat, :long)
   end
 
   def feedback_params

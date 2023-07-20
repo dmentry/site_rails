@@ -285,6 +285,7 @@ ru:
           photohosting: Фотохостинг
         blog: Блог
         about: Обо мне
+        map: Карта
         feedback: Обратная связь
         load_photo: Загрузить фотку
         profile: Профиль
@@ -348,6 +349,8 @@ ru:
         header: Редактировать фотографию
       new:
         header: Загрузить фотографию
+    map:
+      header: Фотки на карте
     feedback:
       title: Форма обратной связи
       send: Отправить
@@ -389,6 +392,8 @@ ru:
       photo: Фотка
       description: Описание
       type_id: Тип
+      lat: Широта
+      long: Долгота
     type:
       macro: Макро
       landscape: Пейзажи
