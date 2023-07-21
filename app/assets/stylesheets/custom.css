@@ -257,6 +257,17 @@ margin-bottom: 8px;
     padding-left: 13px;
     padding-top: 7px;
     padding-bottom: 7px;
+    margin-left: 15px;
+/*     font-weight: bold; */
+  }
+
+  .mobile_bg_light {
+    background-color:#f8f9fa !important;
+  }
+
+  .photos_category_item {
+    margin-top: 22px;
+    margin-left: 0px;
   }
 
   .remove_padding {
