@@ -2,3 +2,11 @@
 <div class='center_image'>
   <%= image_tag(@photo.photo.url, class: "img_max_height") %>
 </div>
+
+<script>
+  $(function(){
+    $('.img_max_height').click(function() {
+      window.top.close();
+    });
+  });
+</script>
