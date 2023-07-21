@@ -329,8 +329,12 @@ en:
         push: Don't push
   models:
     article:
-      article_title: Article title
-      article_body: Article body
+      article_title_ru: Article title (rus)
+      article_body_ru: Article body (rus)
+      article_title_en: Article title (en)
+      article_body_en: Article body (en)
+      edit:
+        header: Edit post
     feedback:
       feedback_email: Your email
       feedback_body: Message

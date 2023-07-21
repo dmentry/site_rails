@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @articles = Article.all.order(created_at: :asc)
+    @articles = Article.all.order(created_at: :desc)
   end
 
   # GET /articles/1
@@ -69,6 +69,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:article_title, :article_body)
+    params.require(:article).permit(:article_title_ru, :article_body_ru, :article_title_en, :article_body_en)
   end
 end

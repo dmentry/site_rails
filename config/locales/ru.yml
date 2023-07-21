@@ -383,8 +383,12 @@ ru:
         push: Не нажимай
   models:
     article:
-      article_title: Заголовок поста
-      article_body: Пост
+      article_title_ru: Заголовок поста (рус)
+      article_body_ru: Пост (рус)
+      article_title_en: Заголовок поста (англ)
+      article_body_en: Пост (англ)
+      edit:
+        header: Редактировать пост
     feedback:
       feedback_email: Ваш мейл
       feedback_body: Сообщение
