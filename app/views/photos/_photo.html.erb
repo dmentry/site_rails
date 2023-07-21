@@ -5,7 +5,7 @@
 
   <% image_title = "#{photo.description} #{trash_button}" %>
 
-  <%= link_to photo.photo.url, data: { toggle: "lightbox", title: image_title, gallery: "img-gallery" } do %>
+  <%= link_to photo.photo.url, data: { toggle: "lightbox", title: image_title, gallery: "img-gallery" }, title: photo.description do %>
     <div class='zoom'>
       <%= image_tag photo.photo.thumb.url %>
     </div>
