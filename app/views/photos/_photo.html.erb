@@ -3,7 +3,9 @@
     <% trash_button = link_to 'X', photo_path(photo), method: :delete, data: { confirm: t('views.articles.index.article.sure') } %>
   <% end %>
 
-  <% image_title = "#{photo.description} #{trash_button}" %>
+  <% map_link = link_to(image_pack_tag('map.png'), map_path(photo_id: photo), target: "blanc", rel: "noreferrer") %>
+
+  <% image_title = "#{ photo.description } #{ map_link } #{ trash_button }" %>
 
   <%= link_to photo.photo.url, data: { toggle: "lightbox", title: image_title, gallery: "img-gallery" }, title: photo.description do %>
     <div class='zoom'>

@@ -159,7 +159,17 @@ class PhotosController < ApplicationController
 
     out = {}
 
-    photos = Photo.where.not(lat: [nil, false])
+    session[:photo_id] = params[:photo_id] if params[:photo_id].present? && params[:photo_id].match?(/\A\d+\z/)
+
+    photos = if request.format.json? && session[:photo_id].present?
+                tmp = Photo.where(id: session[:photo_id])
+                out.merge!({ photo_id: session[:photo_id] })
+                session[:photo_id] = nil
+
+                tmp
+              else
+                Photo.where.not(lat: [nil, false])
+              end
 
     photos.each do |photo|
       marks['features'] << {
@@ -211,7 +221,7 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.require(:photo).permit(:photo, :description, :type_id, :lat, :long)
+    params.require(:photo).permit(:photo, :description, :type_id, :lat, :long, :photo_id)
   end
 
   def feedback_params
