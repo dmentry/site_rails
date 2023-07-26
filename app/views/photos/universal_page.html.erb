@@ -25,63 +25,71 @@
   };
 
   function getData() {
-    let visitor = false;
+    let visitor;
+    let visitor_data;
 
-    if (!localStorage.getItem('_rs_visitor')) {
-      $.ajax({ 
-        dataType: "json", async: false, url: "http://ip-api.com/json", success: (function(data) { 
-          if(data.status == "success") {
-            InfObj = {
-                      country: data.country, 
-                      regionName: data.regionName, 
-                      lat: data.lat, 
-                      lon: data.lon, 
-                      timezone: data.timezone
-                     }
+    $.ajax({ 
+      dataType: "json", async: false, url: "http://ip-api.com/json", success: (function(data) { 
+        if(data.status == "success") {
+          InfObj = {
+                    country: data.country, 
+                    regionName: data.regionName, 
+                    lat: data.lat, 
+                    lon: data.lon, 
+                    timezone: data.timezone
+                   }
 
-            visitor = sendData(InfObj);
-          }
+          visitor_data = sendData(InfObj);
 
-          if (visitor) { 
-            $.ajax({ url: '/get_data', data: { visitor: visitor }});
-          }
-        })
-      });
-    }
-    else if (localStorage.getItem('_rs_visitor')) { 
-      $.ajax({ url: '/get_data', data: { visitor: { 'repeat_visitor': { time_visited: new Date() }}}});
-    }
+        }
+
+        // Проверка на унакального пользователя
+        if (localStorage.getItem('_rs_visitor')) {
+          visitor = {'repeat_visitor': true}
+        }
+        else {
+          visitor = {'uniq_visitor': true}
+        }
+
+        // Установка кукисов
+        if (!localStorage.getItem('_rs_uniq_exp')) {
+          localStorage.setItem('_rs_uniq_exp', getLastDayOfMonth());
+
+          localStorage.setItem('_rs_visitor', new Date());
+        }
+
+        if(visitor_data) {
+          
+          visitor['visitor_data'] = visitor_data;
+        }
+
+        $.ajax({ url: '/get_data', data: { visitor: visitor }});
+      })
+    });
   };
 
   function sendData(InfObj) {
-    let uniq_visitor;
-    let repeat_visitor;
+    let visitor_data;
 
-    if (!localStorage.getItem('_rs_uniq_exp')) {
-      localStorage.setItem('_rs_uniq_exp', getLastDayOfMonth());
+    visitor_data = {
+      time_visited: new Date(),
+      page_name(){ return window.location.pathname },
+      referrer(){ return document.referrer },
+      browser_name(){ return navigator.appName },
+      browser_platform(){ return navigator.platform },
+      size_screen_w(){ return screen.width },
+      size_screen_h(){ return screen.height },
+      country: InfObj.country, 
+      region_name: InfObj.regionName, 
+      lat: InfObj.lat, 
+      lon: InfObj.lon, 
+      timezone: InfObj.timezone,
+      // timezone:(new Date()).getTimezoneOffset()/60,
+      // browserVersion1a(){ return navigator.appVersion },
+      // browser_language(){ return navigator.language },
+    };
 
-      localStorage.setItem('_rs_visitor', new Date());
-
-      uniq_visitor = {
-        time_visited: new Date(),
-        page_name(){ return window.location.pathname },
-        referrer(){ return document.referrer },
-        browser_name(){ return navigator.appName },
-        browser_language(){ return navigator.language },
-        browser_platform(){ return navigator.platform },
-        size_screen_w(){ return screen.width },
-        size_screen_h(){ return screen.height },
-        country: InfObj.country, 
-        region_name: InfObj.regionName, 
-        lat: InfObj.lat, 
-        lon: InfObj.lon, 
-        timezone: InfObj.timezone,
-        // timezone:(new Date()).getTimezoneOffset()/60,
-        // browserVersion1a(){ return navigator.appVersion },
-      };
-    }
-
-    return { 'uniq_visitor': uniq_visitor }
+    return visitor_data;
   };
 
   $(function(){
