@@ -64,8 +64,15 @@
               <li> <%= link_to t('app.navbar.menu.feedback'), feedback_page_path, class: "btn my_font_size remove_padding" %> </li>
 
               <% if current_user %>
-                <li> <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: "btn my_font_size remove_padding" %> </li>
-                <li> <%= link_to t('app.navbar.menu.profile'), current_user, class: "btn my_font_size remove_padding" %> </li>
+                <li class="dropdown">
+                  <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown">Опции админа</button>
+                  <div class="dropdown-menu my_control my_font_size mobile_bg_light" aria-labelledby="dropdownMenuButton">
+                    <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <%= link_to 'Посетители', show_visitors_info_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <%= link_to 'Визиты', show_visits_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <%= link_to t('app.navbar.menu.profile'), current_user, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                  </div>
+                </li>
                 <li> <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: "btn my_font_size remove_padding" %> </li>
               <% else %>
 

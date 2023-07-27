@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     get 'ym_balloon_data' => 'photos#ym_balloon_data', defaults: { format: :json }
 
     get 'get_data' => 'analitics#get_data', as: :get_data
-    get 'show_data' => 'analitics#show_data', as: :show_data
+    get 'show_visitors_info' => 'analitics#show_visitors_info', as: :show_visitors_info
+    get 'show_visits' => 'analitics#show_visits', as: :show_visits
 
     root to: 'photos#index'
   end
