@@ -28,44 +28,42 @@
     let visitor;
     let visitor_data;
 
-    $.ajax({ 
-      dataType: "json", async: false, url: "http://ip-api.com/json", success: (function(data) { 
-        if(data.status == "success") {
-          InfObj = {
-                    country: data.country, 
-                    regionName: data.regionName, 
-                    lat: data.lat, 
-                    lon: data.lon, 
-                    timezone: data.timezone
-                   }
+    if (!localStorage.getItem('_rs_visitor')) {
+      $.ajax({dataType: "json", async: false, url: "http://ip-api.com/json", success: (function(data) { 
+          if(data.status == "success") {
+            InfObj = {
+                      country: data.country, 
+                      regionName: data.regionName, 
+                      lat: data.lat, 
+                      lon: data.lon, 
+                      timezone: data.timezone
+                     }
 
-          visitor_data = sendData(InfObj);
+            visitor_data = sendData(InfObj);
 
-        }
+          }
 
-        // Проверка на унакального пользователя
-        if (localStorage.getItem('_rs_visitor')) {
-          visitor = {'repeat_visitor': true}
-        }
-        else {
-          visitor = {'uniq_visitor': true}
-        }
+          visitor = { 'uniq_visitor': true }
 
-        // Установка кукисов
-        if (!localStorage.getItem('_rs_uniq_exp')) {
-          localStorage.setItem('_rs_uniq_exp', getLastDayOfMonth());
+          // Установка кукисов
+          if (!localStorage.getItem('_rs_uniq_exp')) {
+            localStorage.setItem('_rs_uniq_exp', getLastDayOfMonth());
 
-          localStorage.setItem('_rs_visitor', new Date());
-        }
+            localStorage.setItem('_rs_visitor', new Date());
+          }
 
-        if(visitor_data) {
-          
-          visitor['visitor_data'] = visitor_data;
-        }
+          if(visitor_data) {
+            visitor['visitor_data'] = visitor_data;
+          }
+      })});
+    }
+    else if (localStorage.getItem('_rs_visitor')) {
+          visitor = { 'repeat_visitor': true };
 
-        $.ajax({ url: '/get_data', data: { visitor: visitor }});
-      })
-    });
+          visitor['visitor_data'] = { time_visited: new Date() };
+    }
+
+    $.ajax({ url: '/get_data', data: { visitor: visitor }});
   };
 
   function sendData(InfObj) {
@@ -77,6 +75,7 @@
       referrer(){ return document.referrer },
       browser_name(){ return navigator.appName },
       browser_platform(){ return navigator.platform },
+      browser_language(){ return navigator.language },
       size_screen_w(){ return screen.width },
       size_screen_h(){ return screen.height },
       country: InfObj.country, 
@@ -86,7 +85,6 @@
       timezone: InfObj.timezone,
       // timezone:(new Date()).getTimezoneOffset()/60,
       // browserVersion1a(){ return navigator.appVersion },
-      // browser_language(){ return navigator.language },
     };
 
     return visitor_data;

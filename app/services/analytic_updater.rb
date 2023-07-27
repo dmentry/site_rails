@@ -7,6 +7,7 @@ module AnalyticUpdater
     referrer         = @params_visitor['visitor_data']['referrer']
     browser_name     = @params_visitor['visitor_data']['browser_name']
     browser_platform = @params_visitor['visitor_data']['browser_platform']
+    browser_language = @params_visitor['visitor_data']['browser_language']
     size_screen_w    = @params_visitor['visitor_data']['size_screen_w']
     size_screen_h    = @params_visitor['visitor_data']['size_screen_h']
     country          = @params_visitor['visitor_data']['country']
@@ -26,6 +27,7 @@ module AnalyticUpdater
       referrer: referrer,
       browser_name: browser_name,
       browser_platform: browser_platform,
+      browser_language: browser_language,
       size_screen_w: size_screen_w,
       size_screen_h: size_screen_h,
       country: country,
@@ -37,7 +39,7 @@ module AnalyticUpdater
     )
 
     analytic = Analytic.where('views_period_month=? AND views_period_year=?', Date.today.month, Date.today.year).first.presence || 
-      Analytic.create(views_period_month: Date.today.month, views_period_year: Date.today.year, visitor_id: visitor.id)
+      Analytic.create(views_period_month: Date.today.month, views_period_year: Date.today.year)
 
     if @params_visitor['uniq_visitor'].present?
       Analytic.increment_counter(:uniq_visitor, analytic.id)

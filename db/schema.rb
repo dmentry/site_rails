@@ -27,13 +27,9 @@ ActiveRecord::Schema.define(version: 2023_07_28_111233) do
     t.integer "views_period_year"
     t.integer "uniq_visitor", default: 0, null: false
     t.integer "repeat_visitor", default: 0, null: false
-    t.bigint "analytics_id"
-    t.bigint "visitor_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["analytics_id"], name: "index_analytics_on_analytics_id"
-    t.index ["visitor_id", "views_period_year", "views_period_month"], name: "idx_analytics_time_period"
-    t.index ["visitor_id"], name: "index_analytics_on_visitor_id"
+    t.index ["views_period_year", "views_period_month"], name: "idx_analytics_time_period"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -91,6 +87,7 @@ ActiveRecord::Schema.define(version: 2023_07_28_111233) do
     t.string "referrer"
     t.string "browser_name"
     t.string "browser_platform"
+    t.string "browser_language"
     t.string "size_screen_w"
     t.string "size_screen_h"
     t.string "country"

@@ -6,6 +6,7 @@ class CreateVisitors < ActiveRecord::Migration[6.0]
       t.string :referrer
       t.string :browser_name
       t.string :browser_platform
+      t.string :browser_language
       t.string :size_screen_w
       t.string :size_screen_h
       t.string :country

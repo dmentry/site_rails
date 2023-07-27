@@ -6,11 +6,9 @@ class CreateAnalytics < ActiveRecord::Migration[6.0]
       t.integer :uniq_visitor, null: false, default: 0
       t.integer :repeat_visitor, null: false, default: 0
 
-      t.references :analytics, :visitor
-
       t.timestamps
     end
 
-    add_index :analytics, [:visitor_id, :views_period_year, :views_period_month], name: "idx_analytics_time_period"
+    add_index :analytics, [:views_period_year, :views_period_month], name: "idx_analytics_time_period"
   end
 end
