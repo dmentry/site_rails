@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title><%= t('app.tab') %></title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <%#= favicon_link_tag %>
 
     <meta name="robots" content="index, follow">
     <meta name="description" content="Персональный сайт фотографа Дмитрия Dack9 Архипова. Сотрудничество: фотосессии и фотосъемка (макро, предметная)">
@@ -19,6 +17,7 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
+    <%= favicon_pack_tag 'favicon.ico' %>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js" integrity="sha512-YibiFIKqwi6sZFfPm5HNHQYemJwFbyyYHjrr3UT+VobMt/YBo1kBxgui5RWc4C3B4RJMYCdCAJkbXHt+irKfSA==" crossorigin="anonymous"></script>
 
@@ -124,6 +123,113 @@
 </html>
 
 <script>
+  function getLastDayOfMonth() {
+    let currentDate = new Date();
+    let lastDayDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0, 23, 59, 59);
+
+    return lastDayDate;
+  };
+
+  function getUid() {
+    let s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let out = Array(8).join().split(',').map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+
+    return out;
+  };
+
+  function deleteAllCookies() {
+    if (localStorage.getItem('_rs_uniq_exp')) {
+      let uniq_exp_date = localStorage.getItem('_rs_uniq_exp');
+
+      if (Date.parse(uniq_exp_date) <= new Date()) {
+        localStorage.removeItem('_rs_uniq_exp');
+      };
+    }
+  };
+
+  function getData() {
+    let visitor;
+    let visitor_data;
+    let uid;
+
+    if (!localStorage.getItem('_rs_visitor')) {
+      $.ajax({dataType: "json", async: false, url: "http://ip-api.com/json", success: (function(data) { 
+          if(data.status == "success") {
+            InfObj = {
+                      country: data.country, 
+                      regionName: data.regionName, 
+                      lat: data.lat, 
+                      lon: data.lon, 
+                      timezone: data.timezone
+                     }
+
+            visitor_data = sendData(InfObj);
+          }
+
+          visitor = { 'uniq_visitor': true }
+
+          if (!localStorage.getItem('_rs_uniq_exp')) {
+            localStorage.setItem('_rs_uniq_exp', getLastDayOfMonth());
+          }
+
+          if (!localStorage.getItem('_rs_visitor')) {
+            uid = getUid();
+
+            localStorage.setItem('_rs_visitor', uid);
+          }
+
+          if(visitor_data) {
+            visitor_data['u_id'] = uid;
+          }
+          else {
+            if(uid) {
+              visitor_data = { 'u_id': uid };
+            }
+          }
+
+          visitor['visitor_data'] = visitor_data;
+      })});
+    }
+    else if (localStorage.getItem('_rs_visitor')) {
+      let existed_uid = localStorage.getItem('_rs_visitor');
+
+      visitor = { 'repeat_visitor': true };
+
+      visitor['visitor_data'] = { 
+        time_visited: new Date(), 
+        page_name(){ return window.location.pathname }, 
+        referrer(){ return document.referrer },
+        u_id: existed_uid
+      };
+    }
+
+    $.ajax({ url: '/get_data', data: { visitor: visitor }});
+  };
+
+  function sendData(InfObj) {
+    let visitor_data;
+
+    visitor_data = {
+      time_visited: new Date(),
+      page_name(){ return window.location.pathname },
+      referrer(){ return document.referrer },
+      browser_name(){ return navigator.appName },
+      browser_platform(){ return navigator.platform },
+      browser_language(){ return navigator.language },
+      size_screen_w(){ return screen.width },
+      size_screen_h(){ return screen.height },
+      country: InfObj.country, 
+      region_name: InfObj.regionName, 
+      lat: InfObj.lat, 
+      lon: InfObj.lon, 
+      timezone: InfObj.timezone,
+      // timezone:(new Date()).getTimezoneOffset()/60,
+      // browserVersion1a(){ return navigator.appVersion },
+    };
+
+    return visitor_data;
+  };
+
   $(function(){
     $("#menu_pic").click(function() {
       if ($("#collapseMenu").height() > 80) {
@@ -148,5 +254,9 @@
         $('.menu_img').show(500);
       }
      });
+
+    deleteAllCookies();
+
+    getData();
   });
 </script>

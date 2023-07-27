@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2023_07_28_111233) do
     t.string "lat"
     t.string "lon"
     t.string "timezone"
+    t.string "u_id"
     t.boolean "uniq_visitor", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

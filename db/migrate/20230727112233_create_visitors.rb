@@ -14,6 +14,7 @@ class CreateVisitors < ActiveRecord::Migration[6.0]
       t.string :lat
       t.string :lon
       t.string :timezone
+      t.string :u_id
       t.boolean :uniq_visitor, null: false, default: false, index: true
 
       t.timestamps

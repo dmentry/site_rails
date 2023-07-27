@@ -373,6 +373,11 @@ ru:
       email: Ваш email
       comment: Ваш комментарий
       submit: Отправить
+    user:
+      show:
+        header: Профиль админа
+        admin: Админ
+        edit_profile: Редактировать профиль
     devise:
       session:
         title: Оставь надежду, всяк сюда входящий...

@@ -1,13 +1,13 @@
-<h1 class="center text_size header_top_buffer">Профиль админа</h1>
+<h1 class="center text_size header_top_buffer"><%= t('views.user.show.header') %></h1>
 <div class="container bg-light">
   <div class="row mt-3">
     <div class="col-sm-12 col-md-10">
       <div class="text-center">
-        <h4>Админ: <%= @user.email %></h1>
+        <h4><%= t('views.user.show.admin') %>: <%= @user.email %></h1>
 
         <p class="buffer-top">
         <%#= link_to "Редактировать профиль", edit_user_path(@user), class: 'btn btn-primary' %>
-        <%= link_to 'Редактировать профиль', edit_user_registration_path, class: 'btn btn-secondary' %>
+        <%= link_to t('views.user.show.edit_profile'), edit_user_registration_path, class: 'btn btn-secondary' %>
         </p>
       </div>
     </div>

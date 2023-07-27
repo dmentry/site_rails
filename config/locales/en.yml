@@ -319,6 +319,11 @@ en:
       email: Your email
       comment: Your comment
       submit: Submit
+    user:
+      show:
+        header: Admin profile
+        admin: Admin
+        edit_profile: Edit profile
     devise:
       session:
         title: Give up hope, everyone who enters here...
