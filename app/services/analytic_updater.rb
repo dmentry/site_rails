@@ -1,6 +1,7 @@
 module AnalyticUpdater
-  def self.call(params_visitor:)
+  def self.call(params_visitor:, current_user_present:)
     @params_visitor = params_visitor
+    @current_user_present = current_user_present
 
     time_visited     = @params_visitor['visitor_data']['time_visited'].to_datetime
     page_name        = @params_visitor['visitor_data']['page_name']
@@ -22,8 +23,8 @@ module AnalyticUpdater
                          false
                        end
 
-    # Не нужно записывать, если это админ ходит по своим разделам
-    if !(page_name =~ /users/ || page_name =~ /photos/)
+    # Не записывать, если это админ
+    if !@current_user_present
       visitor = Visitor.create(
         time_visited: time_visited, 
         page_name: page_name,
