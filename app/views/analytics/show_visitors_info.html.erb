@@ -1,0 +1,70 @@
+
+
+      <table class="table table-sm table-buffers-vertical table-font-my">
+        <thead>
+          <tr class="table-buffers-vertical">
+            <th class="table-info table-buffers-vertical">id</th>
+            <th class="table-info table-buffers-vertical">Время захода</th>
+            <th class="table-info table-buffers-vertical">Страница</th>
+            <th class="table-info table-buffers-vertical">Переход со страницы</th>
+            <th class="table-info table-buffers-vertical">Браузер</th>
+            <th class="table-info table-buffers-vertical">ОС</th>
+            <th class="table-info table-buffers-vertical">Язык браузера</th>
+            <th class="table-info table-buffers-vertical">Разрешение экрана</th>
+            <th class="table-info table-buffers-vertical">Страна</th>
+            <th class="table-info table-buffers-vertical">Регион</th>
+            <th class="table-info table-buffers-vertical">Координаты</th>
+            <th class="table-info table-buffers-vertical">Часовой пояс</th>
+            <th class="table-info table-buffers-vertical">Уникальный посетитель</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @visitors.each do |visitor| %>
+            <tr>
+              <td>            
+                <%= visitor.id %>
+              </td>
+              <td>
+                <%= visitor.time_visited.strftime("%H:%M:%S, %d.%m.%Y") %>
+              </td>
+              <td>            
+                <%= visitor.page_name %>
+              </td>
+              <td>            
+                <%= visitor.referrer %>
+              </td>
+              <td>            
+                <%= visitor.browser_name %>
+              </td>
+              <td>            
+                <%= visitor.browser_platform %>
+              </td>
+              <td>            
+                <%= visitor.browser_language %>
+              </td>
+              <td>            
+                <%= visitor.size_screen_w %>x<%= visitor.size_screen_h %>
+              </td>
+              <td>            
+                <%= visitor.country %>
+              </td>
+              <td>            
+                <%= visitor.region_name %>
+              </td>
+              <td>            
+                <%= visitor.lat %>, <%= visitor.lon %>
+              </td>
+              <td>            
+                <%= visitor.timezone %>
+              </td>
+              <td>
+                <% if visitor.uniq_visitor %>    
+                  Да
+                <% else %>
+                  Нет
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>

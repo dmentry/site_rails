@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_19_111222) do
+ActiveRecord::Schema.define(version: 2023_07_28_111233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2023_07_19_111222) do
     t.text "main_text_en"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "analytics", force: :cascade do |t|
+    t.integer "views_period_month"
+    t.integer "views_period_year"
+    t.integer "uniq_visitor", default: 0, null: false
+    t.integer "repeat_visitor", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["views_period_year", "views_period_month"], name: "idx_analytics_time_period"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -69,6 +79,27 @@ ActiveRecord::Schema.define(version: 2023_07_19_111222) do
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "visitors", force: :cascade do |t|
+    t.datetime "time_visited"
+    t.string "page_name"
+    t.string "referrer"
+    t.string "browser_name"
+    t.string "browser_platform"
+    t.string "browser_language"
+    t.string "size_screen_w"
+    t.string "size_screen_h"
+    t.string "country"
+    t.string "region_name"
+    t.string "lat"
+    t.string "lon"
+    t.string "timezone"
+    t.string "u_id"
+    t.boolean "uniq_visitor", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["uniq_visitor"], name: "index_visitors_on_uniq_visitor"
   end
 
   add_foreign_key "comments", "articles"
