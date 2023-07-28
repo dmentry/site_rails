@@ -26,9 +26,9 @@ Rails.application.routes.draw do
     get 'map' => 'photos#map', as: :map
     get 'ym_balloon_data' => 'photos#ym_balloon_data', defaults: { format: :json }
 
-    get 'get_data' => 'analitics#get_data', as: :get_data
-    get 'show_visitors_info' => 'analitics#show_visitors_info', as: :show_visitors_info
-    get 'show_visits' => 'analitics#show_visits', as: :show_visits
+    get 'get_data' => 'analytics#get_data', as: :get_data
+    get 'show_visitors_info' => 'analytics#show_visitors_info', as: :show_visitors_info
+    get 'show_visits' => 'analytics#show_visits', as: :show_visits
 
     root to: 'photos#index'
   end

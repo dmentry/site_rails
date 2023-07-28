@@ -1,4 +1,4 @@
-class AnaliticsController < ApplicationController
+class AnalyticsController < ApplicationController
   def get_data
     current_user_present = if current_user
                              true

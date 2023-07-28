@@ -1,5 +1,5 @@
-class VisitorPolicy < ApplicationPolicy
-  def show_visitors_info?
+class AnalyticPolicy < ApplicationPolicy
+  def show_visits?
     user.present?
   end
 
