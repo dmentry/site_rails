@@ -160,18 +160,45 @@
     let uid;
 
     if (!localStorage.getItem('_rs_visitor')) {
-      $.ajax({dataType: "json", async: false, url: "http://ip-api.com/json", success: (function(data) { 
-          if(data.status == "success") {
-            InfObj = {
-                      country: data.country, 
-                      regionName: data.regionName, 
-                      lat: data.lat, 
-                      lon: data.lon, 
-                      timezone: data.timezone
-                     }
+      // $.ajax({dataType: "json", async: false, url: "http://ip-api.com/json", success: (function(data) { 
+      //     if(data.status == "success") {
+      //       InfObj = {
+      //                 country: data.country, 
+      //                 regionName: data.regionName, 
+      //                 lat: data.lat, 
+      //                 lon: data.lon, 
+      //                 timezone: data.timezone
+      //                }
 
-            visitor_data = sendData(InfObj);
-          }
+      //       visitor_data = sendData(InfObj);
+      //     }
+
+      //     visitor = { 'uniq_visitor': true }
+
+      //     if (!localStorage.getItem('_rs_uniq_exp')) {
+      //       localStorage.setItem('_rs_uniq_exp', getLastDayOfMonth());
+      //     }
+
+      //     if (!localStorage.getItem('_rs_visitor')) {
+      //       uid = getUid();
+
+      //       localStorage.setItem('_rs_visitor', uid);
+      //     }
+
+      //     if(visitor_data) {
+      //       visitor_data['u_id'] = uid;
+      //     }
+      //     else {
+      //       if(uid) {
+      //         visitor_data = { 'u_id': uid };
+      //       }
+      //     }
+
+      //     visitor['visitor_data'] = visitor_data;
+      // })});
+
+//********************Временный код*****************************************
+          visitor_data = sendData(false);
 
           visitor = { 'uniq_visitor': true }
 
@@ -195,7 +222,8 @@
           }
 
           visitor['visitor_data'] = visitor_data;
-      })});
+//****************************************************************************
+
     }
     else if (localStorage.getItem('_rs_visitor')) {
       let existed_uid = localStorage.getItem('_rs_visitor');
@@ -225,11 +253,11 @@
       browser_language(){ return navigator.language },
       size_screen_w(){ return screen.width },
       size_screen_h(){ return screen.height },
-      country: InfObj.country, 
-      region_name: InfObj.regionName, 
-      lat: InfObj.lat, 
-      lon: InfObj.lon, 
-      timezone: InfObj.timezone,
+      // country: InfObj.country, 
+      // region_name: InfObj.regionName, 
+      // lat: InfObj.lat, 
+      // lon: InfObj.lon, 
+      // timezone: InfObj.timezone,
       // timezone:(new Date()).getTimezoneOffset()/60,
       // browserVersion1a(){ return navigator.appVersion },
     };
