@@ -154,88 +154,52 @@
     }
   };
 
-  function getData() {
+  function requestData(callback) {
+    $.ajax({dataType: "json", url: "https://api.db-ip.com/v2/free/self", success: (
+      function(data) {
+        InfObj = {
+                  country: data.countryName, 
+                  region: data.stateProv, 
+                  city: data.city
+                 };
+
+        callback(InfObj);
+      }
+    )});
+  };
+
+  function processResponse(InfObj) {
     let visitor;
-    let visitor_data;
-    let uid;
 
     if (!localStorage.getItem('_rs_visitor')) {
-      // $.ajax({dataType: "json", async: true, url: "https://ipapi.co/json/", success: (function(data) { 
-      $.ajax({dataType: "json", async: true, url: "https://api.db-ip.com/v2/free/self", success: (function(data) { 
-        if(data) {
-          InfObj = {
-                    country: data.countryName, 
-                    region: data.stateProv, 
-                    city: data.city
-                   }
+      if (!localStorage.getItem('_rs_uniq_exp')) {
+        localStorage.setItem('_rs_uniq_exp', getLastDayOfMonth());
+      }
 
-          visitor_data = sendData(InfObj);
-        }
+      let uid = getUid();
 
-        visitor = { 'uniq_visitor': true }
+      localStorage.setItem('_rs_visitor', uid);
 
-        if (!localStorage.getItem('_rs_uniq_exp')) {
-          localStorage.setItem('_rs_uniq_exp', getLastDayOfMonth());
-        }
+      visitor = { 'uniq_visitor': true };
 
-        uid = getUid();
+      visitor['visitor_data'] = shapeData(InfObj);
 
-        localStorage.setItem('_rs_visitor', uid);
-
-        if(visitor_data) {
-          visitor_data['u_id'] = uid;
-        }
-        else {
-          visitor_data = { 'u_id': uid };
-        }
-
-        visitor['visitor_data'] = visitor_data;
-
-        $.ajax({ url: '/get_data', data: { visitor: visitor }});
-      })});
-
-//********************Временный код*****************************************
-          // visitor_data = sendData(false);
-
-          // visitor = { 'uniq_visitor': true }
-
-          // if (!localStorage.getItem('_rs_uniq_exp')) {
-          //   localStorage.setItem('_rs_uniq_exp', getLastDayOfMonth());
-          // }
-
-          // if (!localStorage.getItem('_rs_visitor')) {
-          //   uid = getUid();
-
-          //   localStorage.setItem('_rs_visitor', uid);
-          // }
-
-          // if(visitor_data) {
-          //   visitor_data['u_id'] = uid;
-          // }
-          // else {
-          //   if(uid) {
-          //     visitor_data = { 'u_id': uid };
-          //   }
-          // }
-
-          // visitor['visitor_data'] = visitor_data;
-//****************************************************************************
-
+      visitor['visitor_data']['u_id'] = uid;
     }
     else if (localStorage.getItem('_rs_visitor')) {
       let existed_uid = localStorage.getItem('_rs_visitor');
 
       visitor = { 'repeat_visitor': true };
 
-      visitor['visitor_data'] = sendData(false);
+      visitor['visitor_data'] = shapeData(false);
 
       visitor['visitor_data']['u_id'] = existed_uid
-
-      $.ajax({ url: '/get_data', data: { visitor: visitor }});
     }
+
+    $.ajax({ url: '/get_data', data: { visitor: visitor }});
   };
 
-  function sendData(InfObj) {
+  function shapeData(InfObj) {
     let visitor_data = {
       time_visited: new Date(),
       timezone:(new Date()).getTimezoneOffset()/60,
@@ -250,9 +214,9 @@
     };
 
     if (InfObj) {
-      visitor_data['country']=InfObj.country;
-      visitor_data['region']=InfObj.region;
-      visitor_data['city']=InfObj.city;
+      visitor_data['country'] = InfObj.country;
+      visitor_data['region']  = InfObj.region;
+      visitor_data['city']    = InfObj.city;
     }
 
     return visitor_data;
@@ -285,6 +249,6 @@
 
     deleteAllCookies();
 
-    getData();
+    requestData(processResponse);
   });
 </script>
