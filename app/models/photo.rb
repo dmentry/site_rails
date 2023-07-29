@@ -1,4 +1,6 @@
 class Photo < ApplicationRecord
+  PHOTOS_ON_PAGE = 6
+
   belongs_to :user
   belongs_to :type
 

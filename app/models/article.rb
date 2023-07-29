@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  ARTICLES_ON_PAGE = 2
+
   translates :article_title, :article_body
 
   has_many :comments, dependent: :destroy

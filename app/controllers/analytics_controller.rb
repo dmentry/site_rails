@@ -12,9 +12,15 @@ class AnalyticsController < ApplicationController
   end
 
   def show_visitors_info
-    @visitors = Visitor.where(uniq_visitor: true)
+    @pagy, @visitors = pagy(Visitor.where(uniq_visitor: true), items: Visitor::VISITORS_ON_PAGE)
 
     authorize @visitors
+  end
+
+  def show_visitor_info
+    @pagy, @visitor = pagy(Visitor.where(u_id: params[:u_id]), items: Visitor::VISITORS_ON_PAGE)
+
+    authorize @visitor
   end
 
   def show_visits

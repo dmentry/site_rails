@@ -9,7 +9,9 @@ class PhotosController < ApplicationController
 
   # GET /photos
   def index
-    @photos = Photo.without_photohosting.order(created_at: :desc).limit(20)
+    # @photos = Photo.without_photohosting.order(created_at: :desc).limit(20)
+
+    @pagy, @photos = pagy(Photo.without_photohosting.order(created_at: :desc), items: Photo::PHOTOS_ON_PAGE)
 
     @header = t('controllers.photos.index.header')
 
@@ -215,7 +217,9 @@ class PhotosController < ApplicationController
   end
 
   def collect_photos_and_type(type)
-    @photos, @header = photos_and_type(type)
+    @pagy, @photos = photos_by_type(type)
+
+    @header = photos_header(type)
 
     render :universal_page
   end

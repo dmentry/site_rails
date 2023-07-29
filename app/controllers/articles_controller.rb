@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @articles = Article.all.order(created_at: :desc)
+    @pagy, @articles = pagy(Article.all.order(created_at: :desc), items: Article::ARTICLES_ON_PAGE)
   end
 
   # GET /articles/1

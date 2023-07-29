@@ -65,13 +65,13 @@
 
               <% if current_user %>
                 <li class="dropdown">
-                  <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown">Опции админа</button>
+                  <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown">Админка</button>
                   <div class="dropdown-menu my_control my_font_size mobile_bg_light" aria-labelledby="dropdownMenuButton">
                     <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                     <%= link_to 'Посетители', show_visitors_info_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                     <%= link_to 'Визиты', show_visits_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                     <%= link_to t('app.navbar.menu.profile'), current_user, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: "btn my_font_size remove_padding" %>
+                    <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                   </div>
                 </li>
               <% else %>
@@ -98,7 +98,7 @@
     </div>
 
     <a id="menu_pic" href="#">
-      <%= image_pack_tag("menu-4x.png", alt: 'menu', class: 'menu_img') %>
+      <%= image_pack_tag("menu-4x.png", alt: 'menu') %>
     </a>
 
     <a href="#">
@@ -116,13 +116,20 @@
 
     <%= yield %>
 
+
+
     <footer>
-      <div class="dackbottomicons dackbottomicons-range">
-        <div class="text-center buffer-bottom">
+      <!-- <div class="dackbottomicons dackbottomicons-range"> -->
+          <% if controller_name == 'photos' %>
+            <div class='buffer-bottom_photos'>
+          <% else %>
+            <div class='buffer-bottom'>
+          <% end %>
+
           <p>&copy; Dack9  <%= Time.now.year %></p>
-          <%= link_to image_pack_tag("vk.png", alt: 'vk'), "https://vk.com/dack9", target: "blanc", rel: "noreferrer", title: "VK" %>
-          <%= link_to image_pack_tag("telegram.png", alt: 'telegram'), "https://t.me/Dack99", target: "blanc", rel: "noreferrer", title: "Telegram" %>
-          <%= link_to image_pack_tag("instagram.png", alt: 'instagram'), "https://www.instagram.com/dack9/", target: "blanc", rel: "noreferrer", title: "Instagram" %>
+          <%#= link_to image_pack_tag("vk.png", alt: 'vk'), "https://vk.com/dack9", target: "blanc", rel: "noreferrer", title: "VK" %>
+          <%#= link_to image_pack_tag("telegram.png", alt: 'telegram'), "https://t.me/Dack99", target: "blanc", rel: "noreferrer", title: "Telegram" %>
+          <%#= link_to image_pack_tag("instagram.png", alt: 'instagram'), "https://www.instagram.com/dack9/", target: "blanc", rel: "noreferrer", title: "Instagram" %>
         </div>
       </div>
     </footer>
@@ -226,10 +233,16 @@
     $("#menu_pic").click(function() {
       if ($("#collapseMenu").height() > 80) {
         $("#collapseMenu").slideToggle(500);
-        $(".menu_close_img").slideDown(500);
         $('.menu_img').hide(500);
+
+        if ($(".menu_close_img").is(":visible")) {
+          $(".menu_close_img").hide(500)
+        }
+        else{
+          $(".menu_close_img").slideDown(500) 
+        }
       }
-     });
+    });
 
     $(".navbar").click(function() {
       if ($("#collapseMenu").height() > 80) {
@@ -237,7 +250,7 @@
         $(".menu_close_img").slideUp(500);
         $('.menu_img').show(500);
       }
-     });
+    });
 
     $(".menu_close_img").click(function() {
       if ($("#collapseMenu").height() > 80) {
@@ -245,7 +258,7 @@
         $(".menu_close_img").slideUp(500);
         $('.menu_img').show(500);
       }
-     });
+    });
 
     deleteAllCookies();
 

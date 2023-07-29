@@ -27,6 +27,15 @@ logo {
     outline: none;
 }
 
+.cont_height {
+/*   height: 78vh;
+  overflow-y: auto; */
+}
+
+.cont_paddings {
+  padding: 0;
+}
+
 .header img{
     opacity: .15;
     position: absolute;
@@ -115,12 +124,54 @@ logo {
 }
 
 .buffer-top {
-margin-top: 8px;
-padding-top: 5px;
+  margin-top: 8px;
+  padding-top: 5px;
 }
 
 .buffer-bottom {
-margin-bottom: 8px;
+  position: relative;
+  bottom: 0;
+  font-size: small;
+  width: 90px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buffer-bottom_photos {
+  position: fixed;
+  bottom: 0;
+  margin-left: 47.4vw;
+  font-size: small;
+}
+
+.pagy-bottom {
+  position: relative;
+  bottom: 20px;
+  margin-top: 20px;
+  font-size: small;
+  width: 187px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pagy-bottom-article {
+  width: 187px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.pagy-bottom-visitor {
+  position: relative;
+  margin-left: 28vw;
+  /* margin-bottom: 20px; */
+  bottom: 20px;
+  /* margin-top: 20px; */
+  font-size: small;
+/*   width: 187px;
+  margin-left: auto;
+  margin-right: auto; */
 }
 
 .gallery img {
@@ -213,6 +264,16 @@ margin-bottom: 8px;
   }
 }
 
+@media (max-width: 1200px) {
+  .buffer-bottom_photos {
+    position: relative;
+    bottom: 0;
+    width: 90px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 @media (max-width: 991px) {
   .drop_down_button_my {
     display: none;
@@ -221,8 +282,9 @@ margin-bottom: 8px;
   .menu_close_img {
     position: absolute;
     z-index: 1000;
-    top: 18px;
-    right: 10px;    
+    top: 2px;
+    right: 8px;
+    opacity: 0.5; 
   }
 
   .my_control {
@@ -238,6 +300,7 @@ margin-bottom: 8px;
 
   .gallery_top_buffer {
     margin-top: 16px;
+    margin-bottom: 2px;
   }
 
   .header_top_buffer {
@@ -265,6 +328,45 @@ margin-bottom: 8px;
     background-color:#f8f9fa !important;
   }
 
+  .buffer-bottom {
+    position: relative;
+    bottom: 0;
+    width: 90px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pagy-bottom {
+    position: relative;
+    bottom: 0;
+    width: 187px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+  }
+
+  .pagy-bottom-visitor {
+    position: relative;
+    margin-left: 44vw;
+    margin-bottom: 20px;
+    bottom: 0;
+    font-size: small;
+  }
+
+  .pagy-bottom-article {
+    position: relative;
+    bottom: 0;
+    width: 187px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .pagination {
+    margin-bottom: 2px;
+  }
+
   .photos_category_item {
     margin-top: 22px;
     margin-left: 0px;
@@ -289,9 +391,11 @@ margin-bottom: 8px;
 
   #menu_pic {
     display: block;
-    position: absolute;
+    /* position: absolute; */
+    position: fixed;
     z-index: 1000;
     top: 2px;
-    left: 1px;
+    left: 9px;
+    opacity: 0.4;
   }
 }

@@ -1,0 +1,46 @@
+<h1 class="center text_size header_top_buffer">Визиты пользователя</h1>
+<div class="container bg-light cont_paddings">
+      <table class="table table-sm table-buffers-vertical table-font-my">
+        <thead>
+          <tr class="table-buffers-vertical">
+            <th class="table-info table-buffers-vertical">Визит</th>
+            <th class="table-info table-buffers-vertical">Час. пояс</th>
+            <th class="table-info table-buffers-vertical">Страница</th>
+            <th class="table-info table-buffers-vertical">Переход со страницы</th>
+            <th class="table-info table-buffers-vertical">Инфа по системе</th>
+            <th class="table-info table-buffers-vertical">Язык брауз.</th>
+            <th class="table-info table-buffers-vertical">Экран</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @visitor.each do |visitor| %>
+            <tr>
+              <td>
+                <%= visitor.time_visited.strftime("%d.%m.%Y, %H:%M:%S") %>
+              </td>
+              <td>            
+                <%= visitor.timezone %>
+              </td>
+              <td>            
+                <%= visitor.page_name %>
+              </td>
+              <td>            
+                <%= visitor.referrer %>
+              </td>
+              <td>            
+                <%= visitor.common_info %>
+              </td>
+              <td>            
+                <%= visitor.browser_language %>
+              </td>
+              <td>            
+                <%= visitor.size_screen_w %>x<%= visitor.size_screen_h %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <div class="pagy-bottom"><%== pagy_bootstrap_nav(@pagy) %></div>
+      <%= link_to 'Обратно', show_visitors_info_path, class: 'pagy-bottom-visitor' %>
+</div>
