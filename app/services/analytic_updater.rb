@@ -4,18 +4,18 @@ module AnalyticUpdater
     @current_user_present = current_user_present
 
     time_visited     = @params_visitor['visitor_data']['time_visited'].to_datetime
+    timezone         = @params_visitor['visitor_data']['timezone']
     page_name        = @params_visitor['visitor_data']['page_name']
     referrer         = @params_visitor['visitor_data']['referrer']
-    browser_name     = @params_visitor['visitor_data']['browser_name']
-    browser_platform = @params_visitor['visitor_data']['browser_platform']
+    common_info      = @params_visitor['visitor_data']['common_info']
+    platform         = @params_visitor['visitor_data']['platform']
+    os               = @params_visitor['visitor_data']['os']
     browser_language = @params_visitor['visitor_data']['browser_language']
     size_screen_w    = @params_visitor['visitor_data']['size_screen_w']
     size_screen_h    = @params_visitor['visitor_data']['size_screen_h']
     country          = @params_visitor['visitor_data']['country']
-    region_name      = @params_visitor['visitor_data']['region_name']
-    lat              = @params_visitor['visitor_data']['lat']
-    lon              = @params_visitor['visitor_data']['lon']
-    timezone         = @params_visitor['visitor_data']['timezone']
+    region           = @params_visitor['visitor_data']['region']
+    city             = @params_visitor['visitor_data']['city']
     u_id             = @params_visitor['visitor_data']['u_id']
     uniq_visitor     = if @params_visitor['uniq_visitor'].present?
                          true
@@ -27,18 +27,18 @@ module AnalyticUpdater
     if !@current_user_present
       visitor = Visitor.create(
         time_visited: time_visited, 
+        timezone: timezone, 
         page_name: page_name,
         referrer: referrer,
-        browser_name: browser_name,
-        browser_platform: browser_platform,
+        common_info: common_info,
+        platform: platform,
+        os: os,
         browser_language: browser_language,
         size_screen_w: size_screen_w,
         size_screen_h: size_screen_h,
         country: country,
-        region_name: region_name,
-        lat: lat,
-        lon: lon,
-        timezone: timezone,
+        region: region,
+        city: city,
         u_id: u_id,
         uniq_visitor: uniq_visitor
       )

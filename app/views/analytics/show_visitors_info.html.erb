@@ -1,20 +1,19 @@
-
-
       <table class="table table-sm table-buffers-vertical table-font-my">
         <thead>
           <tr class="table-buffers-vertical">
             <th class="table-info table-buffers-vertical">id</th>
             <th class="table-info table-buffers-vertical">Время захода</th>
+            <th class="table-info table-buffers-vertical">Часовой пояс</th>
             <th class="table-info table-buffers-vertical">Страница</th>
             <th class="table-info table-buffers-vertical">Переход со страницы</th>
-            <th class="table-info table-buffers-vertical">Браузер</th>
+            <th class="table-info table-buffers-vertical">Инфа по системе</th>
+            <th class="table-info table-buffers-vertical">Платформа</th>
             <th class="table-info table-buffers-vertical">ОС</th>
             <th class="table-info table-buffers-vertical">Язык браузера</th>
             <th class="table-info table-buffers-vertical">Разрешение экрана</th>
             <th class="table-info table-buffers-vertical">Страна</th>
             <th class="table-info table-buffers-vertical">Регион</th>
-            <th class="table-info table-buffers-vertical">Координаты</th>
-            <th class="table-info table-buffers-vertical">Часовой пояс</th>
+            <th class="table-info table-buffers-vertical">Город</th>
             <th class="table-info table-buffers-vertical">Уникальный посетитель</th>
           </tr>
         </thead>
@@ -28,16 +27,22 @@
                 <%= visitor.time_visited.strftime("%H:%M:%S, %d.%m.%Y") %>
               </td>
               <td>            
+                <%= visitor.timezone %>
+              </td>
+              <td>            
                 <%= visitor.page_name %>
               </td>
               <td>            
                 <%= visitor.referrer %>
               </td>
               <td>            
-                <%= visitor.browser_name %>
+                <%= visitor.common_info %>
               </td>
               <td>            
-                <%= visitor.browser_platform %>
+                <%= visitor.platform %>
+              </td>
+              <td>            
+                <%= visitor.os %>
               </td>
               <td>            
                 <%= visitor.browser_language %>
@@ -49,13 +54,10 @@
                 <%= visitor.country %>
               </td>
               <td>            
-                <%= visitor.region_name %>
+                <%= visitor.region %>
               </td>
               <td>            
-                <%= visitor.lat %>, <%= visitor.lon %>
-              </td>
-              <td>            
-                <%= visitor.timezone %>
+                <%= visitor.city %>
               </td>
               <td>
                 <% if visitor.uniq_visitor %>    

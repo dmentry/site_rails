@@ -83,18 +83,18 @@ ActiveRecord::Schema.define(version: 2023_07_28_111233) do
 
   create_table "visitors", force: :cascade do |t|
     t.datetime "time_visited"
+    t.string "timezone"
     t.string "page_name"
     t.string "referrer"
-    t.string "browser_name"
-    t.string "browser_platform"
+    t.string "common_info"
+    t.string "platform"
+    t.string "os"
     t.string "browser_language"
     t.string "size_screen_w"
     t.string "size_screen_h"
     t.string "country"
-    t.string "region_name"
-    t.string "lat"
-    t.string "lon"
-    t.string "timezone"
+    t.string "region"
+    t.string "city"
     t.string "u_id"
     t.boolean "uniq_visitor", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
