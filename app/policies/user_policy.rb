@@ -11,6 +11,10 @@ class UserPolicy < ApplicationPolicy
     show?
   end
 
+  def show_visits?
+    show?
+  end
+
   class Scope < Scope
     def resolve
       scope.all

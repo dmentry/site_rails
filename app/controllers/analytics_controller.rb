@@ -18,14 +18,31 @@ class AnalyticsController < ApplicationController
   end
 
   def show_visitor_info
-    @pagy, @visitor = pagy(Visitor.where(u_id: params[:u_id]).order(created_at: :desc), items: Visitor::VISITORS_ON_PAGE)
+    source = Visitor.where(u_id: params[:u_id]).order(created_at: :desc)
+
+    @pagy, @visitor = pagy(source, items: Visitor::VISITORS_ON_PAGE)
+
+    @visitor_all_visits = source.count
 
     authorize @visitor
   end
 
   def show_visits
-    @visits = Analytic.all
+    all_visits_uniq = 0
+    all_visits_repeat = 0
 
-    authorize @visits
+    Analytic.all.each do |analytic|
+      all_visits_uniq += analytic.uniq_visitor
+      all_visits_repeat += analytic.repeat_visitor
+    end
+
+    @all_visits_uniq = all_visits_uniq
+    @all_visits_repeat = all_visits_repeat
+
+    if current_user
+      authorize current_user
+    else
+      user_not_authorized
+    end
   end
 end

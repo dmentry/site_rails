@@ -116,8 +116,6 @@
 
     <%= yield %>
 
-
-
     <footer>
       <!-- <div class="dackbottomicons dackbottomicons-range"> -->
           <% if controller_name == 'photos' %>
@@ -189,7 +187,7 @@
 
       visitor = { 'uniq_visitor': true };
 
-      visitor['visitor_data'] = shapeData(InfObj);
+      visitor['visitor_data'] = shapeData(InfObj, true);
 
       visitor['visitor_data']['u_id'] = uid;
     }
@@ -198,33 +196,38 @@
 
       visitor = { 'repeat_visitor': true };
 
-      visitor['visitor_data'] = shapeData(false);
-
-      visitor['visitor_data']['u_id'] = existed_uid
+      visitor['visitor_data'] = shapeData(false, false);
+      visitor['visitor_data']['u_id'] = existed_uid;
     }
 
-    $.ajax({ url: '/get_data', data: { visitor: visitor }});
+    // Не отправлять информацию по гуглоботу
+    if (!(visitor['visitor_data']['common_info'] && visitor['visitor_data']['common_info'].match(/Googlebot/))) {
+      $.ajax({ url: '/get_data', data: { visitor: visitor }});
+    }
   };
 
-  function shapeData(InfObj) {
+  function shapeData(InfObj, full_info) {
     let visitor_data = {
       time_visited: new Date(),
-      timezone:(new Date()).getTimezoneOffset()/60,
-      page_name: window.location.href,
+      page_name: window.location.pathname,
       referrer: document.referrer,
-      common_info: navigator.userAgent,
-      platform: navigator.platform,
-      os: navigator.oscpu,
-      browser_language: navigator.language,
-      size_screen_w: screen.width,
-      size_screen_h: screen.height,
+    };
+
+    if (full_info) {
+      visitor_data['timezone']         = (new Date()).getTimezoneOffset()/60;
+      visitor_data['common_info']      = navigator.userAgent;
+      visitor_data['platform']         = navigator.platform;
+      visitor_data['os']               = navigator.oscpu;
+      visitor_data['browser_language'] = navigator.language;
+      visitor_data['size_screen_w']    = screen.width;
+      visitor_data['size_screen_h']    = screen.height;
     };
 
     if (InfObj) {
       visitor_data['country'] = InfObj.country;
       visitor_data['region']  = InfObj.region;
       visitor_data['city']    = InfObj.city;
-    }
+    };
 
     return visitor_data;
   };

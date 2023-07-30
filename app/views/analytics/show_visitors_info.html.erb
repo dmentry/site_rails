@@ -1,5 +1,6 @@
-<h1 class="center text_size header_top_buffer">Визиты уникальных пользователей</h1>
-<div class="container bg-light cont_paddings">
+<h1 class="center text_size header_top_buffer">Уникальные посетители</h1>
+<div class="container bg-light cont_paddings col-sm-12 col-md-12">
+
   <table class="table table-sm table-buffers-vertical table-font-my">
     <thead>
       <tr class="table-buffers-vertical">
@@ -26,10 +27,10 @@
             <%= visitor.timezone %>
           </td>
           <td>            
-            <%= visitor.page_name.truncate(30) %>
+            <%= visitor.page_name.truncate(40) %>
           </td>
           <td>            
-            <%= visitor.referrer.truncate(30) %>
+            <%= visitor.referrer.truncate(40) %>
           </td>
           <td>            
             <%= visitor.common_info %>

@@ -35,17 +35,17 @@ class ApplicationController < ActionController::Base
   # Обработать ошибку авторизации
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  private
-
-  def switch_locale(&action)
-    locale = params[:locale] || I18n.default_locale
-    I18n.locale = locale
-  end
-
   def user_not_authorized
     # Перенаправляем юзера откуда пришел (или в корень сайта) с сообщением об ошибке
     flash[:alert] = 'Только для админа!'
 
     redirect_to(request.referrer || root_path)
+  end
+
+  private
+
+  def switch_locale(&action)
+    locale = params[:locale] || I18n.default_locale
+    I18n.locale = locale
   end
 end
