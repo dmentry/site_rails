@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-  ARTICLES_ON_PAGE = 2
+  ARTICLES_ON_PAGE = 5
 
   translates :article_title, :article_body
 

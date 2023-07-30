@@ -60,5 +60,5 @@
       <% end %>
     </tbody>
   </table>
-  <div class="pagy-bottom"><%== pagy_bootstrap_nav(@pagy) %></div>
+  <div class="pagy-bottom"><%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %></div>
 </div>

@@ -79,7 +79,7 @@ class PhotosController < ApplicationController
 
   #страницы
   def all_page
-    @photos = Photo.order(created_at: :desc)
+    @pagy, @photos = pagy(Photo.order(created_at: :desc), items: Photo::PHOTOS_ON_PAGE)
 
     @header = t('controllers.photos.all_page.header')
 
