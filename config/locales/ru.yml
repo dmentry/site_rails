@@ -341,9 +341,9 @@ ru:
       blog:
         blog: Блог
       show:
-        show: Посмотреть
-        edit: Редактировать
-        destroy: Удалить
+        show: Смотр.
+        edit: Редакт.
+        destroy: Уд.
         back: Обратно
       edit:
         header: Редактировать фотографию
