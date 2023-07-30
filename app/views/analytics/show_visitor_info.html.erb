@@ -1,4 +1,4 @@
-<h1 class="center text_size header_top_buffer">Визиты пользователя</h1>
+<h1 class="center text_size header_top_buffer">Визиты пользователя: <%= @visitor.first.id %></h1>
 <div class="container bg-light cont_paddings">
       <table class="table table-sm table-buffers-vertical table-font-my">
         <thead>
@@ -22,10 +22,10 @@
                 <%= visitor.timezone %>
               </td>
               <td>            
-                <%= visitor.page_name %>
+                <%= visitor.page_name.truncate(30) %>
               </td>
               <td>            
-                <%= visitor.referrer %>
+                <%= visitor.referrer.truncate(30) %>
               </td>
               <td>            
                 <%= visitor.common_info %>

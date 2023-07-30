@@ -26,10 +26,10 @@
             <%= visitor.timezone %>
           </td>
           <td>            
-            <%= visitor.page_name %>
+            <%= visitor.page_name.truncate(30) %>
           </td>
           <td>            
-            <%= visitor.referrer %>
+            <%= visitor.referrer.truncate(30) %>
           </td>
           <td>            
             <%= visitor.common_info %>
