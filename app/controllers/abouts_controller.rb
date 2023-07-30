@@ -61,6 +61,6 @@ class AboutsController < ApplicationController
   end
 
   def about_params
-    params.require(:about).permit(:main_text)
+    params.require(:about).permit(:main_text_ru, :main_text_en)
   end
 end
