@@ -214,8 +214,13 @@
     };
 
     if (full_info) {
-      visitor_data['timezone']         = (new Date()).getTimezoneOffset()/60;
-      visitor_data['common_info']      = navigator.userAgent;
+      let common_info = navigator.userAgent;
+      if (common_info.match(/^Mozilla\/5\.0\s/g)) {
+        common_info.replace(/^Mozilla\/5\.0\s/g, '')
+      };
+
+      visitor_data['timezone']         = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      visitor_data['common_info']      = common_info;
       visitor_data['platform']         = navigator.platform;
       visitor_data['os']               = navigator.oscpu;
       visitor_data['browser_language'] = navigator.language;
