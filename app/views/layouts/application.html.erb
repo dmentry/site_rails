@@ -200,8 +200,8 @@
       visitor['visitor_data']['u_id'] = existed_uid;
     }
 
-    // Не отправлять информацию по гуглоботу
-    if (!(visitor['visitor_data']['common_info'] && visitor['visitor_data']['common_info'].match(/Googlebot/))) {
+    // Не отправлять информацию по гуглоботу и яндексботу
+    if (!(visitor['visitor_data']['common_info'] && (visitor['visitor_data']['common_info'].match(/Googlebot/) || visitor['visitor_data']['common_info'].match(/YandexBot/)))) {
       $.ajax({ url: '/get_data', data: { visitor: visitor }});
     }
   };
@@ -216,7 +216,7 @@
     if (full_info) {
       let common_info = navigator.userAgent;
       if (common_info.match(/^Mozilla\/5\.0\s/g)) {
-        common_info.replace(/^Mozilla\/5\.0\s/g, '')
+        common_info = common_info.replace(/^Mozilla\/5\.0\s/g, '')
       };
 
       visitor_data['timezone']         = Intl.DateTimeFormat().resolvedOptions().timeZone;
