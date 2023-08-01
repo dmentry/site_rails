@@ -42,7 +42,4 @@ translations.txt
 /config/credentials/development.key
 
 passwords.txt
-/.Gemfile.lock
 /db/schema.rb
-/.package.json
-/.yarn.lock
