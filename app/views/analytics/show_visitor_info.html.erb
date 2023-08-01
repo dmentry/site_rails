@@ -1,4 +1,4 @@
-<h1 class="center text_size header_top_buffer">u_id: <%= @visitor.first.u_id %>. Всего визитов: <%= @visitor_all_visits %></h1>
+<h1 class="center text_size header_top_buffer">Посетитель с u_id: <%= @visitor.first.u_id %>. Визитов: <%= @visitor_all_visits %></h1>
 <div class="container bg-light cont_paddings col-sm-12 col-md-12">
 
   <table class="table table-sm table-buffers-vertical table-font-my">
@@ -13,7 +13,7 @@
       <% @visitor.each do |visitor| %>
         <tr>
           <td>
-            <%= visitor.time_visited.strftime("%d.%m.%Y, %H:%M:%S") %>
+            <%= visitor.time_visited.strftime("%d.%m.%Y, %H:%M") %>
           </td>
           <td>            
             <%= visitor.page_name.truncate(50) %>

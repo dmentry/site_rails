@@ -1,0 +1,2 @@
+class LastSeenVisitor < ApplicationRecord
+end

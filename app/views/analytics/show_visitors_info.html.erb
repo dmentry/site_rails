@@ -1,5 +1,5 @@
 <h1 class="center text_size header_top_buffer">Уникальные посетители</h1>
-<div class="container bg-light cont_paddings col-sm-12 col-md-12">
+<div class="container cont_paddings col-sm-12 col-md-12">
 
   <table class="table table-sm table-buffers-vertical table-font-my">
     <thead>
@@ -19,44 +19,44 @@
     </thead>
     <tbody>
       <% @visitors.each do |visitor| %>
-        <tr>
-          <td>
-            <%= visitor.time_visited.strftime("%d.%m.%Y, %H:%M:%S") %>
-          </td>
-          <td>            
-            <%= visitor.timezone %>
-          </td>
-          <td>            
-            <%= visitor.page_name.truncate(50) %>
-          </td>
-          <td>            
-            <%= visitor.referrer.truncate(50) %>
-          </td>
-          <td>            
-            <%= visitor.common_info %>
-          </td>
-          <td>            
-            <%= visitor.browser_language %>
-          </td>
-          <td>            
-            <%= visitor.size_screen_w %>x<%= visitor.size_screen_h %>
-          </td>
-          <td>            
-            <%= visitor.country %>
-          </td>
-          <td>            
-            <%= visitor.region %>
-          </td>
-          <td>            
-            <%= visitor.city %>
-          </td>
-          <td>
-            <% if visitor.uniq_visitor %>    
-              <%= link_to 'Да', show_visitor_info_path(u_id: visitor.u_id) %>
-            <% else %>
-              <%= link_to 'Нет', show_visitor_info_path(u_id: visitor.u_id) %>
-            <% end %>
-          </td>
+          <tr class='<%= not_seen_visitors_class(last_seen_visitors_ids: @last_seen_visitors_ids, visitor: visitor) %>'>
+        <td>
+          <%= visitor.time_visited.strftime("%d.%m.%Y, %H:%M") %>
+        </td>
+        <td>            
+          <%= visitor.timezone %>
+        </td>
+        <td>            
+          <%= visitor.page_name.truncate(50) %>
+        </td>
+        <td>            
+          <%= visitor.referrer.truncate(50) %>
+        </td>
+        <td>            
+          <%= visitor.common_info %>
+        </td>
+        <td>            
+          <%= visitor.browser_language %>
+        </td>
+        <td>            
+          <%= visitor.size_screen_w %>x<%= visitor.size_screen_h %>
+        </td>
+        <td>            
+          <%= visitor.country %>
+        </td>
+        <td>            
+          <%= visitor.region %>
+        </td>
+        <td>            
+          <%= visitor.city %>
+        </td>
+        <td>
+          <% if visitor.uniq_visitor %>    
+            <%= link_to 'Да', show_visitor_info_path(u_id: visitor.u_id) %>
+          <% else %>
+            <%= link_to 'Нет', show_visitor_info_path(u_id: visitor.u_id) %>
+          <% end %>
+        </td>
         </tr>
       <% end %>
     </tbody>

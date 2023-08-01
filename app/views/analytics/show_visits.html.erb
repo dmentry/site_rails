@@ -1,5 +1,19 @@
-<h1 class="center text_size header_top_buffer">Общая статистика</h1>
+<h1 class="center text_size header_top_buffer">Посещения</h1>
 <div class="container bg-light cont_paddings col-sm-12 col-md-12">
-  <div>Всего уникальных посетителей: <%= @all_visits_uniq %>.</div>
-  <div>Всего повторных визитов: <%= @all_visits_repeat %>.</div>
+  <div class="center mt-0 bg-light">
+    <div>Всего уникальных посетителей: <%= @all_visits_uniq %>.</div>
+    <div>Всего повторных визитов: <%= @all_visits_repeat %>.</div><br>
+  
+    <b>Посещение по месяцам</b>
+    <%= column_chart(@visits_monthly, { theme: 'palette4', stacked: true, ytitle: "Кол-во посетителей" }) %>
+
+    <b>Посещение по странам</b>
+    <%= pie_chart(@countries, legend: "left") %>
+
+    <b>Посещение по регионам выбранной страны [РФ]</b>
+    <%= pie_chart(@regions, legend: "left") %>
+
+    <b>Посещение по городам выбранной страны [РФ]</b>
+    <%= pie_chart(@cities, legend: "left") %>
+  </div>
 </div>

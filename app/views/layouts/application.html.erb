@@ -69,7 +69,7 @@
                   <div class="dropdown-menu my_control my_font_size mobile_bg_light" aria-labelledby="dropdownMenuButton">
                     <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                     <%= link_to 'Посетители', show_visitors_info_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%= link_to 'Визиты', show_visits_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <%= link_to 'Посещения', show_visits_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                     <%= link_to t('app.navbar.menu.profile'), current_user, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                     <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                   </div>
@@ -201,7 +201,7 @@
     }
 
     // Не отправлять информацию по гуглоботу и яндексботу
-    if (!(visitor['visitor_data']['common_info'] && (visitor['visitor_data']['common_info'].match(/Googlebot/) || visitor['visitor_data']['common_info'].match(/YandexBot/)))) {
+    if (!(visitor['visitor_data']['common_info'] && visitor['visitor_data']['common_info'].match(/Googlebot|YandexBot/))) {
       $.ajax({ url: '/get_data', data: { visitor: visitor }});
     }
   };
@@ -219,7 +219,12 @@
         common_info = common_info.replace(/^Mozilla\/5\.0\s/g, '')
       };
 
-      visitor_data['timezone']         = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (timezone.match(/Europe\//g)) {
+        timezone = timezone.replace(/Europe\//g, '')
+      };
+
+      visitor_data['timezone']         = timezone;
       visitor_data['common_info']      = common_info;
       visitor_data['platform']         = navigator.platform;
       visitor_data['os']               = navigator.oscpu;
@@ -241,7 +246,7 @@
     $("#menu_pic").click(function() {
       if ($("#collapseMenu").height() > 80) {
         $("#collapseMenu").slideToggle(500);
-        $('.menu_img').hide(500);
+        $("#menu_pic").hide(500);
 
         if ($(".menu_close_img").is(":visible")) {
           $(".menu_close_img").hide(500)
@@ -256,7 +261,7 @@
       if ($("#collapseMenu").height() > 80) {
         $("#collapseMenu").slideUp(500);
         $(".menu_close_img").slideUp(500);
-        $('.menu_img').show(500);
+        $("#menu_pic").show(500);
       }
     });
 
@@ -264,7 +269,7 @@
       if ($("#collapseMenu").height() > 80) {
         $("#collapseMenu").slideUp(500);
         $(".menu_close_img").slideUp(500);
-        $('.menu_img').show(500);
+        $("#menu_pic").show(500);
       }
     });
 

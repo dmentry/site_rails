@@ -17,6 +17,7 @@ gem 'recaptcha'
 # gem 'devise-i18n'
 gem 'traco'
 gem 'pagy', '~> 6.0'
+gem 'apexcharts'
 
 group :development, :test do
   gem 'pry', '~> 0.13.1'
