@@ -19,7 +19,7 @@
             <%= visitor.page_name.truncate(50) %>
           </td>
           <td>            
-            <%= visitor.referrer.truncate(50) %>
+            <%= visitor&.referrer&.truncate(50) %>
           </td>
         </tr>
       <% end %>

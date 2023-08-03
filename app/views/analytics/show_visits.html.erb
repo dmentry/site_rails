@@ -1,19 +1,42 @@
 <h1 class="center text_size header_top_buffer">Посещения</h1>
-<div class="container bg-light cont_paddings col-sm-12 col-md-12">
+<div class="container-lg bg-light cont_paddings">
   <div class="center mt-0 bg-light">
     <div>Всего уникальных посетителей: <%= @all_visits_uniq %>.</div>
     <div>Всего повторных визитов: <%= @all_visits_repeat %>.</div><br>
-  
-    <b>Посещение по месяцам</b>
-    <%= column_chart(@visits_monthly, { theme: 'palette4', stacked: true, ytitle: "Кол-во посетителей" }) %>
 
-    <b>Посещение по странам</b>
-    <%= pie_chart(@countries, legend: "left") %>
+      <div id="graphs">
+        <b>Посещение по месяцам</b>
+        <%= column_chart(@visits_monthly, { theme: 'palette4', stacked: true }) %>
 
-    <b>Посещение по регионам выбранной страны [РФ]</b>
-    <%= pie_chart(@regions, legend: "left") %>
+        <b>Посещение по странам</b>
+        <%= pie_chart(@countries, legend: "left",  animations: { enabled: false }) %>
 
-    <b>Посещение по городам выбранной страны [РФ]</b>
-    <%= pie_chart(@cities, legend: "left") %>
+        <div class="center my-3">
+          <%= select("name", "n_value", @countries.collect { |c| [ c[:name], c[:name] ] }, { prompt: '[Выберите страну]'}) %>
+        </div>
+
+        <b>Посещение по регионам выбранной страны</b>
+        <%= bar_chart(@regions, legend: "left",  animations: { enabled: false }) %>
+
+        <b>Посещение по городам выбранной страны</b>
+        <%= bar_chart(@cities, legend: "left",  animations: { enabled: false }) %>
+      </div>
+
   </div>
 </div>
+
+<script>
+  $(function(){
+    if (!$('.center #name_n_value').val()) {
+      $('.center #name_n_value').val('<%= @chosen_country %>')
+    }
+
+  //   $("#name_n_value").change(function() { 
+  //     $.ajax({ url: "/show_visits", data: { 'chosen_country' : $('#name_n_value').val() }});
+  //   });
+
+  $("#graphs").on("change", "#name_n_value", function(){
+    $.ajax({ url: "/show_visits", data: { 'chosen_country' : $('#name_n_value').val() }})
+  });
+});
+</script>

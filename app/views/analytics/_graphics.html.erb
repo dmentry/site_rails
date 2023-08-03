@@ -1,0 +1,15 @@
+<b>Посещение по месяцам</b>
+<%= column_chart(@visits_monthly, { theme: 'palette4', stacked: true }) %>
+
+<b>Посещение по странам</b>
+<%= pie_chart(@countries, legend: "left",  animations: { enabled: false }) %>
+
+<div class="center my-3">
+  <%= select("name", "n_value", @countries.collect { |c| [ c[:name], c[:name] ] }, { prompt: '[Выберите страну]'}) %>
+</div>
+
+<b>Посещение по регионам выбранной страны</b>
+<%= bar_chart(@regions, legend: "left",  animations: { enabled: false }) %>
+
+<b>Посещение по городам выбранной страны</b>
+<%= bar_chart(@cities, legend: "left",  animations: { enabled: false }) %>

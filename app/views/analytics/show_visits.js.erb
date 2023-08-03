@@ -1,0 +1,5 @@
+$("#graphs").html("<%= escape_javascript(render :partial => 'graphics') %>");
+
+if (!$('.center #name_n_value').val()) {
+  $('.center #name_n_value').val('<%= @chosen_country %>')
+}

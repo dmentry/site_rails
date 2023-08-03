@@ -39,7 +39,7 @@ class AnalyticsController < ApplicationController
     uniq_visits_monthly = {}
     repeat_visits_monthly = {}
 
-    Analytic.all.each do |analytic|
+    Analytic.all.order(:id).each do |analytic|
       all_visits_uniq += analytic.uniq_visitor
       all_visits_repeat += analytic.repeat_visitor
 
@@ -55,7 +55,6 @@ class AnalyticsController < ApplicationController
     repeat_visits_monthly = { data: repeat_visits_monthly, name: 'Повторные посещения' }
 
     @visits_monthly = [uniq_visits_monthly, repeat_visits_monthly]
-#############################################################################################
 
 ############ Данные для посещений по странам ################################################
     query_countries = <<-SQL
@@ -82,59 +81,63 @@ class AnalyticsController < ApplicationController
     @countries = sourse_countries
 
 ############# Данные для посещений по регионам выбранной страны #############################
-    chosen_country = 'Russia'
+    @chosen_country = if params[:chosen_country].present?
+                        params[:chosen_country]
+                      else
+                        if Visitor.where('uniq_visitor =? AND country =?', true, 'Russia')
+                          'Russia'
+                        else
+                          Visitor.where(uniq_visitor: true).pluck(:country).last
+                        end
+                      end
 
     query_regions = <<-SQL
       SELECT visitors.region, COUNT(visitors.region) AS quantity
       FROM visitors 
       WHERE visitors.uniq_visitor = TRUE 
-        AND visitors.country = '#{ chosen_country }'
+        AND visitors.country = '#{ @chosen_country }'
       GROUP BY visitors.region
       ORDER BY COUNT(visitors.region) DESC;
     SQL
 
     data_regions = ActiveRecord::Base.connection.execute(query_regions).to_a.flatten
 
-    sourse_regions = []
+    if data_regions.present?
+      sourse_regions = {}
 
-    data_regions.each do |datum|
-      region = {}
-      region[:name] = datum['region']
-      region[:data] = datum['quantity']
+      data_regions.each { |datum| sourse_regions[datum['region']] = datum['quantity'] }
 
-      sourse_regions << region
+      @regions = { data: sourse_regions }
     end
 
-    @regions = sourse_regions
-
 ############# Данные для посещений по городам выбранной страны  #############################
-
     query_cities = <<-SQL
       SELECT visitors.city, COUNT(visitors.city) AS quantity
       FROM visitors 
       WHERE visitors.uniq_visitor = TRUE 
-        AND visitors.country = '#{ chosen_country }'
+        AND visitors.country = '#{ @chosen_country }'
       GROUP BY visitors.city
       ORDER BY COUNT(visitors.city) DESC;
     SQL
 
     data_cities = ActiveRecord::Base.connection.execute(query_cities).to_a.flatten
 
-    sourse_cities = []
+    if data_cities.present?
+      sourse_cities = {}
 
-    data_cities.each do |datum|
-      city = {}
-      city[:name] = datum['city']
-      city[:data] = datum['quantity']
+      data_cities.each { |datum| sourse_cities[datum['city']] = datum['quantity'] }
 
-      sourse_cities << city
+      @cities = { data: sourse_cities }
     end
-
-    @cities = sourse_cities
 #############################################################################################
 
     if current_user
       authorize current_user
+
+      respond_to do |format|
+        format.js
+        format.html { render 'show_visits' }
+      end
     else
       user_not_authorized
     end
