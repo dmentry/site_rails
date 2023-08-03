@@ -65,11 +65,13 @@
 
               <% if current_user %>
                 <li class="dropdown">
-                  <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown">Админка</button>
+                  <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown"><%= t('app.navbar.menu.admin_options') %></button>
                   <div class="dropdown-menu my_control my_font_size mobile_bg_light" aria-labelledby="dropdownMenuButton">
+
+                    <div class="dropdown-item my_dropdown_item remove_padding bg-light admin_options"><%= t('app.navbar.menu.admin_options') %></div>
                     <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%= link_to 'Посетители', show_visitors_info_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%= link_to 'Посещения', show_visits_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <%= link_to t('app.navbar.menu.visitors'), show_visitors_info_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <%= link_to t('app.navbar.menu.visits'), show_visits_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                     <%= link_to t('app.navbar.menu.profile'), current_user, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                     <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                   </div>

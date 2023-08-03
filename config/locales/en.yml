@@ -234,7 +234,10 @@ en:
         map: Map
         about: About me
         feedback: Feedback
+        admin_options: Admin options
         load_photo: Load photo
+        visitors: Visitors
+        visits: Visits
         profile: Profile
         exit: Logout
         admin: For admin

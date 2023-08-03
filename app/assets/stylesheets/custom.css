@@ -1,3 +1,7 @@
+.admin_options {
+    display: none;
+  }
+
 .center_image {
   text-align: center;
 }
@@ -374,6 +378,12 @@ logo {
   .photos_category_item {
     display: block;
     margin-top: 22px;
+    margin-left: 0px;
+  }
+
+  .admin_options {
+    display: block;
+    /* margin-top: 22px; */
     margin-left: 0px;
   }
 

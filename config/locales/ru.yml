@@ -288,7 +288,10 @@ ru:
         about: Обо мне
         map: Карта
         feedback: Обратная связь
+        admin_options: Админка
         load_photo: Загрузить фотку
+        visitors: Посетители
+        visits: Посещения
         profile: Профиль
         exit: Выйти
         admin: Для админа
