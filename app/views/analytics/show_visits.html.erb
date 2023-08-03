@@ -27,8 +27,8 @@
 
 <script>
   $(function(){
-    if (!$('.center #name_n_value').val()) {
-      $('.center #name_n_value').val('<%= @chosen_country %>')
+    if (!$('#name_n_value').val()) {
+      $('#name_n_value').val('<%= @chosen_country %>')
     }
 
   //   $("#name_n_value").change(function() { 

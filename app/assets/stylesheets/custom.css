@@ -219,6 +219,10 @@ logo {
   display: none;
 }
 
+.photos_category_item {
+  display: none;
+}
+
 .prohibited {
   width: 84px;
   padding-left: 0;
@@ -368,6 +372,7 @@ logo {
   }
 
   .photos_category_item {
+    display: block;
     margin-top: 22px;
     margin-left: 0px;
   }

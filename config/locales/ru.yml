@@ -273,6 +273,7 @@ ru:
       logo_name_caption: На главную
       menu:
         drop_down:
+          categories: Категории фотографий
           photos: Фотографии
           all: Все
           recent: Недавние

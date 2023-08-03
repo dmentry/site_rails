@@ -219,6 +219,7 @@ en:
       logo_name_caption: Main
       menu:
         drop_down:
+          categories: Photos' categories
           photos: Photos
           all: All
           recent: Recent

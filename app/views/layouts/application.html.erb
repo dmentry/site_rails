@@ -43,7 +43,7 @@
                 <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown"><%= t('app.navbar.menu.drop_down.photos') %></button>
                 <div class="dropdown-menu my_control my_font_size mobile_bg_light" aria-labelledby="dropdownMenuButton">
 
-                  <div class="dropdown-item my_dropdown_item remove_padding bg-light photos_category_item">Категории фотографий</div>
+                  <div class="dropdown-item my_dropdown_item remove_padding bg-light photos_category_item"><%= t('app.navbar.menu.drop_down.categories') %></div>
                   <% if current_user %>
                     <%=link_to t('app.navbar.menu.drop_down.all'), all_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                     <%=link_to t('app.navbar.menu.drop_down.photohosting'), photohosting_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
