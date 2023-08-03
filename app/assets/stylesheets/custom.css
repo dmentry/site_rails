@@ -1,7 +1,3 @@
-.admin_options {
-    display: none;
-  }
-
 .center_image {
   text-align: center;
 }
@@ -227,6 +223,10 @@ logo {
   display: none;
 }
 
+.admin_options {
+  display: none;
+}
+
 .prohibited {
   width: 84px;
   padding-left: 0;
@@ -383,7 +383,6 @@ logo {
 
   .admin_options {
     display: block;
-    /* margin-top: 22px; */
     margin-left: 0px;
   }
 
