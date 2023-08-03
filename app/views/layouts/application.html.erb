@@ -200,8 +200,8 @@
       visitor['visitor_data']['u_id'] = existed_uid;
     }
 
-    // Не отправлять информацию по гуглоботу и яндексботу
-    if (!(visitor['visitor_data']['common_info'] && visitor['visitor_data']['common_info'].match(/Googlebot|YandexBot/))) {
+    // Не отправлять информацию по ботам
+    if (!(visitor['visitor_data']['common_info'] && visitor['visitor_data']['common_info'].match(/bot|Bot/))) {
       $.ajax({ url: '/get_data', data: { visitor: visitor }});
     }
   };
