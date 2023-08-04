@@ -170,7 +170,7 @@ class PhotosController < ApplicationController
 
                 tmp
               else
-                Photo.where.not(lat: [nil, false])
+                Photo.where('length(lat) > 0').where.not(lat: [nil, false])
               end
 
     photos.each do |photo|
