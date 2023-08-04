@@ -144,6 +144,10 @@ logo {
   font-size: small;
 }
 
+.not_show_on_mobile {
+  display: table-cell;
+}
+
 .pagy-bottom {
   position: relative;
   bottom: 20px;
@@ -334,6 +338,10 @@ logo {
 
   .mobile_bg_light {
     background-color:#f8f9fa !important;
+  }
+
+  .not_show_on_mobile {
+    display: none;
   }
 
   .buffer-bottom {

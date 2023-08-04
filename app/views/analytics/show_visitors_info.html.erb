@@ -6,57 +6,49 @@
       <tr class="table-buffers-vertical">
         <th class="table-info table-buffers-vertical">Визит</th>
         <th class="table-info table-buffers-vertical">Час. пояс</th>
-        <th class="table-info table-buffers-vertical">Страница</th>
-        <th class="table-info table-buffers-vertical">Переход со страницы</th>
+        <th class="table-info table-buffers-vertical not_show_on_mobile">Страница</th>
+        <th class="table-info table-buffers-vertical not_show_on_mobile">Переход</th>
         <th class="table-info table-buffers-vertical">Инфа по системе</th>
-        <th class="table-info table-buffers-vertical">Язык брауз.</th>
+        <th class="table-info table-buffers-vertical not_show_on_mobile">Язык</th>
         <th class="table-info table-buffers-vertical">Экран</th>
         <th class="table-info table-buffers-vertical">Страна</th>
         <th class="table-info table-buffers-vertical">Регион</th>
         <th class="table-info table-buffers-vertical">Город</th>
-        <th class="table-info table-buffers-vertical">Уник?</th>
       </tr>
     </thead>
     <tbody>
       <% @visitors.each do |visitor| %>
-          <tr class='<%= not_seen_visitors_class(last_seen_visitors_ids: @last_seen_visitors_ids, visitor: visitor) %>'>
-        <td>
-          <%= visitor.time_visited.strftime("%d.%m.%Y, %H:%M") %>
-        </td>
-        <td>            
-          <%= visitor.timezone %>
-        </td>
-        <td>            
-          <%= visitor.page_name.truncate(50) %>
-        </td>
-        <td>            
-          <%= visitor&.referrer&.truncate(50) %>
-        </td>
-        <td>            
-          <%= visitor.common_info %>
-        </td>
-        <td>            
-          <%= visitor.browser_language %>
-        </td>
-        <td>            
-          <%= visitor.size_screen_w %>x<%= visitor.size_screen_h %>
-        </td>
-        <td>            
-          <%= visitor.country %>
-        </td>
-        <td>            
-          <%= visitor.region %>
-        </td>
-        <td>            
-          <%= visitor.city %>
-        </td>
-        <td>
-          <% if visitor.uniq_visitor %>    
-            <%= link_to 'Да', show_visitor_info_path(u_id: visitor.u_id) %>
-          <% else %>
-            <%= link_to 'Нет', show_visitor_info_path(u_id: visitor.u_id) %>
-          <% end %>
-        </td>
+        <tr class='<%= not_seen_visitors_class(last_seen_visitors_ids: @last_seen_visitors_ids, visitor: visitor) %>'>
+          <td>
+            <%= link_to(visitor.time_visited.strftime("%d.%m.%Y, %H:%M"), show_visitor_info_path(u_id: visitor.u_id)) %>
+          </td>
+          <td>            
+            <%= visitor.timezone %>
+          </td>
+          <td class="not_show_on_mobile">            
+            <%= visitor.page_name.truncate(50) %>
+          </td>
+          <td class="not_show_on_mobile">            
+            <%= visitor&.referrer&.truncate(50) %>
+          </td>
+          <td>            
+            <%= visitor.common_info %>
+          </td>
+          <td class="not_show_on_mobile">            
+            <%= visitor.browser_language %>
+          </td>
+          <td>            
+            <%= visitor.size_screen_w %>x<%= visitor.size_screen_h %>
+          </td>
+          <td>            
+            <%= visitor.country %>
+          </td>
+          <td>            
+            <%= visitor.region %>
+          </td>
+          <td>            
+            <%= visitor.city %>
+          </td>
         </tr>
       <% end %>
     </tbody>

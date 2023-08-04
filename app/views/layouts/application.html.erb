@@ -89,9 +89,9 @@
                 <% locale_class_ru = '' %>
               <% end %>
 
-              <li><%= link_to image_pack_tag("rus.jpg", alt: 'rus',  class: "btn flag_position #{locale_class_ru}"), controller: controller_name, action: action_name, locale: "ru", title: 'Переключиться на русский' %></li>
+              <li><%= link_to image_pack_tag("rus.jpg", alt: 'rus',  class: "btn flag_position #{locale_class_ru}"), controller: controller_name, action: action_name, locale: "ru" %></li>
 
-              <li><%= link_to image_pack_tag("eng.jpg", alt: 'eng',  class: "btn flag_position #{locale_class_eng}"), controller: controller_name, action: action_name, locale: "en", title: 'Switch to english' %></li>
+              <li><%= link_to image_pack_tag("eng.jpg", alt: 'eng',  class: "btn flag_position #{locale_class_eng}"), controller: controller_name, action: action_name, locale: "en" %></li>
 
             </ul>
           </div>
@@ -120,18 +120,18 @@
 
     <footer>
       <!-- <div class="dackbottomicons dackbottomicons-range"> -->
-          <% if controller_name == 'photos' %>
-            <div class='buffer-bottom_photos'>
-          <% else %>
-            <div class='buffer-bottom'>
-          <% end %>
+        <% if controller_name == 'photos' %>
+          <div class='buffer-bottom_photos'>
+        <% else %>
+          <div class='buffer-bottom'>
+        <% end %>
 
-          <p>&copy; Dack9  <%= Time.now.year %></p>
-          <%#= link_to image_pack_tag("vk.png", alt: 'vk'), "https://vk.com/dack9", target: "blanc", rel: "noreferrer", title: "VK" %>
-          <%#= link_to image_pack_tag("telegram.png", alt: 'telegram'), "https://t.me/Dack99", target: "blanc", rel: "noreferrer", title: "Telegram" %>
-          <%#= link_to image_pack_tag("instagram.png", alt: 'instagram'), "https://www.instagram.com/dack9/", target: "blanc", rel: "noreferrer", title: "Instagram" %>
-        </div>
-      </div>
+            <p>&copy; Dack9  <%= Time.now.year %></p>
+            <%#= link_to image_pack_tag("vk.png", alt: 'vk'), "https://vk.com/dack9", target: "blanc", rel: "noreferrer", title: "VK" %>
+            <%#= link_to image_pack_tag("telegram.png", alt: 'telegram'), "https://t.me/Dack99", target: "blanc", rel: "noreferrer", title: "Telegram" %>
+            <%#= link_to image_pack_tag("instagram.png", alt: 'instagram'), "https://www.instagram.com/dack9/", target: "blanc", rel: "noreferrer", title: "Instagram" %>
+            <!-- </div> -->
+          </div>
     </footer>
   </body>
 </html>

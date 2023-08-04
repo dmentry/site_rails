@@ -6,13 +6,13 @@
 
       <div id="graphs">
         <b>Посещение по месяцам</b>
-        <%= column_chart(@visits_monthly, { theme: 'palette4', stacked: true }) %>
+        <%= column_chart(@visits_monthly, { theme: 'palette4', stacked: true,  animations: { enabled: false }}) %>
 
         <b>Посещение по странам</b>
         <%= pie_chart(@countries, legend: "left",  animations: { enabled: false }) %>
 
         <div class="center my-3">
-          <%= select("name", "n_value", @countries.collect { |c| [ c[:name], c[:name] ] }, { prompt: '[Выберите страну]'}) %>
+          <%= select('', 'country_select', @countries.collect { |c| [ c[:name], c[:name] ] }, { prompt: '[Выберите страну]'}) %>
         </div>
 
         <b>Посещение по регионам выбранной страны</b>
@@ -27,16 +27,12 @@
 
 <script>
   $(function(){
-    if (!$('#name_n_value').val()) {
-      $('#name_n_value').val('<%= @chosen_country %>')
+    if (!$('#country_select').val()) {
+      $('#country_select').val('<%= @chosen_country %>')
     }
 
-  //   $("#name_n_value").change(function() { 
-  //     $.ajax({ url: "/show_visits", data: { 'chosen_country' : $('#name_n_value').val() }});
-  //   });
-
-  $("#graphs").on("change", "#name_n_value", function(){
-    $.ajax({ url: "/show_visits", data: { 'chosen_country' : $('#name_n_value').val() }})
+  $('#graphs').on('change', '#country_select', function(){
+    $.ajax({ url: '/show_visits', data: { 'chosen_country' : $('#country_select').val() }})
   });
 });
 </script>
