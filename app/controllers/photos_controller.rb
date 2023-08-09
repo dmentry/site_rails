@@ -225,7 +225,7 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.require(:photo).permit(:photo, :description, :type_id, :lat, :long, :photo_id)
+    params.require(:photo).permit(:photo, :description_ru, :description_en, :type_id, :lat, :long, :photo_id)
   end
 
   def feedback_params

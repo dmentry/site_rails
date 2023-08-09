@@ -403,7 +403,8 @@ ru:
       feedback_body: Сообщение
     photo:
       photo: Фотка
-      description: Описание
+      description_ru: Описание (рус)
+      description_en: Описание (англ)
       type_id: Тип
       lat: Широта
       long: Долгота

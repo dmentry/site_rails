@@ -1,4 +1,6 @@
 class Photo < ApplicationRecord
+  translates :description
+
   PHOTOS_ON_PAGE = 12
 
   belongs_to :user

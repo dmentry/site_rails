@@ -21,9 +21,14 @@
     <%= form.file_field :photo %>
   </div>
 
-  <div class="form-group">
-    <%= form.label t('models.photo.description') %>
-    <%= form.text_area :description, class: 'form-control' %>
+  <div class="form-group mt-3">
+    <%= form.label t('models.photo.description_ru') %>
+    <%= form.text_field :description_ru, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mt-3">
+    <%= form.label t('models.photo.description_en') %>
+    <%= form.text_field :description_en, class: 'form-control' %>
   </div>
 
   <div class="form-group">
