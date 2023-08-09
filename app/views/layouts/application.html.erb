@@ -89,10 +89,9 @@
                 <% locale_class_ru = '' %>
               <% end %>
 
-              <li><%= link_to image_pack_tag("rus.jpg", alt: 'rus',  class: "btn flag_position #{locale_class_ru}"), controller: controller_name, action: action_name, locale: "ru" %></li>
+              <li><%= link_to 'Рус', { controller: controller_name, action: action_name, locale: "ru" }, { class: "btn my_font_size flag_position #{ locale_class_ru }" } %></li>
 
-              <li><%= link_to image_pack_tag("eng.jpg", alt: 'eng',  class: "btn flag_position #{locale_class_eng}"), controller: controller_name, action: action_name, locale: "en" %></li>
-
+              <li><%= link_to 'Eng', { controller: controller_name, action: action_name, locale: "en" }, { class: "btn my_font_size flag_position #{ locale_class_eng }" } %></li>
             </ul>
           </div>
         </div>
