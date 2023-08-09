@@ -9,9 +9,7 @@ class PhotosController < ApplicationController
 
   # GET /photos
   def index
-    # @photos = Photo.without_photohosting.order(created_at: :desc).limit(20)
-
-    @pagy, @photos = pagy(Photo.without_photohosting.order(created_at: :desc), items: Photo::PHOTOS_ON_PAGE)
+    @photos = Photo.without_photohosting.order(created_at: :desc).limit(10)
 
     @header = t('controllers.photos.index.header')
 
