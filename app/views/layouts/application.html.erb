@@ -120,13 +120,14 @@
 
     <footer>
       <!-- <div class="dackbottomicons dackbottomicons-range"> -->
-        <% if controller_name == 'photos' %>
-          <div class='buffer-bottom_photos'>
-        <% else %>
+        <%# if controller_name == 'photos' %>
+          <!-- <div class='buffer-bottom_photos'> -->
+        <%# else %>
+          <!-- <div class='buffer-bottom'> -->
+        <%# end %>
           <div class='buffer-bottom'>
-        <% end %>
-
             <p>&copy; Dack9  <%= Time.now.year %></p>
+
             <%#= link_to image_pack_tag("vk.png", alt: 'vk'), "https://vk.com/dack9", target: "blanc", rel: "noreferrer", title: "VK" %>
             <%#= link_to image_pack_tag("telegram.png", alt: 'telegram'), "https://t.me/Dack99", target: "blanc", rel: "noreferrer", title: "Telegram" %>
             <%#= link_to image_pack_tag("instagram.png", alt: 'instagram'), "https://www.instagram.com/dack9/", target: "blanc", rel: "noreferrer", title: "Instagram" %>

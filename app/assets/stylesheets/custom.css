@@ -294,7 +294,7 @@ logo {
   .menu_close_img {
     position: absolute;
     z-index: 1000;
-    top: 2px;
+    top: 5px;
     right: 8px;
     opacity: 0.5; 
   }
@@ -416,7 +416,7 @@ logo {
     /* position: absolute; */
     position: fixed;
     z-index: 1000;
-    top: 2px;
+    top: 5px;
     left: 9px;
     opacity: 0.4;
   }
