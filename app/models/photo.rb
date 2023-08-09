@@ -1,7 +1,7 @@
 class Photo < ApplicationRecord
   translates :description
 
-  PHOTOS_ON_PAGE = 12
+  PHOTOS_ON_PAGE = 10
 
   belongs_to :user
   belongs_to :type
