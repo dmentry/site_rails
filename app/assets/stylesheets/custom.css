@@ -117,6 +117,10 @@ logo {
   background: rgba(0,0,0,0.5);
 }
 
+.language_sw_text {
+  font-weight: bolder;   
+}
+
 .selected {
     font-weight: bold;
     color: #afafaf;
@@ -400,7 +404,7 @@ logo {
 
   .flag_position {
     padding: 0 0 0 0;
-    margin: 0 0 0 0;    
+    margin: 0 0 0 0; 
   }
 
   .text_size {
