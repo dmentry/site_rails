@@ -38,6 +38,7 @@ class AnalyticsController < ApplicationController
     all_visits_repeat = 0
     uniq_visits_monthly = {}
     repeat_visits_monthly = {}
+    overall_visits_monthly = {}
 
     Analytic.all.order(:id).each do |analytic|
       all_visits_uniq += analytic.uniq_visitor
@@ -46,6 +47,7 @@ class AnalyticsController < ApplicationController
       dt = "0#{ analytic.views_period_month }.#{ analytic.views_period_year }"
       uniq_visits_monthly[dt] = analytic.uniq_visitor
       repeat_visits_monthly[dt] = analytic.repeat_visitor
+      overall_visits_monthly[dt] = uniq_visits_monthly[dt] + repeat_visits_monthly[dt]
     end
 
     @all_visits_uniq = all_visits_uniq
@@ -53,8 +55,9 @@ class AnalyticsController < ApplicationController
 
     uniq_visits_monthly = { data: uniq_visits_monthly, name: 'Уникальные посетители' }
     repeat_visits_monthly = { data: repeat_visits_monthly, name: 'Повторные посещения' }
+    overall_visits_monthly = { data: overall_visits_monthly, name: 'Всего посещений' }
 
-    @visits_monthly = [uniq_visits_monthly, repeat_visits_monthly]
+    @visits_monthly = [uniq_visits_monthly, repeat_visits_monthly, overall_visits_monthly]
 
 ############ Данные для посещений по странам ################################################
     query_countries = <<-SQL
