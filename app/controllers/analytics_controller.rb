@@ -148,6 +148,14 @@ class AnalyticsController < ApplicationController
   end
 
   def are_new_visitors
-    return new_uniq_visitors[1] if params[:mega_secret_token] && params[:mega_secret_token] == Date.today
+    out = if params[:mega_secret_token] && params[:mega_secret_token] == (Date.today.day - 1).to_s(8)
+            last_visited_dt = LastSeenVisitor&.last&.last_seen_visitors_dt
+
+            new_uniq_visitors ||= Visitor.where('uniq_visitor=? AND created_at>?', true, last_visited_dt).size
+
+            { answer: new_uniq_visitors } if new_uniq_visitors > 0
+          end
+
+    respond_with out.to_json if out
   end
 end
