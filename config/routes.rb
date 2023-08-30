@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get 'show_visitors_info' => 'analytics#show_visitors_info', as: :show_visitors_info
     get 'show_visitor_info' => 'analytics#show_visitor_info', as: :show_visitor_info
     get 'show_visits' => 'analytics#show_visits', as: :show_visits
+    get 'are_new_visitors' => 'analytics#are_new_visitors', as: :are_new_visitors
 
     root to: 'photos#index'
   end

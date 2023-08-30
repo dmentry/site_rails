@@ -16,7 +16,7 @@ module ApplicationHelper
     if new_uniq_visitors > 0
       ['circle_badge_visible', new_uniq_visitors]
     else
-      ['circle_badge_no', '']
+      ['circle_badge_no', false]
     end
   end
 end

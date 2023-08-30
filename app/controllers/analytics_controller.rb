@@ -146,4 +146,8 @@ class AnalyticsController < ApplicationController
       user_not_authorized
     end
   end
+
+  def are_new_visitors
+    return new_uniq_visitors[1] if params[:mega_secret_token] && params[:mega_secret_token] == Date.today
+  end
 end
