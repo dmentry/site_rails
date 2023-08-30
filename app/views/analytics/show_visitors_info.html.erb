@@ -18,7 +18,7 @@
     </thead>
     <tbody>
       <% @visitors.each do |visitor| %>
-        <tr class='<%= not_seen_visitors_class(last_seen_visitors_ids: @last_seen_visitors_ids, visitor: visitor) %>'>
+        <tr class='<%= not_seen_visitors_class(new_visitors_ids: @new_visitors_ids, visitor: visitor) %>'>
           <td>
             <%= link_to(visitor.time_visited.strftime("%d.%m.%Y, %H:%M"), show_visitor_info_path(u_id: visitor.u_id)) %>
           </td>

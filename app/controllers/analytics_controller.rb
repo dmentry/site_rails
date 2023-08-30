@@ -12,8 +12,9 @@ class AnalyticsController < ApplicationController
   end
 
   def show_visitors_info
-    last_seen_visitors = LastSeenVisitor&.last&.last_seen_visitors_dt
-    @last_seen_visitors_ids = Visitor.where('uniq_visitor=? AND created_at>?', true, last_seen_visitors).ids
+    last_visited_dt = LastSeenVisitor&.last&.last_seen_visitors_dt
+
+    @new_visitors_ids = Visitor.where('uniq_visitor=? AND created_at>?', true, last_visited_dt).ids
 
     @pagy, @visitors = pagy(Visitor.where(uniq_visitor: true).order(created_at: :desc), items: Visitor::VISITORS_ON_PAGE)
 

@@ -27,6 +27,26 @@ logo {
     outline: none;
 }
 
+.circle_badge_visible {
+  width: 19px;
+  height: 19px;
+  line-height: 19px;
+  border-radius: 50%;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  background: red;
+  position: absolute;
+  top: 10px;
+  right: 155px;
+  z-index: 1000;
+  display: block;
+}
+
+.circle_badge_no {
+  display: none;
+}
+
 .cont_height {
 /*   height: 78vh;
   overflow-y: auto; */
@@ -293,6 +313,22 @@ logo {
 @media (max-width: 991px) {
   .drop_down_button_my {
     display: none;
+  }
+
+  .circle_badge_visible {
+    width: 19px;
+    height: 19px;
+    line-height: 19px;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    background: red;
+    position: absolute;
+    top: 440px;
+    left: 86px;
+    z-index: 1000;
+    display: block;
   }
 
   .menu_close_img {
