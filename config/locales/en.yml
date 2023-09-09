@@ -266,6 +266,9 @@ en:
       feedback_page_send:
         success: Message is sent successfully!
         fail: Message is not sent!
+    comments:
+      success_creation: Comment was successfully created!
+      failed_creation: Comment was not created
   views:
     articles:
       index:
@@ -323,6 +326,11 @@ en:
       email: Your email
       comment: Your comment
       submit: Submit
+      reply: Reply
+      in_reply_to: Reply to
+      reply_to_comment:
+        header: Reply to comment
+        back: Back
     user:
       show:
         header: Admin profile

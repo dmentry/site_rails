@@ -251,13 +251,35 @@ logo {
   display: none;
 }
 
-.admin_options {
-  display: none;
+.quatation_general {
+  border-left: 10px solid #778899;
+  margin-bottom: 4px;
+}
+
+.quatation_header {
+  background-color: #E0FFFF;
+  padding-left: 5px;
+}
+
+.quatation_bottom {
+  background-color: white;
+  padding-left: 5px;
 }
 
 .prohibited {
   width: 84px;
   padding-left: 0;
+}
+
+.reply_width {
+  width: 97%;
+}
+
+.reply_align_right {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .warn_ru_size {
@@ -291,6 +313,10 @@ logo {
     height: 85vh;
     width: auto;
   }
+
+  .admin_options {
+    display: none;
+  }
 }
 
 @media (orientation: portrait) {
@@ -307,6 +333,10 @@ logo {
     width: 90px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .admin_options {
+    display: none;
   }
 }
 

@@ -1,15 +1,34 @@
-<div class="container-fluid border my-2 comment_color">
-  <p>
-    <em><%= l comment.created_at, format: :short %></em>
+<!-- Блок выбора класса в зависимости от того, это коммент или ответ на него -->
+<%# if comment.opinion_id.nil? %>
+  <% css_class = 'my-1' %>
+<%# else %>
+  <%# css_class = 'mr-0 my-1 reply_width' %>
+<%# end %>
 
-    <% if current_user %>
-      <%= link_to 'X', article_comment_path(comment.article, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class="reply_align_right">
+  <div class="container-fluid border <%= css_class %> comment_color">
+
+      <em><%= l comment.created_at, format: :short %></em>
+
+      <% if current_user %>
+        | <%= comment.comment_email %> | <%= link_to 'X', article_comment_path(comment.article, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+
+
+    <% if comment.opinion_id == nil %>
+      <div><%= comment.comment_body %></div>
+
+    <% else %>
+      <div class="quatation_general">
+        <div class="quatation_header">
+          <b><%= t('views.comments.in_reply_to') %>:</b> <em><%= comment.opinion.comment_body %></em>
+        </div>
+        <div class="quatation_bottom">
+        <%= comment.comment_body %>
+        </div>
+      </div>
     <% end %>
-  </p>
 
-  <% if current_user %>
-    <p><%= comment.comment_email %></p>
-  <% end %>
-
-  <p><%= comment.comment_body %></p>
+    <%= link_to t('views.comments.reply'), answer_comment_new_path(comment_id: comment.id, article_id: @article.id), class: 'btn btn-secondary btn-sm mb-1' %>
+  </div>
 </div>

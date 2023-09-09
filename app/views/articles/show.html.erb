@@ -2,7 +2,7 @@
 <div class="container bg-light">
   <div class="row mt-3">
     <div class="col-sm-12 col-md-10">
-      <h3 class="mt-0"><%= @article.article_title %></h2><br>
+      <h3 class="mt-0"><%= @article.article_title %></h3><br>
 
       <%= raw(@article.article_body) %><br>
 
@@ -19,7 +19,13 @@
 <div class="container bg-light">
   <div class="row mt-3">
     <div class="col-sm-12 col-md-10">
-      <%= render partial: 'comments/comment', collection: @article.comments.except(@new_comment) %>
+      <%# sorted_comments = sort_comments(
+                       comments: @article.comments.except(@new_comment).where(opinion_id: nil), 
+                       answers: @article.comments.except(@new_comment).where.not(opinion_id: nil)
+                       ) %>
+      <% sorted_comments = @article.comments.except(@new_comment) %>
+
+      <%= render partial: 'comments/comment', collection: sorted_comments %>
 
       <%= render partial: 'comments/form', locals: {comment: @new_comment || @article.comments.build}  %>
     </div>
