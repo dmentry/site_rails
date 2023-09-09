@@ -37,13 +37,14 @@
       <div><%= comment[0].comment_body %></div>
 
     <% else %>
-      <div class="quatation_general">
+      <!-- <div class="quatation_general"> -->
+      <div> <!-- Убрать этот див, если расскоментирован див выше -->
         <div class="quatation_header">
-          <b><%= t('views.comments.in_reply_to') %>:</b> <em><%= comment[0].opinion.comment_body %></em>
+          <!-- <b><%#= t('views.comments.in_reply_to') %>:</b> <em><%#= comment[0].opinion.comment_body %></em> -->
         </div>
-        <div class="quatation_bottom">
+        <!-- <div class="quatation_bottom"> -->
         <%= comment[0].comment_body %>
-        </div>
+        <!-- </div> -->
       </div>
     <% end %>
 
