@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     get 'show_visits' => 'analytics#show_visits', as: :show_visits
     get 'are_new_visitors' => 'analytics#are_new_visitors', as: :are_new_visitors, defaults: { format: :json }
 
+    get 'comments/answer_comment_new/:comment_id' => 'comments#answer_comment_new', as: :answer_comment_new
+    post 'comments/answer_comment_new/:comment_id' => 'comments#create_answer_comment', as: :create_answer_comment
+
     root to: 'photos#index'
   end
 end

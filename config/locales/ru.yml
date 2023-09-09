@@ -320,6 +320,9 @@ ru:
       feedback_page_send:
         success: Сообщение успешно отправлено!
         fail: Сообщение не отправлено!
+    comments:
+      success_creation: Комментарий создан успешно!
+      failed_creation: Комментарий добавить не удалось
   views:
     articles:
       index:
@@ -377,6 +380,11 @@ ru:
       email: Ваш email
       comment: Ваш комментарий
       submit: Отправить
+      reply: Ответить
+      in_reply_to: В ответ на
+      reply_to_comment:
+        header: Ответ на комментарий
+        back: Обратно
     user:
       show:
         header: Профиль админа

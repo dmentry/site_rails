@@ -1,0 +1,21 @@
+<!-- <div class="bottom_line"></div> -->
+<div class="container-fluid border my-2 comment_color ml-5 my-5">
+  <p>
+    <em><%= l reply.created_at, format: :short %></em>
+
+    <% if current_user %>
+      <%= link_to 'X', article_comment_path(reply.article, reply), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </p>
+
+  <% if current_user %>
+    <p><%= reply.comment_email %></p>
+  <% end %>
+
+  <p>В ответ на: <%= reply.opinion.comment_body %></p>
+
+    <p><%= reply.comment_body %></p>
+
+    <%= link_to 'Ответить на коммент', answer_comment_new_path(comment_id: reply.id) %>
+
+</div>
