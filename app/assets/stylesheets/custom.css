@@ -271,8 +271,33 @@ logo {
   padding-left: 0;
 }
 
-.reply_width {
-  width: 97%;
+
+.reply_width_2 {
+  width: 98%;
+}
+.reply_width_3 {
+  width: 96%;
+}
+.reply_width_4 {
+  width: 94%;
+}
+.reply_width_5 {
+  width: 92%;
+}
+.reply_width_6 {
+  width: 90%;
+}
+.reply_width_7 {
+  width: 89%;
+}
+.reply_width_8 {
+  width: 88%;
+}
+.reply_width_9 {
+  width: 87%;
+}
+.reply_width_10 {
+  width: 86%;
 }
 
 .reply_align_right {

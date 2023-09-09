@@ -19,11 +19,7 @@
 <div class="container bg-light">
   <div class="row mt-3">
     <div class="col-sm-12 col-md-10">
-      <%# sorted_comments = sort_comments(
-                       comments: @article.comments.except(@new_comment).where(opinion_id: nil), 
-                       answers: @article.comments.except(@new_comment).where.not(opinion_id: nil)
-                       ) %>
-      <% sorted_comments = @article.comments.except(@new_comment) %>
+      <% sorted_comments = CommentsHelper::CommentSort.new.sort_comments(@article.comments.except(@new_comment).where(opinion_id: nil), 1) %>
 
       <%= render partial: 'comments/comment', collection: sorted_comments %>
 
