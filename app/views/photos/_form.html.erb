@@ -37,6 +37,11 @@
   </div>
 
   <div class="form-group">
+    <%= form.label 'Координаты одной строкой через запятую' %>
+    <%= form.text_field :one_string_coordinates, class: 'form-control' %>
+  </div>
+
+<!--   <div class="form-group">
     <%= form.label t('models.photo.lat') %>
     <%= form.text_field :lat, class: 'form-control' %>
   </div>
@@ -44,7 +49,7 @@
   <div class="form-group">
     <%= form.label t('models.photo.long') %>
     <%= form.text_field :long, class: 'form-control' %>
-  </div>
+  </div> -->
 
   <div class="actions">
     <%= form.submit t('views.photos.form.save'), class: 'btn btn-secondary' %>
