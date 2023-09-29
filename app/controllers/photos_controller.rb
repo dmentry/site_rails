@@ -29,6 +29,8 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
+    @photo.one_string_coordinates = "#{ @photo.lat }, #{ @photo.long }"
+
     authorize @photo
   end
 

@@ -29,7 +29,7 @@ class Photo < ApplicationRecord
     lat  = '55.748560'
     long = '37.618766'
 
-    out  = '55.765849, 38.116946'.match(/(\-?\d+\.\d+),\s(\-?\d+\.\d+)/)
+    out  = one_string_coordinates.match(/(\-?\d+\.\d+),\s(\-?\d+\.\d+)/)
     lat  = out[1]
     long = out[2]
 
