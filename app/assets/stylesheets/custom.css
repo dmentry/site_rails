@@ -47,6 +47,14 @@ logo {
   display: none;
 }
 
+.badge_class_mobile {
+  display: none;
+}
+
+.qnt_visitors_remove_l_margin {
+    margin-left: 0px;
+}
+
 .cont_height {
 /*   height: 78vh;
   overflow-y: auto; */
@@ -383,7 +391,26 @@ logo {
     top: 418px;
     left: 86px;
     z-index: 1000;
+    display: none;
+  }
+
+  .badge_class_mobile {
+    width: 19px;
+    height: 19px;
+    line-height: 19px;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    background: red;
+    position: absolute;
+    z-index: 10000;
+    left: 2px;
     display: block;
+  }
+
+  .qnt_visitors_remove_l_margin {
+      margin-left: -0px !important;
   }
 
   .menu_close_img {

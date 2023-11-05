@@ -73,7 +73,12 @@
 
                     <div class="dropdown-item my_dropdown_item remove_padding bg-light admin_options"><%= t('app.navbar.menu.admin_options') %></div>
                     <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%= link_to t('app.navbar.menu.visitors'), show_visitors_info_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+
+                    <div class="qnt_visitors_remove_l_margin">
+                      <div class='<%= badge_class == "circle_badge_visible" ? "badge_class_mobile" : "circle_badge_no" %>'><%= badge_quantity %></div>
+                      <%= link_to t('app.navbar.menu.visitors'), show_visitors_info_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    </div>
+
                     <%= link_to t('app.navbar.menu.visits'), show_visits_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                     <%= link_to t('app.navbar.menu.profile'), current_user, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                     <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
@@ -101,9 +106,14 @@
       </div>
     </div>
 
-    <a id="menu_pic" href="#">
-      <%= image_pack_tag("menu-4x.png", alt: 'menu') %>
-    </a>
+<!--     <a id="menu_pic" href="#">
+      <%#= image_pack_tag("menu-4x.png", alt: 'menu') %>
+    </a> -->
+
+    <div class="badge_mobile">
+      <div class='<%= badge_class == "circle_badge_visible" ? "badge_class_mobile" : "circle_badge_no" %>'><%= badge_quantity %></div>
+      <a id="menu_pic" href="#"><%= image_pack_tag("menu-4x.png", alt: 'menu') %></a>
+    </div>
 
     <a href="#">
       <%= image_pack_tag("close2.png", alt: 'menu', class: 'menu_close_img') %>
@@ -252,6 +262,8 @@
       if ($("#collapseMenu").height() > 80) {
         $("#collapseMenu").slideToggle(500);
         $("#menu_pic").hide(500);
+        $(".badge_mobile").hide(200);
+
 
         if ($(".menu_close_img").is(":visible")) {
           $(".menu_close_img").hide(500)
@@ -267,6 +279,7 @@
         $("#collapseMenu").slideUp(500);
         $(".menu_close_img").slideUp(500);
         $("#menu_pic").show(500);
+        $(".badge_mobile").show(100);
       }
     });
 
@@ -275,6 +288,7 @@
         $("#collapseMenu").slideUp(500);
         $(".menu_close_img").slideUp(500);
         $("#menu_pic").show(500);
+        $(".badge_mobile").show(100);
       }
     });
 

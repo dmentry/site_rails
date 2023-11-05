@@ -5,15 +5,15 @@
     <thead>
       <tr class="table-buffers-vertical">
         <th class="table-info table-buffers-vertical">Визит</th>
-        <th class="table-info table-buffers-vertical">Час. пояс</th>
-        <th class="table-info table-buffers-vertical not_show_on_mobile">Страница</th>
-        <th class="table-info table-buffers-vertical not_show_on_mobile">Переход</th>
-        <th class="table-info table-buffers-vertical">Инфа по системе</th>
-        <th class="table-info table-buffers-vertical not_show_on_mobile">Язык</th>
-        <th class="table-info table-buffers-vertical">Экран</th>
         <th class="table-info table-buffers-vertical">Страна</th>
         <th class="table-info table-buffers-vertical">Регион</th>
         <th class="table-info table-buffers-vertical">Город</th>
+        <th class="table-info table-buffers-vertical not_show_on_mobile">Страница</th>
+        <th class="table-info table-buffers-vertical not_show_on_mobile">Переход</th>
+        <th class="table-info table-buffers-vertical">Система</th>
+        <th class="table-info table-buffers-vertical not_show_on_mobile">Экран</th>
+        <th class="table-info table-buffers-vertical not_show_on_mobile">Язык</th>
+        <th class="table-info table-buffers-vertical not_show_on_mobile">Час. пояс</th>
       </tr>
     </thead>
     <tbody>
@@ -23,7 +23,13 @@
             <%= link_to(visitor.time_visited.strftime("%d.%m.%Y, %H:%M"), show_visitor_info_path(u_id: visitor.u_id)) %>
           </td>
           <td>            
-            <%= visitor.timezone %>
+            <%= visitor.country %>
+          </td>
+          <td>            
+            <%= visitor.region %>
+          </td>
+          <td>            
+            <%= visitor.city %>
           </td>
           <td class="not_show_on_mobile">            
             <%= visitor.page_name.truncate(50) %>
@@ -35,19 +41,13 @@
             <%= visitor.common_info %>
           </td>
           <td class="not_show_on_mobile">            
-            <%= visitor.browser_language %>
-          </td>
-          <td>            
             <%= visitor.size_screen_w %>x<%= visitor.size_screen_h %>
           </td>
-          <td>            
-            <%= visitor.country %>
+          <td class="not_show_on_mobile">            
+            <%= visitor.browser_language %>
           </td>
-          <td>            
-            <%= visitor.region %>
-          </td>
-          <td>            
-            <%= visitor.city %>
+          <td class="not_show_on_mobile">            
+            <%= visitor.timezone %>
           </td>
         </tr>
       <% end %>
