@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   # Настроить маршруты, чтобы URL с локалью выглядел так: /ru/articles, а не так: /articles/?locale=ru
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
-    devise_for :users
+    devise_for :users, controllers: { registrations: 'users/registrations' }
+
     resources :users, only: [:show, :edit, :update]
     resources :photos
     resources :types
