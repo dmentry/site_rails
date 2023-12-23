@@ -11,7 +11,7 @@
 
   <%= link_to photo.photo.url, data: { toggle: "lightbox", title: image_title, gallery: "img-gallery" }, title: photo.description do %>
     <div class='zoom'>
-      <%= image_tag photo.photo.thumb.url %>
+      <%= image_tag photo.photo.thumb.url, class: 'rounded_corners' %>
     </div>
   <% end %>
 

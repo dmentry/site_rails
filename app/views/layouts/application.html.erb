@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" integrity="sha512-Velp0ebMKjcd9RiCoaHhLXkR1sFoCCWXNp6w4zj1hfMifYB5441C+sKeBl/T/Ka6NjBiRfBBQRaQq65ekYz3UQ==" crossorigin="anonymous" />
 
     <script src="https://api-maps.yandex.ru/2.1/?apikey=<%= Rails.application.credentials.dig(Rails.env.to_sym, :yandex_api_key) %>&lang=ru_RU" type="text/javascript"></script>
+
+<!-- NY -->
+<script src="https://thecode.media/wp-content/uploads/2019/12/snowfall2020.js"></script>
+
   </head>
 
   <body>
@@ -33,6 +37,10 @@
         <div class="container-fluid">
           <div class="navbar navbar-responsive logo_my_class">
             <%= image_pack_tag("logo.png", alt: 'logo', class: 'mt-0 logo') %>
+
+<!-- NY -->
+<%= image_pack_tag("ny.png", alt: 'Happy New Year!', class: 'ny', title: 'Happy New Year!') %>
+
               <ul class="navbar-nav">
                 <%= link_to t('app.navbar.logo_name'), root_path, class: 'btn bg-light', title: t('app.navbar.logo_name_caption') %>
               </ul>
@@ -106,13 +114,13 @@
       </div>
     </div>
 
-<!--     <a id="menu_pic" href="#">
-      <%#= image_pack_tag("menu-4x.png", alt: 'menu') %>
-    </a> -->
-
     <div class="badge_mobile">
       <div class='<%= badge_class == "circle_badge_visible" ? "badge_class_mobile" : "circle_badge_no" %>'><%= badge_quantity %></div>
       <a id="menu_pic" href="#"><%= image_pack_tag("menu-4x.png", alt: 'menu') %></a>
+
+<!-- NY -->
+<%= image_pack_tag("ny.png", alt: 'Happy New Year!', class: 'ny2', title: 'Happy New Year!') %>
+
     </div>
 
     <a href="#">

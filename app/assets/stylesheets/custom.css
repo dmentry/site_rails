@@ -15,6 +15,17 @@ logo {
   height: auto;
 }
 
+.ny {
+  display: block;
+  width: 38px;
+  position: relative;
+  left: -28px;
+  top: -13px;
+}
+.ny2 {
+display: none;
+}
+
 .headername {
     text-transform: uppercase;
     font-weight: bold;
@@ -78,6 +89,7 @@ logo {
 
 .zoom {
   overflow: hidden;
+  border-radius: 7px;
 }
 .zoom img {
   display: block;  /* Убираем отступ снизу */
@@ -95,6 +107,10 @@ logo {
 
 .row {
   justify-content: center;
+}
+
+.rounded_corners {
+  border-radius: 7px;
 }
 
 .margins-images {
@@ -377,6 +393,18 @@ logo {
   .drop_down_button_my {
     display: none;
   }
+
+.ny {
+  display: none;
+}
+.ny2 {
+  display: block;
+  width: 38px;
+  position: relative;
+  left: 21px;
+  top: -4px;
+  z-index: 1000;
+}
 
   .circle_badge_visible {
     width: 19px;
