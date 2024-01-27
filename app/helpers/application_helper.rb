@@ -14,7 +14,9 @@ module ApplicationHelper
     new_uniq_visitors ||= Visitor.where('uniq_visitor=? AND created_at>?', true, last_visited_dt).size
 
     if new_uniq_visitors > 0
-      ['circle_badge_visible', new_uniq_visitors]
+      return ['circle_badge_visible', new_uniq_visitors] if params[:locale] == 'ru' || params[:locale] == nil
+
+      ['circle_badge_visible_eng', new_uniq_visitors]
     else
       ['circle_badge_no', false]
     end

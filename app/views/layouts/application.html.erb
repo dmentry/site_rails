@@ -64,7 +64,23 @@
               </li>
               <li> <%= link_to t('app.navbar.menu.blog'), articles_path, class: "btn my_font_size remove_padding" %> </li>
               <li> <%= link_to t('app.navbar.menu.map'), map_path, class: "btn my_font_size remove_padding" %> </li>
-              <li> <%= link_to t('app.navbar.menu.about'), about_path(About.first.id), class: "btn my_font_size remove_padding" %> </li>
+
+              <li class="dropdown">
+                <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown"><%= t('app.navbar.menu.about') %></button>
+                <div class="dropdown-menu my_control my_font_size mobile_bg_light" aria-labelledby="dropdownMenuButton">
+
+                  <div class="dropdown-item my_dropdown_item remove_padding bg-light admin_options"><%= t('app.navbar.menu.about') %></div>
+
+                  <%= link_to t('app.navbar.menu.common_info'), about_path(About.first.id), class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+
+                  <% if params[:locale] == 'ru' || params[:locale] == nil %>
+                    <%= link_to t('app.navbar.menu.cv_rus'), cv_rus_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
+                  <% else %>
+                    <%= link_to t('app.navbar.menu.cv_eng'), cv_eng_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
+                  <% end %>
+                </div>
+              </li>
+
               <li> <%= link_to t('app.navbar.menu.feedback'), feedback_page_path, class: "btn my_font_size remove_padding" %> </li>
 
               <% if current_user %>

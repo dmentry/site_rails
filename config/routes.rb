@@ -36,6 +36,9 @@ Rails.application.routes.draw do
     get 'comments/answer_comment_new/:comment_id' => 'comments#answer_comment_new', as: :answer_comment_new
     post 'comments/answer_comment_new/:comment_id' => 'comments#create_answer_comment', as: :create_answer_comment
 
+    get 'cv_rus' => 'abouts#cv_rus', as: :cv_rus
+    get 'cv_eng' => 'abouts#cv_eng', as: :cv_eng
+
     root to: 'photos#index'
   end
 end

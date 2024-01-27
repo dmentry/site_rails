@@ -6,6 +6,7 @@ class AboutsController < ApplicationController
 
   def index
     @abouts = About.all
+
     authorize @abouts
   end
 
@@ -52,6 +53,14 @@ class AboutsController < ApplicationController
     @about.destroy
 
     redirect_to root_path, notice: ('Текст удален')
+  end
+
+  def cv_rus
+    render layout: false
+  end
+
+  def cv_eng
+    render layout: false
   end
 
   private
