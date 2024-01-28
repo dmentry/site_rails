@@ -4,7 +4,7 @@
   <% end %>
 
   <% if !photo.lat.nil? && photo.lat.length > 0 %>
-    <% map_link = link_to(image_pack_tag('map.png'), map_path(photo_id: photo), target: "blanc", rel: "noreferrer") %>
+    <% map_link = link_to(image_pack_tag('map.png', class: 'social_pic'), map_path(photo_id: photo), target: "blanc", rel: "noreferrer") %>
   <% end %>
 
   <% image_title = "#{ photo.description } #{ map_link } #{ trash_button }" %>

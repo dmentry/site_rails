@@ -267,7 +267,7 @@ ru:
       short: "%H:%M, %d.%m.%Y"
     pm: вечера
   app:
-    tab: Фотограф Дмитрий Dack9 Архипов
+    tab: Дмитрий Dack9 Архипов
     navbar:
       logo_name: Дмитрий Архипов
       logo_name_caption: На главную

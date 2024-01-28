@@ -7,9 +7,9 @@
     <title><%= t('app.tab') %></title>
 
     <meta name="robots" content="index, follow">
-    <meta name="description" content="Персональный сайт фотографа Дмитрия Dack9 Архипова. Сотрудничество: фотосессии и фотосъемка (макро, предметная)">
-    <meta name="keywords" content="dack9, фотограф, макрофотография, фотосессия, macro, macrophoto, photographer">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="description" content="Персональный сайт Дмитрия Dack9 Архипова">
+    <meta name="keywords" content="dack9, макрофотография, macro, macrophoto, photo, программист, ruby on rails, software engineer, web developer, ruby">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Дмитрий Архипов aka Dack9">
 
     <%= csrf_meta_tags %>
@@ -23,7 +23,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" integrity="sha512-Velp0ebMKjcd9RiCoaHhLXkR1sFoCCWXNp6w4zj1hfMifYB5441C+sKeBl/T/Ka6NjBiRfBBQRaQq65ekYz3UQ==" crossorigin="anonymous" />
 
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=<%= Rails.application.credentials.dig(Rails.env.to_sym, :yandex_api_key) %>&lang=ru_RU" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=<%= Rails.application.credentials.dig(Rails.env.to_sym, :yandex_api_key) %>&lang=ru_RU"></script>
   </head>
 
   <body>
@@ -105,7 +105,6 @@
                   </div>
                 </li>
               <% else %>
-
                 <li> <%= link_to ' ', new_user_session_path, class: "btn my_font_size remove_padding" %> </li>
               <% end %>
 
@@ -151,20 +150,9 @@
     <%= yield %>
 
     <footer>
-      <!-- <div class="dackbottomicons dackbottomicons-range"> -->
-        <%# if controller_name == 'photos' %>
-          <!-- <div class='buffer-bottom_photos'> -->
-        <%# else %>
-          <!-- <div class='buffer-bottom'> -->
-        <%# end %>
-          <div class='buffer-bottom'>
-            <p>&copy; Dack9  <%= Time.now.year %></p>
-
-            <%#= link_to image_pack_tag("vk.png", alt: 'vk'), "https://vk.com/dack9", target: "blanc", rel: "noreferrer", title: "VK" %>
-            <%#= link_to image_pack_tag("telegram.png", alt: 'telegram'), "https://t.me/Dack99", target: "blanc", rel: "noreferrer", title: "Telegram" %>
-            <%#= link_to image_pack_tag("instagram.png", alt: 'instagram'), "https://www.instagram.com/dack9/", target: "blanc", rel: "noreferrer", title: "Instagram" %>
-            <!-- </div> -->
-          </div>
+      <div class='buffer-bottom'>
+        <p>Dack9  <%= Time.now.year %></p>
+      </div>
     </footer>
   </body>
 </html>
