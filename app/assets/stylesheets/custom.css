@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.fr {
+  width: 45%;
+}
+
 logo {
     opacity: .4;
     position: absolute;
