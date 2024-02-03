@@ -4,7 +4,7 @@
     <div class="col-sm-12 col-md-10">
 
       <% if current_user %>
-        <%= link_to t('views.articles.index.article.new'), new_article_path %>
+        <%= link_to t('views.articles.index.article.new'), new_article_path, class: 'btn btn-sm btn-primary mt-2' %>
       <% end %>
       
       <% @articles.each do |article| %>
@@ -13,10 +13,10 @@
 
           <%= raw(article.article_body[0..53]) %><br>
 
-          <%= link_to t('views.articles.index.article.read'), article, class: 'btn btn-secondary mt-2' %>
+          <%= link_to t('views.articles.index.article.read'), article, class: 'btn btn-sm btn-secondary mt-2' %>
           <% if current_user %>
-            <%= link_to t('views.articles.index.article.edit'), edit_article_path(article) %> |
-            <%= link_to t('views.articles.index.article.destroy'), article, method: :delete, data: { confirm: t('views.articles.index.article.sure') } %>
+            <%= link_to t('views.articles.index.article.edit'), edit_article_path(article), class: 'btn btn-sm btn-primary mt-2' %>
+            <%= link_to t('views.articles.index.article.destroy'), article, method: :delete, data: { confirm: t('views.articles.index.article.sure') }, class: 'btn btn-sm btn-danger mt-2' %>
           <% end %>
 
         </div>

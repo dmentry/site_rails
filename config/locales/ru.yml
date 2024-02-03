@@ -287,7 +287,7 @@ ru:
         blog: Блог
         about: Обо мне
         common_info: В общем
-        cv_rus: Мое резюме
+        cv_rus: Резюме
         map: Карта
         feedback: Обратная связь
         admin_options: Админка
@@ -400,6 +400,8 @@ ru:
       passwords:
         title: Даже не пробуй
         push: Не нажимай
+    layout:
+      up: Вверх
   models:
     article:
       article_title_ru: Заголовок поста (рус)

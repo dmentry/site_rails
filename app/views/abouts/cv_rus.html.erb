@@ -277,3 +277,118 @@
   </div>
 </body>
 </html>
+
+<script>
+  function getLastDayOfMonth() {
+    let currentDate = new Date();
+    let lastDayDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0, 23, 59, 59);
+
+    return lastDayDate;
+  };
+
+  function getUid() {
+    let s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let out = Array(8).join().split(',').map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+
+    return out;
+  };
+
+  function deleteAllCookies() {
+    if (localStorage.getItem('_rs_uniq_exp')) {
+      let uniq_exp_date = localStorage.getItem('_rs_uniq_exp');
+
+      if (Date.parse(uniq_exp_date) <= new Date()) {
+        localStorage.removeItem('_rs_uniq_exp');
+      };
+    }
+  };
+
+  function requestData(callback) {
+    $.ajax({dataType: "json", url: "https://api.db-ip.com/v2/free/self", success: (
+      function(data) {
+        InfObj = {
+                  country: data.countryName, 
+                  region: data.stateProv, 
+                  city: data.city
+                 };
+
+        callback(InfObj);
+      }
+    )});
+  };
+
+  function processResponse(InfObj) {
+    let visitor;
+
+    if (!localStorage.getItem('_rs_visitor')) {
+      if (!localStorage.getItem('_rs_uniq_exp')) {
+        localStorage.setItem('_rs_uniq_exp', getLastDayOfMonth());
+      }
+
+      let uid = getUid();
+
+      localStorage.setItem('_rs_visitor', uid);
+
+      visitor = { 'uniq_visitor': true };
+
+      visitor['visitor_data'] = shapeData(InfObj, true);
+
+      visitor['visitor_data']['u_id'] = uid;
+    }
+    else if (localStorage.getItem('_rs_visitor')) {
+      let existed_uid = localStorage.getItem('_rs_visitor');
+
+      visitor = { 'repeat_visitor': true };
+
+      visitor['visitor_data'] = shapeData(false, false);
+      visitor['visitor_data']['u_id'] = existed_uid;
+    }
+
+    // Не отправлять информацию по ботам
+    if (!(visitor['visitor_data']['common_info'] && visitor['visitor_data']['common_info'].match(/bot|Bot/))) {
+      $.ajax({ url: '/get_data', data: { visitor: visitor }});
+    }
+  };
+
+  function shapeData(InfObj, full_info) {
+    let visitor_data = {
+      time_visited: new Date(),
+      page_name: window.location.pathname,
+      referrer: document.referrer,
+    };
+
+    if (full_info) {
+      let common_info = navigator.userAgent;
+      if (common_info.match(/^Mozilla\/5\.0\s/g)) {
+        common_info = common_info.replace(/^Mozilla\/5\.0\s/g, '')
+      };
+
+      let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (timezone.match(/Europe\//g)) {
+        timezone = timezone.replace(/Europe\//g, '')
+      };
+
+      visitor_data['timezone']         = timezone;
+      visitor_data['common_info']      = common_info;
+      visitor_data['platform']         = navigator.platform;
+      visitor_data['os']               = navigator.oscpu;
+      visitor_data['browser_language'] = navigator.language;
+      visitor_data['size_screen_w']    = screen.width;
+      visitor_data['size_screen_h']    = screen.height;
+    };
+
+    if (InfObj) {
+      visitor_data['country'] = InfObj.country;
+      visitor_data['region']  = InfObj.region;
+      visitor_data['city']    = InfObj.city;
+    };
+
+    return visitor_data;
+  };
+
+  $(function(){
+    deleteAllCookies();
+
+    requestData(processResponse);
+  });
+</script>

@@ -278,6 +278,15 @@ display: none;
   display: block;
 }
 
+.no_text_decoration {
+  text-decoration: none;
+  color: black;
+}
+
+.no_text_decoration:hover {
+  text-decoration: none;
+}
+
 .bottom_line {
   border-bottom: 1px solid black;
   padding-top: 8px;
@@ -315,6 +324,9 @@ display: none;
   padding-left: 0;
 }
 
+.inline_div {
+  display: inline-flex;
+}
 
 .reply_width_2 {
   width: 98%;

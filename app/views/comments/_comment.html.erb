@@ -18,15 +18,13 @@
     <% css_class = "mr-0 my-1 reply_width_8" %>
   <% when 9 %>
     <% css_class = "mr-0 my-1 reply_width_9" %>
-  <% when 10 %>
-    <% css_class = "mr-0 my-1 reply_width_10" %>
   <% else %>
     <% css_class = "mr-0 my-1 reply_width_10" %>
   <% end %>
 <% end %>
 
 <div class="reply_align_right">
-  <div class="container-fluid border <%= css_class %> comment_color">
+  <div class="container-fluid border rounded_corners <%= css_class %> comment_color">
     <em><%= l comment[0].created_at, format: :short %></em>
 
     <% if current_user %>
@@ -48,6 +46,6 @@
       </div>
     <% end %>
 
-    <%= link_to t('views.comments.reply'), answer_comment_new_path(comment_id: comment[0].id, article_id: @article.id), class: 'btn btn-secondary btn-sm mb-1' %>
+    <%= link_to t('views.comments.reply'), answer_comment_new_path(comment_id: comment[0].id, article_id: @article.id), class: 'btn btn-sm btn-secondary mb-1' %>
   </div>
 </div>

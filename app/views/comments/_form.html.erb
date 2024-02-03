@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-  <div class="border my-2">
+  <div class="border my-2 rounded_corners">
     <div class="m-2">
       <div class="form-group">
         <%= form.label t('views.comments.email') %>
@@ -24,12 +24,12 @@
         <%= form.text_area :comment_body, class: 'form-control' %>
       </div>
 
-      <div class="mb-3">
+      <div>
         <%= recaptcha_tags %>
       </div>
 
-      <div class="actions my-3">
-        <%= form.submit t('views.comments.submit'), class: 'btn btn-secondary' %>
+      <div class="actions my-2">
+        <%= form.submit t('views.comments.submit'), class: 'btn btn-sm btn-secondary' %>
       </div>
     </div>
   </div>

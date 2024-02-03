@@ -150,8 +150,12 @@
     <%= yield %>
 
     <footer>
-      <div class='buffer-bottom'>
-        <p>Dack9  <%= Time.now.year %></p>
+      <div class='center showReturnBtn'>
+        <div class='btn btn-light btn-sm btn-width-my-5 lightgray_bkg_2 my-2 visible_mobile scrollToTop'><%= t('views.layout.up') %></div>
+      </div>
+
+      <div class='buffer-bottom center'>
+        <p>Dack9 <%= Time.now.year %></p>
       </div>
     </footer>
   </body>
@@ -280,6 +284,22 @@
           $(".menu_close_img").slideDown(500) 
         }
       }
+    });
+
+    // Показываю\скрываю кнопку возврата
+    let scroll = document.body.scrollHeight > window.innerHeight
+
+    if (scroll) {
+      $('.showReturnBtn').show()
+    }
+    else {
+      $('.showReturnBtn').hide()
+    }
+
+    $('.scrollToTop').click(function () {
+      $('html, body').animate({ scrollTop: 0 }, 300);
+
+      return false;
     });
 
     $(".navbar").click(function() {
