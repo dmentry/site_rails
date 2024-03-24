@@ -40,6 +40,11 @@ class PhotosController < ApplicationController
 
     @photo.user = current_user
 
+    old_new_photo = Photo.where(new_rec: true)&.first
+    old_new_photo.update_column(:new_rec, false) if old_new_photo
+
+    @photo.new_rec = true
+
     authorize @photo
 
 # Читать координаты и записывать их, если есть
@@ -48,7 +53,6 @@ class PhotosController < ApplicationController
 # img.write(Rails.root.to_s + '/public/' + @photo.photo.thumb.url)
 
     if @photo.save
-      # redirect_to @photo, notice: "Photo was successfully created."
       redirect_to :root, notice: t('controllers.photos.create.success')
     else
       flash.now[:alert] = t('controllers.photos.create.fail')
