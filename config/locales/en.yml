@@ -214,6 +214,9 @@ en:
     pm: pm
   app:
     tab: Dmitry Dack9 Arkhipov
+    rss:
+      new_photo: New photo
+      new_article: New article
     navbar:
       logo_name: Dmitry Arkhipov
       logo_name_caption: Main

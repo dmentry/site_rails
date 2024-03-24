@@ -19,6 +19,8 @@
     <%= javascript_pack_tag 'application' %>
     <%= favicon_pack_tag 'favicon.ico' %>
 
+    <link href="/dack9_rss" rel="alternate" title="RSS feed" type="application/rss+xml">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js" integrity="sha512-YibiFIKqwi6sZFfPm5HNHQYemJwFbyyYHjrr3UT+VobMt/YBo1kBxgui5RWc4C3B4RJMYCdCAJkbXHt+irKfSA==" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" integrity="sha512-Velp0ebMKjcd9RiCoaHhLXkR1sFoCCWXNp6w4zj1hfMifYB5441C+sKeBl/T/Ka6NjBiRfBBQRaQq65ekYz3UQ==" crossorigin="anonymous" />
@@ -119,6 +121,8 @@
               <li><%= link_to 'Рус', { controller: controller_name, action: action_name, locale: "ru" }, { class: "btn my_font_size flag_position language_sw_text #{ locale_class_ru }" } %></li>
 
               <li><%= link_to 'Eng', { controller: controller_name, action: action_name, locale: "en" }, { class: "btn my_font_size flag_position language_sw_text #{ locale_class_eng }" } %></li>
+
+              <li> <%= link_to image_pack_tag("feed.png", alt: 'feed', class: 'feed_img'), dack9_rss_path, class: "btn my_font_size remove_padding" %> </li>
             </ul>
           </div>
         </div>

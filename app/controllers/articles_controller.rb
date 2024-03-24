@@ -31,12 +31,17 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
+    old_new_article = Article.where(new_rec: true)&.first
+    old_new_article.update_column(:new_rec, false) if old_new_article
+
+    @article.new_rec = true
+
     authorize @article
 
     if @article.save
-      redirect_to @article, notice: "Article was successfully created."
+      redirect_to @article, notice: 'Запись добавлена успешно!'
     else
-      flash.now[:alert] = 'Статью добавить не удалось!'
+      flash.now[:alert] = 'Запись добавить не удалось!'
       render :new, status: :unprocessable_entity
     end
   end
@@ -46,9 +51,9 @@ class ArticlesController < ApplicationController
     authorize @article
 
     if @article.update(article_params)
-      redirect_to @article, notice: "Article was successfully updated."
+      redirect_to @article, notice: 'Запись обновлена успешно!'
     else
-      flash.now[:alert] = 'Статью обновить не удалось!'
+      flash.now[:alert] = 'Запись обновить не удалось!'
       render :edit, status: :unprocessable_entity
     end
   end
@@ -59,7 +64,7 @@ class ArticlesController < ApplicationController
 
     @article.destroy
 
-    redirect_to root_path, notice: ('Статья удалена')
+    redirect_to root_path, notice: ('Запись удалена')
   end
 
   private
