@@ -37,7 +37,7 @@ xml.urlset(:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9") {
 
   @photos.each do |photo|
     xml.url {
-      xml.loc("http://localhost:3000/uploads/photo/photo/#{ photo.id }/#{ photo.photo }")
+      xml.loc("https://dack9.ru/uploads/photo/photo/#{ photo.id }/#{ photo.photo }")
     }
   end
 }
