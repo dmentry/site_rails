@@ -39,7 +39,8 @@ Rails.application.routes.draw do
     get 'cv_rus' => 'abouts#cv_rus', as: :cv_rus
     get 'cv_eng' => 'abouts#cv_eng', as: :cv_eng
 
-    get 'dack9_rss', to: 'rss_feeds#rss_feed', defaults: { format: :rss }
+    get 'dack9_rss', to: 'home#rss_feed', defaults: { format: :rss }
+    get 'sitemap.xml' => 'home#sitemap', format: "xml"
 
     root to: 'photos#index'
   end
