@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: */feedback_page
+Sitemap: https://dack9.ru/sitemap.xml
