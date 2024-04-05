@@ -1,0 +1,35 @@
+<h1 class="center text_size header_top_buffer"><%= t('views.home.announces') %></h1>
+<div class="container bg-light cont_height">
+  <div class="row mt-3">
+    <div class="col-sm-6 col-md-6">
+
+      <% @announces.each do |announce| %>
+        <div class='announce_photo'>
+
+          <div class='announce_dt'><%= announce.created_at.strftime("%d.%m.%Y") %></div>
+
+          <% if announce.is_a?(Article) %>
+            <h2 class="mt-3 text_size"><%= announce.article_title %></h2>
+
+            <%= raw(announce.article_body[0..53]) %><br>
+
+            <%= link_to t('views.articles.index.article.read'), announce, class: 'btn btn-sm btn-secondary mt-2' %>
+          <% elsif announce.is_a?(Photo) %>
+            <h2 class="mt-3 text_size"><%= announce.description %></h2>
+
+            <% category = t("app.navbar.menu.drop_down.#{ announce.type.photo_type }") %>
+
+            <%= link_to public_send("#{ announce.type.photo_type }_page_path"), title: "#{t('views.home.to_photo_category')} '#{category}'" do %>
+              <div>
+                <%= image_tag announce.photo.thumb.url, class: 'rounded_corners' %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="bottom_line"></div>
+      <% end %>
+
+      <div class="pagy-bottom-article"><%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %></div>
+    </div>
+  </div>
+</div>

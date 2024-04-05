@@ -18,4 +18,12 @@ class HomeController < ApplicationController
       format.xml
     end
   end
+
+  def announces
+    articles  = Article.order(created_at: :desc)
+    photos    = Photo.without_photohosting.order(created_at: :desc)
+    announces = (articles + photos).sort_by(&:created_at).reverse
+
+    @pagy, @announces = pagy_array(announces, items: 10)
+  end
 end

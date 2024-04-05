@@ -405,6 +405,9 @@ ru:
         push: Не нажимай
     layout:
       up: Вверх
+    home:
+      announces: Новости
+      to_photo_category: В категорию
   models:
     article:
       article_title_ru: Заголовок поста (рус)
