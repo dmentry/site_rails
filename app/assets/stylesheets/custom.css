@@ -1,3 +1,15 @@
+.announce_dt {
+  margin-top: 10px;
+  margin-bottom: -23px;
+  color: grey;
+  font-size: 70%;
+}
+
+.announce_photo {
+  width: 80%;
+  margin-bottom: 10px;
+}
+
 .center_image {
   text-align: center;
 }
@@ -27,19 +39,19 @@ logo {
   top: -13px;
 }
 .ny2 {
-display: none;
+  display: none;
 }
 
 .headername {
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 1px;
-    position: absolute;
-    padding: 160px 1px 0 14px;
-    z-index: 8;
-    text-decoration: none;
-    color: black;
-    outline: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  position: absolute;
+  padding: 160px 1px 0 14px;
+  z-index: 8;
+  text-decoration: none;
+  color: black;
+  outline: none;
 }
 
 .circle_badge_visible {
@@ -233,7 +245,7 @@ display: none;
 }
 
 .pagy-bottom-article {
-  width: 187px;
+  /* width: 187px; */
   margin-left: auto;
   margin-right: auto;
   margin-top: 5px;
@@ -294,7 +306,7 @@ display: none;
 }
 
 .bottom_line {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid grey;
   padding-top: 8px;
 }
 
@@ -798,5 +810,9 @@ img {
 @media (max-width: 767px) {
   .text-about-me {
     font-size: 80%;
+  }
+
+  .pagy-bottom-article {
+    margin-left: 0;
   }
 }

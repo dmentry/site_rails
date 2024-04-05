@@ -351,6 +351,9 @@ en:
         push: Don't push
     layout:
       up: Up
+    home:
+      announces: News
+      to_photo_category: To category
   models:
     article:
       article_title_ru: Article title (rus)
