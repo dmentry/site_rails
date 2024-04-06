@@ -1,6 +1,6 @@
 .announce_dt {
   margin-top: 10px;
-  margin-bottom: -23px;
+  margin-bottom: -18px;
   color: grey;
   font-size: 70%;
 }
@@ -340,6 +340,10 @@ logo {
 .prohibited {
   width: 84px;
   padding-left: 0;
+}
+
+.img-fluid {
+  border-radius: 5px;
 }
 
 .inline_div {
