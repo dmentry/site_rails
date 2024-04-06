@@ -10,6 +10,10 @@
   margin-bottom: 10px;
 }
 
+.box_shadow {
+  box-shadow: 3px 3px 15px 1px rgba(0, 0, 0, 0.1);
+}
+
 .center_image {
   text-align: center;
 }
@@ -90,8 +94,22 @@ logo {
   display: none;
 }
 
+.copyright {
+  text-decoration: none;
+  color: gray;
+}
+
+.copyright:hover {
+  text-decoration: none;
+  color: black;
+}
+
 .badge_class_mobile {
   display: none;
+}
+
+.btn_height {
+  height: 30px;
 }
 
 .qnt_visitors_remove_l_margin {
@@ -731,7 +749,7 @@ img {
 .text-about-me {
   padding: 0;
   margin: 0 0 0 0;
-  color: #212529;
+  color: #505050;
   font-size: 14px;
 }
 
@@ -739,12 +757,14 @@ img {
   padding: 0;
   margin: 0 0 0 0;
   font-size: 190%;
+  color: #505050;
 }
 
 .text-about-me-developer {
   padding: 0;
   margin: 0 0 0 0;
   font-size: 140%;
+  color: #505050;
 }
 
 .list-text-about {

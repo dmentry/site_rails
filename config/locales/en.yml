@@ -354,6 +354,12 @@ en:
     home:
       announces: News
       to_photo_category: To category
+    searching:
+      title: Search
+      description: "Search in posts and photos' description:"
+      clear: Clear
+      search: Search
+      placeholder: Text
   models:
     article:
       article_title_ru: Article title (rus)

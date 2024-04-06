@@ -1,0 +1,42 @@
+<h1 class="center text_size header_top_buffer"><%= t('views.searching.title') %></h1>
+<div class="container bg-light">
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-8">
+
+      <%= form_tag searching_path, class: "row bg-white my-3 px-3 py-2", method: :get do %>
+        <div class="input-group mb-3">
+          <span><%= t('views.searching.description') %></span>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= text_field_tag :q, params[:q], placeholder: t('views.searching.placeholder') %>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= submit_tag t('views.searching.search') %>
+          <%= link_to t('views.searching.clear'), searching_path, class: "btn btn-secondary ml-2" %>
+        </div>
+      <% end %>
+
+      <% if @results.present? %>
+        <h4 class="center">Результаты</h4>
+
+        <div class="row bg-white mt-1 mb-3 px-3 py-2">
+          <div>
+            <% @results.each do |result| %>
+              <% if result.is_a?(Article) %>
+                <div><%= link_to result.article_title, article_path(result[:id]) %></div> 
+              <% elsif result.is_a?(Photo) %>
+                <div><%= link_to result.description, photo_path(result[:id]) %></div> 
+              <% end %>
+
+            <% end %>
+          </div>
+        </div>
+      <% elsif @results %>
+        <h4 class="center">Результатов нет</h4>
+      <% end %>
+
+    </div>
+  </div>
+</div>

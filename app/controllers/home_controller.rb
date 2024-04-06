@@ -26,4 +26,20 @@ class HomeController < ApplicationController
 
     @pagy, @announces = pagy_array(announces, items: 10)
   end
+
+  def searching
+    if params[:q] && !params[:q].present?
+      flash.now[:alert] = 'Введите поисковую фразу!'
+      render :searching, status: :unprocessable_entity
+    end
+
+    if params[:q]
+      q = params[:q]
+
+      articles = Article.ransack(article_body_ru_or_article_body_en_or_article_title_ru_or_article_title_ru_cont: q).result
+      photos   = Photo.ransack(description_ru_or_description_en_cont: q).result
+
+      @results = articles + photos
+    end
+  end
 end

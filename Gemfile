@@ -18,6 +18,7 @@ gem 'recaptcha'
 gem 'traco'
 gem 'pagy', '~> 6.0'
 gem 'apexcharts'
+gem 'ransack'
 
 group :development, :test do
   gem 'pry', '~> 0.13.1'

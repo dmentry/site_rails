@@ -7,7 +7,7 @@
     <title><%= t('app.tab') %></title>
 
     <meta name="robots" content="index, follow">
-    <meta name="description" content="Персональный сайт Дмитрия Dack9 Архипова">
+    <meta name="description" content="Персональный сайт Дмитрия Dack9 Архипова Dmitry Arkhipov personal website">
     <meta name="keywords" content="dack9, макрофотография, macro, macrophoto, photo, программист, ruby on rails, software engineer, web developer, ruby">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Дмитрий Архипов aka Dack9">
@@ -123,6 +123,8 @@
               <li><%= link_to 'Eng', { controller: controller_name, action: action_name, locale: "en" }, { class: "btn my_font_size flag_position language_sw_text #{ locale_class_eng }" } %></li>
 
               <li> <%= link_to image_pack_tag("feed.png", alt: 'feed', class: 'feed_img'), dack9_rss_path, class: "btn my_font_size remove_padding" %> </li>
+
+              <li> <%= link_to image_pack_tag("searching.png", alt: 'feed', class: 'feed_img'), searching_path, class: "btn my_font_size remove_padding" %> </li>
             </ul>
           </div>
         </div>
@@ -158,8 +160,12 @@
         <div class='btn btn-light btn-sm btn-width-my-5 lightgray_bkg_2 my-2 visible_mobile scrollToTop'><%= t('views.layout.up') %></div>
       </div>
 
-      <div class='buffer-bottom center'>
-        <p>Dack9 <%= Time.now.year %></p>
+      <div class='buffer-bottom center mt-2'>
+        <% if params[:locale] == 'ru' || params[:locale] == nil %>
+          <%= link_to "Dack9 #{ Time.now.year }", cv_rus_path, class: "remove_padding copyright", target: "blanc", rel: "noreferrer" %>
+        <% else %>
+          <%= link_to "Dack9 #{ Time.now.year }", cv_eng_path, class: "remove_padding copyright", target: "blanc", rel: "noreferrer" %>
+        <% end %>
       </div>
     </footer>
   </body>
