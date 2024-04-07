@@ -9,13 +9,24 @@
         </div>
 
         <div class="input-group mb-3">
-          <%= text_field_tag :q, params[:q], placeholder: t('views.searching.placeholder') %>
+          <%= text_field_tag :q, params[:q], placeholder: t('views.searching.placeholder'), size: 30 %>
         </div>
 
         <div class="input-group mb-3">
           <%= submit_tag t('views.searching.search') %>
           <%= link_to t('views.searching.clear'), searching_path, class: "btn btn-secondary ml-2" %>
         </div>
+
+         <% if @results.present? %>
+          <div class="input-group">
+            <span><%= t('views.searching.sorting') %></span>
+          </div>
+
+          <div class="input-group mb-3">
+            <%= button_tag "&#9660;".html_safe, value: 'down', type: :submit, name: :sorting, class: 'btn btn-info btn-sm' %>
+            <%= button_tag "&#9650;".html_safe, value: 'up', type: :submit, name: :sorting, class: 'btn btn-info btn-sm ml-2' %>
+          </div>
+         <% end %>
       <% end %>
 
       <% if @results.present? %>

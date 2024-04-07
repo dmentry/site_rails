@@ -360,6 +360,7 @@ en:
       clear: Clear
       search: Search
       placeholder: Text
+      sorting: 'Sort by date:'
   models:
     article:
       article_title_ru: Article title (rus)
