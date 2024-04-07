@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
     devise_for :users, controllers: { registrations: 'users/registrations' }
 
-    get 'announces' => 'home#announces', as: :announces
-
     resources :users, only: [:show, :edit, :update]
     resources :photos
     resources :types
@@ -43,6 +41,8 @@ Rails.application.routes.draw do
 
     get 'dack9_rss', to: 'home#rss_feed', defaults: { format: :rss }
     get 'sitemap.xml' => 'home#sitemap', format: "xml"
+    get 'announces' => 'home#announces', as: :announces
+    get 'searching', to: 'home#searching'
 
     root to: 'home#announces'
   end

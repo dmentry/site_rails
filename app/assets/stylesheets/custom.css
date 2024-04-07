@@ -10,6 +10,10 @@
   margin-bottom: 10px;
 }
 
+.box_shadow {
+  box-shadow: 3px 3px 15px 1px rgba(0, 0, 0, 0.1);
+}
+
 .center_image {
   text-align: center;
 }
@@ -65,9 +69,10 @@ logo {
   background: red;
   position: absolute;
   top: 10px;
-  right: 199px;
+  right: 244px;
   z-index: 1000;
   display: block;
+  opacity: 0.8;
 }
 
 .circle_badge_visible_eng {
@@ -81,17 +86,32 @@ logo {
   background: red;
   position: absolute;
   top: 10px;
-  right: 235px;
+  right: 223px;
   z-index: 1000;
   display: block;
+  opacity: 0.8;
 }
 
 .circle_badge_no {
   display: none;
 }
 
+.copyright {
+  text-decoration: none;
+  color: gray;
+}
+
+.copyright:hover {
+  text-decoration: none;
+  color: black;
+}
+
 .badge_class_mobile {
   display: none;
+}
+
+.btn_height {
+  height: 30px;
 }
 
 .qnt_visitors_remove_l_margin {
@@ -478,6 +498,7 @@ logo {
     left: 86px;
     z-index: 1000;
     display: none;
+    opacity: 0.8;
   }
 
   .badge_class_mobile {
@@ -493,6 +514,7 @@ logo {
     z-index: 10000;
     left: 2px;
     display: block;
+    opacity: 0.8;
   }
 
   .qnt_visitors_remove_l_margin {
@@ -731,7 +753,7 @@ img {
 .text-about-me {
   padding: 0;
   margin: 0 0 0 0;
-  color: #212529;
+  color: #505050;
   font-size: 14px;
 }
 
@@ -739,12 +761,14 @@ img {
   padding: 0;
   margin: 0 0 0 0;
   font-size: 190%;
+  color: #505050;
 }
 
 .text-about-me-developer {
   padding: 0;
   margin: 0 0 0 0;
   font-size: 140%;
+  color: #505050;
 }
 
 .list-text-about {

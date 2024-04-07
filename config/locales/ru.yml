@@ -408,6 +408,13 @@ ru:
     home:
       announces: Новости
       to_photo_category: В категорию
+    searching:
+      title: Поиск
+      description: 'Поиск в постах и описаниях фотографий:'
+      clear: Очистить
+      search: Искать
+      placeholder: Текст
+      sorting: 'Сортировка по дате:'
   models:
     article:
       article_title_ru: Заголовок поста (рус)

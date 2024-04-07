@@ -239,7 +239,7 @@ en:
         common_info: In common
         cv_eng: CV
         feedback: Feedback
-        admin_options: Admin options
+        admin_options: Admin
         load_photo: Load photo
         visitors: Visitors
         visits: Visits
@@ -354,6 +354,13 @@ en:
     home:
       announces: News
       to_photo_category: To category
+    searching:
+      title: Search
+      description: "Search in posts and photos' description:"
+      clear: Clear
+      search: Search
+      placeholder: Text
+      sorting: 'Sort by date:'
   models:
     article:
       article_title_ru: Article title (rus)
