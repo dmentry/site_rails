@@ -38,13 +38,14 @@ class HomeController < ApplicationController
 
       articles = Article.ransack(article_body_ru_or_article_body_en_or_article_title_ru_or_article_title_ru_cont: q).result
       photos   = Photo.ransack(description_ru_or_description_en_cont: q).result
+      about    = About.ransack(main_text_ru_or_dmain_text_en_cont: q).result
 
       @results = if params[:sorting] && params[:sorting] == 'up'
-                   (articles + photos).sort_by(&:created_at)
+                  (articles + photos + about).sort_by(&:created_at)
                  elsif params[:sorting] && params[:sorting] == 'down'
-                  (articles + photos).sort_by(&:created_at).reverse
+                  (articles + photos + about).sort_by(&:created_at).reverse
                  else
-                  (articles + photos)
+                  (articles + photos + about)
                  end
     end
   end

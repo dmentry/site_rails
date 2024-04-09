@@ -38,9 +38,10 @@
               <% if result.is_a?(Article) %>
                 <div><%= link_to result.article_title, article_path(result[:id]) %></div> 
               <% elsif result.is_a?(Photo) %>
-                <div><%= link_to result.description, photo_path(result[:id]) %></div> 
+                <div><%= link_to result.description, photo_path(result[:id]) %></div>
+              <% elsif result.is_a?(About) %>
+                <div><%= link_to t('views.abouts.show.title'), about_path(result[:id]) %></div> 
               <% end %>
-
             <% end %>
           </div>
         </div>
