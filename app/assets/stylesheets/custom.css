@@ -168,6 +168,10 @@ logo {
   margin-top: -3px;
 }
 
+.red_text {
+  color: red;
+}
+
 .row {
   justify-content: center;
 }
