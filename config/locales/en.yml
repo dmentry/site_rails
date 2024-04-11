@@ -243,6 +243,7 @@ en:
         load_photo: Load photo
         visitors: Visitors
         visits: Visits
+        chatbot: Chatbot
         profile: Profile
         exit: Logout
         admin: For admin
@@ -361,6 +362,22 @@ en:
       search: Search
       placeholder: Text
       sorting: 'Sort by date:'
+    chatbots:
+        chatbot: "Chatbot's topics"
+        new: Add
+        header: "Dialog's topic"
+        questions: Replics
+        index:
+          table_topic: Text
+          table_is_shown: 'Show in bot?'
+          table_is_shown: 'Показать в боте?'
+    chatbot_questions:
+      index_header: Replics
+      index_table_order: №
+      index_table_body: Replic
+      index_table_next_id: Next replic ID
+      edit_header: Replic
+      new_header: Add replic
   models:
     article:
       article_title_ru: Article title (rus)
@@ -387,3 +404,12 @@ en:
       collage: Collage
       other: Other
       photohosting: Photohosting
+    chatbot:
+      label_ru: Topic in Russian
+      label_en: Topic in English
+      is_shown: Show in bot
+    chatbot_question:
+      order: Order number
+      body_ru: Text in Russian
+      body_en: Text in Engish
+      next_id: Next replic ID

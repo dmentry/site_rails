@@ -297,6 +297,7 @@ ru:
         load_photo: Загрузить фотку
         visitors: Посетители
         visits: Посещения
+        chatbot: Чатбот
         profile: Профиль
         exit: Выйти
         admin: Для админа
@@ -415,6 +416,21 @@ ru:
       search: Искать
       placeholder: Текст
       sorting: 'Сортировка по дате:'
+    chatbots:
+        chatbot: Темы чатбота
+        new: Добавить
+        header: Тема диалога
+        questions: Реплики
+        index:
+          table_topic: Тема
+          table_is_shown: 'Показать в боте?'
+    chatbot_questions:
+      index_header: Реплики
+      index_table_order: №
+      index_table_body: Реплика
+      index_table_next_id: ID след. реплики
+      edit_header: Реплика
+      new_header: Добавить реплику
   models:
     article:
       article_title_ru: Заголовок поста (рус)
@@ -441,3 +457,12 @@ ru:
       collage: Коллажи
       other: Остальное
       photohosting: Фотохостинг
+    chatbot:
+      label_ru: Тема на русском
+      label_en: Тема на английском
+      is_shown: 'Показать в боте?'
+    chatbot_question:
+      order: Порядковый  номер
+      body_ru: Текст реплики на русском
+      body_en: Текст реплики на английском
+      next_id: ID следующей реплики

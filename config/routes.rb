@@ -9,8 +9,11 @@ Rails.application.routes.draw do
     resources :types
     resources :abouts
     resources :articles do
-      # Вложенный ресурс комментов. Понадобится два экшена: create и destroy
-      resources :comments, only: [:create, :destroy]
+      resources :comments
+    end
+
+    resources :chat_bot_topics do
+      resources :chat_bot_questions, except: [:show] 
     end
 
     get 'all_page' => 'photos#all_page', as: :all_page
@@ -43,6 +46,8 @@ Rails.application.routes.draw do
     get 'sitemap.xml' => 'home#sitemap', format: "xml"
     get 'announces' => 'home#announces', as: :announces
     get 'searching', to: 'home#searching'
+
+    get 'chat_bot' => 'chat_bot_topics#have_answer', as: :have_answer, defaults: { format: :json }
 
     root to: 'home#announces'
   end

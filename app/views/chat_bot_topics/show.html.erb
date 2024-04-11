@@ -1,0 +1,22 @@
+<h1 class="center text_size header_top_buffer"><%= t('views.chatbots.chatbot') %></h1>
+<div class="container bg-light">
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-10">
+      Тема
+      <h3 class="mt-0"><%= @chat_bot_topic.label %></h3><br>
+
+      <% if @chat_bot_topic.is_shown %>
+        <% show = '&#10004;' %>
+      <% else %>
+        <% show = '&#x2715;' %>
+      <% end %>
+      Показывать?
+      <h3 class="mt-0"><%= show.html_safe %></h3><br>
+
+      <%= link_to t('views.chatbots.questions'), chat_bot_topic_chat_bot_questions_path(@chat_bot_topic), class: 'btn btn-sm btn-success mt-2' %>
+      <%= link_to t('views.abouts.index.edit'), edit_chat_bot_topic_path(@chat_bot_topic), class: 'btn btn-sm btn-primary mt-2' %>
+      <%= link_to t('views.articles.index.article.destroy'), @chat_bot_topic, method: :delete, data: { confirm: t('views.articles.index.article.sure') }, class: 'btn btn-sm btn-danger mt-2' %>
+      <%= link_to t('views.articles.show.back'), chat_bot_topics_path, class: 'btn btn-sm btn-secondary mt-2' %>
+    </div>
+  </div>
+</div>
