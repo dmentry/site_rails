@@ -137,12 +137,13 @@
 
       messageDivs.push([pushedDivText, 'chosen_variant']);
 
-      if(
-          (messageDivs[0][0].match(/здравств/i) && messageDivs[1][0].match(/болтается здесь/i)) || 
-          (messageDivs[0][0].match(/hello/i) && messageDivs[1][0].match(/hanging around/i))
-         ) {
-        messageDivs.splice(0,2);
-      }
+      // Убрать 2 начальных поста
+      // if(
+      //     (messageDivs[0][0].match(/здравств/i) && messageDivs[1][0].match(/болтается здесь/i)) || 
+      //     (messageDivs[0][0].match(/hello/i) && messageDivs[1][0].match(/hanging around/i))
+      //    ) {
+      //   messageDivs.splice(0,2);
+      // }
 
       removeAllMessages();
 
