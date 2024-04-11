@@ -102,6 +102,7 @@
                     </div>
 
                     <%= link_to t('app.navbar.menu.visits'), show_visits_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <%= link_to t('app.navbar.menu.chatbot'), chat_bot_topics_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                     <%= link_to t('app.navbar.menu.profile'), current_user, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                     <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                   </div>
@@ -152,6 +153,8 @@
         </button>
       </div>
     <% end %>
+
+    <%= render 'layouts/chatbot' %>
 
     <%= yield %>
 

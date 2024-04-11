@@ -1,0 +1,37 @@
+<h1 class="center text_size header_top_buffer"><%= t('views.chatbots.chatbot') %></h1>
+<div class="container bg-light cont_height">
+  <div class="row mt-3">
+    <div class="col-sm-12">
+
+      <%= link_to t('views.chatbots.new'), new_chat_bot_topic_path, class: 'btn btn-sm btn-primary my-2' %>
+
+      <div class="bottom_line"></div>
+      <div class="row">
+        <div class="col-9 mt-3 text_size_smaller"><%= t('views.chatbots.index.table_topic') %></div>
+        <div class="col-3 mt-3 text_size_smaller"><%= t('views.chatbots.index.table_is_shown') %></div>
+      </div>
+      <div class="bottom_line"></div>
+
+      <% @chat_bot_topics.each do |topic| %>
+        <div class="row">
+          <% if topic.is_shown %>
+            <% show = '&#10004;' %>
+          <% else %>
+            <% show = '&#x2715;' %>
+          <% end %>
+
+          <div class="col-9 mt-3 text_size_smaller"><%= topic.label %></div>
+          <div class="col-3 mt-3 red_text text_size_smaller"><%= show.html_safe %></div>
+
+          <div class="col-12 actions_left">
+            <%= link_to t('views.chatbots.questions'), chat_bot_topic_chat_bot_questions_path(topic.id), class: 'btn btn-sm btn-success mt-2' %>
+            <%= link_to t('views.articles.index.article.edit'), edit_chat_bot_topic_path(topic), class: 'btn btn-sm btn-primary mt-2' %>
+            <%= link_to t('views.articles.index.article.destroy'), topic, method: :delete, data: { confirm: t('views.articles.index.article.sure') }, class: 'btn btn-sm btn-danger mt-2' %>
+          </div>
+
+        </div>
+        <div class="bottom_line mb-2"></div>
+      <% end %>
+    </div>
+  </div>
+</div>

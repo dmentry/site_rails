@@ -1,0 +1,254 @@
+<% if show_chatbot %>
+  <img class='bot_open_btn' src='/images/pictograms/chatbot_open.png' alt="chatbot open button">
+  <img class='bot_close_btn' src='/images/pictograms/chatbot_close.png' alt="chatbot close button">
+
+  <div class="bot_container modal_bot"></div>
+<% end %>
+
+<script>
+  let language_en;
+  let toMainMenu;
+  let backTo;
+
+  if (location.href.match(/en/i)) {
+    language_en = true;
+    toMainMenu  = 'To main menu';
+    backTo      = 'Back';
+  }
+  else {
+    toMainMenu = 'В главное меню';
+    backTo     = 'Назад'; 
+  }
+
+  let allActiveMessages = [];
+
+  let mainMenueDiv = $('<div/>', { 
+        class: 'main_menue', 
+        html: '<img class="back_to_main_menue" src="/images/pictograms/to_main_menue.png">' + toMainMenu
+      });
+
+  let stepBackDiv = $('<div/>', { 
+        class: 'step_back', 
+        html: '<img class="arrow_back" src="/images/pictograms/step_back.png">' + backTo
+      });
+
+  function initializeBot() {
+    let greetMsgDivText1;
+    let greetMsgDivText2;
+
+    if (language_en) {
+      greetMsgDivText1 = 'Hello!'
+      greetMsgDivText2 = 'Why is this bot hanging around here?';
+    }
+    else {
+      greetMsgDivText1 = 'Здравствуйте!';
+      greetMsgDivText2 = 'Зачем этот бот болтается здесь?';
+    }
+
+    let greetMsgDiv1  = $('<div/>', { 
+          class: 'bot_message', 
+          text: greetMsgDivText1 
+        });
+
+    let greetMsgDiv2  = $('<div>', {
+          class: 'bot_message',
+          text: greetMsgDivText2
+        })
+
+    $('.bot_container').append(greetMsgDiv1);
+
+    $.ajax({ url: '/chat_bot.json', data: { language_en: language_en }}).done(function(data) { 
+      if (data.length > 0) {
+        $('.bot_container').append(greetMsgDiv2);
+
+        $.each(data, function(index, value) {
+          let newMsgDiv = $('<div/>', { 
+                class: 'bot_message_active', 
+                html: value.label, 
+                data: {'topic_id': value.topic_id, 'next_id': value.next_id }
+              });
+
+          $('.bot_container').append(newMsgDiv);
+        });
+      }
+    });
+  }
+
+  function removeAllMessages() {
+    $('.bot_message').remove();
+    $('.bot_message_active').remove();
+    $('.main_menue').remove();
+    $('.step_back').remove();
+    $('.chosen_variant').remove();
+    $('.step_back_message').remove();
+  }
+
+  function findLastIndex(array) {
+    let stepsBackQuantity = 0;
+    let indexOfLastConcurrence;
+
+    for (let i = 0; i < array.length; i++) {
+      if (array[i][1].match(/chosen_variant/i)) {
+        stepsBackQuantity ++;
+
+        indexOfLastConcurrence = i;
+      }
+    }
+
+    if (indexOfLastConcurrence != undefined) {
+      return [indexOfLastConcurrence, stepsBackQuantity];
+    }
+    else {
+      return -1;
+    }
+  }
+
+  $(function(){
+    $('.bot_open_btn').click(function() {
+      $('.bot_container').show(100);
+      $('.bot_close_btn').show(101);
+
+      $('.bot_open_btn').hide();
+      $('.bot_open_btn_text').hide();
+    });
+
+    $('.bot_close_btn').click(function() {
+      $('.bot_container').hide(100);
+      $('.bot_close_btn').hide(99);
+
+      $('.bot_open_btn').show(100);
+      $('.bot_open_btn_text').show(100);
+    });
+
+    initializeBot();
+
+    $('.bot_container').on('click', '.bot_message_active', function(){
+      let pushedDivText = $(this).text();
+      let pushedDivData = $(this).data();
+      $(this).remove();
+
+      allActiveMessages.push([pushedDivData.topic_id, pushedDivData.next_id]);
+
+      let messageDivs = [];
+
+      $('.bot_message, .chosen_variant, .step_back_message').each(function () {
+        messageDivs.push([$(this).html(), $(this).attr('class')]);
+      });
+
+      messageDivs.push([pushedDivText, 'chosen_variant']);
+
+      // Убрать 2 начальных поста
+      // if(
+      //     (messageDivs[0][0].match(/здравств/i) && messageDivs[1][0].match(/болтается здесь/i)) || 
+      //     (messageDivs[0][0].match(/hello/i) && messageDivs[1][0].match(/hanging around/i))
+      //    ) {
+      //   messageDivs.splice(0,2);
+      // }
+
+      removeAllMessages();
+
+      let stepsBackQuantity = 0;
+
+      $.each(messageDivs, function( index, value ) {
+        if (value[1].match(/chosen_variant/i)) { 
+          stepsBackQuantity ++;
+        }
+
+        let initialQuestionDiv = $('<div/>', { class: value[1], html: value[0] });
+
+        $('.bot_container').append(initialQuestionDiv);
+      });
+
+      $.ajax({ url: '/chat_bot.json', data: { next_id: pushedDivData.next_id, topic_id: pushedDivData.topic_id, language_en: language_en } })
+        .done(function(out) {
+          let newMsgDiv;
+
+          $.each(out, function(index, value) {
+            if (value.next_id) {
+              newMsgDiv = $('<div/>', { 
+                class: 'bot_message_active', 
+                html: value.label, 
+                data: {'topic_id': value.topic_id, 'next_id': value.next_id} 
+              });
+            }
+            else {
+              newMsgDiv = $('<div/>', { 
+                class: 'bot_message', 
+                html: value.label, 
+                data: { 'topic_id': value.topic_id }
+              });
+            }
+
+            $('.bot_container').append(newMsgDiv);
+          });
+
+          if (stepsBackQuantity > 1) {
+            $('.bot_container').append(stepBackDiv)
+          }
+
+          $('.bot_container').append(mainMenueDiv);
+
+          // Скроллим вниз, чтобы были видны последние сообщения
+          $('.bot_container').animate({ scrollTop: $('.bot_container').prop("scrollHeight") }, 800);
+        })
+    });
+
+    $('.bot_container').on('click', '.step_back', function(){
+      $('.main_menue').remove();
+      $('.step_back').remove();
+
+      let messageDivs = [];
+
+      $('.bot_message, .bot_message_active, .chosen_variant, step_back_message').each(function () {
+        messageDivs.push([$(this).html(), $(this).attr('class')]);
+      });
+
+      let [indexOfLastChosenVariant, stepsBackQuantity] = findLastIndex(messageDivs);
+
+      if (indexOfLastChosenVariant !== -1) {
+        messageDivs.splice(indexOfLastChosenVariant + 1, messageDivs.length - indexOfLastChosenVariant );
+      }
+
+      removeAllMessages();
+
+      $.each(messageDivs, function(index, value) {
+        let initialQuestionDiv;
+
+        if (index != messageDivs.length-1) {
+          initialQuestionDiv = $('<div/>', { class: value[1], html: value[0] });
+        }
+        else {
+          let lastActiveElem = allActiveMessages[allActiveMessages.length-1];
+
+          allActiveMessages.pop();
+
+          // Делаем активной последнюю реплику
+          initialQuestionDiv = $('<div/>', { 
+            class: 'bot_message_active', 
+            html: value[0], 
+            data: { 'topic_id': lastActiveElem[0], 'next_id': lastActiveElem[1] }
+          });          
+        }
+
+        $('.bot_container').append(initialQuestionDiv);
+      });
+
+      if (stepsBackQuantity > 2) {
+        $('.bot_container').append(stepBackDiv)    
+      }
+
+      $('.bot_container').append(mainMenueDiv);
+
+      // Скроллим вниз, чтобы были видны последние сообщения
+      $('.bot_container').animate({ scrollTop: $('.bot_container').prop("scrollHeight") }, 800);
+    });
+
+    $('.bot_container').on('click', '.main_menue', function(){
+      removeAllMessages();
+
+      allActiveMessages = [];
+
+      initializeBot();
+    });
+  })
+</script>
