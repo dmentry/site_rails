@@ -4,6 +4,7 @@ class ChatBotTopic < ActiveRecord::Base
   has_many :chat_bot_questions, dependent: :destroy
 
   validates :label, presence: true
+  validates :show_order, uniqueness: true
 
-  scope :visible_topics, -> { where(is_shown: true) }
+  scope :visible_topics, -> { where.not(show_order: [false, nil]) }
 end

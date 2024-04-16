@@ -14,14 +14,8 @@
 
       <% @chat_bot_topics.each do |topic| %>
         <div class="row">
-          <% if topic.is_shown %>
-            <% show = '&#10004;' %>
-          <% else %>
-            <% show = '&#x2715;' %>
-          <% end %>
-
           <div class="col-9 mt-3 text_size_smaller"><%= topic.label %></div>
-          <div class="col-3 mt-3 red_text text_size_smaller"><%= show.html_safe %></div>
+          <div class="col-3 mt-3 text_size_smaller"><%= topic.show_order || '-' %></div>
 
           <div class="col-12 actions_left">
             <%= link_to t('views.chatbots.questions'), chat_bot_topic_chat_bot_questions_path(topic.id), class: 'btn btn-sm btn-success mt-2' %>

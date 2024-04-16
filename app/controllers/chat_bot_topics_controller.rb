@@ -2,7 +2,7 @@ class ChatBotTopicsController < ApplicationController
   before_action :set_chat_bot_topic, only: [:edit, :update, :destroy, :show]
 
   def index
-    @chat_bot_topics = ChatBotTopic.all.order(created_at: :asc)
+    @chat_bot_topics = ChatBotTopic.all.order(show_order: :asc)
   end
 
   def show
@@ -61,7 +61,7 @@ class ChatBotTopicsController < ApplicationController
   end
 
   def chat_bot_topic_params
-    params.require(:chat_bot_topic).permit(:label_ru, :label_en, :is_shown)
+    params.require(:chat_bot_topic).permit(:label_ru, :label_en, :show_order)
   end
 
   def first_time_data(language_en)

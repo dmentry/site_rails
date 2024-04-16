@@ -22,15 +22,11 @@
 
   <div class="form-group">
     <%= form.label t('models.chatbot.is_shown') %>
-    <%= form.check_box :is_shown, class: '' %>
+    <%= form.number_field :show_order, class: 'form-control' %>
   </div>
 
   <div class="actions">
     <%= form.submit t('views.photos.form.save'), class: 'btn btn-sm btn-info' %>
-
-    <% unless chat_bot_topic.new_record? %>
-      <%= link_to t('views.chatbots.questions'), chat_bot_topic_chat_bot_questions_path(chat_bot_topic.id), class: 'btn btn-sm btn-success' %>
-    <% end %>
 
     <%= link_to t('views.photos.show.back'), chat_bot_topics_path, class: 'btn btn-sm btn-secondary' %>
   </div>

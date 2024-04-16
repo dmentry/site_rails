@@ -369,8 +369,7 @@ en:
         questions: Replics
         index:
           table_topic: Text
-          table_is_shown: 'Show in bot?'
-          table_is_shown: 'Показать в боте?'
+          table_is_shown: 'Order to show in bot'
     chatbot_questions:
       index_header: Replics
       index_table_order: №
@@ -407,7 +406,7 @@ en:
     chatbot:
       label_ru: Topic in Russian
       label_en: Topic in English
-      is_shown: Show in bot
+      is_shown: Order to show in bot
     chatbot_question:
       order: Order number
       body_ru: Text in Russian

@@ -423,7 +423,7 @@ ru:
         questions: Реплики
         index:
           table_topic: Тема
-          table_is_shown: 'Показать в боте?'
+          table_is_shown: 'Очередь показа в боте'
     chatbot_questions:
       index_header: Реплики
       index_table_order: №
@@ -460,7 +460,7 @@ ru:
     chatbot:
       label_ru: Тема на русском
       label_en: Тема на английском
-      is_shown: 'Показать в боте?'
+      is_shown: 'Очередь показа в боте'
     chatbot_question:
       order: Порядковый  номер
       body_ru: Текст реплики на русском

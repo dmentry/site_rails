@@ -5,13 +5,8 @@
       Тема:
       <h5 class="mt-0"><%= @chat_bot_topic.label %></h5><br>
 
-      <% if @chat_bot_topic.is_shown %>
-        <% show = 'да' %>
-      <% else %>
-        <% show = 'нет' %>
-      <% end %>
       Показывать в боте:
-      <h5 class="red_text mt-0"><b><%= show %></b></h5><br>
+      <h5 class="mt-0"><%= @chat_bot_topic.show_order || 'нет' %></h5><br>
 
       <%= link_to t('views.chatbots.questions'), chat_bot_topic_chat_bot_questions_path(@chat_bot_topic), class: 'btn btn-sm btn-success mt-2' %>
       <%= link_to t('views.abouts.index.edit'), edit_chat_bot_topic_path(@chat_bot_topic), class: 'btn btn-sm btn-primary mt-2' %>

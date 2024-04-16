@@ -13,11 +13,11 @@
   if (location.href.match(/en/i)) {
     language_en = true;
     toMainMenu  = 'To main menu';
-    backTo      = 'Back';
+    backTo      = 'Step back';
   }
   else {
     toMainMenu = 'В главное меню';
-    backTo     = 'Назад'; 
+    backTo     = 'Шаг назад'; 
   }
 
   let allActiveMessages = [];
@@ -34,15 +34,12 @@
 
   function initializeBot() {
     let greetMsgDivText1;
-    let greetMsgDivText2;
 
     if (language_en) {
       greetMsgDivText1 = 'Hello!'
-      greetMsgDivText2 = 'Why is this bot hanging around here?';
     }
     else {
       greetMsgDivText1 = 'Здравствуйте!';
-      greetMsgDivText2 = 'Зачем этот бот болтается здесь?';
     }
 
     let greetMsgDiv1  = $('<div/>', { 
@@ -50,16 +47,9 @@
           text: greetMsgDivText1 
         });
 
-    let greetMsgDiv2  = $('<div>', {
-          class: 'bot_message',
-          text: greetMsgDivText2
-        })
-
-    $('.bot_container').append(greetMsgDiv1);
-
     $.ajax({ url: '/chat_bot.json', data: { language_en: language_en }}).done(function(data) { 
       if (data.length > 0) {
-        $('.bot_container').append(greetMsgDiv2);
+        $('.bot_container').append(greetMsgDiv1);
 
         $.each(data, function(index, value) {
           let newMsgDiv = $('<div/>', { 
