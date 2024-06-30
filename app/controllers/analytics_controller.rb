@@ -151,9 +151,17 @@ class AnalyticsController < ApplicationController
     out = if params[:mega_secret_token] && params[:mega_secret_token] == (Date.today.day - 1).to_s(8)
             last_visited_dt = LastSeenVisitor&.last&.last_seen_visitors_dt
 
-            new_uniq_visitors ||= Visitor.where('uniq_visitor=? AND created_at>?', true, last_visited_dt).size
+            new_uniq_visitors = Visitor.where('send_to_script=? AND uniq_visitor=? AND created_at>?', false, true, last_visited_dt)
 
-            { answer: new_uniq_visitors } if new_uniq_visitors > 0
+            new_uniq_visitors_quantity = new_uniq_visitors.size
+
+            if new_uniq_visitors_quantity > 0
+              new_uniq_visitors.each do |v|
+                v.update_column(:send_to_script, true)
+              end
+
+              { answer: new_uniq_visitors_quantity }
+            end
           end
 
     respond_with out.to_json if out
