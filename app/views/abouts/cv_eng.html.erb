@@ -303,7 +303,7 @@
   };
 
   function requestData(callback) {
-    $.ajax({dataType: "json", url: "https://api.db-ip.com/v2/free/self", success: (
+    $.ajax({dataType: "json", url: "https://api.db-ip.com/v2/free/self", success: 
       function(data) {
         InfObj = {
                   country: data.countryName, 
@@ -312,8 +312,13 @@
                  };
 
         callback(InfObj);
+      },
+      error: function (jqXHR, textStatus, errorThrown) { 
+        InfObj = {};
+
+        callback(InfObj);
       }
-    )});
+    });
   };
 
   function processResponse(InfObj) {
@@ -376,7 +381,7 @@
       visitor_data['size_screen_h']    = screen.height;
     };
 
-    if (InfObj) {
+    if (!(InfObj == undefined)) {
       visitor_data['country'] = InfObj.country;
       visitor_data['region']  = InfObj.region;
       visitor_data['city']    = InfObj.city;
