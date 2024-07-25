@@ -43,3 +43,4 @@ translations.txt
 
 passwords.txt
 /db/schema.rb
+Gemfile.lock
