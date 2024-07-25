@@ -290,7 +290,8 @@ ru:
         blog: Блог
         about: Обо мне
         common_info: В общем
-        cv_rus: Резюме
+        cv_rus: Резюме (рус)
+        cv_eng: Резюме (анг)
         map: Карта
         feedback: Обратная связь
         admin_options: Админка

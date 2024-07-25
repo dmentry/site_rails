@@ -927,6 +927,7 @@ img {
   padding: 0 0 0 0;
   margin: 0 0 0 18px;
   text-decoration: none;
+  opacity: 0.8;
 }
 
 .logo-link:hover {

@@ -75,11 +75,15 @@
 
                   <%= link_to t('app.navbar.menu.common_info'), about_path(About.first.id), class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
 
-                  <% if params[:locale] == 'ru' || params[:locale] == nil %>
-                    <%= link_to t('app.navbar.menu.cv_rus'), cv_rus_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
-                  <% else %>
-                    <%= link_to t('app.navbar.menu.cv_eng'), cv_eng_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
-                  <% end %>
+                  <!-- Язык резюме в зависимости от локали -->
+                  <%# if params[:locale] == 'ru' || params[:locale] == nil %>
+                    <%#= link_to t('app.navbar.menu.cv_rus'), cv_rus_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
+                  <%# else %>
+                    <%#= link_to t('app.navbar.menu.cv_eng'), cv_eng_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
+                  <%# end %>
+
+                  <%= link_to t('app.navbar.menu.cv_rus'), cv_rus_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
+                  <%= link_to t('app.navbar.menu.cv_eng'), cv_eng_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
                 </div>
               </li>
 
