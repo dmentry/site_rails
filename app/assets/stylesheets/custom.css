@@ -624,21 +624,26 @@ logo {
 }
 
 @media (max-width: 991px) {
+  .announce_photo, .bottom_line {
+    width: 100%;
+  }
+
   .drop_down_button_my {
     display: none;
   }
 
-.ny {
-  display: none;
-}
-.ny2 {
-  display: block;
-  width: 38px;
-  position: relative;
-  left: 21px;
-  top: -4px;
-  z-index: 1000;
-}
+  .ny {
+    display: none;
+  }
+
+  .ny2 {
+    display: block;
+    width: 38px;
+    position: relative;
+    left: 21px;
+    top: -4px;
+    z-index: 1000;
+  }
 
   .circle_badge_visible {
     width: 19px;
