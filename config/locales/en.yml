@@ -384,6 +384,7 @@ en:
       article_body_ru: Article body (rus)
       article_title_en: Article title (en)
       article_body_en: Article body (en)
+      is_visible: Post is visible for visitors
       edit:
         header: Edit post
     feedback:

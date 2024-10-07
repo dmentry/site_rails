@@ -11,7 +11,7 @@
 }
 
 .announce_photo {
-  width: 80%;
+  width: 90%;
   margin-bottom: 10px;
 }
 
@@ -142,6 +142,18 @@ logo {
     opacity: .15;
     position: absolute;
     width: 100%;
+}
+
+.image_w_200 {
+  width: 200px;
+}
+
+.image_w_300 {
+  width: 300px;
+}
+
+.image_w_400 {
+  width: 400px;
 }
 
 .lang {
@@ -337,6 +349,7 @@ logo {
 .bottom_line {
   border-bottom: 1px solid grey;
   padding-top: 8px;
+  width: 90%;
 }
 
 .comment_color {

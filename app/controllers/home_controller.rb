@@ -20,7 +20,13 @@ class HomeController < ApplicationController
   end
 
   def announces
-    articles  = Article.order(created_at: :desc)
+    articles  = if current_user.present?
+                 Article.all
+               else
+                 Article.where(is_visible: true)
+               end
+
+    articles  = articles.order(created_at: :desc)
     photos    = Photo.without_photohosting.order(created_at: :desc)
     announces = (articles + photos).sort_by(&:created_at).reverse
 

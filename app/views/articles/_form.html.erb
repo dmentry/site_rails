@@ -31,6 +31,11 @@
     <%= form.text_area :article_body_en, class: 'form-control my_height' %>
   </div>
 
+  <div class="form-group">
+    <%= form.label t('models.article.is_visible') %>
+    <%= form.check_box :is_visible %>
+  </div>
+
   <div class="actions">
     <%= form.submit t('views.articles.form.save'), class: 'btn btn-sm btn-secondary mb-2' %>
 

@@ -438,6 +438,7 @@ ru:
       article_body_ru: Пост (рус)
       article_title_en: Заголовок поста (англ)
       article_body_en: Пост (англ)
+      is_visible: Пост виден для посетителей
       edit:
         header: Редактировать пост
     feedback:

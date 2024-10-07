@@ -1,4 +1,8 @@
 class ArticlePolicy < ApplicationPolicy
+  def show?
+    record.is_visible || (!record.is_visible && user.present?)
+  end
+
   def create?
     user.present?
   end

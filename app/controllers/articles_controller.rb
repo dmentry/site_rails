@@ -6,11 +6,18 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @pagy, @articles = pagy(Article.all.order(created_at: :desc), items: Article::ARTICLES_ON_PAGE)
+    articles = if current_user.present?
+                 Article.all
+               else
+                 Article.where(is_visible: true)
+               end
+
+    @pagy, @articles = pagy(articles.order(created_at: :desc), items: Article::ARTICLES_ON_PAGE)
   end
 
   # GET /articles/1
   def show
+    authorize @article
     # Болванка коммента для формы добавления
     @new_comment = @article.comments.build
   end
@@ -74,6 +81,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:article_title_ru, :article_body_ru, :article_title_en, :article_body_en)
+    params.require(:article).permit(:article_title_ru, :article_body_ru, :article_title_en, :article_body_en, :is_visible)
   end
 end
