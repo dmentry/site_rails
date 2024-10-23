@@ -415,7 +415,7 @@ ru:
       description: 'Поиск в постах и описаниях фотографий:'
       clear: Очистить
       search: Искать
-      placeholder: Текст
+      placeholder: Введите текст
       sorting: 'Сортировка по дате:'
     chatbots:
         chatbot: Темы чатбота

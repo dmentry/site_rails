@@ -427,6 +427,10 @@ logo {
   margin-right: 0;
 }
 
+.search_field_w {
+  width: 100%;
+}
+
 .social_pic {
   width: 30px;
 }

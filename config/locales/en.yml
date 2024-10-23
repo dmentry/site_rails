@@ -361,7 +361,7 @@ en:
       description: "Search in posts and photos' description:"
       clear: Clear
       search: Search
-      placeholder: Text
+      placeholder: Enter text
       sorting: 'Sort by date:'
     chatbots:
         chatbot: "Chatbot's topics"
