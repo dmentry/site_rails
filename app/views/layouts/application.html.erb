@@ -73,7 +73,7 @@
 
                   <div class="dropdown-item my_dropdown_item remove_padding bg-light admin_options"><%= t('app.navbar.menu.about') %></div>
 
-                  <%= link_to t('app.navbar.menu.common_info'), about_path(About.first.id), class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                  <%= link_to t('app.navbar.menu.common_info'), about_path(About&.first&.id), class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
 
                   <!-- Язык резюме в зависимости от локали -->
                   <%# if params[:locale] == 'ru' || params[:locale] == nil %>
