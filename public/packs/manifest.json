@@ -1,40 +1,36 @@
 {
-  "application.css": "/packs/css/application-fc8c95ee.css",
-  "application.js": "/packs/js/application-efb7e9ef5c3449e6a622.js",
-  "application.js.map": "/packs/js/application-efb7e9ef5c3449e6a622.js.map",
+  "application.js": "/packs/js/application-49e83a8e407f651aeb5d.js",
+  "application.js.map": "/packs/js/application-49e83a8e407f651aeb5d.js.map",
   "entrypoints": {
     "application": {
-      "css": [
-        "/packs/css/application-fc8c95ee.css"
-      ],
       "js": [
-        "/packs/js/application-efb7e9ef5c3449e6a622.js"
+        "/packs/js/application-49e83a8e407f651aeb5d.js"
       ],
       "js.map": [
-        "/packs/js/application-efb7e9ef5c3449e6a622.js.map"
+        "/packs/js/application-49e83a8e407f651aeb5d.js.map"
       ]
     },
     "gallery": {
       "js": [
-        "/packs/js/gallery-a092efd746396e2d649c.js"
+        "/packs/js/gallery-f7ff6c048ac2e0a76b06.js"
       ],
       "js.map": [
-        "/packs/js/gallery-a092efd746396e2d649c.js.map"
+        "/packs/js/gallery-f7ff6c048ac2e0a76b06.js.map"
       ]
     },
     "lightbox": {
       "js": [
-        "/packs/js/lightbox-31549fbd4fe9e604ccc3.js"
+        "/packs/js/lightbox-ec88528a65a29af923a2.js"
       ],
       "js.map": [
-        "/packs/js/lightbox-31549fbd4fe9e604ccc3.js.map"
+        "/packs/js/lightbox-ec88528a65a29af923a2.js.map"
       ]
     }
   },
-  "gallery.js": "/packs/js/gallery-a092efd746396e2d649c.js",
-  "gallery.js.map": "/packs/js/gallery-a092efd746396e2d649c.js.map",
-  "lightbox.js": "/packs/js/lightbox-31549fbd4fe9e604ccc3.js",
-  "lightbox.js.map": "/packs/js/lightbox-31549fbd4fe9e604ccc3.js.map",
+  "gallery.js": "/packs/js/gallery-f7ff6c048ac2e0a76b06.js",
+  "gallery.js.map": "/packs/js/gallery-f7ff6c048ac2e0a76b06.js.map",
+  "lightbox.js": "/packs/js/lightbox-ec88528a65a29af923a2.js",
+  "lightbox.js.map": "/packs/js/lightbox-ec88528a65a29af923a2.js.map",
   "media/images/35photo.png": "/packs/media/images/35photo-c9de4e773ab0aad201298bad44da2ed8.png",
   "media/images/500px.png": "/packs/media/images/500px-d3abea7fcf8aa2f6fba9b15b2ffcc12e.png",
   "media/images/Me_3.jpg": "/packs/media/images/Me_3-b6698faca3387722c69cc4fd4e77f385.jpg",
