@@ -16,8 +16,8 @@
   <%= stylesheet_pack_tag 'application', media: 'all' %>
   <%= javascript_pack_tag 'application' %>
   <%= favicon_pack_tag 'ruby.ico' %>
-
 </head>
+
 <body>
   <div class="container box_shadow p-1 p-md-2 mt-md-2 mb-3 bg-muted rounded div_container">
 
@@ -43,14 +43,14 @@
               <p>
                 <b>Контакты:</b>
                 <a href="mailto:mail@dack9.ru" class="logo-link" rel="noopener noreferrer" target="_blank">
-                  <%= image_pack_tag("cv/mail_logo.png", alt: 'email_logo', class: 'logo_email') %>
+                  <%= image_pack_tag("cv/mail_logo.png", alt: 'email_logo', class: 'logo_email', title: 'Email') %>
                 </a>
 
                 <a href="https://github.com/dmentry" class="logo-link" rel="noopener noreferrer" target="_blank">
-                  <%= image_pack_tag("cv/gh_logo.png", alt: 'gh_logo', class: 'logo_email') %>
+                  <%= image_pack_tag("cv/gh_logo.png", alt: 'gh_logo', class: 'logo_email', title: 'GitHub') %>
                 </a>
                 <a href="https://t.me/Dack99" class="logo-link" rel="noopener noreferrer" target="_blank">
-                  <%= image_pack_tag("cv/teleg_logo.png", alt: 'tg_logo', class: 'logo_email') %>
+                  <%= image_pack_tag("cv/teleg_logo.png", alt: 'tg_logo', class: 'logo_email', title: 'Telegram') %>
                 </a>
               </p>
             </div>
@@ -105,7 +105,7 @@
 
                     <h5 class="skills-title">Развертывание</h5>
                     <ul>
-                      <li><strong>VPS: </strong>установка веб-сервера <span class="badge badge-secondary">Nginx</span> с <span class="badge badge-secondary">Phusion Passenger</span> и <span class="badge badge-secondary">PostgreSQL</span>. Деплой Rails&ndash;приложения с помощью <span class="badge badge-secondary">Capistrano</span></li>
+                      <li><strong></strong><span class="badge badge-secondary">Nginx</span> с <span class="badge badge-secondary">Phusion Passenger</span> и <span class="badge badge-secondary">PostgreSQL</span>. Начальная настройка (<span class="badge badge-secondary">ufw</span> или <span class="badge badge-secondary">iptables</span> + <span class="badge badge-secondary">fail2ban</span>). Деплой Rails&ndash;приложения с помощью <span class="badge badge-secondary">Capistrano.</span></li>
                       <!-- <li><strong>Heroku: </strong>развертывание приложения</li> -->
                     </ul>
                     <li class="list-list">
@@ -180,7 +180,7 @@
 
             <div class="row box-shadow mt-2 px-2 bg-white rounded-sm">
               <div class="col-12 pt-3 text-secondary int-info">
-                <h3 class="bottom-line">Некоторые pet-проекты</h3>
+                <h3 class="bottom-line">Некоторые проекты</h3>
                 <div class="bottom-line-applications">
                   <h5 class="card-title text-dark">Мой фотосайт</h5>
                   <p class="card-text text-secondary">Сайт для размещения фотографий и статей в блоге.</p>
@@ -189,6 +189,15 @@
                   </div>
                   <a href="https://github.com/dmentry/site_rails" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="GitHub repository">GitHub</a>
                   <a href="http://dack9.ru/en" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank">Перейти</a>
+                </div>
+                <br>
+                <div  class="bottom-line-applications">
+                  <h5 class="card-title text-dark">Интернет-магазин</h5>
+                  <p class="card-text text-secondary">Полностью самописный аскетичный интернет-магазин.</p>
+                  <div>
+                    <%= image_pack_tag("cv/screenshot_kukumberryx.png", alt: 'screenshot', class: 'appl-screenshot') %>
+                  </div>
+                  <a href="https://kukumberryx.ru" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank">Перейти</a>
                 </div>
                 <br>
                 <div  class="bottom-line-applications">
@@ -207,15 +216,6 @@
                     <%= image_pack_tag("cv/screenshot_ask.jpg", alt: 'screenshot', class: 'appl-screenshot') %>
                   </div>
                   <a href="https://github.com/dmentry/askme" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="GitHub repository">GitHub</a>
-                </div>
-                <br>
-                <div  class="bottom-line-applications">
-                  <h5 class="card-title text-dark">Виселица</h5>
-                  <p class="card-text text-secondary">Аскетичная реализация известной игры на Ruby on Rails.</p>
-                  <div>
-                    <%= image_pack_tag("cv/screenshot_hangman.jpg", alt: 'screenshot', class: 'appl-screenshot') %>
-                  </div>
-                  <a href="https://github.com/dmentry/hangman_rails" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="GitHub repository">GitHub</a>
                 </div>
                 <br>
                 <div  class="bottom-line-applications">
@@ -276,6 +276,7 @@
     </div>
   </div>
 </body>
+
 </html>
 
 <script>

@@ -43,14 +43,14 @@
               <p>
                 <b>Contacts:</b>
                 <a href="mailto:mail@dack9.ru" class="logo-link" rel="noopener noreferrer" target="_blank">
-                  <%= image_pack_tag("cv/mail_logo.png", alt: 'email_logo', class: 'logo_email') %>
+                  <%= image_pack_tag("cv/mail_logo.png", alt: 'email_logo', class: 'logo_email', title: 'Email') %>
                 </a>
 
                 <a href="https://github.com/dmentry" class="logo-link" rel="noopener noreferrer" target="_blank">
-                  <%= image_pack_tag("cv/gh_logo.png", alt: 'gh_logo', class: 'logo_email') %>
+                  <%= image_pack_tag("cv/gh_logo.png", alt: 'gh_logo', class: 'logo_email', title: 'GitHub') %>
                 </a>
                 <a href="https://t.me/Dack99" class="logo-link" rel="noopener noreferrer" target="_blank">
-                  <%= image_pack_tag("cv/teleg_logo.png", alt: 'tg_logo', class: 'logo_email') %>
+                  <%= image_pack_tag("cv/teleg_logo.png", alt: 'tg_logo', class: 'logo_email', title: 'Telegram') %>
                 </a>
               </p>
             </div>
@@ -105,8 +105,8 @@
 
                     <h5 class="skills-title">Deploy</h5>
                     <ul>
-                      <li><strong>VPS: </strong><span class="badge badge-secondary">Nginx</span> and <span class="badge badge-secondary">Phusion Passenger</span> with <span class="badge badge-secondary">PostgreSQL</span> setup. Rails application deploy with <span class="badge badge-secondary">Capistrano</span></li>
-                      <li><strong>Heroku: </strong>application deploy</li>
+                      <li><strong></strong><span class="badge badge-secondary">Nginx</span> and <span class="badge badge-secondary">Phusion Passenger</span> with <span class="badge badge-secondary">PostgreSQL</span> setup. Initial setup (<span class="badge badge-secondary">ufw</span> or <span class="badge badge-secondary">iptables</span> + <span class="badge badge-secondary">fail2ban</span>). Rails application deploy with <span class="badge badge-secondary">Capistrano</span>.</li>
+                      <li><strong>Heroku: </strong>application deploy.</li>
                     </ul>
                     <li class="list-list">
 
@@ -178,7 +178,7 @@
 
             <div class="row box-shadow mt-2 px-2 bg-white rounded-sm">
               <div class="col-12 pt-3 text-secondary int-info">
-                <h3 class="bottom-line">Some pet projects</h3>
+                <h3 class="bottom-line">Some projects</h3>
                 <div class="bottom-line-applications">
                   <h5 class="card-title text-dark">Photo site</h5>
                   <p class="card-text text-secondary">Website for photos with blog</p>
@@ -187,6 +187,15 @@
                   </div>
                   <a href="https://github.com/dmentry/site_rails" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="GitHub repository">GitHub</a>
                   <a href="http://dack9.ru/en" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank">Open</a>
+                </div>
+                <br>
+                <div  class="bottom-line-applications">
+                  <h5 class="card-title text-dark">Online shop</h5>
+                  <p class="card-text text-secondary">Ascetic online store created completely by me.</p>
+                  <div>
+                    <%= image_pack_tag("cv/screenshot_kukumberryx.png", alt: 'screenshot', class: 'appl-screenshot') %>
+                  </div>
+                  <a href="https://kukumberryx.ru" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank">Open</a>
                 </div>
                 <br>
                 <div  class="bottom-line-applications">
@@ -206,15 +215,6 @@
                     <%= image_pack_tag("cv/screenshot_ask.jpg", alt: 'screenshot', class: 'appl-screenshot') %>
                   </div>
                   <a href="https://github.com/dmentry/askme" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="GitHub repository">GitHub</a>
-                </div>
-                <br>
-                <div  class="bottom-line-applications">
-                  <h5 class="card-title text-dark">Hangman</h5>
-                  <p class="card-text text-secondary">Hangman game for Rails</p>
-                  <div>
-                    <%= image_pack_tag("cv/screenshot_hangman.jpg", alt: 'screenshot', class: 'appl-screenshot') %>
-                  </div>
-                  <a href="https://github.com/dmentry/hangman_rails" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="GitHub repository">GitHub</a>
                 </div>
                 <br>
                 <div  class="bottom-line-applications">
