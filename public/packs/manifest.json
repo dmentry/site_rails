@@ -1,36 +1,36 @@
 {
-  "application.js": "/packs/js/application-49e83a8e407f651aeb5d.js",
-  "application.js.map": "/packs/js/application-49e83a8e407f651aeb5d.js.map",
+  "application.js": "/packs/js/application-d0c65a6b1abd242a9b44.js",
+  "application.js.map": "/packs/js/application-d0c65a6b1abd242a9b44.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-49e83a8e407f651aeb5d.js"
+        "/packs/js/application-d0c65a6b1abd242a9b44.js"
       ],
       "js.map": [
-        "/packs/js/application-49e83a8e407f651aeb5d.js.map"
+        "/packs/js/application-d0c65a6b1abd242a9b44.js.map"
       ]
     },
     "gallery": {
       "js": [
-        "/packs/js/gallery-f7ff6c048ac2e0a76b06.js"
+        "/packs/js/gallery-c09e1417a229f723c301.js"
       ],
       "js.map": [
-        "/packs/js/gallery-f7ff6c048ac2e0a76b06.js.map"
+        "/packs/js/gallery-c09e1417a229f723c301.js.map"
       ]
     },
     "lightbox": {
       "js": [
-        "/packs/js/lightbox-ec88528a65a29af923a2.js"
+        "/packs/js/lightbox-09f782644fd0e1094129.js"
       ],
       "js.map": [
-        "/packs/js/lightbox-ec88528a65a29af923a2.js.map"
+        "/packs/js/lightbox-09f782644fd0e1094129.js.map"
       ]
     }
   },
-  "gallery.js": "/packs/js/gallery-f7ff6c048ac2e0a76b06.js",
-  "gallery.js.map": "/packs/js/gallery-f7ff6c048ac2e0a76b06.js.map",
-  "lightbox.js": "/packs/js/lightbox-ec88528a65a29af923a2.js",
-  "lightbox.js.map": "/packs/js/lightbox-ec88528a65a29af923a2.js.map",
+  "gallery.js": "/packs/js/gallery-c09e1417a229f723c301.js",
+  "gallery.js.map": "/packs/js/gallery-c09e1417a229f723c301.js.map",
+  "lightbox.js": "/packs/js/lightbox-09f782644fd0e1094129.js",
+  "lightbox.js.map": "/packs/js/lightbox-09f782644fd0e1094129.js.map",
   "media/images/35photo.png": "/packs/media/images/35photo-c9de4e773ab0aad201298bad44da2ed8.png",
   "media/images/500px.png": "/packs/media/images/500px-d3abea7fcf8aa2f6fba9b15b2ffcc12e.png",
   "media/images/Me_3.jpg": "/packs/media/images/Me_3-b6698faca3387722c69cc4fd4e77f385.jpg",
@@ -47,6 +47,7 @@
   "media/images/cv/screenshot_bbq.jpg": "/packs/media/images/cv/screenshot_bbq-d97e1524d2b22b76dea26ae3f482b22a.jpg",
   "media/images/cv/screenshot_forecast_bot.png": "/packs/media/images/cv/screenshot_forecast_bot-7bbb2c62410c90692d0afaa9ebd40be1.png",
   "media/images/cv/screenshot_hangman.jpg": "/packs/media/images/cv/screenshot_hangman-7bef5ff9e87665dc41555752fe13b60e.jpg",
+  "media/images/cv/screenshot_kukumberryx.png": "/packs/media/images/cv/screenshot_kukumberryx-884b98ea62f9092d9d9308079d1b316f.png",
   "media/images/cv/screenshot_landing.jpg": "/packs/media/images/cv/screenshot_landing-ad397c0efc474e7dcff811f909fb2e11.jpg",
   "media/images/cv/screenshot_train_schedule.jpg": "/packs/media/images/cv/screenshot_train_schedule-f10d478befbc4b2dcca2795bfacb240d.jpg",
   "media/images/cv/teleg_logo.png": "/packs/media/images/cv/teleg_logo-83b1bd6a5cf261f7a8c3416f9a7fcf56.png",

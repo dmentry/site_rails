@@ -643,7 +643,7 @@ logo {
   .ny2 {
     display: block;
     width: 38px;
-    position: relative;
+    position: fixed;
     left: 21px;
     top: -4px;
     z-index: 1000;

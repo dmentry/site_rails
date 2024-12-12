@@ -10,20 +10,14 @@ gem 'webpacker', '~> 4.0'
 gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'carrierwave'
-# gem 'rmagick'
 gem "mini_magick"
 gem 'pundit'
 gem 'recaptcha'
-# gem 'devise-i18n'
+gem 'devise-i18n'
 gem 'traco'
 gem 'pagy', '~> 6.0'
 gem 'apexcharts'
 gem 'ransack'
-
-group :development, :test do
-  gem 'pry', '~> 0.13.1'
-  gem "letter_opener"
-end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -34,4 +28,5 @@ group :development do
   # gem 'capistrano-bundler', '~> 1.2'
   gem 'ed25519', '>= 1.2', '< 2.0'
   gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
+  gem "letter_opener"
 end
