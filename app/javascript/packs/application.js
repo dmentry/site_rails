@@ -8,6 +8,7 @@ window.$ = window.jQuery = jQuery;
 import '../../assets/stylesheets/application'
 import 'bootstrap/dist/js/bootstrap'
 import './gallery'
+import './ekko-lightbox'
 import ApexCharts from 'apexcharts'
 window.ApexCharts = ApexCharts
 
