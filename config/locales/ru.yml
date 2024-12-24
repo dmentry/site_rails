@@ -363,6 +363,8 @@ ru:
         header: Редактировать фотографию
       new:
         header: Загрузить фотографию
+      universal_page:
+        has_coordinates: Посмотреть на карте
     map:
       header: Фотки на карте
     feedback:

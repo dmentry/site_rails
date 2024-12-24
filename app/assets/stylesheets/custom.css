@@ -14,9 +14,36 @@
   margin-right: auto;
 }
 
+.announce_image {
+  position: relative;
+}
+
 .announce_photo {
   width: 90%;
   margin-bottom: 10px;
+}
+
+.article_title_link {
+  cursor: pointer;
+  text-decoration: none !important;
+  color: black;
+}
+
+.article_title_link:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.back_to_top_img {
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 50%;
+}
+
+.back_to_top_img:hover {
+  opacity:0.5;
 }
 
 .box_shadow {
@@ -29,14 +56,6 @@
 
 .fr {
   width: 45%;
-}
-
-logo {
-    opacity: .4;
-    position: absolute;
-    top: 0;
-    padding: 3px 1px 0 3px;
-    margin-left: -50px;
 }
 
 .logo {
@@ -53,6 +72,24 @@ logo {
 }
 .ny2 {
   display: none;
+}
+
+.gps_img {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: -10px;
+  right: -12px;
+  z-index: 1;
+}
+
+.gps_img_universal_page {
+  height: 30px !important;
+  width: 30px !important;
+  position: absolute;
+  top: -8px;
+  right: -14px;
+  z-index: 1;
 }
 
 .headername {
@@ -143,9 +180,9 @@ logo {
 }
 
 .header img{
-    opacity: .15;
-    position: absolute;
-    width: 100%;
+  opacity: .15;
+  position: absolute;
+  width: 100%;
 }
 
 .image_w_200 {
@@ -199,6 +236,7 @@ logo {
 .margins-images {
   margin: 3px, 2px, 3px, 2px;
   padding: 3px;
+  position: relative;
 }
 
 .footer {
@@ -212,22 +250,22 @@ logo {
 }
 
 .dackbottomicons p{
-    margin-top: 3px;
-    margin-bottom: 3px;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 
 .dackbottomicons a{
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .dackbottomicons-range {
-    padding-right:4px;
-    padding-left: 7px;
-    padding-bottom: 3px;
+  padding-right:4px;
+  padding-left: 7px;
+  padding-bottom: 3px;
 }
 
 .dackbottomicons a:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .drop_down_button_my {
@@ -249,9 +287,9 @@ logo {
 }
 
 .selected {
-    font-weight: bold;
-    color: #afafaf;
-    cursor: default;
+  font-weight: bold;
+  color: #afafaf;
+  cursor: default;
 }
 
 .buffer-top {
@@ -290,7 +328,6 @@ logo {
 }
 
 .pagy-bottom-article {
-  /* width: 187px; */
   margin-left: auto;
   margin-right: auto;
   margin-top: 5px;
@@ -300,13 +337,8 @@ logo {
 .pagy-bottom-visitor {
   position: relative;
   margin-left: 48.5vw;
-  /* margin-bottom: 20px; */
   bottom: 20px;
-  /* margin-top: 20px; */
   font-size: small;
-/*   width: 187px;
-  margin-left: auto;
-  margin-right: auto; */
 }
 
 .gallery img {
@@ -354,6 +386,12 @@ logo {
   border-bottom: 1px solid grey;
   padding-top: 8px;
   width: 90%;
+}
+
+.bottom_line_blog {
+  border-bottom: 1px solid grey;
+  padding-top: 8px;
+  /* width: 90%; */
 }
 
 .comment_color {
@@ -435,8 +473,17 @@ logo {
   width: 100%;
 }
 
+#showReturnBtn {
+  position: fixed;
+  left: 15px;
+  bottom: 24px;
+  display: none;
+  z-index: 10000;
+}
+
 .social_pic {
-  width: 30px;
+  width: 40px;
+  top: -2px;
 }
 
 .text_size_smaller {
@@ -495,9 +542,15 @@ logo {
   width: 60px;
   height: 60px;
   right: 20px;
-  bottom: 20px;
+  bottom: 24px;
   z-index: 10000;
   cursor: pointer;
+  border-radius: 50%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.bot_open_btn:hover {
+  opacity:0.5;
 }
 
 .bot_open_btn_text {
@@ -567,12 +620,6 @@ logo {
     border-radius: 0;
   }
 
-  .bot_open_btn {
-    right: 12px;
-    bottom: 10px;
-    opacity: 0.8;
-  }
-
   .bot_close_btn {
     position: fixed;
     width: 39px;
@@ -634,6 +681,11 @@ logo {
 @media (max-width: 991px) {
   .announce_photo, .bottom_line {
     width: 100%;
+  }
+
+  .back_to_top_img, .bot_open_btn {
+    height: 40px;
+    width: 40px;
   }
 
   .drop_down_button_my {

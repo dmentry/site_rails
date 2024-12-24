@@ -6,9 +6,7 @@
 
       <%= raw(@article.article_body) %><br>
 
-      <%= link_to t('views.articles.show.back'), articles_path, class: 'btn btn-sm btn-secondary my-2' %>
-
-      <div class='btn btn-sm btn-secondary visible_mobile scrollToTop showReturnBtn inline_div my-2'><%= t('views.layout.up') %></div>
+      <%= link_to t('views.articles.show.back'), :back, class: 'btn btn-sm btn-secondary my-2' %>
   
       <% if current_user %>
         <%= link_to t('views.abouts.index.edit'), edit_article_path(@article), class: 'btn btn-sm btn-primary my-2' %>

@@ -4,7 +4,11 @@
   <% end %>
 
   <% if !photo.lat.nil? && photo.lat.length > 0 %>
-    <% map_link = link_to(image_pack_tag('map.png', class: 'social_pic'), map_path(photo_id: photo), target: "blanc", rel: "noreferrer") %>
+    <div class='announce_image'>
+      <%= link_to(image_pack_tag("gps.png", alt: 'feed', class: 'gps_img_universal_page', title: t('views.photos.universal_page.has_coordinates')), map_path(photo_id: photo), target: "blanc", rel: "noreferrer") %>
+    </div>
+
+    <% map_link = link_to(image_pack_tag('gps.png', class: 'social_pic'), map_path(photo_id: photo), title: t('views.photos.universal_page.has_coordinates'),target: "blanc", rel: "noreferrer") %>
   <% end %>
 
   <% image_title = "#{ photo.description } #{ map_link } #{ trash_button }" %>

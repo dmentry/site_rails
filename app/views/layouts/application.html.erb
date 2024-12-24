@@ -157,11 +157,11 @@
 
     <%= yield %>
 
-    <footer>
-      <div class='center showReturnBtn'>
-        <div class='btn btn-light btn-sm btn-width-my-5 lightgray_bkg_2 my-2 visible_mobile scrollToTop'><%= t('views.layout.up') %></div>
-      </div>
+    <div id='showReturnBtn'>
+      <img class='back_to_top_img' id='scrollToTop' src='/images/pictograms/back_to_top.png' alt='bubble to top button'>
+    </div>
 
+    <footer>
       <div class='buffer-bottom center mt-2'>
         <% if params[:locale] == 'ru' || params[:locale] == nil %>
           <%= link_to "Dack9 #{ Time.now.year }", cv_rus_path, class: "remove_padding copyright", target: "blanc", rel: "noreferrer" %>
@@ -334,6 +334,21 @@
         $(".menu_close_img").slideUp(500);
         $("#menu_pic").show(500);
         $(".badge_mobile").show(100);
+      }
+    });
+
+    $('#scrollToTop').click(function () {
+      $('html, body').animate({ scrollTop: $('html, body').offset().top - 100 }, 300);
+
+      return false;
+    });
+
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > 0) {
+        $('#showReturnBtn').fadeIn(200);
+      }
+      else {
+        $('#showReturnBtn').fadeOut(200);
       }
     });
 
