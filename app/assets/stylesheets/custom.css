@@ -76,19 +76,19 @@
 
 .gps_img {
   height: 30px;
-  width: 30px;
+  width: 20px;
   position: absolute;
   top: -10px;
-  right: -12px;
+  right: -6px;
   z-index: 1;
 }
 
 .gps_img_universal_page {
   height: 30px !important;
-  width: 30px !important;
+  width: 20px !important;
   position: absolute;
-  top: -8px;
-  right: -14px;
+  top: -4px;
+  right: -4px;
   z-index: 1;
 }
 
@@ -482,7 +482,7 @@
 }
 
 .social_pic {
-  width: 40px;
+  width: 26px;
   top: -2px;
 }
 
