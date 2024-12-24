@@ -309,6 +309,8 @@ en:
         header: Editing photo
       new:
         header: Upload photo
+      universal_page:
+        has_coordinates: See on the map
     map:
       header: Photos on the map
     feedback:

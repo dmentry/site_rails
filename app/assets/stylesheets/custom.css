@@ -14,6 +14,22 @@
   margin-right: auto;
 }
 
+.back_to_top_img {
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 50%;
+}
+
+.back_to_top_img:hover {
+  opacity:0.5;
+}
+
+.announce_image {
+  position: relative;
+}
+
 .announce_photo {
   width: 90%;
   margin-bottom: 10px;
@@ -53,6 +69,24 @@ logo {
 }
 .ny2 {
   display: none;
+}
+
+.gps_img {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: -10px;
+  right: -12px;
+  z-index: 1;
+}
+
+.gps_img_universal_page {
+  height: 30px !important;
+  width: 30px !important;
+  position: absolute;
+  top: -8px;
+  right: -14px;
+  z-index: 1;
 }
 
 .headername {
@@ -199,6 +233,7 @@ logo {
 .margins-images {
   margin: 3px, 2px, 3px, 2px;
   padding: 3px;
+  position: relative;
 }
 
 .footer {
@@ -435,8 +470,17 @@ logo {
   width: 100%;
 }
 
+#showReturnBtn {
+  position: fixed;
+  left: 15px;
+  bottom: 24px;
+  display: none;
+  z-index: 10000;
+}
+
 .social_pic {
-  width: 30px;
+  width: 40px;
+  top: -2px;
 }
 
 .text_size_smaller {
@@ -495,7 +539,7 @@ logo {
   width: 60px;
   height: 60px;
   right: 20px;
-  bottom: 20px;
+  bottom: 24px;
   z-index: 10000;
   cursor: pointer;
 }
@@ -567,11 +611,11 @@ logo {
     border-radius: 0;
   }
 
-  .bot_open_btn {
+/*   .bot_open_btn {
     right: 12px;
     bottom: 10px;
     opacity: 0.8;
-  }
+  } */
 
   .bot_close_btn {
     position: fixed;
@@ -634,6 +678,11 @@ logo {
 @media (max-width: 991px) {
   .announce_photo, .bottom_line {
     width: 100%;
+  }
+
+  .back_to_top_img, .bot_open_btn {
+    height: 40px;
+    width: 40px;
   }
 
   .drop_down_button_my {

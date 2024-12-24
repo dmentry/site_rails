@@ -5,7 +5,6 @@
 
       <% @announces.each do |announce| %>
         <div class='announce_photo'>
-
           <div class='announce_dt'><%= announce.created_at.strftime("%d.%m.%Y") %></div>
 
           <% if announce.is_a?(Article) %>
@@ -15,15 +14,23 @@
 
             <%= link_to t('views.articles.index.article.read'), announce, class: 'btn btn-sm btn-secondary mt-2' %>
           <% elsif announce.is_a?(Photo) %>
+
             <h2 class="mt-3 text_size"><%= announce.description %></h2>
 
             <% category = t("app.navbar.menu.drop_down.#{ announce.type.photo_type }") %>
+
+            <% if !announce.lat.nil? && announce.lat.length > 0 %>
+              <div class='announce_image'>
+                <%= link_to(image_pack_tag("gps.png", alt: 'feed', class: 'gps_img', title: t('views.photos.universal_page.has_coordinates')), map_path(photo_id: announce), target: "blanc", rel: "noreferrer") %>
+              </div>
+            <% end %>
 
             <%= link_to public_send("#{ announce.type.photo_type }_page_path"), title: "#{t('views.home.to_photo_category')} '#{category}'" do %>
               <div>
                 <%= image_tag announce.photo.thumb.url, class: 'rounded_corners' %>
               </div>
             <% end %>
+
           <% end %>
         </div>
         <div class="bottom_line"></div>
