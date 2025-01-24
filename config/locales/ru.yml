@@ -289,7 +289,8 @@ ru:
           photohosting: Фотохостинг
         blog: Блог
         about: Обо мне
-        common_info: В общем
+        common_info: Общая информация
+        portfolio: Портфолио
         cv_rus: Резюме (рус)
         cv_eng: Резюме (анг)
         map: Карта
@@ -385,6 +386,8 @@ ru:
       form:
         main_text: Текст
         save: Сохранить
+      portfolio:
+        title: Портфолио
     comments:
       email: Ваш email
       comment: Ваш комментарий

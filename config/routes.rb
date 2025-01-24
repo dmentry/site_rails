@@ -39,15 +39,18 @@ Rails.application.routes.draw do
     get 'comments/answer_comment_new/:comment_id' => 'comments#answer_comment_new', as: :answer_comment_new
     post 'comments/answer_comment_new/:comment_id' => 'comments#create_answer_comment', as: :create_answer_comment
 
-    get 'cv_rus' => 'abouts#cv_rus', as: :cv_rus
-    get 'cv_eng' => 'abouts#cv_eng', as: :cv_eng
-
     get 'dack9_rss', to: 'home#rss_feed', defaults: { format: :rss }
     get 'sitemap.xml' => 'home#sitemap', format: "xml"
     get 'announces' => 'home#announces', as: :announces
     get 'searching', to: 'home#searching'
 
     get 'chat_bot' => 'chat_bot_topics#have_answer', as: :have_answer, defaults: { format: :json }
+
+    get 'cv_rus' => 'abouts#cv_rus', as: :cv_rus
+    get 'cv_eng' => 'abouts#cv_eng', as: :cv_eng
+
+    get 'portfolio', to: 'abouts#portfolio'
+    get 'portfolio_case', to: 'abouts#portfolio_case'
 
     root to: 'home#announces'
   end

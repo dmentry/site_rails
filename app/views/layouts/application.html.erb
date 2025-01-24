@@ -24,145 +24,148 @@
     <script src="https://api-maps.yandex.ru/2.1/?apikey=<%= Rails.application.credentials.dig(Rails.env.to_sym, :yandex_api_key) %>&lang=ru_RU"></script>
   </head>
 
-  <body>
+  <body class='<%= @dark_body %>'%>
 
-    <div id="collapseMenu" class="collapse d-lg-block">
-      <div class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top">
-        <div class="container-fluid">
-          <div class="navbar navbar-responsive logo_my_class">
-            <%= image_pack_tag("logo.png", alt: 'logo', class: 'mt-0 logo') %>
+    <div class="content">
+      <div id="collapseMenu" class="collapse d-lg-block">
+        <div class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top">
+          <div class="container-fluid">
+            <div class="navbar navbar-responsive logo_my_class">
+              <%= image_pack_tag("logo.png", alt: 'logo', class: 'mt-0 logo') %>
 
-              <!-- Новогодняя шапка desktop -->
-              <%= image_pack_tag("ny.png", alt: 'Happy New Year!', class: 'ny', title: 'Happy New Year!') %>
+                <!-- Новогодняя шапка desktop -->
+                <%#= image_pack_tag("ny.png", alt: 'Happy New Year!', class: 'ny', title: 'Happy New Year!') %>
 
+                <ul class="navbar-nav">
+                  <%= link_to t('app.navbar.logo_name'), root_path, class: 'btn bg-light', title: t('app.navbar.logo_name_caption') %>
+                </ul>
+            </div>
+            <div class="navbar navbar-responsive d-md-block">
               <ul class="navbar-nav">
-                <%= link_to t('app.navbar.logo_name'), root_path, class: 'btn bg-light', title: t('app.navbar.logo_name_caption') %>
-              </ul>
-          </div>
-          <div class="navbar navbar-responsive d-md-block">
-            <ul class="navbar-nav">
-              <li class="dropdown">
-                <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown"><%= t('app.navbar.menu.drop_down.photos') %></button>
-                <div class="dropdown-menu my_control my_font_size mobile_bg_light" aria-labelledby="dropdownMenuButton">
-
-                  <div class="dropdown-item my_dropdown_item remove_padding bg-light photos_category_item"><%= t('app.navbar.menu.drop_down.categories') %></div>
-                  <% if current_user %>
-                    <%=link_to t('app.navbar.menu.drop_down.all'), all_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%=link_to t('app.navbar.menu.drop_down.photohosting'), photohosting_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                  <% end %>
-
-                  <%= link_to t('app.navbar.menu.drop_down.recent'), photos_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                  <%= link_to t('app.navbar.menu.drop_down.macro'), macro_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                  <%= link_to t('app.navbar.menu.drop_down.landscape'), landscape_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                  <%= link_to t('app.navbar.menu.drop_down.portrait'), portrait_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                  <%= link_to t('app.navbar.menu.drop_down.drone'), drone_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                  <%= link_to t('app.navbar.menu.drop_down.collage'), collage_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                  <%= link_to t('app.navbar.menu.drop_down.other'), other_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                </div>
-              </li>
-              <li> <%= link_to t('app.navbar.menu.blog'), articles_path, class: "btn my_font_size remove_padding" %> </li>
-              <li> <%= link_to t('app.navbar.menu.map'), map_path, class: "btn my_font_size remove_padding" %> </li>
-
-              <li class="dropdown">
-                <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown"><%= t('app.navbar.menu.about') %></button>
-                <div class="dropdown-menu my_control my_font_size mobile_bg_light" aria-labelledby="dropdownMenuButton">
-
-                  <div class="dropdown-item my_dropdown_item remove_padding bg-light admin_options"><%= t('app.navbar.menu.about') %></div>
-
-                  <%= link_to t('app.navbar.menu.common_info'), about_path(About&.first&.id), class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-
-                  <!-- Язык резюме в зависимости от локали -->
-                  <%# if params[:locale] == 'ru' || params[:locale] == nil %>
-                    <%#= link_to t('app.navbar.menu.cv_rus'), cv_rus_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
-                  <%# else %>
-                    <%#= link_to t('app.navbar.menu.cv_eng'), cv_eng_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
-                  <%# end %>
-
-                  <%= link_to t('app.navbar.menu.cv_rus'), cv_rus_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
-                  <%= link_to t('app.navbar.menu.cv_eng'), cv_eng_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
-                </div>
-              </li>
-
-              <li> <%= link_to t('app.navbar.menu.feedback'), feedback_page_path, class: "btn my_font_size remove_padding" %> </li>
-
-              <% if current_user %>
-                <% badge_class, badge_quantity = new_uniq_visitors %>
-                <div class='<%= badge_class %>'><%= badge_quantity %></div>
-
                 <li class="dropdown">
-                  <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown"><%= t('app.navbar.menu.admin_options') %></button>
+                  <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown"><%= t('app.navbar.menu.drop_down.photos') %></button>
                   <div class="dropdown-menu my_control my_font_size mobile_bg_light" aria-labelledby="dropdownMenuButton">
 
-                    <div class="dropdown-item my_dropdown_item remove_padding bg-light admin_options"><%= t('app.navbar.menu.admin_options') %></div>
-                    <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <div class="dropdown-item my_dropdown_item remove_padding bg-light photos_category_item"><%= t('app.navbar.menu.drop_down.categories') %></div>
+                    <% if current_user %>
+                      <%=link_to t('app.navbar.menu.drop_down.all'), all_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                      <%=link_to t('app.navbar.menu.drop_down.photohosting'), photohosting_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <% end %>
 
-                    <div class="qnt_visitors_remove_l_margin">
-                      <div class='<%= badge_class == "circle_badge_visible" ? "badge_class_mobile" : "circle_badge_no" %>'><%= badge_quantity %></div>
-                      <%= link_to t('app.navbar.menu.visitors'), show_visitors_info_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    </div>
-
-                    <%= link_to t('app.navbar.menu.visits'), show_visits_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%= link_to t('app.navbar.menu.chatbot'), chat_bot_topics_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%= link_to t('app.navbar.menu.profile'), current_user, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <%= link_to t('app.navbar.menu.drop_down.recent'), photos_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <%= link_to t('app.navbar.menu.drop_down.macro'), macro_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <%= link_to t('app.navbar.menu.drop_down.landscape'), landscape_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <%= link_to t('app.navbar.menu.drop_down.portrait'), portrait_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <%= link_to t('app.navbar.menu.drop_down.drone'), drone_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <%= link_to t('app.navbar.menu.drop_down.collage'), collage_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <%= link_to t('app.navbar.menu.drop_down.other'), other_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
                   </div>
                 </li>
-              <% else %>
-                <li> <%= link_to ' ', new_user_session_path, class: "btn my_font_size remove_padding" %> </li>
-              <% end %>
+                <li> <%= link_to t('app.navbar.menu.blog'), articles_path, class: "btn my_font_size remove_padding" %> </li>
+                <li> <%= link_to t('app.navbar.menu.map'), map_path, class: "btn my_font_size remove_padding" %> </li>
 
-              <% if params[:locale] == 'ru' || params[:locale] == nil %>
-                <% locale_class_eng = '' %>
-                <% locale_class_ru = 'locale_class_na' %>
-              <% else %>
-                <% locale_class_eng = 'locale_class_na' %>
-                <% locale_class_ru = '' %>
-              <% end %>
+                <li class="dropdown">
+                  <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown"><%= t('app.navbar.menu.about') %></button>
+                  <div class="dropdown-menu my_control my_font_size mobile_bg_light" aria-labelledby="dropdownMenuButton">
 
-              <li><%= link_to 'Рус', { controller: controller_name, action: action_name, locale: "ru" }, { class: "btn my_font_size flag_position language_sw_text #{ locale_class_ru }" } %></li>
+                    <div class="dropdown-item my_dropdown_item remove_padding bg-light admin_options"><%= t('app.navbar.menu.about') %></div>
 
-              <li><%= link_to 'Eng', { controller: controller_name, action: action_name, locale: "en" }, { class: "btn my_font_size flag_position language_sw_text #{ locale_class_eng }" } %></li>
+                    <%= link_to t('app.navbar.menu.common_info'), about_path(About&.first&.id), class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
 
-              <li> <%= link_to image_pack_tag("feed.png", alt: 'feed', class: 'feed_img'), dack9_rss_path, class: "btn my_font_size remove_padding" %> </li>
+                    <!-- Язык резюме в зависимости от локали -->
+                    <%# if params[:locale] == 'ru' || params[:locale] == nil %>
+                      <%#= link_to t('app.navbar.menu.cv_rus'), cv_rus_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
+                    <%# else %>
+                      <%#= link_to t('app.navbar.menu.cv_eng'), cv_eng_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
+                    <%# end %>
 
-              <li> <%= link_to image_pack_tag("searching.png", alt: 'feed', class: 'feed_img'), searching_path, class: "btn my_font_size remove_padding" %> </li>
-            </ul>
+                    <%= link_to t('app.navbar.menu.portfolio'), portfolio_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    <%= link_to t('app.navbar.menu.cv_rus'), cv_rus_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
+                    <%= link_to t('app.navbar.menu.cv_eng'), cv_eng_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
+                  </div>
+                </li>
+
+                <li> <%= link_to t('app.navbar.menu.feedback'), feedback_page_path, class: "btn my_font_size remove_padding" %> </li>
+
+                <% if current_user %>
+                  <% badge_class, badge_quantity = new_uniq_visitors %>
+                  <div class='<%= badge_class %>'><%= badge_quantity %></div>
+
+                  <li class="dropdown">
+                    <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown"><%= t('app.navbar.menu.admin_options') %></button>
+                    <div class="dropdown-menu my_control my_font_size mobile_bg_light" aria-labelledby="dropdownMenuButton">
+
+                      <div class="dropdown-item my_dropdown_item remove_padding bg-light admin_options"><%= t('app.navbar.menu.admin_options') %></div>
+                      <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+
+                      <div class="qnt_visitors_remove_l_margin">
+                        <div class='<%= badge_class == "circle_badge_visible" ? "badge_class_mobile" : "circle_badge_no" %>'><%= badge_quantity %></div>
+                        <%= link_to t('app.navbar.menu.visitors'), show_visitors_info_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                      </div>
+
+                      <%= link_to t('app.navbar.menu.visits'), show_visits_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                      <%= link_to t('app.navbar.menu.chatbot'), chat_bot_topics_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                      <%= link_to t('app.navbar.menu.profile'), current_user, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                      <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
+                    </div>
+                  </li>
+                <% else %>
+                  <li> <%= link_to ' ', new_user_session_path, class: "btn my_font_size remove_padding" %> </li>
+                <% end %>
+
+                <% if params[:locale] == 'ru' || params[:locale] == nil %>
+                  <% locale_class_eng = '' %>
+                  <% locale_class_ru = 'locale_class_na' %>
+                <% else %>
+                  <% locale_class_eng = 'locale_class_na' %>
+                  <% locale_class_ru = '' %>
+                <% end %>
+
+                <li><%= link_to 'Рус', { controller: controller_name, action: action_name, locale: "ru" }, { class: "btn my_font_size flag_position language_sw_text #{ locale_class_ru }" } %></li>
+
+                <li><%= link_to 'Eng', { controller: controller_name, action: action_name, locale: "en" }, { class: "btn my_font_size flag_position language_sw_text #{ locale_class_eng }" } %></li>
+
+                <li> <%= link_to image_pack_tag("feed.png", alt: 'feed', class: 'feed_img'), dack9_rss_path, class: "btn my_font_size remove_padding" %> </li>
+
+                <li> <%= link_to image_pack_tag("searching.png", alt: 'feed', class: 'feed_img'), searching_path, class: "btn my_font_size remove_padding" %> </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="badge_mobile">
-      <div class='<%= badge_class == "circle_badge_visible" ? "badge_class_mobile" : "circle_badge_no" %>'><%= badge_quantity %></div>
-      <a id="menu_pic" href="#"><%= image_pack_tag("menu-4x.png", alt: 'menu') %></a>
+      <div class="badge_mobile">
+        <div class='<%= badge_class == "circle_badge_visible" ? "badge_class_mobile" : "circle_badge_no" %>'><%= badge_quantity %></div>
+        <a id="menu_pic" href="#"><%= image_pack_tag("menu-4x.png", alt: 'menu') %></a>
 
-      <!-- Новогодняя шапка mobile -->
-      <%= image_pack_tag('ny.png', alt: 'Happy New Year!', class: 'ny2', title: 'Happy New Year!') %>
-    </div>
-
-    <a href="#">
-      <%= image_pack_tag("close2.png", alt: 'menu', class: 'menu_close_img') %>
-    </a>
-  
-    <% flash.each do |key, value| %>
-      <div class="<%= flash_class(key) %>" role="alert">
-        <%= value %>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <!-- Новогодняя шапка mobile -->
+        <%= image_pack_tag('ny.png', alt: 'Happy New Year!', class: 'ny2', title: 'Happy New Year!') %>
       </div>
-    <% end %>
 
-    <%= render 'layouts/chatbot' %>
+      <a href="#">
+        <%= image_pack_tag("close2.png", alt: 'menu', class: 'menu_close_img') %>
+      </a>
+    
+      <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>" role="alert">
+          <%= value %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
 
-    <%= yield %>
+      <%= render 'layouts/chatbot' %>
 
-    <div id='showReturnBtn'>
-      <img class='back_to_top_img' id='scrollToTop' src='/images/pictograms/back_to_top.png' alt='bubble to top button'>
+      <%= yield %>
+
+      <div id='showReturnBtn'>
+        <img class='back_to_top_img' id='scrollToTop' src='/images/pictograms/back_to_top.png' alt='bubble to top button'>
+      </div>
     </div>
 
-    <footer>
-      <div class='buffer-bottom center mt-2'>
+    <footer class="footer bg-light mt-4">
+      <div class='buffer-bottom center pt-2'>
         <% if params[:locale] == 'ru' || params[:locale] == nil %>
           <%= link_to "Dack9 #{ Time.now.year }", cv_rus_path, class: "remove_padding copyright", target: "blanc", rel: "noreferrer" %>
         <% else %>
@@ -357,107 +360,107 @@
     requestData(processResponse);
   });
 
-  // Happy New Year
-  // Настройки
-  var snowCount = 15;
-  var snowColor = new Array("#b9dff4", "#b9dff5", "#b9dff6", "#b9dff7", "#ffffff");
-  var snowType = new Array("Times");
-  var snowletter = "*"
-  var sinkSpeed = 0.5;
-  var snowSizeMin = 10;
-  var snowSizeMax = 40;
-  var snowLocation = 3; // 1 - по всему экрану, 2 - слева, 3 - по центру, 4 - справа
+  // // Happy New Year
+  // // Настройки
+  // var snowCount = 15;
+  // var snowColor = new Array("#b9dff4", "#b9dff5", "#b9dff6", "#b9dff7", "#ffffff");
+  // var snowType = new Array("Times");
+  // var snowletter = "*"
+  // var sinkSpeed = 0.5;
+  // var snowSizeMin = 10;
+  // var snowSizeMax = 40;
+  // var snowLocation = 3; // 1 - по всему экрану, 2 - слева, 3 - по центру, 4 - справа
 
-  // Элементы для работы скрипта (здесь не стоит ничего менять)
-  var snow = new Array();
-  var marginbottom;
-  var marginright;
-  var timer;
-  var i_snow = 0;
-  var x_mv = new Array();
-  var crds = new Array();
-  var lftrght = new Array();
-  var browserinfos = navigator.userAgent;
-  var ie5 = document.all && document.getElementById && !browserinfos.match(/Opera/);
-  var ns6 = document.getElementById && !document.all;
-  var opera = browserinfos.match(/Opera/);
-  var browserok = ie5 || ns6 || opera;
+  // // Элементы для работы скрипта (здесь не стоит ничего менять)
+  // var snow = new Array();
+  // var marginbottom;
+  // var marginright;
+  // var timer;
+  // var i_snow = 0;
+  // var x_mv = new Array();
+  // var crds = new Array();
+  // var lftrght = new Array();
+  // var browserinfos = navigator.userAgent;
+  // var ie5 = document.all && document.getElementById && !browserinfos.match(/Opera/);
+  // var ns6 = document.getElementById && !document.all;
+  // var opera = browserinfos.match(/Opera/);
+  // var browserok = ie5 || ns6 || opera;
 
-  function RandomMaker(range){
-    return Math.floor(range * Math.random());
-  }
+  // function RandomMaker(range){
+  //   return Math.floor(range * Math.random());
+  // }
 
-  function InitSnow(){
-    if (ie5 || opera){
-       marginbottom = document.body.scrollHeight;
-       marginright = document.body.clientWidth - 15;
-    }else if (ns6){
-       marginbottom = document.body.scrollHeight;
-       marginright = window.innerWidth - 15;
-    }
-    var snowsizerange = snowSizeMax - snowSizeMin;
-    for (i = 0; i <= snowCount; i++){
-       crds[i] = 0;
-       lftrght[i] = Math.random() * 15;
-       x_mv[i] = 0.03 + Math.random() / 10;
-       snow[i] = document.getElementById("s" + i);
-       snow[i].style.fontFamily = snowType[RandomMaker(snowType.length)];
-       snow[i].size = RandomMaker(snowsizerange) + snowSizeMin;
-       snow[i].style.fontSize = snow[i].size + "px";
-       snow[i].style.color = snowColor[RandomMaker(snowColor.length)];
-       snow[i].style.zIndex = 1000;
-       snow[i].sink=sinkSpeed * snow[i].size / 5;
-       if (snowLocation == 1){
-           snow[i].posx = RandomMaker(marginright - snow[i].size);
-       }
-       if (snowLocation == 2){
-       snow[i].posx = RandomMaker(marginright / 2 - snow[i].size);
-       }
-       if (snowLocation == 3){
-       snow[i].posx = RandomMaker(marginright / 2 - snow[i].size) + marginright / 4
-       }
-       if (snowLocation == 4){
-       snow[i].posx = RandomMaker(marginright / 2 - snow[i].size) + marginright / 2
-       }
-       snow[i].posy = RandomMaker(2 * marginbottom - marginbottom - 2 * snow[i].size);
-       snow[i].style.left = snow[i].posx + "px";
-       snow[i].style.top = snow[i].posy + "px";
-    }
-    MoveSnow();
-  }
+  // function InitSnow(){
+  //   if (ie5 || opera){
+  //      marginbottom = document.body.scrollHeight;
+  //      marginright = document.body.clientWidth - 15;
+  //   }else if (ns6){
+  //      marginbottom = document.body.scrollHeight;
+  //      marginright = window.innerWidth - 15;
+  //   }
+  //   var snowsizerange = snowSizeMax - snowSizeMin;
+  //   for (i = 0; i <= snowCount; i++){
+  //      crds[i] = 0;
+  //      lftrght[i] = Math.random() * 15;
+  //      x_mv[i] = 0.03 + Math.random() / 10;
+  //      snow[i] = document.getElementById("s" + i);
+  //      snow[i].style.fontFamily = snowType[RandomMaker(snowType.length)];
+  //      snow[i].size = RandomMaker(snowsizerange) + snowSizeMin;
+  //      snow[i].style.fontSize = snow[i].size + "px";
+  //      snow[i].style.color = snowColor[RandomMaker(snowColor.length)];
+  //      snow[i].style.zIndex = 1000;
+  //      snow[i].sink=sinkSpeed * snow[i].size / 5;
+  //      if (snowLocation == 1){
+  //          snow[i].posx = RandomMaker(marginright - snow[i].size);
+  //      }
+  //      if (snowLocation == 2){
+  //      snow[i].posx = RandomMaker(marginright / 2 - snow[i].size);
+  //      }
+  //      if (snowLocation == 3){
+  //      snow[i].posx = RandomMaker(marginright / 2 - snow[i].size) + marginright / 4
+  //      }
+  //      if (snowLocation == 4){
+  //      snow[i].posx = RandomMaker(marginright / 2 - snow[i].size) + marginright / 2
+  //      }
+  //      snow[i].posy = RandomMaker(2 * marginbottom - marginbottom - 2 * snow[i].size);
+  //      snow[i].style.left = snow[i].posx + "px";
+  //      snow[i].style.top = snow[i].posy + "px";
+  //   }
+  //   MoveSnow();
+  // }
 
-  function MoveSnow(){
-    for (i = 0; i <= snowCount; i++){
-       crds[i] += x_mv[i];
-       snow[i].posy += snow[i].sink;
-       snow[i].style.left = snow[i].posx + lftrght[i] * Math.sin(crds[i]) + "px";
-       snow[i].style.top = snow[i].posy + "px";
-       if (snow[i].posy >= marginbottom - 2 * snow[i].size ||
-           parseInt(snow[i].style.left) > (marginright - 3 * lftrght[i])){
-           if (snowLocation == 1){
-               snow[i].posx = RandomMaker(marginright - snow[i].size)
-           }
-           if (snowLocation == 2){
-               snow[i].posx = RandomMaker(marginright / 2 - snow[i].size)
-           }
-           if (snowLocation == 3){
-               snow[i].posx = RandomMaker(marginright / 2 - snow[i].size) + marginright / 4
-           }
-           if (snowLocation == 4){
-               snow[i].posx = RandomMaker(marginright / 2 - snow[i].size) + marginright / 2
-           }
-           snow[i].posy = 0;
-         }
-      }
-      var timer = setTimeout("MoveSnow()", 50);
-  }
+  // function MoveSnow(){
+  //   for (i = 0; i <= snowCount; i++){
+  //      crds[i] += x_mv[i];
+  //      snow[i].posy += snow[i].sink;
+  //      snow[i].style.left = snow[i].posx + lftrght[i] * Math.sin(crds[i]) + "px";
+  //      snow[i].style.top = snow[i].posy + "px";
+  //      if (snow[i].posy >= marginbottom - 2 * snow[i].size ||
+  //          parseInt(snow[i].style.left) > (marginright - 3 * lftrght[i])){
+  //          if (snowLocation == 1){
+  //              snow[i].posx = RandomMaker(marginright - snow[i].size)
+  //          }
+  //          if (snowLocation == 2){
+  //              snow[i].posx = RandomMaker(marginright / 2 - snow[i].size)
+  //          }
+  //          if (snowLocation == 3){
+  //              snow[i].posx = RandomMaker(marginright / 2 - snow[i].size) + marginright / 4
+  //          }
+  //          if (snowLocation == 4){
+  //              snow[i].posx = RandomMaker(marginright / 2 - snow[i].size) + marginright / 2
+  //          }
+  //          snow[i].posy = 0;
+  //        }
+  //     }
+  //     var timer = setTimeout("MoveSnow()", 50);
+  // }
 
-  for (i = 0; i <= snowCount; i++){
-     document.write("<span id='s" + i + "' style='position:absolute;top:-" + snowSizeMax +
-         "'>" + snowletter + "</span>");
-  }
+  // for (i = 0; i <= snowCount; i++){
+  //    document.write("<span id='s" + i + "' style='position:absolute;top:-" + snowSizeMax +
+  //        "'>" + snowletter + "</span>");
+  // }
 
-  if (browserok){
-     window.onload = InitSnow;
-  }
+  // if (browserok){
+  //    window.onload = InitSnow;
+  // }
 </script>

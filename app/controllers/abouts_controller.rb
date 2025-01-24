@@ -63,6 +63,68 @@ class AboutsController < ApplicationController
     render layout: false
   end
 
+  def portfolio
+    render 'abouts/portfolio/portfolio'
+  end
+
+  def portfolio_case
+    base_directory = "#{ Rails.root }/app/javascript/images/portfolio/"
+    user_directory = params[:images_path]
+
+    unless user_directory.match?(/\A[a-zA-Z]+\z/)
+      redirect_to portfolio_path, notice: ('Что-то пошло не так 1')
+      return
+    end
+
+    allowed_directories = ['arhtextile', 'kukumberryx', 'trainings', 'cloud', 'landing']
+
+    unless allowed_directories.include?(user_directory)
+      redirect_to portfolio_path, notice: ('Что-то пошло не так 2')
+      return
+    end
+
+    full_path = File.expand_path(user_directory, base_directory)
+
+    @images_path = user_directory
+
+    file_count = Dir.glob(File.join(full_path, '*')).count { |file| File.file?(file) }
+
+    if file_count <= 0
+      redirect_to portfolio_path, notice: ('Что-то пошло не так 3')
+      return
+    end
+
+    @all_ps_images_qnt = file_count - 1
+
+    allowed_colors = ['light', 'dark']
+
+    unless allowed_colors.include?(params[:bg_color])
+      redirect_to portfolio_path, notice: ('Что-то пошло не так 4')
+      return
+    end
+
+    @bg_color = params[:bg_color]
+
+    if params[:label].present? && !params[:label].match?(/\A[\w\s]+\z/)
+      redirect_to portfolio_path, notice: ('Что-то пошло не так 5')
+      return
+    end
+
+    @label = if params[:label].present?
+               params[:label]
+             else
+               user_directory.capitalize
+             end
+
+    @dark_body = if @bg_color == 'dark'
+                   'dark_body'
+                 else
+                   ''
+                 end
+
+    render 'abouts/portfolio/portfolio_case'
+  end
+
   private
 
   def set_about

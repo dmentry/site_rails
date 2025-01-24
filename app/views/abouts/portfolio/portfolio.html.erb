@@ -1,0 +1,90 @@
+<h1 class="center text_size header_top_buffer"><%= t('views.abouts.portfolio.title') %></h1>
+<div class="container">
+  <div class="row mt-3 justify-content-end">
+
+    <div class="col-12 col-md-6 col-lg-4 mb-2">
+      <a href='<%= portfolio_case_path(images_path: "arhtextile", bg_color: "dark") %>' class='copyright'>
+        <div class="row">
+          <div class="col-1 px-0 vertical_text">
+            Arhtextile
+          </div>
+          <div class="col-11 pl-1">
+            <%= image_pack_tag('portfolio/arhtextile/main.png', class: 'responsive-image', alt: 'screenshot') %>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4 mb-2 pt-md-5">
+      <a href='<%= portfolio_case_path(images_path: "kukumberryx", bg_color: "light") %>' class='copyright'>
+        <div class="row">
+          <div class="col-1 px-0 vertical_text">
+            Kukumberryx
+          </div>
+          <div class="col-11 pl-1">
+            <%= image_pack_tag('portfolio/kukumberryx/main.png', class: 'responsive-image', alt: 'screenshot') %>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4 mb-2">
+      <a href='<%= portfolio_case_path(images_path: "trainings", bg_color: "light") %>' class='copyright'>
+        <div class="row">
+          <div class="col-1 px-0 vertical_text">
+            Trainings
+          </div>
+          <div class="col-11 pl-1">
+            <%= image_pack_tag('portfolio/trainings/main.png', class: 'responsive-image', alt: 'screenshot') %>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-12 col-md-6 pt-md-5">
+      <a href='<%= portfolio_case_path(images_path: "cloud", bg_color: "dark", label: "Private Cloud") %>' class='copyright'>
+        <div class="row">
+          <div class="col-1 px-0 vertical_text">
+            Private Cloud
+          </div>
+          <div class="col-11 pl-1">
+            <%= image_pack_tag('portfolio/cloud/main.png', class: 'responsive-image', alt: 'screenshot') %>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-12 col-md-10 col-lg-4 mb-2">
+      <a href='<%= portfolio_case_path(images_path: "landing", bg_color: "light", label: "Photo course landing") %>' class='copyright'>
+        <div class="row">
+          <div class="col-1 px-0 vertical_text">
+            Photo course landing
+          </div>
+          <div class="col-11 pl-1">
+            <%= image_pack_tag('portfolio/landing/main.png', class: 'responsive-image', alt: 'screenshot') %>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+      let resizeTimer;
+
+      $(window).on('resize', function() {
+          // Добавляем класс .resizing при изменении размера окна
+          $('body').addClass('resizing');
+
+          // Очищаем таймер, если он уже был установлен
+          clearTimeout(resizeTimer);
+
+          // Убираем класс .resizing через 500 мс (время должно совпадать с длительностью перехода в CSS)
+          resizeTimer = setTimeout(function() {
+              $('body').removeClass('resizing');
+          }, 500);
+      });
+  });
+</script>

@@ -236,7 +236,8 @@ en:
         blog: Blog
         map: Map
         about: About me
-        common_info: In common
+        common_info: Common info
+        portfolio: Portfolio
         cv_eng: CV Eng
         cv_rus: CV Rus
         feedback: Feedback
@@ -331,6 +332,8 @@ en:
       form:
         main_text: Text
         save: Save
+      portfolio:
+        title: Portfolio
     comments:
       email: Your email
       comment: Your comment

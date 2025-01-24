@@ -1,7 +1,3 @@
-.repair_assets {
-  margin-left: 10px;
-}
-
 .announce_dt {
   margin-top: 10px;
   margin-bottom: -18px;
@@ -46,12 +42,21 @@
   opacity:0.5;
 }
 
+.dark_body {
+  background: black; 
+  color: #e5e6e7;
+}
+
 .box_shadow {
   box-shadow: 3px 3px 15px 1px rgba(0, 0, 0, 0.1);
 }
 
 .center_image {
   text-align: center;
+}
+
+.content {
+  min-height: calc(100vh - 38px);
 }
 
 .fr {
@@ -241,12 +246,11 @@
 
 .footer {
   text-align: center;
-  padding: 1px 0px 5px 0px;
   font-size: 60%;
   color: grey;
   background-color: #dadada;
   clear: both;
-  margin-bottom: 10px;
+  height: 40px;
 }
 
 .dackbottomicons p{
@@ -434,6 +438,10 @@
   display: inline-flex;
 }
 
+.repair_assets {
+  margin-left: 10px;
+}
+
 .reply_width_2 {
   width: 98%;
 }
@@ -469,6 +477,17 @@
   margin-right: 0;
 }
 
+.responsive-image {
+  max-width: 100%; /* Изображение не выходит за пределы контейнера */
+  height: auto; /* Сохраняет пропорции */
+  transition: transform 0.4s ease; /* Плавное изменение размера */
+}
+
+/* Эффект уменьшения при наведении */
+.responsive-image:hover {
+  transform: scale(0.93); /* Уменьшает изображение до 93% от исходного размера */
+}
+
 .search_field_w {
   width: 100%;
 }
@@ -489,6 +508,13 @@
 .text_size_smaller {
   font-size: 80%;
   line-height: 1;
+}
+
+.vertical_text {
+  writing-mode: tb-rl;
+  height: 150px;
+  line-height: 0.9em;
+  padding-right: 18px;
 }
 
 .warn_ru_size {
@@ -873,6 +899,22 @@
     opacity: 0.4;
   }
 }
+
+/* Стили элементов bootstrap для изменения при ресайзе */
+
+/* Базовые стили */
+.container, .row, .col {
+  transition: all 0.5s ease-in-out;
+}
+
+/* Стили для изменения при ресайзе */
+.resizing .container, 
+.resizing .row,
+.resizing .col {
+  transition: all 0.5s ease-in-out;
+}
+
+/* Стили элементов bootstrap для изменения при ресайзе - окончание */
 
 /* СТИЛИ РЕЗЮМЕ */
 

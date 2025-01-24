@@ -1,0 +1,24 @@
+<h1 class="center text_size header_top_buffer"><%= @label %></h1>
+<div class="container-fluid bg-<%= @bg_color %>">
+  <div class="row mt-3">
+    <div class="col-12 px-0">
+      <div>
+        <%= image_pack_tag("portfolio/#{ @images_path }/main.png", alt: 'screenshot') %>
+      </div>
+    </div>
+  </div>
+
+  <% if @all_ps_images_qnt && @all_ps_images_qnt > 0 %>
+    <% @all_ps_images_qnt.times do |i| %>
+      <div class="row mt-3 mt-md-5">
+        <div class="col-12 px-0 col-md-8">
+          <%= image_pack_tag("portfolio/#{ @images_path }/ps#{ i + 1 }.png", alt: 'screenshot', data: { aos: "fade-up", aos_duration: 1000, aos_offset: 20 }) %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<script>
+  Aos.init()
+</script>
