@@ -1,400 +1,231 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <title>Дмитрий Архипов, Ruby on Rails</title>
+<div class="container box_shadow p-1 p-md-2 mt-md-2 mb-3 bg-muted rounded div_container">
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="robots" content="index, follow">
-  <meta name="description" content="Дмитрий Архипов Ruby on Rails разработчик">
-  <meta name="keywords" content="dack9, разработчик, RubyOnRails, Ruby, разработчик полного стека, программист">
-  <meta name="author" content="Дмитрий Архипов Dack9">
+  <div class="col offset-xl-1 col-xl-10">
+    <div class="row">
+      <div class="col col-sm-8 col-md-4 col-xl-4 col-info">
 
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-
-  <%= stylesheet_pack_tag 'application', media: 'all' %>
-  <%= javascript_pack_tag 'application' %>
-  <%= favicon_pack_tag 'ruby.ico' %>
-</head>
-
-<body>
-  <div class="container box_shadow p-1 p-md-2 mt-md-2 mb-3 bg-muted rounded div_container">
-
-    <div class="col offset-xl-1 col-xl-10">
-      <div class="row">
-        <div class="col col-sm-8 col-md-4 col-xl-4 col-info">
-
-          <div class="row photo_left">
-            <%= image_pack_tag("cv/my_photo.jpg", alt: 'menu', class: 'img_mobile photo_borders') %>
+        <div class="row photo_left">
+          <%= image_pack_tag("cv/my_photo.jpg", alt: 'menu', class: 'img_mobile photo_borders') %>
+        </div>
+        <div class="row">
+          <div class="col-12 info-contact-col-2 pt-3 text-about-me-2">
+            <b>Дмитрий Архипов</b>
           </div>
-          <div class="row">
-            <div class="col-12 info-contact-col-2 pt-3 text-about-me-2">
-              <b>Дмитрий Архипов</b>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-12 info-contact-col-2 text-about-me-developer">
+            <b>Разработчик полного стека (Ruby on Rails)</b>
           </div>
-          <div class="row">
-            <div class="col-12 info-contact-col-2 text-about-me-developer">
-              <b>Разработчик полного стека (Ruby on Rails)</b>
-            </div>
-          </div>
-          <div class="row mt-2 mt-md-4">
-            <div class="col-12 info-contact-col-2 text-about-me">
-              <p>
-                <b>Контакты:</b>
-                <a href="mailto:mail@dack9.ru" class="logo-link" rel="noopener noreferrer" target="_blank">
-                  <%= image_pack_tag("cv/mail_logo.png", alt: 'email_logo', class: 'logo_email', title: 'Email') %>
-                </a>
+        </div>
+        <div class="row mt-2 mt-md-4">
+          <div class="col-12 info-contact-col-2 text-about-me">
+            <p>
+              <b>Контакты:</b>
+              <a href="mailto:mail@dack9.ru" class="logo-link" rel="noopener noreferrer" target="_blank">
+                <%= image_pack_tag("cv/mail_logo.png", alt: 'email_logo', class: 'logo_email', title: 'Email') %>
+              </a>
 
-                <a href="https://github.com/dmentry" class="logo-link" rel="noopener noreferrer" target="_blank">
-                  <%= image_pack_tag("cv/gh_logo.png", alt: 'gh_logo', class: 'logo_email', title: 'GitHub') %>
-                </a>
-                <a href="https://t.me/Dack99" class="logo-link" rel="noopener noreferrer" target="_blank">
-                  <%= image_pack_tag("cv/teleg_logo.png", alt: 'tg_logo', class: 'logo_email', title: 'Telegram') %>
-                </a>
-              </p>
-            </div>
+              <a href="https://github.com/dmentry" class="logo-link" rel="noopener noreferrer" target="_blank">
+                <%= image_pack_tag("cv/gh_logo.png", alt: 'gh_logo', class: 'logo_email', title: 'GitHub') %>
+              </a>
+              <a href="https://t.me/Dack99" class="logo-link" rel="noopener noreferrer" target="_blank">
+                <%= image_pack_tag("cv/teleg_logo.png", alt: 'tg_logo', class: 'logo_email', title: 'Telegram') %>
+              </a>
+            </p>
           </div>
-
         </div>
 
-        <div class="col-md-8 col-lg-8 scroll_div_wrapper">
-          <div class="scroll_div">
-  
-            <div class="row bg-white px-2 rounded-sm">
-              <div class="col-12 pt-3 text-secondary int-info">
-                <h3 class="bottom-line">Профессиональные навыки</h3>
-                <ul class="list-skills">
+      </div>
+
+      <div class="col-md-8 col-lg-8 scroll_div_wrapper">
+        <div class="scroll_div">
+
+          <div class="row bg-white px-2 rounded-sm">
+            <div class="col-12 pt-3 text-secondary int-info">
+              <h3 class="bottom-line">Профессиональные навыки</h3>
+              <ul class="list-skills mb-2">
+                <li class="list-list">
+
+                  <h5 class="skills-title">Ruby</h5>
+                  <ul>
+                    <li><strong>ООП, классы:</strong> понимание принципов ООП, важности code style, принципов инкапсуляции, наследования, полиморфизма, абстракции</li>
+                    <li><strong>Установка Ruby:</strong> использование <span class="badge badge-secondary">rvm</span> или <span class="badge badge-secondary">rbenv</span></li>
+                    <li><strong>Работа с основными форматами:</strong> XML, JSON, XLS, XLSX, DOC</li>
+                  </ul>
                   <li class="list-list">
 
-                    <h5 class="skills-title">Ruby</h5>
-                    <ul>
-                      <li><strong>ООП, классы:</strong> понимание принципов ООП, важности code style, принципов инкапсуляции, наследования, полиморфизма, абстракции</li>
-                      <li><strong>Установка Ruby:</strong> использование <span class="badge badge-secondary">rvm</span> или <span class="badge badge-secondary">rbenv</span></li>
-                      <li><strong>Работа с основными форматами:</strong> XML, JSON, XLS, XLSX, DOC</li>
-                    </ul>
-                    <li class="list-list">
+                  <h5 class="skills-title">Ruby on Rails</h5>
+                  <ul>
+                    <li><strong>Основы проектирования приложений:</strong> корректная постановка задачи, продумывание сущностей, написание сценариев и создание CRUD</li>
+                    <li><strong>MVC:</strong> основа архитектуры приложений</li>
+                    <li><strong>Active Record:</strong> создание ассоциаций между моделями, построение запросов к базе данных с помощью интерфейса запросов, создание миграций, используя генератор, написание валидаций и коллбэков</li>
+                    <li><strong>Action Mailer:</strong> отправка почты с помощью <span class="badge badge-secondary">Mailjet</span>, Postfix. В development&ndash;окружении использование гема <span class="badge badge-secondary">Letter Opener</span></li>
+                    <li><strong>Аутентификация пользователя</strong> с помощью <span class="badge badge-secondary">Devise</span> и его авторизация, используя <span class="badge badge-secondary">Pundit</span> или <span class="badge badge-secondary">Cancancan</span>. Для доступа с учетными данными соц. сетей использование <span class="badge badge-secondary">OmniAuth</span></li>
+                    <li><strong>Credentials:</strong> хранение паролей, ключей и иной конфиденциальной информации</li>
+                    <li><strong>Rake:</strong> создание задач и использование <span class="badge badge-secondary">cron</span></li>
+                    <li><span class="badge badge-secondary">State Machines</span> - конечный автомат для моделей</li>
+                    <li><span class="badge badge-secondary">Ransack</span> - поиск</li>
+                    <li><span class="badge badge-secondary">Carrierwave</span>, <span class="badge badge-secondary">Rmagick</span>, <span class="badge badge-secondary">Fog::Aws</span> &ndash; использование для загрузки, обработки и хранения изображений (и не только) в проекте</li>
+                    <li><span class="badge badge-secondary">Recaptcha</span> &ndash; защита от спама с помощью технологии Google reCAPTCHA</li>
+                  </ul>
+                  <li class="list-list">
 
-                    <h5 class="skills-title">Ruby on Rails</h5>
-                    <ul>
-                      <li><strong>Основы проектирования приложений:</strong> корректная постановка задачи, продумывание сущностей, написание сценариев и создание CRUD</li>
-                      <li><strong>MVC:</strong> основа архитектуры приложений</li>
-                      <li><strong>Active Record:</strong> создание ассоциаций между моделями, построение запросов к базе данных с помощью интерфейса запросов, создание миграций, используя генератор, написание валидаций и коллбэков</li>
-                      <li><strong>Action Mailer:</strong> отправка почты с помощью <span class="badge badge-secondary">Mailjet</span>, Postfix. В development&ndash;окружении использование гема <span class="badge badge-secondary">Letter Opener</span></li>
-                      <li><strong>Аутентификация пользователя</strong> с помощью <span class="badge badge-secondary">Devise</span> и его авторизация, используя <span class="badge badge-secondary">Pundit</span> или <span class="badge badge-secondary">Cancancan</span>. Для доступа с учетными данными соц. сетей использование <span class="badge badge-secondary">OmniAuth</span></li>
-                      <li><strong>Credentials:</strong> хранение паролей, ключей и иной конфиденциальной информации</li>
-                      <li><strong>Rake:</strong> создание задач и использование <span class="badge badge-secondary">cron</span></li>
-                      <li><span class="badge badge-secondary">State Machines</span> - конечный автомат для моделей</li>
-                      <li><span class="badge badge-secondary">Ransack</span> - поиск</li>
-                      <li><span class="badge badge-secondary">Carrierwave</span>, <span class="badge badge-secondary">Rmagick</span>, <span class="badge badge-secondary">Fog::Aws</span> &ndash; использование для загрузки, обработки и хранения изображений (и не только) в проекте</li>
-                      <li><span class="badge badge-secondary">Recaptcha</span> &ndash; защита от спама с помощью технологии Google reCAPTCHA</li>
-                    </ul>
-                    <li class="list-list">
+                  <h5 class="skills-title">Тестирование</h5>
+                  <ul>
+                    <li><strong>RSpec:</strong> TDD, BDD, по возможности, весь основной код необходимо покрывать тестами. Работал с гемом <span class="badge badge-secondary">FactoryBot</span>. Для интеграционных тестов использовал <span class="badge badge-secondary">Capybara</span></li>
+                  </ul>
+                  <li class="list-list">
 
-                    <h5 class="skills-title">Тестирование</h5>
-                    <ul>
-                      <li><strong>RSpec:</strong> TDD, BDD, по возможности, весь основной код необходимо покрывать тестами. Работал с гемом <span class="badge badge-secondary">FactoryBot</span>. Для интеграционных тестов использовал <span class="badge badge-secondary">Capybara</span></li>
-                    </ul>
-                    <li class="list-list">
+                  <h5 class="skills-title">Базы данных</h5>
+                  <ul>
+                    <li>Опыт работы с <strong>SQLite</strong>, <strong>MySQL</strong>, <strong>PostgreSQL</strong>, <strong>Redis</strong>. Запросы с помощью <strong>SQL</strong>, <strong>PL/pgSQL</strong> и <strong>Active Record query interface</strong>.</li></li>
+                  </ul>
+                  <li class="list-list">
 
-                    <h5 class="skills-title">Базы данных</h5>
-                    <ul>
-                      <li>Опыт работы с <strong>SQLite</strong>, <strong>MySQL</strong>, <strong>PostgreSQL</strong>, <strong>Redis</strong>. Запросы с помощью <strong>SQL</strong>, <strong>PL/pgSQL</strong> и <strong>Active Record query interface</strong>.</li></li>
-                    </ul>
-                    <li class="list-list">
+                  <h5 class="skills-title">Развертывание</h5>
+                  <ul>
+                    <li><strong></strong><span class="badge badge-secondary">Nginx</span> с <span class="badge badge-secondary">Phusion Passenger</span> и <span class="badge badge-secondary">PostgreSQL</span>. Начальная настройка (<span class="badge badge-secondary">ufw</span> или <span class="badge badge-secondary">iptables</span> + <span class="badge badge-secondary">fail2ban</span>). Деплой Rails&ndash;приложения с помощью <span class="badge badge-secondary">Capistrano.</span></li>
+                    <!-- <li><strong>Heroku: </strong>развертывание приложения</li> -->
+                  </ul>
+                  <li class="list-list">
 
-                    <h5 class="skills-title">Развертывание</h5>
-                    <ul>
-                      <li><strong></strong><span class="badge badge-secondary">Nginx</span> с <span class="badge badge-secondary">Phusion Passenger</span> и <span class="badge badge-secondary">PostgreSQL</span>. Начальная настройка (<span class="badge badge-secondary">ufw</span> или <span class="badge badge-secondary">iptables</span> + <span class="badge badge-secondary">fail2ban</span>). Деплой Rails&ndash;приложения с помощью <span class="badge badge-secondary">Capistrano.</span></li>
-                      <!-- <li><strong>Heroku: </strong>развертывание приложения</li> -->
-                    </ul>
-                    <li class="list-list">
+                  <h5 class="skills-title">Технологии</h5>
+                  <ul>
+                    <li><strong>Git, Github</strong></li>
+                    <li><strong>Ubuntu (Linux Mint)</strong></li>
+                    <li><strong>RubyMine, SublimeText</strong></li>
+                    <li><strong>Docker</strong> (запуск/остановка контейнеров, минимальное редактирование Dockerfile и docker-compose.yml)</li>
+                    <li><strong>AWS S3</strong> (beginner level)</li>
+                    <li><strong>Telegram</strong> - создание ботов</li>
+                  </ul>
+                  <li class="list-list">
 
-                    <h5 class="skills-title">Технологии</h5>
-                    <ul>
-                      <li><strong>Git, Github</strong></li>
-                      <li><strong>Ubuntu (Linux Mint)</strong></li>
-                      <li><strong>RubyMine, SublimeText</strong></li>
-                      <li><strong>Docker</strong> (запуск/остановка контейнеров, минимальное редактирование Dockerfile и docker-compose.yml)</li>
-                      <li><strong>AWS S3</strong> (beginner level)</li>
-                      <li><strong>Telegram</strong> - создание ботов</li>
-                    </ul>
-                    <li class="list-list">
+                  <h5 class="skills-title">Frontend</h5>
+                  <ul>
+                    <li><strong>HTML, CSS, Bootstrap4, Slim, JS, jQuery, ExtJS</strong></li>
+                  </ul>
+                  <li class="list-list">
 
-                    <h5 class="skills-title">Frontend</h5>
-                    <ul>
-                      <li><strong>HTML, CSS, Bootstrap4, Slim, JS, jQuery, ExtJS</strong></li>
-                    </ul>
-                    <li class="list-list">
-
-                    <h5 class="skills-title">Иностранный язык</h5>
-                    <ul>
-                      <li><span class="bold">Английский:</span> intermediate</li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
+                  <h5 class="skills-title">Иностранный язык</h5>
+                  <ul>
+                    <li><span class="bold">Английский:</span> intermediate</li>
+                  </ul>
+                </li>
+              </ul>
             </div>
-
-            <div class="row box-shadow mt-2 px-2 bg-white rounded-sm">
-              <div class="col-12 pt-3 text-secondary int-info">
-                <h3 class="bottom-line">Опыт работы</h3>
-                <a class="text-info" href="https://mednet.ru" rel="noopener noreferrer" target="_blank">ФГБУ &laquo;ЦНИИОИЗ&raquo;</a>
-                <div>Инженер-программист</div>
-                <ul>
-                <li class="list-text-about"> - Разработка приложений (frontend, backend)</li>
-                <li class="list-text-about"> - Изменение существующих и их дополнение новым функционалом</li>
-                <div>07.2021 &ndash; по нынешнее время</div>
-                </ul>
-                <a class="text-info" href="https://www.mazda.ru" rel="noopener noreferrer" target="_blank">ООО &laquo;Мазда Мотор Рус&raquo;</a>
-                <div>Координатор по качеству продукции</div>
-                <ul>
-                <li class="list-text-about"> - Cкрипты на Ruby</li>
-                <li class="list-text-about"> - Написание простых приложений на Ruby и Ruby on Rails для служебного использования (работа с xls, docx: парсинг, преобразование, создание отчетов)</li>
-                <li class="list-text-about"> - Написание запросов к БД Oracle</li>
-                <div>05.2015 &ndash; 07.2021</div>
-                </ul>
-                <div>Специалист по гарантии</div>
-                <ul>
-                  <li class="list-text-about"> - Создание отчетов в 1C:Бухгалтерия</li>
-                  <li class="list-text-about"> - Поддержание Access и создание отчетов, написание макросов в Excel</li>
-                  <div>03.2008 &ndash; 05.2015</div>
-                </ul>
-                <a class="text-info" href="https://business-car.ru" rel="noopener noreferrer" target="_blank">ООО СП &laquo;Бизнес Кар&raquo;</a>
-                <div>Инженер&ndash;технолог</div>
-                <ul>
-                  <li class="list-text-about"> - Использование Access и Excel для ведения отчетности. Создание отчетов, написание макросов</li>
-                  <div>11.2006 &ndash; 03.2008</div>
-                </ul>
-                <div>Автоэлектрик&ndash;диагност<br>06.2002 &ndash; 11.2006</div>
-                <br>
-                <a class="text-info" href="https://ru.wikipedia.org/wiki/%D0%98%D0%B4%D1%83%D1%89%D0%B8%D0%B5_%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B5" rel="noopener noreferrer" target="_blank">РОО СВМ &laquo;Идущие вместе&raquo;</a>
-                <div>Сотрудник информационного отдела</div>
-                <ul>
-                  <li class="list-text-about"> - Cистемное администрирование</li>
-                  <li class="list-text-about"> - Разработка и внедрение БД Access и интеграция в них данных из Exсel</li>
-                  <div>02.2001 &ndash; 11.2001</div>
-                </ul>
-              </div>
-            </div>
-
-            <div class="row box-shadow mt-2 px-2 bg-white rounded-sm">
-              <div class="col-12 pt-3 text-secondary int-info">
-                <h3 class="bottom-line">Некоторые проекты</h3>
-                <div class="bottom-line-applications">
-                  <h5 class="card-title text-dark">Мой фотосайт</h5>
-                  <p class="card-text text-secondary">Сайт для размещения фотографий и статей в блоге.</p>
-                  <div>
-                    <%= image_pack_tag("cv/screen_photoweb.png", alt: 'screenshot', class: 'appl-screenshot') %>
-                  </div>
-                  <a href="https://github.com/dmentry/site_rails" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="GitHub repository">GitHub</a>
-                  <a href="http://dack9.ru/en" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank">Перейти</a>
-                </div>
-                <br>
-                <div  class="bottom-line-applications">
-                  <h5 class="card-title text-dark">Интернет-магазин</h5>
-                  <p class="card-text text-secondary">Полностью самописный аскетичный интернет-магазин.</p>
-                  <div>
-                    <%= image_pack_tag("cv/screenshot_kukumberryx.png", alt: 'screenshot', class: 'appl-screenshot') %>
-                  </div>
-                  <a href="https://kukumberryx.ru" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank">Перейти</a>
-                </div>
-                <br>
-                <div  class="bottom-line-applications">
-                  <h5 class="card-title text-dark">Шашлыки</h5>
-                  <p class="card-text text-secondary">Web-приложение для организации мероприятий, подписки на них, комментирования, получений уведомлений и загрузки фотографий.</p>
-                  <div>
-                    <%= image_pack_tag("cv/screenshot_bbq.jpg", alt: 'screenshot', class: 'appl-screenshot') %>
-                  </div>
-                  <a href="https://github.com/dmentry/bbq" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="GitHub repository">GitHub</a>
-                </div>
-                <br>
-                <div  class="bottom-line-applications">
-                  <h5 class="card-title text-dark">Askme</h5>
-                  <p class="card-text text-secondary">Аналог ASKfm. На сайте пользователи могут задавать свои вопросы и оставлять ответы на заданные им.</p>
-                  <div>
-                    <%= image_pack_tag("cv/screenshot_ask.jpg", alt: 'screenshot', class: 'appl-screenshot') %>
-                  </div>
-                  <a href="https://github.com/dmentry/askme" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="GitHub repository">GitHub</a>
-                </div>
-                <br>
-                <div  class="bottom-line-applications">
-                  <h5 class="card-title text-dark">Телеграм-бот (прогноз погоды)</h5>
-                  <p class="card-text text-secondary">Показывает прогноз на текущий и последующие семь дней в выбранной локации.</p>
-                  <div>
-                    <%= image_pack_tag("cv/screenshot_forecast_bot.png", alt: 'screenshot', class: 'appl-screenshot') %>
-                  </div>
-                  <a href="https://github.com/dmentry/weather_forecast_bot" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="GitHub repository">GitHub</a>
-                  <a href="https://t.me/city_weath_bot" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank">Перейти</a>
-                </div>
-                <br>
-                <div  class="bottom-line-applications">
-                  <h5 class="card-title text-dark">Пример лендинга</h5>
-                  <p class="card-text text-secondary">Лендинга фотокурсов с возможностью разместить заказ.</p>
-                  <div>
-                    <%= image_pack_tag("cv/screenshot_landing.jpg", alt: 'screenshot', class: 'appl-screenshot') %>
-                  </div>
-                  <a href="https://github.com/dmentry/landing" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="GitHub repository">GitHub</a>
-                </div>
-                <br>
-              </div>
-            </div>
-
-            <div class="row box-shadow mt-2 px-2 bg-white rounded-sm">
-              <div class="col-12 pt-3 text-secondary int-info">
-                <h3 class="bottom-line">Дополнительное образование</h3>
-                <a class="text-info" href="https://stepik.org/course/63054/syllabus" rel="noopener noreferrer" target="_blank">Дальневосточный федеральный университет</a>
-                <div>Курс: &laquo;Интерактивный тренажер по SQL&raquo;<br>09.2022 &ndash; 11.2022</div>
-                <br>
-                <a class="text-info" href="https:/goodprogrammer.ru" rel="noopener noreferrer" target="_blank">Хороший программист</a>
-                <div>Курс: &laquo;Онлайн&ndash;интенсив по Ruby on Rails&raquo;<br>09.2020 &ndash; 03.2021</div>
-                <br>
-              </div>
-            </div>
-
-            <div class="row box-shadow mt-2 px-2 bg-white rounded-sm">
-              <div class="col-12 pt-3 text-secondary int-info">
-                <h3 class="bottom-line">Высшее образование</h3>
-                <a class="text-info" href="https://new.mospolytech.ru" rel="noopener noreferrer" target="_blank">Московский Государственный Технический Университет (МАМИ)</a>
-                <div>Факультет энергомашиностроения и приборостроения (ЭМиП).</div>
-                <div>Инженер по электрооборудованию автомобилей и тракторов.</div>
-                <br>
-              </div>
-            </div>
-
-            <div class="row box-shadow mt-2 px-2 bg-white rounded-sm">
-              <div class="col-12 pt-3 text-secondary int-info">
-                <h3 class="bottom-line">Личная информация</h3>
-                <div>Являюсь достаточно открытым человеком, который всегда готов пообщаться и выслушать рекомендации более опытных коллег. Целеустремлен, обязателен, пунктуален. Хобби &ndash; <a href="https://dack9.ru/ru/macro_page" rel="noopener noreferrer" target="_blank" class="text-info" title="Посмотреть">макрофотография</a>.</div>
-                <br>
-              </div>
-            </div>
-
           </div>
+
+          <div class="row box-shadow mt-2 px-2 bg-white rounded-sm">
+            <div class="col-12 pt-3 text-secondary int-info">
+              <h3 class="bottom-line">Опыт работы</h3>
+              <a class="text-info" href="https://mednet.ru" rel="noopener noreferrer" target="_blank">ФГБУ &laquo;ЦНИИОИЗ&raquo;</a>
+              <div>Инженер-программист</div>
+              <ul>
+              <li class="list-text-about"> - Разработка приложений (frontend, backend)</li>
+              <li class="list-text-about"> - Изменение существующих и их дополнение новым функционалом</li>
+              <div>07.2021 &ndash; по нынешнее время</div>
+              </ul>
+              <a class="text-info" href="https://www.mazda.ru" rel="noopener noreferrer" target="_blank">ООО &laquo;Мазда Мотор Рус&raquo;</a>
+              <div>Координатор по качеству продукции</div>
+              <ul>
+              <li class="list-text-about"> - Cкрипты на Ruby</li>
+              <li class="list-text-about"> - Написание простых приложений на Ruby и Ruby on Rails для служебного использования (работа с xls, docx: парсинг, преобразование, создание отчетов)</li>
+              <li class="list-text-about"> - Написание запросов к БД Oracle</li>
+              <div>05.2015 &ndash; 07.2021</div>
+              </ul>
+              <div>Специалист по гарантии</div>
+              <ul>
+                <li class="list-text-about"> - Создание отчетов в 1C:Бухгалтерия</li>
+                <li class="list-text-about"> - Поддержание Access и создание отчетов, написание макросов в Excel</li>
+                <div>03.2008 &ndash; 05.2015</div>
+              </ul>
+              <a class="text-info" href="https://business-car.ru" rel="noopener noreferrer" target="_blank">ООО СП &laquo;Бизнес Кар&raquo;</a>
+              <div>Инженер&ndash;технолог</div>
+              <ul>
+                <li class="list-text-about"> - Использование Access и Excel для ведения отчетности. Создание отчетов, написание макросов</li>
+                <div>11.2006 &ndash; 03.2008</div>
+              </ul>
+              <div>Автоэлектрик&ndash;диагност<br>06.2002 &ndash; 11.2006</div>
+              <br>
+              <a class="text-info" href="https://ru.wikipedia.org/wiki/%D0%98%D0%B4%D1%83%D1%89%D0%B8%D0%B5_%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B5" rel="noopener noreferrer" target="_blank">РОО СВМ &laquo;Идущие вместе&raquo;</a>
+              <div>Сотрудник информационного отдела</div>
+              <ul class='mb-2'>
+                <li class="list-text-about"> - Cистемное администрирование</li>
+                <li class="list-text-about"> - Разработка и внедрение БД Access и интеграция в них данных из Exсel</li>
+                <div>02.2001 &ndash; 11.2001</div>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row box-shadow mt-2 px-2 bg-white rounded-sm">
+            <div class="col-12 pt-3 text-secondary int-info">
+              <h3 class="bottom-line">Портфолио</h3>
+              <%= link_to 'Перейти', portfolio_path, class: 'btn btn-secondary my-2', rel: "noopener noreferrer", target: "_blank",  title: "Посмотреть портфолио"%>
+            </div>
+          </div>
+
+          <div class="row box-shadow mt-2 px-2 bg-white rounded-sm">
+            <div class="col-12 pt-3 text-secondary int-info mb-2">
+              <h3 class="bottom-line">Некоторые проекты</h3>
+              <div  class="bottom-line-applications">
+                <h5 class="card-title text-dark">Шашлыки</h5>
+                <p class="card-text text-secondary">Web-приложение для организации мероприятий, подписки на них, комментирования, получений уведомлений и загрузки фотографий.</p>
+                <div>
+                  <%= image_pack_tag("cv/screenshot_bbq.jpg", alt: 'screenshot', class: 'appl-screenshot') %>
+                </div>
+                <a href="https://github.com/dmentry/bbq" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="GitHub repository">GitHub</a>
+              </div>
+              <br>
+              <div  class="bottom-line-applications">
+                <h5 class="card-title text-dark">Askme</h5>
+                <p class="card-text text-secondary">Аналог ASKfm. На сайте пользователи могут задавать свои вопросы и оставлять ответы на заданные им.</p>
+                <div>
+                  <%= image_pack_tag("cv/screenshot_ask.jpg", alt: 'screenshot', class: 'appl-screenshot') %>
+                </div>
+                <a href="https://github.com/dmentry/askme" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="GitHub repository">GitHub</a>
+              </div>
+              <br>
+              <div  class="bottom-line-applications">
+                <h5 class="card-title text-dark">Телеграм-бот (прогноз погоды)</h5>
+                <p class="card-text text-secondary">Показывает прогноз на текущий и последующие семь дней в выбранной локации.</p>
+                <div>
+                  <%= image_pack_tag("cv/screenshot_forecast_bot.png", alt: 'screenshot', class: 'appl-screenshot') %>
+                </div>
+                <a href="https://github.com/dmentry/weather_forecast_bot" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="GitHub repository">GitHub</a>
+                <a href="https://t.me/city_weath_bot" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank">Перейти</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="row box-shadow mt-2 px-2 bg-white rounded-sm">
+            <div class="col-12 pt-3 text-secondary int-info mb-2">
+              <h3 class="bottom-line">Дополнительное образование</h3>
+              <a class="text-info" href="https://stepik.org/course/63054/syllabus" rel="noopener noreferrer" target="_blank">Дальневосточный федеральный университет</a>
+              <div>Курс: &laquo;Интерактивный тренажер по SQL&raquo;<br>09.2022 &ndash; 11.2022</div>
+              <br>
+              <a class="text-info" href="https:/goodprogrammer.ru" rel="noopener noreferrer" target="_blank">Хороший программист</a>
+              <div>Курс: &laquo;Онлайн&ndash;интенсив по Ruby on Rails&raquo;<br>09.2020 &ndash; 03.2021</div>
+            </div>
+          </div>
+
+          <div class="row box-shadow mt-2 px-2 bg-white rounded-sm">
+            <div class="col-12 pt-3 text-secondary int-info mb-2">
+              <h3 class="bottom-line">Высшее образование</h3>
+              <a class="text-info" href="https://new.mospolytech.ru" rel="noopener noreferrer" target="_blank">Московский Государственный Технический Университет (МАМИ)</a>
+              <div>Факультет энергомашиностроения и приборостроения (ЭМиП).</div>
+              <div>Инженер по электрооборудованию автомобилей и тракторов.</div>
+            </div>
+          </div>
+
+          <div class="row box-shadow mt-2 px-2 bg-white rounded-sm">
+            <div class="col-12 pt-3 text-secondary int-info mb-2">
+              <h3 class="bottom-line">Личная информация</h3>
+              <div>Являюсь достаточно открытым человеком, который всегда готов пообщаться и выслушать рекомендации более опытных коллег. Целеустремлен, обязателен, пунктуален. Хобби &ndash; <a href="https://dack9.ru/ru/macro_page" rel="noopener noreferrer" target="_blank" class="text-info" title="Посмотреть">макрофотография</a>.</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
-</body>
-
-</html>
-
-<script>
-  function getLastDayOfMonth() {
-    let currentDate = new Date();
-    let lastDayDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0, 23, 59, 59);
-
-    return lastDayDate;
-  };
-
-  function getUid() {
-    let s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let out = Array(8).join().split(',').map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
-
-    return out;
-  };
-
-  function deleteAllCookies() {
-    if (localStorage.getItem('_rs_uniq_exp')) {
-      let uniq_exp_date = localStorage.getItem('_rs_uniq_exp');
-
-      if (Date.parse(uniq_exp_date) <= new Date()) {
-        localStorage.removeItem('_rs_uniq_exp');
-      };
-    }
-  };
-
-  function requestData(callback) {
-    $.ajax({dataType: "json", url: "https://api.db-ip.com/v2/free/self", success: 
-      function(data) {
-        InfObj = {
-                  country: data.countryName, 
-                  region: data.stateProv, 
-                  city: data.city
-                 };
-
-        callback(InfObj);
-      },
-      error: function (jqXHR, textStatus, errorThrown) { 
-        InfObj = {};
-
-        callback(InfObj);
-      }
-    });
-  };
-
-  function processResponse(InfObj) {
-    let visitor;
-
-    if (!localStorage.getItem('_rs_visitor')) {
-      if (!localStorage.getItem('_rs_uniq_exp')) {
-        localStorage.setItem('_rs_uniq_exp', getLastDayOfMonth());
-      }
-
-      let uid = getUid();
-
-      localStorage.setItem('_rs_visitor', uid);
-
-      visitor = { 'uniq_visitor': true };
-
-      visitor['visitor_data'] = shapeData(InfObj, true);
-
-      visitor['visitor_data']['u_id'] = uid;
-    }
-    else if (localStorage.getItem('_rs_visitor')) {
-      let existed_uid = localStorage.getItem('_rs_visitor');
-
-      visitor = { 'repeat_visitor': true };
-
-      visitor['visitor_data'] = shapeData(false, false);
-      visitor['visitor_data']['u_id'] = existed_uid;
-    }
-
-    // Не отправлять информацию по ботам
-    if (!(visitor['visitor_data']['common_info'] && visitor['visitor_data']['common_info'].match(/bot|Bot/))) {
-      $.ajax({ url: '/get_data', data: { visitor: visitor }});
-    }
-  };
-
-  function shapeData(InfObj, full_info) {
-    let visitor_data = {
-      time_visited: new Date(),
-      page_name: window.location.pathname,
-      referrer: document.referrer,
-    };
-
-    if (full_info) {
-      let common_info = navigator.userAgent;
-      if (common_info.match(/^Mozilla\/5\.0\s/g)) {
-        common_info = common_info.replace(/^Mozilla\/5\.0\s/g, '')
-      };
-
-      let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      if (timezone.match(/Europe\//g)) {
-        timezone = timezone.replace(/Europe\//g, '')
-      };
-
-      visitor_data['timezone']         = timezone;
-      visitor_data['common_info']      = common_info;
-      visitor_data['platform']         = navigator.platform;
-      visitor_data['os']               = navigator.oscpu;
-      visitor_data['browser_language'] = navigator.language;
-      visitor_data['size_screen_w']    = screen.width;
-      visitor_data['size_screen_h']    = screen.height;
-    };
-
-    if (InfObj) {
-      visitor_data['country'] = InfObj.country;
-      visitor_data['region']  = InfObj.region;
-      visitor_data['city']    = InfObj.city;
-    };
-
-    return visitor_data;
-  };
-
-  $(function(){
-    deleteAllCookies();
-
-    requestData(processResponse);
-  });
-</script>
+</div>

@@ -56,15 +56,17 @@ class AboutsController < ApplicationController
   end
 
   def cv_rus
-    render layout: false
+    I18n.locale = :ru
+    render layout: 'cv_layout'
   end
 
   def cv_eng
-    render layout: false
+    I18n.locale = :en
+    render layout: 'cv_layout'
   end
 
   def portfolio
-    render 'abouts/portfolio/portfolio'
+    render 'abouts/portfolio/portfolio', layout: 'cv_layout'
   end
 
   def portfolio_case
@@ -122,7 +124,7 @@ class AboutsController < ApplicationController
                    ''
                  end
 
-    render 'abouts/portfolio/portfolio_case'
+    render 'abouts/portfolio/portfolio_case', layout: 'cv_layout'
   end
 
   private

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # Настроить маршруты, чтобы URL с локалью выглядел так: /ru/articles, а не так: /articles/?locale=ru
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
     devise_for :users, controllers: { registrations: 'users/registrations' }
@@ -46,8 +45,9 @@ Rails.application.routes.draw do
 
     get 'chat_bot' => 'chat_bot_topics#have_answer', as: :have_answer, defaults: { format: :json }
 
-    get 'cv_rus' => 'abouts#cv_rus', as: :cv_rus
-    get 'cv_eng' => 'abouts#cv_eng', as: :cv_eng
+    # Принудительно установить локали для путей:
+    get 'cv_rus' => 'abouts#cv_rus', as: :cv_rus, defaults: { locale: :ru }
+    get 'cv_eng' => 'abouts#cv_eng', as: :cv_eng, defaults: { locale: :en }
 
     get 'portfolio', to: 'abouts#portfolio'
     get 'portfolio_case', to: 'abouts#portfolio_case'
