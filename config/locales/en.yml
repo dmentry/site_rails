@@ -249,6 +249,7 @@ en:
         profile: Profile
         exit: Logout
         admin: For admin
+        search_placeholder: 'Search...'
   controllers:
     photos:
       index:
@@ -363,11 +364,7 @@ en:
       to_photo_category: To category
     searching:
       title: Search
-      description: "Search in posts and photos' description:"
-      clear: Clear
-      search: Search
-      placeholder: Enter text
-      sorting: 'Sort by date:'
+      enter_search_phrase: Enter search phrase!
     chatbots:
         chatbot: "Chatbot's topics"
         new: Add

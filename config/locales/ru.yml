@@ -303,6 +303,7 @@ ru:
         profile: Профиль
         exit: Выйти
         admin: Для админа
+        search_placeholder: 'Искать...'
   controllers:
     photos:
       index:
@@ -417,11 +418,9 @@ ru:
       to_photo_category: В категорию
     searching:
       title: Поиск
-      description: 'Поиск в постах и описаниях фотографий:'
-      clear: Очистить
-      search: Искать
-      placeholder: Введите текст
-      sorting: 'Сортировка по дате:'
+      enter_search_phrase: Введите поисковую фразу!
+      found: Найдено
+      no_results: Результатов нет
     chatbots:
         chatbot: Темы чатбота
         new: Добавить

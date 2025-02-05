@@ -33,7 +33,7 @@
             <div class="navbar navbar-responsive logo_my_class">
               <%= image_pack_tag("logo.png", alt: 'logo', class: 'mt-0 logo') %>
 
-                <!-- Новогодняя шапка desktop -->
+<!-- Новогодняя шапка desktop -->
                 <%#= image_pack_tag("ny.png", alt: 'Happy New Year!', class: 'ny', title: 'Happy New Year!') %>
 
                 <ul class="navbar-nav">
@@ -127,7 +127,11 @@
 
                 <li> <%= link_to image_pack_tag("feed.png", alt: 'feed', class: 'feed_img'), dack9_rss_path, class: "btn my_font_size remove_padding" %> </li>
 
-                <li> <%= link_to image_pack_tag("searching.png", alt: 'feed', class: 'feed_img'), searching_path, class: "btn my_font_size remove_padding" %> </li>
+                <li class="nav-item "> 
+                  <%= form_tag searching_path, class: "nav_margin_r", type: "search", method: :get do %>
+                    <%= text_field_tag :q, params[:q], placeholder: t('app.navbar.menu.search_placeholder'), class: 'form-control searching_form' %>
+                  <% end %>
+                </li>
               </ul>
             </div>
           </div>
@@ -138,8 +142,8 @@
         <div class='<%= badge_class == "circle_badge_visible" ? "badge_class_mobile" : "circle_badge_no" %>'><%= badge_quantity %></div>
         <a id="menu_pic" href="#"><%= image_pack_tag("menu-4x.png", alt: 'menu') %></a>
 
-        <!-- Новогодняя шапка mobile -->
-        <%= image_pack_tag('ny.png', alt: 'Happy New Year!', class: 'ny2', title: 'Happy New Year!') %>
+<!-- Новогодняя шапка mobile -->
+        <%#= image_pack_tag('ny.png', alt: 'Happy New Year!', class: 'ny2', title: 'Happy New Year!') %>
       </div>
 
       <a href="#">

@@ -1,32 +1,12 @@
 <h1 class="center text_size header_top_buffer"><%= t('views.searching.title') %></h1>
 <div class="container bg-light">
   <div class="row mt-3">
-    <div class="col-sm-12 col-md-8">
-
-      <%= form_tag searching_path, class: "row bg-white my-3 px-3 py-2", method: :get do %>
-        <div class="input-group mb-3">
-          <%= text_field_tag :q, params[:q], placeholder: t('views.searching.placeholder'), class: 'search_field_w' %>
-        </div>
-
-        <div class="input-group mb-1">
-          <%= link_to t('views.searching.clear'), searching_path, class: "btn btn-sm btn-secondary" %>
-          <%= submit_tag t('views.searching.search'), class: 'btn btn-sm btn-success ml-2' %>
-        </div>
-
-         <% if @results.present? %>
-          <div class="input-group">
-            <span><%= t('views.searching.sorting') %></span>
-          </div>
-
-          <div class="input-group mb-3">
-            <%= button_tag "&#9660;".html_safe, value: 'down', type: :submit, name: :sorting, class: 'btn btn-info btn-sm' %>
-            <%= button_tag "&#9650;".html_safe, value: 'up', type: :submit, name: :sorting, class: 'btn btn-info btn-sm ml-2' %>
-          </div>
-         <% end %>
-      <% end %>
+    <div class="col-12 col-md-8">
 
       <% if @results.present? %>
-        <h4 class="center">Результаты</h4>
+        <div class="col-12 text-center">
+          <%= t('views.searching.found') %>: <%= @results.size %>
+        </div>
 
         <div class="row bg-white mt-1 mb-3 px-3 py-2">
           <div>
@@ -42,7 +22,7 @@
           </div>
         </div>
       <% elsif @results %>
-        <h4 class="center">Результатов нет</h4>
+        <h4 class="center mt-2"><%= t('views.searching.no_results') %></h4>
       <% end %>
 
     </div>

@@ -3,8 +3,8 @@
   <div class="row mt-3">
     <div class="col-sm-6 col-md-6">
 
-      <% @announces.each do |announce| %>
-        <div class='announce_photo'>
+      <% @announces.each_with_index do |announce, i| %>
+        <div class='announce_photo mx-auto'>
           <div class='announce_dt'><%= announce.created_at.strftime("%d.%m.%Y") %></div>
 
           <% if announce.is_a?(Article) %>
@@ -29,10 +29,11 @@
 
           <% end %>
         </div>
-        <div class="bottom_line"></div>
+        <% if i+1 != @announces.size %>
+          <div class="bottom_line mx-auto"></div>
+        <% end %>
       <% end %>
-
-      <div class="pagy-bottom-article"><%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %></div>
     </div>
   </div>
 </div>
+<div class="pagy-bottom-article"><%== pagy_nav(@pagy) if @pagy.pages > 1 %></div>
