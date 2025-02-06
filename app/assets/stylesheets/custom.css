@@ -59,6 +59,21 @@
   min-height: calc(100vh - 61px);
 }
 
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-menu {
+  animation: none;
+  opacity: 0;
+}
+
+.show .dropdown-menu {
+  animation: dropdownFadeIn 0.3s ease-in-out;
+  opacity: 1;
+}
+
 .fr {
   width: 45%;
 }
@@ -109,7 +124,7 @@
   outline: none;
 }
 
-.circle_badge_visible {
+.circle_badge_visible_ru {
   width: 19px;
   height: 19px;
   line-height: 19px;
@@ -119,8 +134,25 @@
   text-align: center;
   background: red;
   position: absolute;
-  top: 10px;
-  right: 244px;
+  top: 3px;
+  right: 79px;
+  z-index: 1000;
+  display: block;
+  opacity: 0.8;
+}
+
+.circle_badge_visible_ru_inside_dropdwn {
+  width: 19px;
+  height: 19px;
+  line-height: 19px;
+  border-radius: 50%;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  background: red;
+  position: absolute;
+  top: 46px;
+  right: 25px;
   z-index: 1000;
   display: block;
   opacity: 0.8;
@@ -136,8 +168,25 @@
   text-align: center;
   background: red;
   position: absolute;
-  top: 10px;
-  right: 223px;
+  top: 3px;
+  right: 59px;
+  z-index: 1000;
+  display: block;
+  opacity: 0.8;
+}
+
+.circle_badge_visible_eng_inside_dropdwn {
+  width: 19px;
+  height: 19px;
+  line-height: 19px;
+  border-radius: 50%;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  background: red;
+  position: absolute;
+  top: 46px;
+  right: 54px;
   z-index: 1000;
   display: block;
   opacity: 0.8;
@@ -157,10 +206,6 @@
   color: black;
 }
 
-.badge_class_mobile {
-  display: none;
-}
-
 .btn_height {
   height: 30px;
 }
@@ -178,10 +223,26 @@
   padding: 0;
 }
 
+.entrance_img {
+  height: 20px;
+  width: 20px;
+  opacity: 0.4;
+  margin-bottom: 1px;
+}
+
+.entrance_img:hover {
+  opacity: 1;
+}
+
 .feed_img {
+  height: 19px;
   width: 19px;
   opacity: 0.7;
-  margin-top: -2px;
+  margin-bottom: 2px;
+}
+
+.feed_img:hover {
+  opacity: 1;
 }
 
 .header img{
@@ -206,6 +267,10 @@
   margin-left: 40px;
   opacity: .5;
   width: 30px;
+}
+
+.nav_font_size {
+  font-size: 100%;
 }
 
 .nav_margin_r {
@@ -719,6 +784,20 @@
   }
 }
 
+@media (max-width: 1065px) {
+  .circle_badge_visible_ru {
+    left: -2px;
+  }
+
+  .circle_badge_visible_eng {
+    left: -2px;
+  }
+
+  .nav_font_size {
+    font-size: 85%;
+  }
+}
+
 @media (max-width: 991px) {
   .announce_photo, .bottom_line {
     width: 100%;
@@ -727,6 +806,25 @@
   .back_to_top_img, .bot_open_btn {
     height: 40px;
     width: 40px;
+  }
+
+  .circle_badge_visible_ru {
+    left: -9px;
+  }
+
+  .circle_badge_visible_ru_inside_dropdwn {
+    top: 75px;
+    left: 92px;
+  }
+
+  .circle_badge_visible_eng {
+    top: 1px;
+    left: -9px;
+  }
+
+  .circle_badge_visible_eng_inside_dropdwn {
+    top: 75px;
+    left: 67px;
   }
 
   .drop_down_button_my {
@@ -746,23 +844,6 @@
     z-index: 1000;
   }
 
-  .circle_badge_visible {
-    width: 19px;
-    height: 19px;
-    line-height: 19px;
-    border-radius: 50%;
-    font-size: 12px;
-    color: #fff;
-    text-align: center;
-    background: red;
-    position: absolute;
-    top: 418px;
-    left: 86px;
-    z-index: 1000;
-    display: none;
-    opacity: 0.8;
-  }
-
   .badge_class_mobile {
     width: 19px;
     height: 19px;
@@ -774,7 +855,8 @@
     background: red;
     position: absolute;
     z-index: 10000;
-    left: 2px;
+    right: 8px;
+    top: 5px;
     display: block;
     opacity: 0.8;
   }

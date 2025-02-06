@@ -1,14 +1,14 @@
 class UserPolicy < ApplicationPolicy
   def show?
-    user.present?
+    user.present? || user.admin?
   end
 
   def edit?
-    show?
+    false
   end
 
   def update?
-    show?
+    false
   end
 
   def show_visits?

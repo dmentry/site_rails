@@ -27,128 +27,122 @@
   <body class='<%= @dark_body %>'%>
 
     <div class="content">
-      <div id="collapseMenu" class="collapse d-lg-block">
-        <div class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top">
-          <div class="container-fluid">
-            <div class="navbar navbar-responsive logo_my_class">
-              <%= image_pack_tag("logo.png", alt: 'logo', class: 'mt-0 logo') %>
-
-<!-- Новогодняя шапка desktop -->
-                <%#= image_pack_tag("ny.png", alt: 'Happy New Year!', class: 'ny', title: 'Happy New Year!') %>
-
-                <ul class="navbar-nav">
-                  <%= link_to t('app.navbar.logo_name'), root_path, class: 'btn bg-light', title: t('app.navbar.logo_name_caption') %>
-                </ul>
-            </div>
-            <div class="navbar navbar-responsive d-md-block">
-              <ul class="navbar-nav">
-                <li class="dropdown">
-                  <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown"><%= t('app.navbar.menu.drop_down.photos') %></button>
-                  <div class="dropdown-menu my_control my_font_size mobile_bg_light" aria-labelledby="dropdownMenuButton">
-
-                    <div class="dropdown-item my_dropdown_item remove_padding bg-light photos_category_item"><%= t('app.navbar.menu.drop_down.categories') %></div>
-                    <% if current_user %>
-                      <%=link_to t('app.navbar.menu.drop_down.all'), all_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                      <%=link_to t('app.navbar.menu.drop_down.photohosting'), photohosting_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <% end %>
-
-                    <%= link_to t('app.navbar.menu.drop_down.recent'), photos_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%= link_to t('app.navbar.menu.drop_down.macro'), macro_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%= link_to t('app.navbar.menu.drop_down.landscape'), landscape_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%= link_to t('app.navbar.menu.drop_down.portrait'), portrait_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%= link_to t('app.navbar.menu.drop_down.drone'), drone_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%= link_to t('app.navbar.menu.drop_down.collage'), collage_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%= link_to t('app.navbar.menu.drop_down.other'), other_page_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                  </div>
-                </li>
-                <li> <%= link_to t('app.navbar.menu.blog'), articles_path, class: "btn my_font_size remove_padding" %> </li>
-                <li> <%= link_to t('app.navbar.menu.map'), map_path, class: "btn my_font_size remove_padding" %> </li>
-
-                <li class="dropdown">
-                  <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown"><%= t('app.navbar.menu.about') %></button>
-                  <div class="dropdown-menu my_control my_font_size mobile_bg_light" aria-labelledby="dropdownMenuButton">
-
-                    <div class="dropdown-item my_dropdown_item remove_padding bg-light admin_options"><%= t('app.navbar.menu.about') %></div>
-
-                    <%= link_to t('app.navbar.menu.common_info'), about_path(About&.first&.id), class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-
-                    <!-- Язык резюме в зависимости от локали -->
-                    <%# if params[:locale] == 'ru' || params[:locale] == nil %>
-                      <%#= link_to t('app.navbar.menu.cv_rus'), cv_rus_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
-                    <%# else %>
-                      <%#= link_to t('app.navbar.menu.cv_eng'), cv_eng_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
-                    <%# end %>
-
-                    <%= link_to t('app.navbar.menu.portfolio'), portfolio_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    <%= link_to t('app.navbar.menu.cv_rus'), cv_rus_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
-                    <%= link_to t('app.navbar.menu.cv_eng'), cv_eng_path, class: "dropdown-item my_dropdown_item remove_padding bg-light", target: "blanc", rel: "noreferrer" %>
-                  </div>
-                </li>
-
-                <li> <%= link_to t('app.navbar.menu.feedback'), feedback_page_path, class: "btn my_font_size remove_padding" %> </li>
-
+      <nav class="navbar navbar-expand-lg navbar-light bg-light nav_font_size">
+        <a class="navbar-brand" href="<%= root_path %>">
+          <%= image_pack_tag("logo.png", alt: 'logo', class: 'mt-0 logo') %>
+          <span class='nav_font_size'>
+            <%= t('app.navbar.logo_name') %>
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                <%= t('app.navbar.menu.drop_down.photos') %>
+              </a>
+              <div class="dropdown-menu nav_font_size">
                 <% if current_user %>
-                  <% badge_class, badge_quantity = new_uniq_visitors %>
-                  <div class='<%= badge_class %>'><%= badge_quantity %></div>
-
-                  <li class="dropdown">
-                    <button type="button" class="btn dropdown-toggle drop_down_button_my my_font_size remove_padding bg-light" data-toggle="dropdown"><%= t('app.navbar.menu.admin_options') %></button>
-                    <div class="dropdown-menu my_control my_font_size mobile_bg_light" aria-labelledby="dropdownMenuButton">
-
-                      <div class="dropdown-item my_dropdown_item remove_padding bg-light admin_options"><%= t('app.navbar.menu.admin_options') %></div>
-                      <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-
-                      <div class="qnt_visitors_remove_l_margin">
-                        <div class='<%= badge_class == "circle_badge_visible" ? "badge_class_mobile" : "circle_badge_no" %>'><%= badge_quantity %></div>
-                        <%= link_to t('app.navbar.menu.visitors'), show_visitors_info_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                      </div>
-
-                      <%= link_to t('app.navbar.menu.visits'), show_visits_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                      <%= link_to t('app.navbar.menu.chatbot'), chat_bot_topics_path, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                      <%= link_to t('app.navbar.menu.profile'), current_user, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                      <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: "dropdown-item my_dropdown_item remove_padding bg-light" %>
-                    </div>
-                  </li>
-                <% else %>
-                  <li> <%= link_to ' ', new_user_session_path, class: "btn my_font_size remove_padding" %> </li>
+                  <%=link_to t('app.navbar.menu.drop_down.all'), all_page_path, class: 'dropdown-item bg-light' %>
+                  <%=link_to t('app.navbar.menu.drop_down.photohosting'), photohosting_page_path, class: 'dropdown-item bg-light' %>
                 <% end %>
+                <%= link_to t('app.navbar.menu.drop_down.recent'), photos_path, class: 'dropdown-item' %>
+                <%= link_to t('app.navbar.menu.drop_down.macro'), macro_page_path, class: 'dropdown-item' %>
+                <%= link_to t('app.navbar.menu.drop_down.landscape'), landscape_page_path, class: 'dropdown-item' %>
+                <%= link_to t('app.navbar.menu.drop_down.portrait'), portrait_page_path, class: 'dropdown-item' %>
+                <%= link_to t('app.navbar.menu.drop_down.drone'), drone_page_path, class: 'dropdown-item' %>
+                <%= link_to t('app.navbar.menu.drop_down.collage'), collage_page_path, class: 'dropdown-item' %>
+                <%= link_to t('app.navbar.menu.drop_down.other'), other_page_path, class: 'dropdown-item' %>
+              </div>
+            </li>
+            <li class="nav-item">
+              <%= link_to t('app.navbar.menu.blog'), articles_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to t('app.navbar.menu.map'), map_path, class: "nav-link" %>
+            </li>
 
-                <% if params[:locale] == 'ru' || params[:locale] == nil %>
-                  <% locale_class_eng = '' %>
-                  <% locale_class_ru = 'locale_class_na' %>
-                <% else %>
-                  <% locale_class_eng = 'locale_class_na' %>
-                  <% locale_class_ru = '' %>
-                <% end %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                <%= t('app.navbar.menu.about') %>
+              </a>
+              <div class="dropdown-menu nav_font_size">
+                <%= link_to t('app.navbar.menu.common_info'), about_path(About&.first&.id), class: 'dropdown-item' %>
+                <%= link_to t('app.navbar.menu.portfolio'), portfolio_path, class: 'dropdown-item' %>
+                <%= link_to t('app.navbar.menu.cv_rus'), cv_rus_path, class: 'dropdown-item', target: "blanc", rel: "noreferrer" %>
+                <%= link_to t('app.navbar.menu.cv_eng'), cv_eng_path, class: 'dropdown-item', target: "blanc", rel: "noreferrer" %>
+              </div>
+            </li>
+            <li class="nav-item">
+              <%= link_to t('app.navbar.menu.feedback'), feedback_page_path, class: "nav-link" %>
+            </li>
 
-                <li><%= link_to 'Рус', { controller: controller_name, action: action_name, locale: "ru" }, { class: "btn my_font_size flag_position language_sw_text #{ locale_class_ru }" } %></li>
+            <% if current_user %>
+              <% badge_class, badge_quantity = new_uniq_visitors %>
+              <% badge_inside_dropdwn = if badge_class == 'circle_badge_visible_ru' %>
+                                          <% 'circle_badge_visible_ru_inside_dropdwn' %>
+                                     <% elsif badge_class == 'circle_badge_visible_eng' %>
+                                          <% 'circle_badge_visible_eng_inside_dropdwn' %>
+                                     <% end %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                  <%= "#{ t('app.navbar.menu.admin_options') } <span class='#{ badge_class }'>#{badge_quantity}</span>".html_safe %>
+                </a>
+                <div class="dropdown-menu nav_font_size">
+                  <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: 'dropdown-item' %>
+                  <%= link_to "#{t('app.navbar.menu.visitors')} <span class='#{ badge_inside_dropdwn }'>#{badge_quantity}</span>".html_safe, show_visitors_info_path, class: 'dropdown-item' %>
+                  <%= link_to t('app.navbar.menu.visits'), show_visits_path, class: 'dropdown-item' %>
+                  <%= link_to t('app.navbar.menu.chatbot'), chat_bot_topics_path, class: 'dropdown-item' %>
+                  <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: 'dropdown-item' %>
+                </div>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to image_pack_tag("entrance.png", alt: 'entrance', class: 'entrance_img'), new_user_session_path, class: 'nav-link' %>
+              </li>
+            <% end %>
+            <li class="nav-item">
+              <%= link_to image_pack_tag("feed.png", alt: 'feed', class: 'feed_img'), dack9_rss_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <% if params[:locale] == 'ru' || params[:locale] == nil %>
+                <% locale_class_eng = '' %>
+                <% locale_class_ru = 'locale_class_na' %>
+              <% else %>
+                <% locale_class_eng = 'locale_class_na' %>
+                <% locale_class_ru = '' %>
+              <% end %>
 
-                <li><%= link_to 'Eng', { controller: controller_name, action: action_name, locale: "en" }, { class: "btn my_font_size flag_position language_sw_text #{ locale_class_eng }" } %></li>
-
-                <li> <%= link_to image_pack_tag("feed.png", alt: 'feed', class: 'feed_img'), dack9_rss_path, class: "btn my_font_size remove_padding" %> </li>
-
-                <li class="nav-item "> 
-                  <%= form_tag searching_path, class: "nav_margin_r", type: "search", method: :get do %>
-                    <%= text_field_tag :q, params[:q], placeholder: t('app.navbar.menu.search_placeholder'), class: 'form-control searching_form' %>
-                  <% end %>
-                </li>
-              </ul>
-            </div>
-          </div>
+              <%= link_to 'Рус', { controller: controller_name, action: action_name, locale: "ru" }, { class: "nav-link pr-3 language_sw_text #{ locale_class_ru }" } %>
+              <%= link_to 'Eng', { controller: controller_name, action: action_name, locale: "en" }, { class: "nav-link pr-3 language_sw_text #{ locale_class_eng }" } %>
+            </li>
+          </ul>
+          <%= form_tag searching_path, class: "form", type: "search", method: :get do %>
+            <%= text_field_tag :q, params[:q], placeholder: t('app.navbar.menu.search_placeholder'), class: 'form-control searching_form' %>
+          <% end %>
         </div>
-      </div>
+      </nav>
 
-      <div class="badge_mobile">
-        <div class='<%= badge_class == "circle_badge_visible" ? "badge_class_mobile" : "circle_badge_no" %>'><%= badge_quantity %></div>
-        <a id="menu_pic" href="#"><%= image_pack_tag("menu-4x.png", alt: 'menu') %></a>
+
+
+      <div class="d-block d-lg-none badge_mobile">
+        <% badge_class_mobile = if badge_class == 'circle_badge_visible_ru' || badge_class == 'circle_badge_visible_eng' %>
+          <% 'badge_class_mobile' %>
+        <% else %>
+          <% 'circle_badge_no' %>
+        <% end %>
+        <div class='<%= badge_class_mobile %>'><%= badge_quantity %></div>
+        <!-- <a id="menu_pic" href="#"><%#= image_pack_tag("menu-4x.png", alt: 'menu') %></a> -->
 
 <!-- Новогодняя шапка mobile -->
         <%#= image_pack_tag('ny.png', alt: 'Happy New Year!', class: 'ny2', title: 'Happy New Year!') %>
       </div>
 
-      <a href="#">
-        <%= image_pack_tag("close2.png", alt: 'menu', class: 'menu_close_img') %>
-      </a>
+<!--       <a href="#">
+        <%#= image_pack_tag("close2.png", alt: 'menu', class: 'menu_close_img') %>
+      </a> -->
     
       <% flash.each do |key, value| %>
         <div class="<%= flash_class(key) %>" role="alert">
@@ -294,31 +288,31 @@
   };
 
   $(function(){
-    $("#menu_pic").click(function() {
-      if ($("#collapseMenu").height() > 80) {
-        $("#collapseMenu").slideToggle(500);
-        $("#menu_pic").hide(500);
-        $(".badge_mobile").hide(200);
+    // $("#menu_pic").click(function() {
+    //   if ($("#collapseMenu").height() > 80) {
+    //     $("#collapseMenu").slideToggle(500);
+    //     $("#menu_pic").hide(500);
+    //     $(".badge_mobile").hide(200);
 
 
-        if ($(".menu_close_img").is(":visible")) {
-          $(".menu_close_img").hide(500)
-        }
-        else{
-          $(".menu_close_img").slideDown(500) 
-        }
-      }
-    });
+    //     if ($(".menu_close_img").is(":visible")) {
+    //       $(".menu_close_img").hide(500)
+    //     }
+    //     else{
+    //       $(".menu_close_img").slideDown(500) 
+    //     }
+    //   }
+    // });
 
     // Показываю\скрываю кнопку возврата
-    let scroll = document.body.scrollHeight > window.innerHeight
+    // let scroll = document.body.scrollHeight > window.innerHeight
 
-    if (scroll) {
-      $('.showReturnBtn').show()
-    }
-    else {
-      $('.showReturnBtn').hide()
-    }
+    // if (scroll) {
+    //   $('.showReturnBtn').show()
+    // }
+    // else {
+    //   $('.showReturnBtn').hide()
+    // }
 
     $('.scrollToTop').click(function () {
       $('html, body').animate({ scrollTop: 0 }, 300);
@@ -326,23 +320,23 @@
       return false;
     });
 
-    $(".navbar").click(function() {
-      if ($("#collapseMenu").height() > 80) {
-        $("#collapseMenu").slideUp(500);
-        $(".menu_close_img").slideUp(500);
-        $("#menu_pic").show(500);
-        $(".badge_mobile").show(100);
-      }
-    });
+    // $(".navbar").click(function() {
+    //   if ($("#collapseMenu").height() > 80) {
+    //     $("#collapseMenu").slideUp(500);
+    //     $(".menu_close_img").slideUp(500);
+    //     $("#menu_pic").show(500);
+    //     $(".badge_mobile").show(100);
+    //   }
+    // });
 
-    $(".menu_close_img").click(function() {
-      if ($("#collapseMenu").height() > 80) {
-        $("#collapseMenu").slideUp(500);
-        $(".menu_close_img").slideUp(500);
-        $("#menu_pic").show(500);
-        $(".badge_mobile").show(100);
-      }
-    });
+    // $(".menu_close_img").click(function() {
+    //   if ($("#collapseMenu").height() > 80) {
+    //     $("#collapseMenu").slideUp(500);
+    //     $(".menu_close_img").slideUp(500);
+    //     $("#menu_pic").show(500);
+    //     $(".badge_mobile").show(100);
+    //   }
+    // });
 
     $('#scrollToTop').click(function () {
       $('html, body').animate({ scrollTop: $('html, body').offset().top - 100 }, 300);

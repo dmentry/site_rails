@@ -6,42 +6,42 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    if !current_user.admin
-      flash[:alert] = "You are not allowed to create a user"
-      redirect_to photos_path
-    else
-      super
-    end
+    # if !current_user.admin
+    #   flash[:alert] = "You are not allowed to create a user"
+      redirect_to announces_path
+    # else
+    #   super
+    # end
   end
 
   # POST /resource
   def create
-    if !current_user.admin
-      flash[:alert] = "You are not allowed to create a user"
-      redirect_to photos_path
-    else
-      super
-    end
+    # if !current_user.admin
+    #   flash[:alert] = "You are not allowed to create a user"
+      redirect_to announces_path
+    # else
+    #   super
+    # end
   end
 
   # GET /resource/edit
   def edit
-    if !current_user.admin
-      flash[:alert] = "You are not allowed to create a user"
-      redirect_to photos_path
-    else
-      super
-    end
+    # if !current_user.admin
+    #   flash[:alert] = "You are not allowed to create a user"
+      redirect_to announces_path
+    # else
+    #   super
+    # end
   end
 
   # PUT /resource
   def update
-    if !current_user.admin
-      flash[:alert] = "You are not allowed to create a user"
-      redirect_to photos_path
-    else
-      super
-    end
+    # if !current_user.admin
+    #   flash[:alert] = "You are not allowed to create a user"
+      redirect_to announces_path
+    # else
+    #   super
+    # end
   end
 
   # DELETE /resource
