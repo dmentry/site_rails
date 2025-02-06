@@ -78,7 +78,7 @@ class AboutsController < ApplicationController
       return
     end
 
-    allowed_directories = ['arhtextile', 'kukumberryx', 'trainings', 'cloud', 'landing']
+    allowed_directories = ['arhtextile', 'kukumberryx', 'trainings', 'cloud', 'landing', 'photosite']
 
     unless allowed_directories.include?(user_directory)
       redirect_to portfolio_path, notice: ('Что-то пошло не так 2')

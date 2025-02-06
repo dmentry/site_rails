@@ -1,23 +1,20 @@
 <h1 class="center text_size header_top_buffer"><%= @label %></h1>
 <div class="container-fluid bg-<%= @bg_color %>">
-  <div class="row mt-3">
-    <div class="col-12 px-0">
-      <div>
-        <%= image_pack_tag("portfolio/#{ @images_path }/main.png", alt: 'screenshot', data: { aos: "fade-up", aos_duration: 1000, aos_offset: 20 }) %>
-      </div>
-    </div>
-  </div>
-
   <% if @all_ps_images_qnt && @all_ps_images_qnt > 0 %>
     <% @all_ps_images_qnt.times do |i| %>
       <div class="row mt-3">
-        <div class="col-12 px-0 col-md-8 mb-3">
-          <% if (i + 1) == @all_ps_images_qnt %>
-            <%= image_pack_tag("portfolio/#{ @images_path }/ps#{ i + 1 }.png", class: 'rounded_corners', alt: 'screenshot') %>
-          <% else %>
-            <%= image_pack_tag("portfolio/#{ @images_path }/ps#{ i + 1 }.png", class: 'rounded_corners', alt: 'screenshot', data: { aos: "fade-up", aos_duration: 1000, aos_offset: 20 }) %>
-          <% end %>
-        </div>
+        <% if i == 0 %>
+          <div class="col-12 px-0">
+        <% else %>
+          <div class="col-12 px-0 col-md-8 mb-3">
+        <% end %>
+
+        <% if (i + 1) == @all_ps_images_qnt %>
+          <%= image_pack_tag("portfolio/#{ @images_path }/#{ i + 1 }.png", class: 'rounded_corners', alt: 'screenshot') %>
+        <% else %>
+          <%= image_pack_tag("portfolio/#{ @images_path }/#{ i + 1 }.png", class: 'rounded_corners', alt: 'screenshot', data: { aos: "fade-up", aos_duration: 1000, aos_offset: 20 }) %>
+        <% end %>
+          </div>
       </div>
     <% end %>
   <% end %>
