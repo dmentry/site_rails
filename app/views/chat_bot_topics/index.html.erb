@@ -1,9 +1,10 @@
-<h1 class="center text_size header_top_buffer"><%= t('views.chatbots.chatbot') %></h1>
+<%= breadcrumbs [t('views.home.announces.header'), root_path], [t('app.navbar.menu.admin_options'), nil], [t('views.chatbots.index.header'), nil] %>
+
 <div class="container bg-light cont_height">
   <div class="row mt-3">
     <div class="col-sm-12">
 
-      <%= link_to t('views.chatbots.new'), new_chat_bot_topic_path, class: 'btn btn-sm btn-primary my-2' %>
+      <%= link_to t('views.chatbots.new.header'), new_chat_bot_topic_path, class: 'btn btn-sm btn-primary my-2' %>
 
       <div class="bottom_line"></div>
       <div class="row">

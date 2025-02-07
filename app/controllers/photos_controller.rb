@@ -29,7 +29,11 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
-    @photo.one_string_coordinates = "#{ @photo.lat }, #{ @photo.long }"
+    @photo.one_string_coordinates = if @photo.lat.present? && @photo.long.present?
+                                      "#{ @photo.lat }, #{ @photo.long }"
+                                    else
+                                      ''
+                                    end
 
     authorize @photo
   end

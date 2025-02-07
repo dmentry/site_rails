@@ -20,15 +20,13 @@
     <%= favicon_pack_tag 'favicon.ico' %>
 
     <link href="/dack9_rss" rel="alternate" title="RSS feed" type="application/rss+xml">
-
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=<%= Rails.application.credentials.dig(Rails.env.to_sym, :yandex_api_key) %>&lang=ru_RU"></script>
   </head>
 
   <body class='<%= @dark_body %>'%>
 
     <div class="content">
       <nav class="navbar navbar-expand-lg navbar-light bg-light nav_font_size">
-        <a class="navbar-brand" href="<%= root_path %>">
+        <a class="navbar-brand" href='<%= root_path %>' title='<%= t("views.home.announces.header") %>'>
           <%= image_pack_tag("logo.png", alt: 'logo', class: 'mt-0 logo') %>
           <span class='nav_font_size'>
             <%= t('app.navbar.logo_name') %>
@@ -43,10 +41,11 @@
               <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                 <%= t('app.navbar.menu.drop_down.photos') %>
               </a>
-              <div class="dropdown-menu nav_font_size">
-                <% if current_user %>
-                  <%=link_to t('app.navbar.menu.drop_down.all'), all_page_path, class: 'dropdown-item bg-light' %>
-                  <%=link_to t('app.navbar.menu.drop_down.photohosting'), photohosting_page_path, class: 'dropdown-item bg-light' %>
+              <div class="dropdown-menu nav_font_size py-0">
+                <% if current_user && current_user.admin? %>
+                  <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: 'dropdown-item bottom_line_blog' %>
+                  <%=link_to t('app.navbar.menu.drop_down.all'), all_page_path, class: 'dropdown-item' %>
+                  <%=link_to t('app.navbar.menu.drop_down.photohosting'), photohosting_page_path, class: 'dropdown-item' %>
                 <% end %>
                 <%= link_to t('app.navbar.menu.drop_down.recent'), photos_path, class: 'dropdown-item' %>
                 <%= link_to t('app.navbar.menu.drop_down.macro'), macro_page_path, class: 'dropdown-item' %>
@@ -70,16 +69,16 @@
               </a>
               <div class="dropdown-menu nav_font_size">
                 <%= link_to t('app.navbar.menu.common_info'), about_path(About&.first&.id), class: 'dropdown-item' %>
-                <%= link_to t('app.navbar.menu.portfolio'), portfolio_path, class: 'dropdown-item' %>
+                <%= link_to t('app.navbar.menu.portfolio'), portfolio_path, class: 'dropdown-item', target: "blanc", rel: "noreferrer"  %>
                 <%= link_to t('app.navbar.menu.cv_rus'), cv_rus_path, class: 'dropdown-item', target: "blanc", rel: "noreferrer" %>
                 <%= link_to t('app.navbar.menu.cv_eng'), cv_eng_path, class: 'dropdown-item', target: "blanc", rel: "noreferrer" %>
               </div>
             </li>
             <li class="nav-item">
-              <%= link_to t('app.navbar.menu.feedback'), feedback_page_path, class: "nav-link" %>
+              <%= link_to t('app.navbar.menu.feedback'), feedback_page_path, class: "nav-link", title: t('app.navbar.menu.feedback') %>
             </li>
 
-            <% if current_user %>
+            <% if current_user && current_user.admin? %>
               <% badge_class, badge_quantity = new_uniq_visitors %>
               <% badge_inside_dropdwn = if badge_class == 'circle_badge_visible_ru' %>
                                           <% 'circle_badge_visible_ru_inside_dropdwn' %>
@@ -91,8 +90,12 @@
                   <%= "#{ t('app.navbar.menu.admin_options') } <span class='#{ badge_class }'>#{badge_quantity}</span>".html_safe %>
                 </a>
                 <div class="dropdown-menu nav_font_size">
-                  <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: 'dropdown-item' %>
-                  <%= link_to "#{t('app.navbar.menu.visitors')} <span class='#{ badge_inside_dropdwn }'>#{badge_quantity}</span>".html_safe, show_visitors_info_path, class: 'dropdown-item' %>
+                  <% show_badge = if badge_inside_dropdwn.present? %>
+                                              <% "<span class='#{ badge_inside_dropdwn }'>#{ badge_quantity }</span>" %>
+                                         <% else %>
+                                            <% nil %>
+                                         <% end %>
+                  <%= link_to "#{t('app.navbar.menu.visitors')} #{show_badge}".html_safe, show_visitors_info_path, class: 'dropdown-item' %>
                   <%= link_to t('app.navbar.menu.visits'), show_visits_path, class: 'dropdown-item' %>
                   <%= link_to t('app.navbar.menu.chatbot'), chat_bot_topics_path, class: 'dropdown-item' %>
                   <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: 'dropdown-item' %>
@@ -104,7 +107,7 @@
               </li>
             <% end %>
             <li class="nav-item">
-              <%= link_to image_pack_tag("feed.png", alt: 'feed', class: 'feed_img'), dack9_rss_path, class: 'nav-link' %>
+              <%= link_to image_pack_tag("feed.png", alt: 'feed', class: 'feed_img'), dack9_rss_path, class: 'nav-link', title: t('app.navbar.menu.rss_subscribe') %>
             </li>
             <li class="nav-item">
               <% if params[:locale] == 'ru' || params[:locale] == nil %>
@@ -115,8 +118,8 @@
                 <% locale_class_ru = '' %>
               <% end %>
 
-              <%= link_to 'Рус', { controller: controller_name, action: action_name, locale: "ru" }, { class: "nav-link pr-3 language_sw_text #{ locale_class_ru }" } %>
-              <%= link_to 'Eng', { controller: controller_name, action: action_name, locale: "en" }, { class: "nav-link pr-3 language_sw_text #{ locale_class_eng }" } %>
+              <%= link_to 'Рус', { controller: controller_name, action: action_name, locale: "ru" }, { class: "nav-link pr-3 language_sw_text #{ locale_class_ru }", title: 'Switch to English' } %>
+              <%= link_to 'Eng', { controller: controller_name, action: action_name, locale: "en" }, { class: "nav-link pr-3 language_sw_text #{ locale_class_eng }", title: 'Переключиться на русский' } %>
             </li>
           </ul>
           <%= form_tag searching_path, class: "form", type: "search", method: :get do %>
@@ -124,8 +127,6 @@
           <% end %>
         </div>
       </nav>
-
-
 
       <div class="d-block d-lg-none badge_mobile">
         <% badge_class_mobile = if badge_class == 'circle_badge_visible_ru' || badge_class == 'circle_badge_visible_eng' %>

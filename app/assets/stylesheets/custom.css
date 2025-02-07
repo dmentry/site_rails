@@ -277,6 +277,10 @@
   margin-right: -30px !important;
 }
 
+nav[aria-label="breadcrumb"] .breadcrumb {
+  padding: 5px;
+}
+
 .zoom {
   overflow: hidden;
   border-radius: 7px;
@@ -465,7 +469,6 @@
 .bottom_line_blog {
   border-bottom: 1px solid grey;
   padding-top: 8px;
-  /* width: 90%; */
 }
 
 .comment_color {

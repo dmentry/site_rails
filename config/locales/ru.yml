@@ -295,6 +295,7 @@ ru:
         cv_eng: Резюме (анг)
         map: Карта
         feedback: Написать
+        rss_subscribe: RSS-подписка на новости
         admin_options: Админка
         load_photo: Загрузить фотку
         visitors: Посетители
@@ -335,7 +336,7 @@ ru:
   views:
     articles:
       index:
-        blog: Блог
+        header: Блог
         article:
           read: Читать полностью
           edit: Редактировать
@@ -345,11 +346,13 @@ ru:
       form:
         save: Сохранить
       new:
-        new_article: Новый пост
+        header: Новый пост
         back: Обратно
       show:
         back: Обратно
         blog: Блог
+      edit:
+        header: Редактировать пост
     photos:
       form:
         uploaded: Загружена
@@ -367,10 +370,11 @@ ru:
         header: Загрузить фотографию
       universal_page:
         has_coordinates: Посмотреть на карте
+      breadcrumb_for_photo: Фотографии
     map:
       header: Фотки на карте
     feedback:
-      title: Форма обратной связи
+      header: Форма обратной связи
       send: Отправить
     abouts:
       index:
@@ -380,9 +384,9 @@ ru:
         new: Новый текст
         about: Текст обо мне
       show:
-        title: Обо мне
+        header: Обо мне
       edit:
-        title: Редактировать
+        header: Редактировать
         back: Обратно
       form:
         main_text: Текст
@@ -414,28 +418,36 @@ ru:
     layout:
       up: Вверх
     home:
-      announces: Новости
+      announces:
+        header: Главная
       to_photo_category: В категорию
     searching:
-      title: Поиск
+      header: Поиск
       enter_search_phrase: Введите поисковую фразу!
       found: Найдено
       no_results: Результатов нет
     chatbots:
-        chatbot: Темы чатбота
-        new: Добавить
-        header: Тема диалога
+        new:
+          header: Новая тема диалога
         questions: Реплики
         index:
+          header: Темы чатбота
           table_topic: Тема
           table_is_shown: 'Очередь показа в боте'
+        edit:
+          header: Редактировать тему диалога
     chatbot_questions:
-      index_header: Реплики
-      index_table_order: №
-      index_table_body: Реплика
-      index_table_next_id: ID след. реплики
-      edit_header: Реплика
-      new_header: Добавить реплику
+      index:
+        header: Реплики
+        add_button: Добавить реплику
+        table:
+          order: №
+          body: Реплика
+          next_id: ID след. реплики
+      edit:
+        header: Редактировать реплику
+      new:
+        header: Добавить реплику
   models:
     article:
       article_title_ru: Заголовок поста (рус)
@@ -443,8 +455,6 @@ ru:
       article_title_en: Заголовок поста (англ)
       article_body_en: Пост (англ)
       is_visible: Пост виден для посетителей
-      edit:
-        header: Редактировать пост
     feedback:
       feedback_email: Ваш мейл
       feedback_body: Сообщение

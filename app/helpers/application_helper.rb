@@ -21,4 +21,18 @@ module ApplicationHelper
       ['circle_badge_no', false]
     end
   end
+
+  def breadcrumbs(*crumbs)
+    content_tag(:nav, aria: { label: 'breadcrumb' }) do
+      content_tag(:ol, class: 'breadcrumb justify-content-center nav_font_size mb-5') do
+        crumbs.each_with_index.map do |(label, path), index|
+          if path
+            content_tag(:li, link_to(label, path), class: 'breadcrumb-item')
+          else
+            content_tag(:li, label, class: 'breadcrumb-item active', 'aria-current': 'page')
+          end
+        end.join.html_safe
+      end
+    end
+  end
 end

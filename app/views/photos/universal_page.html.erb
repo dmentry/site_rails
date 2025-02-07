@@ -1,5 +1,6 @@
-<h1 class="center text_size header_top_buffer"><%= @header %></h1>
+<%= breadcrumbs [t('views.home.announces.header'), root_path], [t('views.photos.breadcrumb_for_photo'), nil], [@header, nil] %>
+
 <div class="row gallery_img_borders gallery gallery_top_buffer">
   <%= render partial: 'photos/photo', collection: @photos %>
 </div>
-<div class="pagy-bottom-article"><%== pagy_nav(@pagy) if @pagy.pages > 1 %></div>
+<div class="pagy-bottom-article"><%== pagy_nav(@pagy) if @pagy && @pagy&.pages > 1 %></div>

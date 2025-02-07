@@ -1,4 +1,5 @@
-<h1 class="center text_size header_top_buffer">Посещения</h1>
+<%= breadcrumbs [t('views.home.announces.header'), root_path], [t('app.navbar.menu.admin_options'), nil], ['Посещения', nil] %>
+
 <div class="container-lg bg-light cont_paddings">
   <div class="center mt-0 bg-light">
     <div>Уникальных посетителей за все время: <%= @all_visits_uniq %>.</div>

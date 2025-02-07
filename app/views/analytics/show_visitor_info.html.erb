@@ -1,6 +1,6 @@
-<h1 class="center text_size header_top_buffer">Посетитель с u_id: <%= @visitor.first.u_id %>. Визитов: <%= @visitor_all_visits %></h1>
-<div class="container bg-light cont_paddings col-sm-12 col-md-12">
+<%= breadcrumbs [t('views.home.announces.header'), root_path], [t('app.navbar.menu.admin_options'), nil], ['Уникальные посетители', show_visitors_info_path], ["Посетитель с u_id: #{ @visitor.first.u_id }. Визитов: #{ @visitor_all_visits }", nil] %>
 
+<div class="container bg-light cont_paddings col-sm-12 col-md-12">
   <table class="table table-sm table-buffers-vertical table-font-my">
     <thead>
       <tr class="table-buffers-vertical">
@@ -25,7 +25,6 @@
       <% end %>
     </tbody>
   </table>
-
   <div class="pagy-bottom"><%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %></div>
   <%= link_to 'Обратно', show_visitors_info_path, class: 'pagy-bottom-visitor' %>
 </div>

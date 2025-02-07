@@ -241,6 +241,7 @@ en:
         cv_eng: CV Eng
         cv_rus: CV Rus
         feedback: Feedback
+        rss_subscribe: RSS-news subscribtion
         admin_options: Admin
         load_photo: Load photo
         visitors: Visitors
@@ -281,7 +282,7 @@ en:
   views:
     articles:
       index:
-        blog: Blog
+        header: Blog
         article:
           read: Read full
           edit: Edit
@@ -291,11 +292,13 @@ en:
       form:
         save: Save
       new:
-        new_article: New article
+        header: New article
         back: Back
       show:
         back: Back
         blog: Blog
+      edit:
+        header: Edit post
     photos:
       form:
         uploaded: Uploaded
@@ -313,10 +316,11 @@ en:
         header: Upload photo
       universal_page:
         has_coordinates: See on the map
+      breadcrumb_for_photo: Photos
     map:
       header: Photos on the map
     feedback:
-      title: Feedback form
+      header: Feedback form
       send: Send
     abouts:
       index:
@@ -326,9 +330,9 @@ en:
         new: New text
         about: Text about me
       show:
-        title: About
+        header: About
       edit:
-        title: Edit
+        header: Edit
         back: Back
       form:
         main_text: Text
@@ -360,26 +364,34 @@ en:
     layout:
       up: Up
     home:
-      announces: News
+      announces:
+        header: Main
       to_photo_category: To category
     searching:
-      title: Search
+      header: Search
       enter_search_phrase: Enter search phrase!
     chatbots:
-        chatbot: "Chatbot's topics"
-        new: Add
-        header: "Dialog's topic"
+        new:
+          header: "New dialog's topic"
         questions: Replics
         index:
+          header: "Chatbot's topics"
           table_topic: Text
           table_is_shown: 'Order to show in bot'
+        edit:
+          header: "Edit dialog's topic"
     chatbot_questions:
-      index_header: Replics
-      index_table_order: №
-      index_table_body: Replic
-      index_table_next_id: Next replic ID
-      edit_header: Replic
-      new_header: Add replic
+      index:
+        header: Replics
+        add_button: Add replic
+        table:
+          order: №
+          body: Replic
+          next_id: Next replic ID
+      edit:
+        header: Edit replic
+      new:
+        header: Add replic
   models:
     article:
       article_title_ru: Article title (rus)
@@ -387,8 +399,6 @@ en:
       article_title_en: Article title (en)
       article_body_en: Article body (en)
       is_visible: Post is visible for visitors
-      edit:
-        header: Edit post
     feedback:
       feedback_email: Your email
       feedback_body: Message

@@ -1,4 +1,5 @@
-<h1 class="center text_size header_top_buffer"><%= t('views.chatbot_questions.edit_header') %></h1>
+<%= breadcrumbs [t('views.home.announces.header'), root_path], [t('app.navbar.menu.admin_options'), nil], [ t('views.chatbots.index.header'), chat_bot_topics_path], [@chat_bot_topic.label, nil], [t('views.chatbot_questions.index.header'), chat_bot_topic_chat_bot_questions_path(chat_bot_topic_id: @chat_bot_topic.id)], [t('views.chatbot_questions.edit.header'), nil] %>
+
 <div class="container bg-light">
   <div class="row mt-3">
     <div class="col-sm-12 col-md-10">
