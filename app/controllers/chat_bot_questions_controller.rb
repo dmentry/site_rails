@@ -3,12 +3,16 @@ class ChatBotQuestionsController < ApplicationController
   before_action :chat_bot_question, only: [:destroy, :edit, :update]
 
   def index
+    @nav_menu_active_item = 'nav_admin'
+
     chat_bot_questions = @chat_bot_topic.chat_bot_questions
            
     @chat_bot_questions = chat_bot_questions.order(order: :asc)
   end
 
   def new
+    @nav_menu_active_item = 'nav_admin'
+
     @chat_bot_question = @chat_bot_topic.chat_bot_questions.build
 
     new_order_number = if @chat_bot_topic.chat_bot_questions.size == 1
@@ -32,6 +36,7 @@ class ChatBotQuestionsController < ApplicationController
   end
 
   def edit
+    @nav_menu_active_item = 'nav_admin'
   end
 
   def update

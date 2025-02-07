@@ -2,6 +2,8 @@ class ChatBotTopicsController < ApplicationController
   before_action :set_chat_bot_topic, only: [:edit, :update, :destroy, :show]
 
   def index
+    @nav_menu_active_item = 'nav_admin'
+
     @chat_bot_topics = ChatBotTopic.all.order(show_order: :asc)
   end
 
@@ -9,6 +11,8 @@ class ChatBotTopicsController < ApplicationController
   end
 
   def new
+    @nav_menu_active_item = 'nav_admin'
+
     @chat_bot_topic = ChatBotTopic.new
   end
 
@@ -24,6 +28,7 @@ class ChatBotTopicsController < ApplicationController
   end
 
   def edit
+    @nav_menu_active_item = 'nav_admin'
   end
 
   def update

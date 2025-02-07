@@ -9,6 +9,8 @@ class PhotosController < ApplicationController
 
   # GET /photos
   def index
+    @nav_menu_active_item = 'photos'
+
     @photos = Photo.without_photohosting.order(created_at: :desc).limit(10)
 
     @header = t('controllers.photos.index.header')
@@ -18,10 +20,13 @@ class PhotosController < ApplicationController
 
   # GET /photos/1
   def show
+    @nav_menu_active_item = 'photos'
   end
 
   # GET /photos/new
   def new
+    @nav_menu_active_item = 'photos'
+
     @photo = Photo.new
 
     authorize @photo
@@ -29,12 +34,13 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
+    @nav_menu_active_item = 'photos'
+
     @photo.one_string_coordinates = if @photo.lat.present? && @photo.long.present?
                                       "#{ @photo.lat }, #{ @photo.long }"
                                     else
                                       ''
                                     end
-
     authorize @photo
   end
 
@@ -51,10 +57,10 @@ class PhotosController < ApplicationController
 
     authorize @photo
 
-# Читать координаты и записывать их, если есть
-# img = Magick::Image.read(Rails.root.to_s + '/public/' + @photo.photo.thumb.url).first
-# img['icc:copyright'] = '1111111'
-# img.write(Rails.root.to_s + '/public/' + @photo.photo.thumb.url)
+    # Читать координаты и записывать их, если есть
+    # img = Magick::Image.read(Rails.root.to_s + '/public/' + @photo.photo.thumb.url).first
+    # img['icc:copyright'] = '1111111'
+    # img.write(Rails.root.to_s + '/public/' + @photo.photo.thumb.url)
 
     if @photo.save
       redirect_to :root, notice: t('controllers.photos.create.success')
@@ -87,6 +93,8 @@ class PhotosController < ApplicationController
 
   #страницы
   def all_page
+    @nav_menu_active_item = 'photos'
+
     @pagy, @photos = pagy(Photo.order(created_at: :desc), items: Photo::PHOTOS_ON_PAGE)
 
     @header = t('controllers.photos.all_page.header')
@@ -97,37 +105,43 @@ class PhotosController < ApplicationController
   end
 
   def macro_page
-    # @photos = Photo.where(type_id: 1)
-
-    # @photos = Photo.photos_by_type(1)
-
-    # @header = 'Макро'
+    @nav_menu_active_item = 'photos'
 
     type_id = Type.where(photo_type: 'macro').first.id
     collect_photos_and_type(type_id)
   end
 
   def landscape_page
+    @nav_menu_active_item = 'photos'
+
     type_id = Type.where(photo_type: 'landscape').first.id
     collect_photos_and_type(type_id)
   end
 
   def portrait_page
+    @nav_menu_active_item = 'photos'
+
     type_id = Type.where(photo_type: 'portrait').first.id
     collect_photos_and_type(type_id)
   end
 
   def drone_page
+    @nav_menu_active_item = 'photos'
+
     type_id = Type.where(photo_type: 'drone').first.id
     collect_photos_and_type(type_id)
   end
 
   def collage_page
+    @nav_menu_active_item = 'photos'
+
     type_id = Type.where(photo_type: 'collage').first.id
     collect_photos_and_type(type_id)
   end
 
   def other_page
+    @nav_menu_active_item = 'photos'
+
     type_id = Type.where(photo_type: 'other').first.id
     collect_photos_and_type(type_id)
   end
@@ -135,14 +149,15 @@ class PhotosController < ApplicationController
   def photohosting_page
     authorize Photo
 
+    @nav_menu_active_item = 'photos'
+
     type_id = Type.where(photo_type: 'photohosting').first.id
     collect_photos_and_type(type_id)
   end
 
-  def about_page
-  end
-
   def map
+    @nav_menu_active_item = 'nav_map'
+
     marks             = {}
     marks['type']     = 'FeatureCollection'
     marks['features'] = []

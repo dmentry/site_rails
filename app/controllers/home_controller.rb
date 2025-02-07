@@ -10,6 +10,8 @@ class HomeController < ApplicationController
   end
 
   def announces
+    @nav_menu_active_item = 'main'
+
     articles  = if current_user.present?
                  Article.all
                else
@@ -47,6 +49,8 @@ class HomeController < ApplicationController
   end
 
   def feedback_page
+    @nav_menu_active_item = 'nav_feedback'
+
     @feedback = Feedback.new()
   end
 

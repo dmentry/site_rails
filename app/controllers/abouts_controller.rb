@@ -11,6 +11,7 @@ class AboutsController < ApplicationController
   end
 
   def show
+    @nav_menu_active_item = 'about'
   end
 
   def new
@@ -21,6 +22,8 @@ class AboutsController < ApplicationController
 
   def edit
     authorize @about
+
+    @nav_menu_active_item = 'about'
   end
 
   def create
@@ -38,6 +41,8 @@ class AboutsController < ApplicationController
 
   def update
     authorize @about
+
+    @nav_menu_active_item = 'about'
 
     if @about.update(about_params)
       redirect_to @about, notice: "About was successfully updated."

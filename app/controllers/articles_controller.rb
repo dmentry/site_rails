@@ -6,6 +6,8 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
+    @nav_menu_active_item = 'blog'
+
     articles = if current_user.present?
                  Article.all
                else
@@ -18,6 +20,8 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   def show
     authorize @article
+    @nav_menu_active_item = 'blog'
+
     # Болванка коммента для формы добавления
     @new_comment = @article.comments.build
   end
@@ -27,11 +31,15 @@ class ArticlesController < ApplicationController
     @article = Article.new
 
     authorize @article
+
+    @nav_menu_active_item = 'blog'
   end
 
   # GET /articles/1/edit
   def edit
     authorize @article
+
+    @nav_menu_active_item = 'blog'
   end
 
   # POST /articles

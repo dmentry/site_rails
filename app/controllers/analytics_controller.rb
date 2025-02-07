@@ -12,6 +12,8 @@ class AnalyticsController < ApplicationController
   end
 
   def show_visitors_info
+    @nav_menu_active_item = 'nav_admin'
+
     last_visited_dt = LastSeenVisitor&.last&.last_seen_visitors_dt
 
     @new_visitors_ids = Visitor.where('uniq_visitor=? AND created_at>?', true, last_visited_dt).ids
@@ -24,6 +26,8 @@ class AnalyticsController < ApplicationController
   end
 
   def show_visitor_info
+    @nav_menu_active_item = 'nav_admin'
+
     source = Visitor.where(u_id: params[:u_id]).order(created_at: :desc)
 
     @pagy, @visitor = pagy(source, items: Visitor::VISITORS_ON_PAGE)
@@ -34,6 +38,8 @@ class AnalyticsController < ApplicationController
   end
 
   def show_visits
+    @nav_menu_active_item = 'nav_admin'
+
 ############ Данные для посещений по месяцам и общие суммы ##################################
     all_visits_uniq = 0
     all_visits_repeat = 0

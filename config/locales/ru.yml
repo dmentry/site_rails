@@ -283,7 +283,7 @@ ru:
           macro: Макро
           landscape: Пейзажи
           portrait: Портреты
-          drone: С квадрокоптера
+          drone: Сверху
           collage: Коллажи
           other: Остальное
           photohosting: Фотохостинг
@@ -323,7 +323,7 @@ ru:
         macro: Макро
         landscape: Пейзажи
         portrait: Портреты
-        drone: С квадрокоптера
+        drone: Сверху
         collage: Коллажи
         other: Остальное
         photohosting: Фотохостинг
@@ -469,7 +469,7 @@ ru:
       macro: Макро
       landscape: Пейзажи
       portrait: Портреты
-      drone: С квадрокоптера
+      drone: Сверху
       collage: Коллажи
       other: Остальное
       photohosting: Фотохостинг

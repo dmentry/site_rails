@@ -30,7 +30,7 @@
 <!-- Новогодняя шапка desktop -->
           <%#= image_pack_tag("ny.png", alt: 'Happy New Year!', class: 'new_year_cap', title: 'Happy New Year!') %>
           <%= image_pack_tag("logo.png", alt: 'logo', class: 'mt-0 logo') %>
-          <span class='nav_font_size'>
+          <span id='main' class='nav_font_size logo_name_color_light'>
             <%= t('app.navbar.logo_name') %>
           </span>
         </a>
@@ -40,7 +40,7 @@
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+              <a id='photos' class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                 <%= t('app.navbar.menu.drop_down.photos') %>
               </a>
               <div class="dropdown-menu nav_font_size py-0">
@@ -59,14 +59,14 @@
               </div>
             </li>
             <li class="nav-item">
-              <%= link_to t('app.navbar.menu.blog'), articles_path, class: "nav-link" %>
+              <%= link_to t('app.navbar.menu.blog'), articles_path, id: 'blog', class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to t('app.navbar.menu.map'), map_path, class: "nav-link" %>
+              <%= link_to t('app.navbar.menu.map'), map_path, id: 'nav_map', class: "nav-link" %>
             </li>
 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+              <a id='about' class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                 <%= t('app.navbar.menu.about') %>
               </a>
               <div class="dropdown-menu nav_font_size">
@@ -77,7 +77,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <%= link_to t('app.navbar.menu.feedback'), feedback_page_path, class: "nav-link", title: t('app.navbar.menu.feedback') %>
+              <%= link_to t('app.navbar.menu.feedback'), feedback_page_path, class: "nav-link", id: 'nav_feedback', title: t('app.navbar.menu.feedback') %>
             </li>
 
             <% if current_user && current_user.admin? %>
@@ -88,12 +88,12 @@
                                           <% 'circle_badge_visible_eng_inside_dropdwn' %>
                                      <% end %>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id='nav_admin' href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                   <%= "#{ t('app.navbar.menu.admin_options') } <span class='#{ badge_class }'>#{badge_quantity}</span>".html_safe %>
                 </a>
                 <div class="dropdown-menu nav_font_size">
                   <% show_badge = if badge_inside_dropdwn.present? %>
-                                <% "<span class='#{ badge_inside_dropdwn }'>#{ badge_quantity }</span>" %>
+                                 <% "<span class='#{ badge_inside_dropdwn }'>#{ badge_quantity }</span>" %>
                                <% else %>
                                  <% nil %>
                                <% end %>
@@ -303,6 +303,23 @@
     deleteAllCookies();
 
     requestData(processResponse);
+
+    <% case @nav_menu_active_item %>
+    <% when 'main' %>
+        <%= '$("#main").addClass("logo_name_color_dark");'.html_safe %>
+    <% when 'photos' %>
+        <%= '$("#photos").addClass("active");'.html_safe %>
+    <% when 'blog' %>
+        <%= '$("#blog").addClass("active");'.html_safe %>
+    <% when 'nav_map' %>
+        <%= '$("#nav_map").addClass("active");'.html_safe %>
+    <% when 'about' %>
+        <%= '$("#about").addClass("active");'.html_safe %>
+    <% when 'nav_feedback' %>
+        <%= '$("#nav_feedback").addClass("active");'.html_safe %>
+    <% when 'nav_admin' %>
+        <%= '$("#nav_admin").addClass("active");'.html_safe %>
+    <% end %>
   });
 
   // // Happy New Year

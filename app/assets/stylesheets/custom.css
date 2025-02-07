@@ -86,6 +86,15 @@
 .logo {
   width: 40px;
   height: auto;
+  top: -1px;
+}
+
+.logo_name_color_light {
+  color: #9f9f9f;
+}
+
+.logo_name_color_dark {
+  color: black;
 }
 
 .new_year_cap {
