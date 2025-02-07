@@ -1,0 +1,91 @@
+.bot_container {
+  position: fixed;
+  width: 350px;
+  height: 50%;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 8px;
+  z-index: 10000;
+  display: none;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #a0dfef;
+  overflow-y: auto;
+  background-color: white;
+  color: #2B2B28;
+  font-size: 85%;
+}
+
+.bot_open_btn {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  right: 20px;
+  bottom: 24px;
+  z-index: 10000;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.bot_open_btn:hover {
+  opacity:0.5;
+}
+
+.bot_open_btn_text {
+  padding-top: 23px;
+}
+
+.bot_close_btn {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  right: 10px;
+  bottom: 51.5%;
+  background-color: #a0dfef;
+  border-radius: 50%;
+  z-index: 10001;
+  text-align: center;
+  cursor: pointer;
+  display: none;
+}
+
+.bot_message {
+  margin: 5px;
+  margin-right: 30%;
+  padding: 10px 5px 10px 5px;
+  background-color: #d3efee;
+  border-radius: 15px 15px 15px 0;
+}
+
+.bot_message_active {
+  margin: 5px;
+  margin-right: 30%;
+  padding: 5px;
+  border-color: darkgray;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #F6F6F6;
+}
+
+.main_menue, .step_back {
+  margin: 5px;
+  cursor: pointer;
+}
+
+.chosen_variant, .step_back_message {
+  margin: 5px;
+  margin-left: 30%;
+  padding: 10px 5px 10px 5px;
+  background-color: #91edb1;
+  border-radius: 15px 15px 0 15px;
+}
+
+.back_to_main_menue, .arrow_back {
+  height: 14px;
+  width: 14px;
+  margin-top: -3px;
+  margin-right: 3px;
+}

@@ -42,6 +42,11 @@
   opacity:0.5;
 }
 
+.breadcrumb-item + .breadcrumb-item::before {
+  content: ">" !important; /* Изменение разделителя breadcrumbs */
+  color: #6c757d;
+}
+
 .dark_body {
   background: black; 
   color: #e5e6e7;
@@ -83,14 +88,15 @@
   height: auto;
 }
 
-.ny {
-  display: block;
+.new_year_cap {
   width: 38px;
   position: relative;
-  left: -28px;
-  top: -13px;
+  left: 55px;
+  top: -12px;
+  z-index: 1;
 }
-.ny2 {
+
+.new_year_cap_mobile {
   display: none;
 }
 
@@ -345,10 +351,6 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   opacity: 1;
 }
 
-.drop_down_button_my {
-  display: block;
-}
-
 #loading_process_overlay{ 
   position: fixed;
   top: 0;
@@ -435,20 +437,12 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   min-height: 70vh;
 }
 
-#menu_pic, .menu_close_img {
-  display: none;
-}
-
 .my_color {
   background-color: transparent;
 }
 
 .my_height {
   height: 380px !important;
-}
-
-.my_dropdown_item {
-  display: block;
 }
 
 .no_text_decoration {
@@ -616,143 +610,10 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   font-size: 90%;
 }
 
-/* CHATBOT */
-
-.bot_container {
-  position: fixed;
-  width: 350px;
-  height: 50%;
-  right: 10px;
-  bottom: 10px;
-  border-radius: 8px;
-  z-index: 10000;
-  display: none;
-  border-style: solid;
-  border-width: 5px;
-  border-color: #a0dfef;
-  overflow-y: auto;
-  background-color: white;
-  color: #2B2B28;
-  font-size: 85%;
-}
-
-.bot_open_btn {
-  position: fixed;
-  width: 60px;
-  height: 60px;
-  right: 20px;
-  bottom: 24px;
-  z-index: 10000;
-  cursor: pointer;
-  border-radius: 50%;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-
-.bot_open_btn:hover {
-  opacity:0.5;
-}
-
-.bot_open_btn_text {
-  padding-top: 23px;
-}
-
-.bot_close_btn {
-  position: fixed;
-  width: 40px;
-  height: 40px;
-  right: 10px;
-  bottom: 51.5%;
-  background-color: #a0dfef;
-  border-radius: 50%;
-  z-index: 10001;
-  text-align: center;
-  cursor: pointer;
-  display: none;
-}
-
-.bot_message {
-  margin: 5px;
-  margin-right: 30%;
-  padding: 10px 5px 10px 5px;
-  background-color: #d3efee;
-  border-radius: 15px 15px 15px 0;
-}
-
-.bot_message_active {
-  margin: 5px;
-  margin-right: 30%;
-  padding: 5px;
-  border-color: darkgray;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #F6F6F6;
-}
-
-.main_menue, .step_back {
-  margin: 5px;
-  cursor: pointer;
-}
-
-.chosen_variant, .step_back_message {
-  margin: 5px;
-  margin-left: 30%;
-  padding: 10px 5px 10px 5px;
-  background-color: #91edb1;
-  border-radius: 15px 15px 0 15px;
-}
-
-.back_to_main_menue, .arrow_back {
-  height: 14px;
-  width: 14px;
-  margin-top: -3px;
-  margin-right: 3px;
-}
-
-@media (max-width: 800px) {
-  .bot_container {
-    width: 100vw;
-    height: 100vh;
-    right: 0;
-    bottom: 0;
-    border-radius: 0;
-  }
-
-  .bot_close_btn {
-    position: fixed;
-    width: 39px;
-    height: 39px;
-    top: 9px;
-    right: 9px;
-    opacity: 0.8;
-    z-index: 10001;
-  }
-
-  .modal_bot {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    overflow: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    background: white;
-    z-index: 1000;
-  }
-}
-
-/* CHATBOT */
-
 @media (orientation: landscape) {
   .img_max_height {
     height: 85vh;
     width: auto;
-  }
-
-  .admin_options {
-    display: none;
   }
 }
 
@@ -776,10 +637,6 @@ nav[aria-label="breadcrumb"] .breadcrumb {
     width: 90px;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .admin_options {
-    display: none;
   }
 
   .pagination {
@@ -830,20 +687,16 @@ nav[aria-label="breadcrumb"] .breadcrumb {
     left: 67px;
   }
 
-  .drop_down_button_my {
+  .new_year_cap {
     display: none;
   }
 
-  .ny {
-    display: none;
-  }
-
-  .ny2 {
+  .new_year_cap_mobile {
     display: block;
     width: 38px;
     position: fixed;
-    left: 21px;
-    top: -4px;
+    left: 27px;
+    top: 10px;
     z-index: 1000;
   }
 
@@ -868,21 +721,6 @@ nav[aria-label="breadcrumb"] .breadcrumb {
       margin-left: -0px !important;
   }
 
-  .menu_close_img {
-    position: absolute;
-    z-index: 1000;
-    top: 5px;
-    right: 8px;
-    opacity: 0.5;
-    width: 30px;
-  }
-
-  .my_control {
-    display: block;
-    border: none;
-    padding: 0;
-  }
-
   .gallery img {
     width: 420px;
     height: 100%;
@@ -895,27 +733,6 @@ nav[aria-label="breadcrumb"] .breadcrumb {
 
   .header_top_buffer {
     margin-top: 10px;
-  }
-
-  .logo_my_class {
-    display: none;
-  }
-
-  .my_font_size {
-    font-size: 120%;
-  }
-
-  .my_dropdown_item {
-    display: block;
-    padding-left: 13px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    margin-left: 15px;
-/*     font-weight: bold; */
-  }
-
-  .mobile_bg_light {
-    background-color:#f8f9fa !important;
   }
 
   .not_show_on_mobile {
@@ -965,15 +782,6 @@ nav[aria-label="breadcrumb"] .breadcrumb {
     display: block;
     margin-top: 22px;
     margin-left: 0px;
-  }
-
-  .admin_options {
-    display: block;
-    margin-left: 0px;
-  }
-
-  .remove_padding {
-    padding: 0 0 0 0;
   }
 
   .flag_position {
@@ -1190,6 +998,37 @@ img {
 }
 
 @media (max-width: 800px) {
+  .bot_container {
+    width: 100vw;
+    height: 100vh;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+  }
+
+  .bot_close_btn {
+    position: fixed;
+    width: 39px;
+    height: 39px;
+    top: 9px;
+    right: 9px;
+    opacity: 0.8;
+    z-index: 10001;
+  }
+
+  .modal_bot {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: white;
+    z-index: 1000;
+  }
+
   .text-about-me-2 {
     font-size: 120%;
   }

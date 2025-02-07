@@ -27,6 +27,8 @@
     <div class="content">
       <nav class="navbar navbar-expand-lg navbar-light bg-light nav_font_size">
         <a class="navbar-brand" href='<%= root_path %>' title='<%= t("views.home.announces.header") %>'>
+<!-- Новогодняя шапка desktop -->
+          <%#= image_pack_tag("ny.png", alt: 'Happy New Year!', class: 'new_year_cap', title: 'Happy New Year!') %>
           <%= image_pack_tag("logo.png", alt: 'logo', class: 'mt-0 logo') %>
           <span class='nav_font_size'>
             <%= t('app.navbar.logo_name') %>
@@ -91,10 +93,10 @@
                 </a>
                 <div class="dropdown-menu nav_font_size">
                   <% show_badge = if badge_inside_dropdwn.present? %>
-                                              <% "<span class='#{ badge_inside_dropdwn }'>#{ badge_quantity }</span>" %>
-                                         <% else %>
-                                            <% nil %>
-                                         <% end %>
+                                <% "<span class='#{ badge_inside_dropdwn }'>#{ badge_quantity }</span>" %>
+                               <% else %>
+                                 <% nil %>
+                               <% end %>
                   <%= link_to "#{t('app.navbar.menu.visitors')} #{show_badge}".html_safe, show_visitors_info_path, class: 'dropdown-item' %>
                   <%= link_to t('app.navbar.menu.visits'), show_visits_path, class: 'dropdown-item' %>
                   <%= link_to t('app.navbar.menu.chatbot'), chat_bot_topics_path, class: 'dropdown-item' %>
@@ -135,16 +137,10 @@
           <% 'circle_badge_no' %>
         <% end %>
         <div class='<%= badge_class_mobile %>'><%= badge_quantity %></div>
-        <!-- <a id="menu_pic" href="#"><%#= image_pack_tag("menu-4x.png", alt: 'menu') %></a> -->
-
 <!-- Новогодняя шапка mobile -->
-        <%#= image_pack_tag('ny.png', alt: 'Happy New Year!', class: 'ny2', title: 'Happy New Year!') %>
+        <%#= image_pack_tag('ny.png', alt: 'Happy New Year!', class: 'new_year_cap_mobile', title: 'Happy New Year!') %>
       </div>
 
-<!--       <a href="#">
-        <%#= image_pack_tag("close2.png", alt: 'menu', class: 'menu_close_img') %>
-      </a> -->
-    
       <% flash.each do |key, value| %>
         <div class="<%= flash_class(key) %>" role="alert">
           <%= value %>
@@ -166,9 +162,9 @@
     <footer class="footer bg-light mt-4">
       <div class='buffer-bottom center pt-2'>
         <% if params[:locale] == 'ru' || params[:locale] == nil %>
-          <%= link_to "Dack9 #{ Time.now.year }", cv_rus_path, class: "remove_padding copyright", target: "blanc", rel: "noreferrer" %>
+          <%= link_to "Dack9 #{ Time.now.year }", cv_rus_path, class: "copyright", target: "blanc", rel: "noreferrer" %>
         <% else %>
-          <%= link_to "Dack9 #{ Time.now.year }", cv_eng_path, class: "remove_padding copyright", target: "blanc", rel: "noreferrer" %>
+          <%= link_to "Dack9 #{ Time.now.year }", cv_eng_path, class: "copyright", target: "blanc", rel: "noreferrer" %>
         <% end %>
       </div>
     </footer>
@@ -289,62 +285,6 @@
   };
 
   $(function(){
-    // $("#menu_pic").click(function() {
-    //   if ($("#collapseMenu").height() > 80) {
-    //     $("#collapseMenu").slideToggle(500);
-    //     $("#menu_pic").hide(500);
-    //     $(".badge_mobile").hide(200);
-
-
-    //     if ($(".menu_close_img").is(":visible")) {
-    //       $(".menu_close_img").hide(500)
-    //     }
-    //     else{
-    //       $(".menu_close_img").slideDown(500) 
-    //     }
-    //   }
-    // });
-
-    // Показываю\скрываю кнопку возврата
-    // let scroll = document.body.scrollHeight > window.innerHeight
-
-    // if (scroll) {
-    //   $('.showReturnBtn').show()
-    // }
-    // else {
-    //   $('.showReturnBtn').hide()
-    // }
-
-    $('.scrollToTop').click(function () {
-      $('html, body').animate({ scrollTop: 0 }, 300);
-
-      return false;
-    });
-
-    // $(".navbar").click(function() {
-    //   if ($("#collapseMenu").height() > 80) {
-    //     $("#collapseMenu").slideUp(500);
-    //     $(".menu_close_img").slideUp(500);
-    //     $("#menu_pic").show(500);
-    //     $(".badge_mobile").show(100);
-    //   }
-    // });
-
-    // $(".menu_close_img").click(function() {
-    //   if ($("#collapseMenu").height() > 80) {
-    //     $("#collapseMenu").slideUp(500);
-    //     $(".menu_close_img").slideUp(500);
-    //     $("#menu_pic").show(500);
-    //     $(".badge_mobile").show(100);
-    //   }
-    // });
-
-    $('#scrollToTop').click(function () {
-      $('html, body').animate({ scrollTop: $('html, body').offset().top - 100 }, 300);
-
-      return false;
-    });
-
     $(window).scroll(function() {
       if ($(this).scrollTop() > 0) {
         $('#showReturnBtn').fadeIn(200);
@@ -352,6 +292,12 @@
       else {
         $('#showReturnBtn').fadeOut(200);
       }
+    });
+
+    $('#scrollToTop').click(function () {
+      $('html, body').animate({ scrollTop: $('html, body').offset().top - 100 }, 300);
+
+      return false;
     });
 
     deleteAllCookies();

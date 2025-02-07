@@ -142,26 +142,6 @@ class PhotosController < ApplicationController
   def about_page
   end
 
-  def feedback_page
-    @feedback = Feedback.new()
-  end
-
-  def feedback_page_send
-    @feedback = Feedback.new(feedback_params)
-    # if @feedback.valid?
-    if verify_recaptcha(model: @feedback) && @feedback.valid?
-      flash[:notice] = t('controllers.photos.feedback_page_send.success')
-
-      FeedbackMailer.feedback_message(@feedback).deliver_now
-
-      redirect_to :root
-    else
-      flash[:alert] = t('controllers.photos.feedback_page_send.fail')
-
-      render :feedback_page
-    end
-  end
-
   def map
     marks             = {}
     marks['type']     = 'FeatureCollection'
@@ -234,9 +214,5 @@ class PhotosController < ApplicationController
 
   def photo_params
     params.require(:photo).permit(:photo, :description_ru, :description_en, :type_id, :lat, :long, :photo_id, :one_string_coordinates)
-  end
-
-  def feedback_params
-    params.require(:feedback).permit(:feedback_email, :feedback_body)
   end
 end

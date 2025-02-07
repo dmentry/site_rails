@@ -9,16 +9,6 @@ class HomeController < ApplicationController
     end
   end
 
-  def sitemap
-    @about    = About.first
-    @articles = Article.all.order(created_at: :desc)
-    @photos   = Photo.without_photohosting
-
-    respond_to do |format|
-      format.xml
-    end
-  end
-
   def announces
     articles  = if current_user.present?
                  Article.all
@@ -54,5 +44,41 @@ class HomeController < ApplicationController
                   (articles + photos + about)
                  end
     end
+  end
+
+  def feedback_page
+    @feedback = Feedback.new()
+  end
+
+  def feedback_page_send
+    @feedback = Feedback.new(feedback_params)
+    # if @feedback.valid?
+    if verify_recaptcha(model: @feedback) && @feedback.valid?
+      flash[:notice] = t('controllers.photos.feedback_page_send.success')
+
+      FeedbackMailer.feedback_message(@feedback).deliver_now
+
+      redirect_to :root
+    else
+      flash[:alert] = t('controllers.photos.feedback_page_send.fail')
+
+      render :feedback_page
+    end
+  end
+
+  def sitemap
+    @about    = About.first
+    @articles = Article.all.order(created_at: :desc)
+    @photos   = Photo.without_photohosting
+
+    respond_to do |format|
+      format.xml
+    end
+  end
+
+  private
+
+  def feedback_params
+    params.require(:feedback).permit(:feedback_email, :feedback_body)
   end
 end

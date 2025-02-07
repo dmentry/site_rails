@@ -23,8 +23,8 @@ Rails.application.routes.draw do
     get 'collage_page' => 'photos#collage_page', as: :collage_page
     get 'other_page' => 'photos#other_page', as: :other_page
     get 'photohosting_page' => 'photos#photohosting_page', as: :photohosting_page
-    get 'feedback_page' => 'photos#feedback_page', as: :feedback_page
-    post 'feedback_page_send' => 'photos#feedback_page_send', as: :feedback_page_send
+    get 'feedback_page' => 'home#feedback_page', as: :feedback_page
+    post 'feedback_page_send' => 'home#feedback_page_send', as: :feedback_page_send
 
     get 'map' => 'photos#map', as: :map
     get 'ym_balloon_data' => 'photos#ym_balloon_data', defaults: { format: :json }
