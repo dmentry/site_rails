@@ -5,7 +5,8 @@
     <div class="col-sm-6 col-md-6">
 
       <% @announces.each_with_index do |announce, i| %>
-        <div class='announce_photo mx-auto'>
+        <% i == 0 ? mt5 = '' : mt5 = 'mt-5' %>
+        <div class='announce_photo mx-auto <%= mt5 %>'>
           <div class='announce_dt'><%= announce.created_at.strftime("%d.%m.%Y") %></div>
 
           <% if announce.is_a?(Article) %>

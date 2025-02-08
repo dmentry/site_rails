@@ -24,7 +24,7 @@ module ApplicationHelper
 
   def breadcrumbs(*crumbs)
     content_tag(:nav, aria: { label: 'breadcrumb' }) do
-      content_tag(:ol, class: 'breadcrumb justify-content-center nav_font_size mb-5') do
+      content_tag(:ol, class: 'breadcrumb justify-content-center mobile_font_size mb-5') do
         crumbs.each_with_index.map do |(label, path), index|
           if path
             content_tag(:li, link_to(label, path), class: 'breadcrumb-item')

@@ -284,7 +284,7 @@
   width: 30px;
 }
 
-.nav_font_size {
+.mobile_font_size {
   font-size: 100%;
 }
 
@@ -662,7 +662,7 @@ nav[aria-label="breadcrumb"] .breadcrumb {
     left: -2px;
   }
 
-  .nav_font_size {
+  .mobile_font_size {
     font-size: 85%;
   }
 }

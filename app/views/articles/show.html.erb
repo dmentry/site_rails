@@ -1,9 +1,12 @@
 <%= breadcrumbs [t('views.home.announces.header'), root_path], [t('views.articles.index.header'), articles_path], [@article.article_title, nil] %>
 
-<div class="container bg-light">
+<% @article.article_title == 'Обновление интерфейса' || @article.article_title == 'Interface update' ? theme_color = 'dark' : theme_color = 'light' %>
+<% @article.article_title == 'Обновление интерфейса' || @article.article_title == 'Interface update' ? text_color = 'light' : text_color = 'dark' %>
+
+<div class="container rounded_corners mobile_font_size bg-<%= theme_color %> text-<%= text_color %>">
   <div class="row mt-3">
     <div class="col-sm-12 col-md-10">
-      <h3 class="mt-0"><%= @article.article_title %></h3><br>
+      <h3 class="mt-0 text-center"><%= @article.article_title %></h3><br>
 
       <%= raw(@article.article_body) %><br>
 
@@ -17,7 +20,7 @@
   </div>
 </div>
 
-<div class="container bg-light">
+<div class="container mobile_font_size rounded_corners bg-<%= theme_color %> text-<%= text_color %>">
   <div class="row mt-3">
     <div class="col-sm-12 col-md-10">
       <% sorted_comments = CommentsHelper::CommentSort.new.sort_comments(@article.comments.except(@new_comment).where(opinion_id: nil), 1) %>
