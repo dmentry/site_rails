@@ -89,3 +89,10 @@
   margin-top: -3px;
   margin-right: 3px;
 }
+
+@media (max-width: 991px) {
+  .bot_open_btn {
+    height: 40px;
+    width: 40px;
+  }
+}

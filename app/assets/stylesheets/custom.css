@@ -672,7 +672,7 @@ nav[aria-label="breadcrumb"] .breadcrumb {
     width: 100%;
   }
 
-  .back_to_top_img, .bot_open_btn {
+  .back_to_top_img {
     height: 40px;
     width: 40px;
   }
