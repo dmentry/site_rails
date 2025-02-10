@@ -166,7 +166,7 @@
   text-align: center;
   background: red;
   position: absolute;
-  top: 46px;
+  top: 15px;
   right: 25px;
   z-index: 1000;
   display: block;
@@ -200,7 +200,7 @@
   text-align: center;
   background: red;
   position: absolute;
-  top: 46px;
+  top: 15px;
   right: 54px;
   z-index: 1000;
   display: block;
@@ -682,7 +682,7 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   }
 
   .circle_badge_visible_ru_inside_dropdwn {
-    top: 75px;
+    top: 51px;
     left: 92px;
   }
 
@@ -692,7 +692,7 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   }
 
   .circle_badge_visible_eng_inside_dropdwn {
-    top: 75px;
+    top: 51px;
     left: 67px;
   }
 
