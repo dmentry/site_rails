@@ -89,6 +89,16 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:article_title_ru, :article_body_ru, :article_title_en, :article_body_en, :is_visible)
+    params.require(:article).permit(
+      :article_title_ru, 
+      :article_body_ru, 
+      :announce_ru, 
+      :article_title_en, 
+      :article_body_en, 
+      :announce_en, 
+      :text_color, 
+      :background_color, 
+      :is_visible
+    )
   end
 end

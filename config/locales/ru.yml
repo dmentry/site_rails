@@ -451,9 +451,13 @@ ru:
   models:
     article:
       article_title_ru: Заголовок поста (рус)
+      announce_ru: Анонс (рус)
       article_body_ru: Пост (рус)
       article_title_en: Заголовок поста (англ)
+      announce_ут: Анонс (англ)
       article_body_en: Пост (англ)
+      text_color: Класс цвета текста
+      background_color: Класс цвета фона
       is_visible: Пост виден для посетителей
     feedback:
       feedback_email: Ваш мейл

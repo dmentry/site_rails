@@ -395,9 +395,13 @@ en:
   models:
     article:
       article_title_ru: Article title (rus)
+      announce_ru: Announce (rus)
       article_body_ru: Article body (rus)
       article_title_en: Article title (en)
+      announce_en: Announce (en)
       article_body_en: Article body (en)
+      text_color: Color text class
+      background_color: Color background class
       is_visible: Post is visible for visitors
     feedback:
       feedback_email: Your email

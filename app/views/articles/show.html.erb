@@ -1,9 +1,6 @@
 <%= breadcrumbs [t('views.home.announces.header'), root_path], [t('views.articles.index.header'), articles_path], [@article.article_title, nil] %>
 
-<% @article.article_title == 'Обновление интерфейса' || @article.article_title == 'Interface update' ? theme_color = 'dark' : theme_color = 'light' %>
-<% @article.article_title == 'Обновление интерфейса' || @article.article_title == 'Interface update' ? text_color = 'light' : text_color = 'dark' %>
-
-<div class="container rounded_corners mobile_font_size bg-<%= theme_color %> text-<%= text_color %>">
+<div class="container rounded_corners mobile_font_size bg-<%= @article.background_color.present? ? @article.background_color : 'light' %> text-<%= @article.text_color.present? ? @article.text_color : 'dark' %>">
   <div class="row mt-3">
     <div class="col-sm-12 col-md-10">
       <h3 class="mt-0 text-center"><%= @article.article_title %></h3><br>
@@ -20,9 +17,9 @@
   </div>
 </div>
 
-<div class="container mobile_font_size rounded_corners bg-<%= theme_color %> text-<%= text_color %>">
+<div class="container mobile_font_size rounded_corners bg-light">
   <div class="row mt-3">
-    <div class="col-sm-12 col-md-10">
+    <div class="col-sm-12 col-md-10 pt-2">
       <% sorted_comments = CommentsHelper::CommentSort.new.sort_comments(@article.comments.except(@new_comment).where(opinion_id: nil), 1) %>
 
       <%= render partial: 'comments/comment', collection: sorted_comments %>

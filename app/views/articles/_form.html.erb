@@ -17,6 +17,11 @@
   </div>
 
   <div class="form-group">
+    <%= form.label t('models.article.announce_ru') %>
+    <%= form.text_area :announce_ru, class: 'form-control my_height' %>
+  </div>
+
+  <div class="form-group">
     <%= form.label t('models.article.article_body_ru') %>
     <%= form.text_area :article_body_ru, class: 'form-control my_height' %>
   </div>
@@ -27,8 +32,23 @@
   </div>
 
   <div class="form-group">
+    <%= form.label t('models.article.announce_en') %>
+    <%= form.text_area :announce_en, class: 'form-control my_height' %>
+  </div>
+
+  <div class="form-group">
     <%= form.label t('models.article.article_body_en') %>
     <%= form.text_area :article_body_en, class: 'form-control my_height' %>
+  </div>
+
+  <div class="form-group mt-3">
+    <%= form.label t('models.article.text_color') %>
+    <%= form.text_field :text_color, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mt-3">
+    <%= form.label t('models.article.background_color') %>
+    <%= form.text_field :background_color, class: 'form-control' %>
   </div>
 
   <div class="form-group">

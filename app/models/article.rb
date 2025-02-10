@@ -1,10 +1,10 @@
 class Article < ApplicationRecord
   ARTICLES_ON_PAGE = 5
 
-  translates :article_title, :article_body
+  translates :article_title, :article_body, :announce
 
   has_many :comments, dependent: :destroy
 
-  validates :article_title, :article_body, presence: true
+  validates :article_title, :article_body, :announce, presence: true
   validates :article_body, presence: true
 end
