@@ -50,6 +50,16 @@ class ChatBotTopicsController < ApplicationController
     language_en = false
     language_en = true if params[:language_en].present?
 
+    if params[:next_id].is_a?(Array) && !params[:next_id].all? { |item| item.to_s =~ /\A\d+\z/ }
+      render json: { success: false, message: "Invalid input" }, status: :unprocessable_entity
+      return
+    end
+
+    if params[:topic_id].present? && !params[:topic_id].match?(/\A\d+\z/)
+      redirect_to root_path, notice: ('Что-то пошло не так с чат-ботом')
+      return
+    end
+
     out = if !(params[:next_id].present? && params[:topic_id].present?)
             first_time_data(language_en)
           else
@@ -96,9 +106,9 @@ class ChatBotTopicsController < ApplicationController
   def current_data(topic_id:, next_id:, language_en:)
     out=[]
 
-    cbt = ChatBotTopic.find(topic_id)
+    cbt = ChatBotTopic.where(id: topic_id).first
 
-    cbqs = cbt.chat_bot_questions.where(order: next_id).order(:order)
+    cbqs = cbt&.chat_bot_questions&.where(order: next_id)&.order(:order)
 
     cbqs.each do |cbq|
       next_ids_arr = cbq.next_id.scan(/\d+/).map(&:to_i)
