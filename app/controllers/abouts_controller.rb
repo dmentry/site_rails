@@ -135,7 +135,9 @@ class AboutsController < ApplicationController
   private
 
   def set_about
-    @about = About.find(params[:id])
+    @about = About.where(id: params[:id]).first
+
+    redirect_to root_path if !@about
   end
 
   def about_params

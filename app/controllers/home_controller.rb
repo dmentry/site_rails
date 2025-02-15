@@ -28,6 +28,7 @@ class HomeController < ApplicationController
   def searching
     if params[:q] && !params[:q].present?
       flash.now[:alert] = t('views.searching.enter_search_phrase')
+
       render :searching, status: :unprocessable_entity
     end
 

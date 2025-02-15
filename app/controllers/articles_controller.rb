@@ -85,7 +85,9 @@ class ArticlesController < ApplicationController
   private
 
   def set_article
-    @article = Article.find(params[:id])
+    @article = Article.where(id: params[:id]).first
+
+    redirect_to articles_path if !@article
   end
 
   def article_params

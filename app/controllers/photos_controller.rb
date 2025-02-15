@@ -216,7 +216,9 @@ class PhotosController < ApplicationController
   private
 
   def set_photo
-    @photo = Photo.find(params[:id])
+    @photo = Photo.where(id: params[:id]).first
+
+    redirect_to :root if !@photo
   end
 
   def collect_photos_and_type(type)

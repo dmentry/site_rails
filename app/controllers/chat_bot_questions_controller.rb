@@ -61,11 +61,23 @@ class ChatBotQuestionsController < ApplicationController
   private
 
   def set_chat_bot_topic
-    @chat_bot_topic = ChatBotTopic.find(params[:chat_bot_topic_id])
+    if params[:chat_bot_topic_id].present? && params[:chat_bot_topic_id]&.match?(/\A\d+\z/)
+      @chat_bot_topic = ChatBotTopic.where(id: params[:chat_bot_topic_id]).first
+
+      redirect_to root_path if !@chat_bot_topic
+    else
+      redirect_to root_path
+    end
   end
 
   def chat_bot_question
-    @chat_bot_question = @chat_bot_topic.chat_bot_questions.find(params[:id])
+    if params[:id].present? && params[:id]&.match?(/\A\d+\z/)
+      @chat_bot_question = @chat_bot_topic.chat_bot_questions.where(id: params[:id]).first
+
+      redirect_to root_path if !@chat_bot_question
+    else
+      redirect_to root_path
+    end
   end
 
   def chat_bot_question_params
