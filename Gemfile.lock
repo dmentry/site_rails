@@ -173,6 +173,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     ssrf_filter (1.0.7)
+    sypex_geo (0.2.4)
     thor (1.1.0)
     thread_safe (0.3.6)
     traco (5.3.2)
@@ -215,6 +216,7 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.4)
   ransack
   recaptcha
+  sypex_geo
   traco
   web-console (>= 3.3.0)
   webpacker (~> 4.0)

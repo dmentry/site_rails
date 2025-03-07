@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     get 'searching', to: 'home#searching'
     get 'feedback_page' => 'home#feedback_page', as: :feedback_page
     post 'feedback_page_send' => 'home#feedback_page_send', as: :feedback_page_send
+    get 'test', to: 'home#test'
 
     get 'chat_bot' => 'chat_bot_topics#have_answer', as: :have_answer, defaults: { format: :json }
 

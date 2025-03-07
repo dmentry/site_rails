@@ -18,6 +18,7 @@ gem 'traco'
 gem 'pagy', '~> 6.0'
 gem 'apexcharts'
 gem 'ransack'
+gem 'sypex_geo'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
