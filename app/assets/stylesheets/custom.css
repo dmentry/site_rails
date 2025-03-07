@@ -16,7 +16,6 @@
 
 .announce_photo {
   width: 90%;
-  margin-bottom: 10px;
 }
 
 .article_title_link {
@@ -72,6 +71,12 @@
 .dropdown-menu {
   animation: none;
   opacity: 0;
+}
+
+.img_icon {
+  width: 20px !important;
+  height: 20px !important;
+  margin-top: 1px;
 }
 
 .show .dropdown-menu {
@@ -399,10 +404,6 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   bottom: 0;
   margin-left: 47.4vw;
   font-size: small;
-}
-
-.not_show_on_mobile {
-  display: table-cell;
 }
 
 .pagination {
@@ -742,10 +743,6 @@ nav[aria-label="breadcrumb"] .breadcrumb {
 
   .header_top_buffer {
     margin-top: 10px;
-  }
-
-  .not_show_on_mobile {
-    display: none;
   }
 
   .buffer-bottom {

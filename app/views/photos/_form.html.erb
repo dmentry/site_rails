@@ -27,8 +27,18 @@
   </div>
 
   <div class="form-group mt-3">
+    <%= form.label t('models.photo.body_ru') %>
+    <%= form.text_area :body_ru, size: '50x3', class: 'form-control' %>
+  </div>
+
+  <div class="form-group mt-3">
     <%= form.label t('models.photo.description_en') %>
     <%= form.text_field :description_en, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mt-3">
+    <%= form.label t('models.photo.body_en') %>
+    <%= form.text_area :body_en, size: '50x3', class: 'form-control' %>
   </div>
 
   <div class="form-group">

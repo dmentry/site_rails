@@ -88,7 +88,10 @@ class PhotosController < ApplicationController
 
     @photo.destroy!
 
-    redirect_to photos_url, notice: t('controllers.photos.destroy.success')
+    redirect_back(
+        fallback_location: photos_path, # Куда перенаправить, если нет referer
+        notice: t('controllers.photos.destroy.success')
+    )
   end
 
   #страницы
@@ -230,6 +233,6 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.require(:photo).permit(:photo, :description_ru, :description_en, :type_id, :lat, :long, :photo_id, :one_string_coordinates)
+    params.require(:photo).permit(:photo, :description_ru, :description_en, :body_ru, :body_en, :type_id, :lat, :long, :photo_id, :one_string_coordinates)
   end
 end

@@ -9,12 +9,12 @@
         <th class="table-info table-buffers-vertical">Страна</th>
         <th class="table-info table-buffers-vertical">Регион</th>
         <th class="table-info table-buffers-vertical">Город</th>
-        <th class="table-info table-buffers-vertical not_show_on_mobile">Страница</th>
-        <th class="table-info table-buffers-vertical not_show_on_mobile">Переход</th>
+        <th class="table-info table-buffers-vertical">Страница</th>
+        <th class="table-info table-buffers-vertical">Переход</th>
         <th class="table-info table-buffers-vertical">Система</th>
-        <th class="table-info table-buffers-vertical not_show_on_mobile">Экран</th>
-        <th class="table-info table-buffers-vertical not_show_on_mobile">Язык</th>
-        <th class="table-info table-buffers-vertical not_show_on_mobile">Час. пояс</th>
+        <th class="table-info table-buffers-vertical">Экран</th>
+        <th class="table-info table-buffers-vertical">Язык</th>
+        <th class="table-info table-buffers-vertical">Час. пояс</th>
       </tr>
     </thead>
     <tbody>
@@ -32,22 +32,22 @@
           <td>            
             <%= visitor.city %>
           </td>
-          <td class="not_show_on_mobile">            
+          <td>            
             <%= visitor.page_name.truncate(50) %>
           </td>
-          <td class="not_show_on_mobile">            
+          <td>            
             <%= visitor&.referrer&.truncate(50) %>
           </td>
           <td>            
             <%= visitor.common_info %>
           </td>
-          <td class="not_show_on_mobile">            
+          <td>            
             <%= visitor.size_screen_w %>x<%= visitor.size_screen_h %>
           </td>
-          <td class="not_show_on_mobile">            
+          <td>            
             <%= visitor.browser_language %>
           </td>
-          <td class="not_show_on_mobile">            
+          <td>            
             <%= visitor.timezone %>
           </td>
         </tr>

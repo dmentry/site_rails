@@ -36,6 +36,10 @@
               <%= image_tag announce.photo.thumb.url, class: 'rounded_corners' %>
             <% end %>
 
+            <% if announce.body.present? %>
+              <div class="mt-1 text_size"><%= announce.body %></div>
+            <% end %>
+
           <% end %>
         </div>
         <% if i+1 != @announces.size %>

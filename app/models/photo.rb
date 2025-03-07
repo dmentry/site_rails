@@ -3,7 +3,7 @@ class Photo < ApplicationRecord
 
   attr_accessor :one_string_coordinates
 
-  translates :description
+  translates :description, :body
 
   PHOTOS_ON_PAGE = 10
 

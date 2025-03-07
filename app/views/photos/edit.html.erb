@@ -6,7 +6,7 @@
       <%= render 'form', photo: @photo %>
 
       <%= link_to "#{t('views.photos.show.show')} | ", @photo.photo.url, target: '_blank', rel: 'nofollow' %>
-      <%= link_to t('views.photos.show.back'), photos_path %>
+      <%= link_to t('views.photos.show.back'), :back %>
     </div>
   </div>
 </div>

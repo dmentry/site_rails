@@ -16,7 +16,7 @@
           <% if devise_mapping.rememberable? %>
             <div class="form-group">
               <%= f.check_box :remember_me %>
-              <%= f.label t('views.devise.session.remember') %>
+              <%= f.label :remember_me, t('views.devise.session.remember') %>
             </div>
           <% end %>
 
