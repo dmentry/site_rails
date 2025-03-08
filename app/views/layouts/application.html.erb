@@ -198,22 +198,40 @@
   };
 
   function requestData(callback) {
-    $.ajax({dataType: "json", url: "https://api.db-ip.com/v2/free/self", success: 
-      function(data) {
-        InfObj = {
-                  country: data.countryName, 
-                  region: data.stateProv, 
-                  city: data.city
+    // $.ajax({dataType: "json", url: "https://api.db-ip.com/v2/free/self", success: 
+    //   function(data) {
+    //     InfObj = {
+    //               country: data.countryName, 
+    //               region: data.stateProv, 
+    //               city: data.city
+    //              };
+
+    //     callback(InfObj);
+    //   },
+    //   error: function (jqXHR, textStatus, errorThrown) { 
+    //     InfObj = {};
+
+    //     callback(InfObj);
+    //   }
+    // });
+
+    <% if request.remote_ip %>
+      <% result = GeocodingService.call(ip: request.remote_ip) %>
+
+      <% if result[:country] && result[:region] && result[:city] %>
+        let InfObj = {
+                  country: <%= result[:country][:name_ru] %>, 
+                  region: <%= result[:region][:name_ru] %>, 
+                  city: <%= result[:city][:name_ru] %>
                  };
+      <% else %>
+        let InfObj = {};
+      <% end %>
+    <% else %>
+      let InfObj = {};
+    <% end %>
 
-        callback(InfObj);
-      },
-      error: function (jqXHR, textStatus, errorThrown) { 
-        InfObj = {};
-
-        callback(InfObj);
-      }
-    });
+    return InfObj;
   };
 
   function processResponse(InfObj) {
@@ -303,7 +321,10 @@
 
     deleteAllCookies();
 
-    requestData(processResponse);
+    // requestData(processResponse);
+    let result = requestData();
+
+    processResponse(result);
 
     <% case @nav_menu_active_item %>
     <% when 'main' %>
