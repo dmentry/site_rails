@@ -3,6 +3,7 @@ module AnalyticUpdater
     @params_visitor = params_visitor
     @current_user_present = current_user_present
 
+    ip               = @params_visitor['visitor_data']['ip']
     time_visited     = @params_visitor['visitor_data']['time_visited'].to_datetime
     timezone         = @params_visitor['visitor_data']['timezone']
     page_name        = @params_visitor['visitor_data']['page_name']
@@ -26,6 +27,7 @@ module AnalyticUpdater
     # Не записывать, если это админ
     if !@current_user_present
       visitor = Visitor.create(
+        ip: ip,
         time_visited: time_visited, 
         timezone: timezone, 
         page_name: page_name,

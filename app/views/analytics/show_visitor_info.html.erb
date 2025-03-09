@@ -4,6 +4,7 @@
   <table class="table table-sm table-buffers-vertical table-font-my">
     <thead>
       <tr class="table-buffers-vertical">
+        <th class="table-info table-buffers-vertical">IP</th>
         <th class="table-info table-buffers-vertical">Визит</th>
         <th class="table-info table-buffers-vertical">Просмотренная страница</th>
         <th class="table-info table-buffers-vertical">Переход со страницы</th>
@@ -12,6 +13,9 @@
     <tbody>
       <% @visitor.each do |visitor| %>
         <tr>
+          <td>            
+            <%= visitor.ip %>
+          </td>
           <td>
             <%= visitor.time_visited.strftime("%d.%m.%Y, %H:%M") %>
           </td>
@@ -25,6 +29,10 @@
       <% end %>
     </tbody>
   </table>
-  <div class="pagy-bottom"><%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %></div>
-  <%= link_to 'Обратно', show_visitors_info_path, class: 'pagy-bottom-visitor' %>
+  <div class="pagy-bottom">
+    <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+  </div>
+  <div class='text-center'>
+    <%= link_to t('views.articles.new.back'), show_visitors_info_path, class: 'btn btn-sm btn-primary mb-2 text-center' %>
+  </div>
 </div>

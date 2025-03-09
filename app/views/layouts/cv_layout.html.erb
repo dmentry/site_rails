@@ -81,6 +81,8 @@
     let InfObj = {};
 
     <% if request.remote_ip %>
+      InfObj = { ip: '<%= request.remote_ip %>' }
+
       <% result = GeocodingService.call(ip: request.remote_ip) %>
 
       <% if result[:country] && result[:region] && result[:city] %>
@@ -88,7 +90,7 @@
                   country: '<%= result[:country][:name_ru] %>', 
                   region: '<%= result[:region][:name_ru] %>', 
                   city: '<%= result[:city][:name_ru] %>'
-        };
+                 };
       <% end %>
     <% end %>
 
@@ -157,6 +159,7 @@
     };
 
     if (InfObj) {
+      visitor_data['ip']      = InfObj.ip;
       visitor_data['country'] = InfObj.country;
       visitor_data['region']  = InfObj.region;
       visitor_data['city']    = InfObj.city;

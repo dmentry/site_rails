@@ -37,12 +37,12 @@
             <% end %>
 
             <% if announce.body.present? %>
-              <div class="mt-1 text_size"><%= announce.body %></div>
+              <div class="mt-1"><%= announce.body %></div>
             <% end %>
 
           <% end %>
         </div>
-        <% if i+1 != @announces.size %>
+        <% if i + 1 != @announces.size %>
           <div class="bottom_line mx-auto"></div>
         <% end %>
       <% end %>

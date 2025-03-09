@@ -15,6 +15,7 @@
         <th class="table-info table-buffers-vertical">Экран</th>
         <th class="table-info table-buffers-vertical">Язык</th>
         <th class="table-info table-buffers-vertical">Час. пояс</th>
+        <th class="table-info table-buffers-vertical">IP</th>
       </tr>
     </thead>
     <tbody>
@@ -49,6 +50,9 @@
           </td>
           <td>            
             <%= visitor.timezone %>
+          </td>
+          <td>            
+            <%= visitor.ip %>
           </td>
         </tr>
       <% end %>
