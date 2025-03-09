@@ -141,10 +141,12 @@
     };
 
     if (InfObj) {
-      visitor_data['ip']      = InfObj.ip;
-      visitor_data['country'] = InfObj.country;
-      visitor_data['region']  = InfObj.region;
-      visitor_data['city']    = InfObj.city;
+      visitor_data['ip']        = InfObj.ip;
+      visitor_data['country']   = InfObj.country;
+      visitor_data['region']    = InfObj.region;
+      visitor_data['city']      = InfObj.city;
+      visitor_data['city_lat']  = InfObj.city_lat;
+      visitor_data['city_long'] = InfObj.city_long;
     };
 
     return visitor_data;
