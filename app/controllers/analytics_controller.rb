@@ -88,8 +88,8 @@ class AnalyticsController < ApplicationController
     @chosen_country = if params[:chosen_country].present?
                         params[:chosen_country]
                       else
-                        if Visitor.where('uniq_visitor =? AND country =?', true, 'Russia')
-                          'Russia'
+                        if Visitor.where('uniq_visitor =? AND country =?', true, 'Россия')
+                          'Россия'
                         else
                           Visitor.where(uniq_visitor: true).pluck(:country).last
                         end
