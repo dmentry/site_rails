@@ -41,6 +41,10 @@
   opacity:0.5;
 }
 
+.breadcrumb {
+  background-color: white;
+}
+
 .breadcrumb-item + .breadcrumb-item::before {
   content: ">" !important; /* Изменение разделителя breadcrumbs */
   color: #6c757d;
