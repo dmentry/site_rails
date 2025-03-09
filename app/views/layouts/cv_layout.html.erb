@@ -60,42 +60,22 @@
     }
   };
 
-  function requestData(callback) {
-    // $.ajax({dataType: "json", url: "https://api.db-ip.com/v2/free/self", success: 
-    //   function(data) {
-    //     InfObj = {
-    //               country: data.countryName, 
-    //               region: data.stateProv, 
-    //               city: data.city
-    //              };
-
-    //     callback(InfObj);
-    //   },
-    //   error: function (jqXHR, textStatus, errorThrown) { 
-    //     InfObj = {};
-
-    //     callback(InfObj);
-    //   }
-    // });
-
+  function requestData() {
     let InfObj = {};
 
     <% if request.remote_ip %>
-      InfObj = { ip: '<%= request.remote_ip %>' }
+      InfObj.ip = '<%= request.remote_ip %>';
 
       <% result = GeocodingService.call(ip: request.remote_ip) %>
 
       <% if result[:country] && result[:region] && result[:city] %>
-        InfObj = {
-                  country: '<%= result[:country][:name_ru] %>', 
-                  region: '<%= result[:region][:name_ru] %>', 
-                  city: '<%= result[:city][:name_ru] %>'
-                 };
+        InfObj.country = '<%= result[:country][:name_ru] %>';
+        InfObj.region  = '<%= result[:region][:name_ru] %>';
+        InfObj.city    = '<%= result[:city][:name_ru] %>';
       <% end %>
     <% end %>
 
     return InfObj;
-
   };
 
   function processResponse(InfObj) {
@@ -171,7 +151,6 @@
   $(function(){
     deleteAllCookies();
 
-    // requestData(processResponse);
     let result = requestData();
 
     processResponse(result);

@@ -81,9 +81,6 @@ class HomeController < ApplicationController
     end
   end
 
-  def test
-  end
-
   private
 
   def feedback_params
