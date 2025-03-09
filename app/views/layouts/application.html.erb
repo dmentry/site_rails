@@ -215,20 +215,18 @@
     //   }
     // });
 
+    let InfObj = {};
+
     <% if request.remote_ip %>
       <% result = GeocodingService.call(ip: request.remote_ip) %>
 
       <% if result[:country] && result[:region] && result[:city] %>
-        let InfObj = {
-                  country: <%= result[:country][:name_ru] %>, 
-                  region: <%= result[:region][:name_ru] %>, 
-                  city: <%= result[:city][:name_ru] %>
-                 };
-      <% else %>
-        let InfObj = {};
+        InfObj = {
+                  country: '<%= result[:country][:name_ru] %>', 
+                  region: '<%= result[:region][:name_ru] %>', 
+                  city: '<%= result[:city][:name_ru] %>'
+        };
       <% end %>
-    <% else %>
-      let InfObj = {};
     <% end %>
 
     return InfObj;
