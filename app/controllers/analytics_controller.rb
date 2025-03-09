@@ -1,12 +1,6 @@
 class AnalyticsController < ApplicationController
   def get_data
-    current_user_present = if current_user
-                             true
-                           else
-                             false
-                           end
-
-    AnalyticUpdater.call(params_visitor: params[:visitor], current_user_present: current_user_present) if params[:visitor].present?
+    AnalyticUpdater.call(params_visitor: params[:visitor]) if params[:visitor].present? && !current_user
 
     head :ok
   end
