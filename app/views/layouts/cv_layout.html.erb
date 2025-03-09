@@ -69,9 +69,11 @@
       <% result = GeocodingService.call(ip: request.remote_ip) %>
 
       <% if result[:country] && result[:region] && result[:city] %>
-        InfObj.country = '<%= result[:country][:name_ru] %>';
-        InfObj.region  = '<%= result[:region][:name_ru] %>';
-        InfObj.city    = '<%= result[:city][:name_ru] %>';
+        InfObj.country   = '<%= result[:country][:name_ru] %>';
+        InfObj.region    = '<%= result[:region][:name_ru] %>';
+        InfObj.city      = '<%= result[:city][:name_ru] %>';
+        InfObj.city_lat  = '<%= result[:city][:lat] %>';
+        InfObj.city_long = '<%= result[:city][:lon] %>';
       <% end %>
     <% end %>
 

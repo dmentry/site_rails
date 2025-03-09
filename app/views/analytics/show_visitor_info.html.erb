@@ -5,6 +5,7 @@
     <thead>
       <tr class="table-buffers-vertical">
         <th class="table-info table-buffers-vertical">IP</th>
+        <th class="table-info table-buffers-vertical">Координаты</th>
         <th class="table-info table-buffers-vertical">Визит</th>
         <th class="table-info table-buffers-vertical">Просмотренная страница</th>
         <th class="table-info table-buffers-vertical">Переход со страницы</th>
@@ -15,6 +16,10 @@
         <tr>
           <td>            
             <%= visitor.ip %>
+          </td>
+          <% coordinates_formatted = visitor.city_lat.present? && visitor.city_long.present? ? "#{ visitor.city_lat }, #{ visitor.city_long }" : nil %>
+          <td>            
+            <%= coordinates_formatted %>
           </td>
           <td>
             <%= visitor.time_visited.strftime("%d.%m.%Y, %H:%M") %>

@@ -15,6 +15,7 @@
         <th class="table-info table-buffers-vertical">Экран</th>
         <th class="table-info table-buffers-vertical">Язык</th>
         <th class="table-info table-buffers-vertical">Час. пояс</th>
+        <th class="table-info table-buffers-vertical">Координаты</th>
         <th class="table-info table-buffers-vertical">IP</th>
       </tr>
     </thead>
@@ -50,6 +51,10 @@
           </td>
           <td>            
             <%= visitor.timezone %>
+          </td>
+          <% coordinates_formatted = visitor.city_lat.present? && visitor.city_long.present? ? "#{ visitor.city_lat }, #{ visitor.city_long }" : nil %>
+          <td>            
+            <%= coordinates_formatted %>
           </td>
           <td>            
             <%= visitor.ip %>

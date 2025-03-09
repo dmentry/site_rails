@@ -16,6 +16,8 @@ module AnalyticUpdater
     country          = @params_visitor.dig('visitor_data', 'country')
     region           = @params_visitor.dig('visitor_data', 'region')
     city             = @params_visitor.dig('visitor_data', 'city')
+    city_lat         = @params_visitor.dig('visitor_data', 'city_lat')
+    city_long        = @params_visitor.dig('visitor_data', 'city_long')
     u_id             = @params_visitor.dig('visitor_data', 'u_id')
     uniq_visitor     = if @params_visitor.dig('uniq_visitor').present?
                          true
@@ -38,6 +40,8 @@ module AnalyticUpdater
       country: country,
       region: region,
       city: city,
+      city_lat: city_lat,
+      city_long: city_long,
       u_id: u_id,
       uniq_visitor: uniq_visitor
     )
