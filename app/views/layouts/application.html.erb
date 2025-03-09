@@ -25,7 +25,7 @@
   <body class='<%= @dark_body %>'%>
 
     <div class="content">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light mobile_font_size">
+      <nav class="navbar navbar-expand-lg navbar-light main_bg_color mobile_font_size">
         <a class="navbar-brand" href='<%= root_path %>' title='<%= t("views.home.announces.header") %>'>
 <!-- Новогодняя шапка desktop -->
           <%#= image_pack_tag("ny.png", alt: 'Happy New Year!', class: 'new_year_cap', title: 'Happy New Year!') %>
@@ -159,7 +159,7 @@
       </div>
     </div>
 
-    <footer class="footer bg-light mt-4">
+    <footer class="footer main_bg_color mt-4">
       <div class='buffer-bottom center pt-2'>
         <% if params[:locale] == 'ru' || params[:locale] == nil %>
           <%= link_to "Dack9 #{ Time.now.year }", cv_rus_path, class: "copyright", target: "blanc", rel: "noreferrer" %>

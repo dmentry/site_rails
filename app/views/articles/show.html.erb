@@ -27,7 +27,7 @@
   </div>
 </div>
 
-<div class="container mobile_font_size rounded_corners bg-light">
+<div class="container mobile_font_size main_bg_color rounded_corners">
   <div class="row mt-3">
     <div class="col-sm-12 col-md-10 pt-2">
       <% sorted_comments = CommentsHelper::CommentSort.new.sort_comments(@article.comments.except(@new_comment).where(opinion_id: nil), 1) %>

@@ -289,6 +289,10 @@
   width: 30px;
 }
 
+.main_bg_color {
+  background-color: #e9ecef;
+}
+
 .mobile_font_size {
   font-size: 100%;
 }
@@ -580,6 +584,10 @@ nav[aria-label="breadcrumb"] .breadcrumb {
 .social_pic {
   width: 26px;
   top: -2px;
+}
+
+.table-font-my {
+  font-size: 80%;
 }
 
 .text_size_smaller {

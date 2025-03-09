@@ -376,6 +376,7 @@ ru:
     feedback:
       header: Форма обратной связи
       send: Отправить
+      body_placeholder: Не более 1000 символов
     abouts:
       index:
         edit: Редактировать

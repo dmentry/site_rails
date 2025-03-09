@@ -322,6 +322,7 @@ en:
     feedback:
       header: Feedback form
       send: Send
+      body_placeholder: 1000 symbols maximum
     abouts:
       index:
         edit: Edit
