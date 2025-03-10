@@ -1,6 +1,24 @@
 class AnalyticsController < ApplicationController
   def get_data
-    AnalyticUpdater.call(params_visitor: params[:visitor]) if params[:visitor].present? && !current_user
+    if request.remote_ip && !current_user
+      data = {}
+
+      data[:ip] = request.remote_ip
+
+      result = GeocodingService.call(ip: request.remote_ip)
+
+      if result[:country] && result[:region] && result[:city]
+        data[:country]   = result[:country][:name_ru]
+        data[:region]    = result[:region][:name_ru]
+        data[:city]      = result[:city][:name_ru]
+        data[:city_lat]  = result[:city][:lat]
+        data[:city_long] = result[:city][:lon]
+      end
+
+      params[:visitor][:visitor_data].merge!(data)
+
+      AnalyticUpdater.call(params_visitor: params[:visitor]) if params[:visitor].present?
+    end
 
     head :ok
   end

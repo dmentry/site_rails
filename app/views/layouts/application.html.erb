@@ -196,27 +196,7 @@
     }
   };
 
-  function requestData() {
-    let InfObj = {};
-
-    <% if request.remote_ip %>
-      InfObj.ip = '<%= request.remote_ip %>';
-
-      <% result = GeocodingService.call(ip: request.remote_ip) %>
-
-      <% if result[:country] && result[:region] && result[:city] %>
-        InfObj.country   = '<%= result[:country][:name_ru] %>';
-        InfObj.region    = '<%= result[:region][:name_ru] %>';
-        InfObj.city      = '<%= result[:city][:name_ru] %>';
-        InfObj.city_lat  = '<%= result[:city][:lat] %>';
-        InfObj.city_long = '<%= result[:city][:lon] %>';
-      <% end %>
-    <% end %>
-
-    return InfObj;
-  };
-
-  function processResponse(InfObj) {
+  function processResponse() {
     let visitor;
 
     if (!localStorage.getItem('_rs_visitor')) {
@@ -230,7 +210,7 @@
 
       visitor = { 'uniq_visitor': true };
 
-      visitor['visitor_data'] = shapeData(InfObj, true);
+      visitor['visitor_data'] = shapeData(true);
 
       visitor['visitor_data']['u_id'] = uid;
     }
@@ -239,17 +219,18 @@
 
       visitor = { 'repeat_visitor': true };
 
-      visitor['visitor_data'] = shapeData(false, false);
+      visitor['visitor_data'] = shapeData(false);
       visitor['visitor_data']['u_id'] = existed_uid;
     }
 
-    // Не отправлять информацию по ботам
     if (!(visitor['visitor_data']['common_info'] && visitor['visitor_data']['common_info'].match(/bot|Bot|meta/))) {
-      $.ajax({ url: '/get_data', data: { visitor: visitor }});
+      if (window.history.length <= 3) {
+        $.ajax({ url: '/get_data', data: { visitor: visitor }})
+      }
     }
   };
 
-  function shapeData(InfObj, full_info) {
+  function shapeData(full_info) {
     let visitor_data = {
       time_visited: new Date(),
       page_name: window.location.pathname,
@@ -276,15 +257,6 @@
       visitor_data['size_screen_h']    = screen.height;
     };
 
-    if (InfObj) {
-      visitor_data['ip']        = InfObj.ip;
-      visitor_data['country']   = InfObj.country;
-      visitor_data['region']    = InfObj.region;
-      visitor_data['city']      = InfObj.city;
-      visitor_data['city_lat']  = InfObj.city_lat;
-      visitor_data['city_long'] = InfObj.city_long;
-    };
-
     return visitor_data;
   };
 
@@ -306,9 +278,7 @@
 
     deleteAllCookies();
 
-    let result = requestData();
-
-    processResponse(result);
+    processResponse();
 
     <% case @nav_menu_active_item %>
     <% when 'main' %>
