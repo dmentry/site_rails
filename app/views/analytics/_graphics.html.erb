@@ -20,5 +20,5 @@
 
 <b>Посещение по городам выбранной страны</b>
 <div class="mt-n3">
-  <%= bar_chart(@cities, legend: "left",  animations: { enabled: false }) %>
+  <%= bar_chart(@cities, legend: "left",  animations: { enabled: false }, responsive: true, maintainAspectRatio: false, chart: {height: '800px'}) %>
 </div>
