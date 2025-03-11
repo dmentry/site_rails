@@ -1,15 +1,24 @@
-<b>Посещение по месяцам</b>
-<%= column_chart(@visits_monthly, { theme: 'palette4', stacked: true }) %>
-
-<b>Посещение по странам</b>
-<%= pie_chart(@countries, legend: "left",  animations: { enabled: false }) %>
-
-<div class="center my-3">
-  <%= select('', 'country_select', @countries.collect { |c| [ c[:name], c[:name] ] }, { prompt: '[Выберите страну]'}) %>
+<div class='mb-5'>
+  <b>Посещение по месяцам</b>
+  <%= column_chart(@visits_monthly, { theme: 'palette4', stacked: true,  animations: { enabled: false }}) %>
 </div>
 
-<b>Посещение по регионам выбранной страны</b>
-<%= bar_chart(@regions, legend: "left",  animations: { enabled: false }) %>
+<div class='mb-5'>
+  <b>Посещение по странам</b>
+  <%= pie_chart(@countries, legend: "left",  animations: { enabled: false }) %>
+</div>
+
+<div class="text-center mt_country_selector">
+  <b>Выберите страну:</b> <%= select('', 'country_select', @countries.collect { |c| [ c[:name], c[:name] ] }, { prompt: '[Выберите страну]'}) %>
+</div>
+
+<div class='mb-3'>
+  <b>Посещение по регионам выбранной страны</b>
+
+  <%= bar_chart(@regions, legend: "left",  animations: { enabled: false }) %>
+</div>
 
 <b>Посещение по городам выбранной страны</b>
-<%= bar_chart(@cities, legend: "left",  animations: { enabled: false }) %>
+<div class="mt-n3">
+  <%= bar_chart(@cities, legend: "left",  animations: { enabled: false }) %>
+</div>

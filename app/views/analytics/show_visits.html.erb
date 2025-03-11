@@ -1,35 +1,44 @@
 <%= breadcrumbs [t('views.home.announces.header'), root_path], [t('app.navbar.menu.admin_options'), nil], ['Посещения', nil] %>
 
 <div class="container-lg cont_paddings">
-  <div class="center mt-0">
-    <div>Уникальных посетителей за все время: <%= @all_visits_uniq %>.</div>
-    <div>Повторных визитов за все время: <%= @all_visits_repeat %>.</div><br>
+  <div class="mt-0">
+    <div class='text-center'>
+      <h4>Уникальных посетителей за все время: <%= @all_visits_uniq %>.</h4>
+      <h4 class='mb-5'>Повторных визитов за все время: <%= @all_visits_repeat %>.</h4>
+    </div>
 
     <div id="graphs">
-      <b>Посещение по месяцам</b>
-      <%= column_chart(@visits_monthly, { theme: 'palette4', stacked: true,  animations: { enabled: false }}) %>
-
-      <b>Посещение по странам</b>
-      <%= pie_chart(@countries, legend: "left",  animations: { enabled: false }) %>
-
-      <div class="center my-3">
-        <%= select('', 'country_select', @countries.collect { |c| [ c[:name], c[:name] ] }, { prompt: '[Выберите страну]'}) %>
+      <div class='mb-5'>
+        <b>Посещение по месяцам</b>
+        <%= column_chart(@visits_monthly, { theme: 'palette4', stacked: true,  animations: { enabled: false }}) %>
       </div>
 
-      <b>Посещение по регионам выбранной страны</b>
-      <%= bar_chart(@regions, legend: "left",  animations: { enabled: false }) %>
+      <div class='mb-5'>
+        <b>Посещение по странам</b>
+        <%= pie_chart(@countries, legend: "left",  animations: { enabled: false }) %>
+      </div>
+
+      <div class="text-center mt_country_selector">
+        <b>Выберите страну:</b> <%= select('', 'country_select', @countries.collect { |c| [ c[:name], c[:name] ] }, { prompt: '[Выберите страну]'}) %>
+      </div>
+
+      <div class='mb-3'>
+        <b>Посещение по регионам выбранной страны</b>
+
+        <%= bar_chart(@regions, legend: "left",  animations: { enabled: false }) %>
+      </div>
 
       <b>Посещение по городам выбранной страны</b>
-      <%= bar_chart(@cities, legend: "left",  animations: { enabled: false }) %>
+      <div class="mt-n3">
+        <%= bar_chart(@cities, legend: "left",  animations: { enabled: false }, responsive: true, maintainAspectRatio: false, chart: {height: '800px'}) %>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
   $(function(){
-    if (!$('#country_select').val()) {
-      $('#country_select').val('<%= @chosen_country %>')
-    }
+    $('#country_select').val('Россия');
 
   $('#graphs').on('change', '#country_select', function(){
     $.ajax({ url: '/show_visits', data: { 'chosen_country' : $('#country_select').val() }})

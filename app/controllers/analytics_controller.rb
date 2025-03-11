@@ -149,7 +149,7 @@ class AnalyticsController < ApplicationController
 
       data_cities.each { |datum| sourse_cities[datum['city']] = datum['quantity'] }
 
-      @cities = { data: sourse_cities }
+      @cities = { data: sourse_cities}
     end
 #############################################################################################
 

@@ -403,6 +403,7 @@ ru:
       reply_to_comment:
         header: Ответ на комментарий
         back: Обратно
+      add_comment: Добавить комментарий
     user:
       show:
         header: Профиль админа
