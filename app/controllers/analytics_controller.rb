@@ -9,6 +9,7 @@ class AnalyticsController < ApplicationController
 
       if result[:country] && result[:region] && result[:city]
         data[:country]   = result[:country][:name_ru]
+        data[:country_en]= result[:country][:name_en]
         data[:region]    = result[:region][:name_ru]
         data[:city]      = result[:city][:name_ru]
         data[:city_lat]  = result[:city][:lat]

@@ -14,6 +14,7 @@ module AnalyticUpdater
     size_screen_w    = @params_visitor.dig('visitor_data', 'size_screen_w')
     size_screen_h    = @params_visitor.dig('visitor_data', 'size_screen_h')
     country          = @params_visitor.dig('visitor_data', 'country')
+    country_en       = @params_visitor.dig('visitor_data', 'country_en')
     region           = @params_visitor.dig('visitor_data', 'region')
     city             = @params_visitor.dig('visitor_data', 'city')
     city_lat         = @params_visitor.dig('visitor_data', 'city_lat')
@@ -38,6 +39,7 @@ module AnalyticUpdater
       size_screen_w: size_screen_w,
       size_screen_h: size_screen_h,
       country: country,
+      country_en: country_en,
       region: region,
       city: city,
       city_lat: city_lat,
