@@ -4,48 +4,75 @@
 
 <script>
   $(function(){
+    <% if @photos_qnt > 1 %>
+      const map = L.map('map', { attributionControl: true }).setView([40, 40], 3);
 
-    const map = L.map('map', {
-      attributionControl: true // Включаем контроль
-    }).setView([40, 40], 3);
+      map.attributionControl
+        .setPrefix('')
+        .addAttribution('© <a href="https://leafletjs.com">leaflet</a>')
+        .addAttribution('© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors');
 
-    // Настройка атрибуции
-    map.attributionControl
-      .setPrefix('')
-      .addAttribution('© <a href="https://leafletjs.com">leaflet</a>')
-      .addAttribution('© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors');
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-    }).addTo(map);
+      const markers = L.markerClusterGroup({ maxClusterRadius: 50, disableClusteringAtZoom: 14, spiderfyOnMaxZoom: false, showCoverageOnHover: false });
 
-    // Функция для добавления точек на карту
-    function addMarkersToMap(data) {
-      data.features.forEach(feature => {
-        let coords = feature.geometry.coordinates;
-        let properties = feature.properties;
+      function addMarkersToMap(data) {
+        data.features.forEach(feature => {
+          let coords     = feature.geometry.coordinates;
+          let properties = feature.properties;
+          let marker     = L.marker([coords[0], coords[1]]);
 
-        // Создаем маркер
-        let marker = L.marker([coords[0], coords[1]]);
+          let popupContent = `
+            <div class="custom-popup">
+              <div style='width:100px; font-size:80%'>${ properties.hintContent }</div>
+              ${ properties.photo_img }
+            </div>
+          `;
 
-        // Создаем содержимое popup
-        let popupContent = `
-          <div class="custom-popup">
-            <div style='width:100px; font-size:80%'>${ properties.hintContent }</div>
-            ${ properties.photo_img }
-          </div>
-        `;
+          marker.bindPopup(popupContent, { closeButton: true });
 
-        // Добавляем всплывающее окно с содержимым
-        marker.bindPopup(popupContent, { closeButton: true });
+          markers.addLayer(marker);
 
-        // Добавляем маркер на карту
-        marker.addTo(map);
-      });
-    }
+          map.addLayer(markers);
+        });
+      }
 
-    // Вызываем функцию для добавления точек
-    addMarkersToMap(<%= raw @show_marks %>);
+      addMarkersToMap(<%= raw @show_marks.to_json %>);
+    <% else %>
+      <% lat  = @show_marks['features'].first[:geometry][:coordinates][0] %>
+      <% long = @show_marks['features'].first[:geometry][:coordinates][1] %>
 
+      const map = L.map('map', { attributionControl: true }).setView([<%= lat %>, <%= long %>], 13);
+
+      map.attributionControl
+        .setPrefix('')
+        .addAttribution('© <a href="https://leafletjs.com">leaflet</a>')
+        .addAttribution('© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors');
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
+
+      function addMarkersToMap(data) {
+        data.features.forEach(feature => {
+          let coords     = feature.geometry.coordinates;
+          let properties = feature.properties;
+          let marker     = L.marker([coords[0], coords[1]]);
+
+          let popupContent = `
+            <div class="custom-popup">
+              <div style='width:100px; font-size:80%'>${ properties.hintContent }</div>
+              ${ properties.photo_img }
+            </div>
+          `;
+
+          marker.bindPopup(popupContent, { closeButton: true });
+
+          marker.addTo(map).openPopup();
+
+          marker.addTo(map);
+        });
+      }
+
+      addMarkersToMap(<%= raw @show_marks.to_json %>);
+    <% end %>
   });
 </script>

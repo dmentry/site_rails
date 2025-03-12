@@ -10,6 +10,7 @@ import 'bootstrap/dist/js/bootstrap'
 import './gallery'
 import './ekko-lightbox'
 import './leaflet'
+import './leaflet_markercluster'
 import ApexCharts from 'apexcharts'
 window.ApexCharts = ApexCharts
 

@@ -167,53 +167,41 @@ class PhotosController < ApplicationController
 
     out = {}
 
-    session[:photo_id] = params[:photo_id] if params[:photo_id].present? && params[:photo_id].match?(/\A\d+\z/)
+    photo_id = params[:photo_id] if params[:photo_id].present? && params[:photo_id].match?(/\A\d+\z/)
 
-    photos = if request.format.json? && session[:photo_id].present?
-                tmp = Photo.where(id: session[:photo_id])
-                out.merge!({ photo_id: session[:photo_id] })
-                session[:photo_id] = nil
-
-                tmp
+    photos =  if photo_id.present?
+                Photo.where(id: photo_id)
               else
                 Photo.where('length(lat) > 0').where.not(lat: [nil, false])
               end
 
-    photos.each do |photo|
-      photo_img  = "#{ 
-                      ActionController::Base.helpers.link_to(
-                        ActionController::Base.helpers.image_tag(
-                          photo.photo.thumb.url, style: 'width: 100px; border-radius: 5px;', alt: 'Фото'
-                        ), photo_path(photo), target: '_blank', rel: 'nofollow'
-                      ) 
-                    }"
+    @photos_qnt = photos.size
 
-      marks['features'] << {
-                            type: 'Feature',
-                            id: photo.id,
-                            geometry: { type: 'Point', coordinates: [photo.lat, photo.long] },
-                            properties: { hintContent: "#{ photo.description }", photo_img: photo_img },
-                           }
+    if photos.size > 0
+      photos.each do |photo|
+        photo_img  = "#{ 
+                        ActionController::Base.helpers.link_to(
+                          ActionController::Base.helpers.image_tag(
+                            photo.photo.thumb.url, style: 'width: 100px; border-radius: 5px;', alt: 'Фото'
+                          ), photo_path(photo), target: '_blank', rel: 'nofollow'
+                        ) 
+                      }"
+
+        marks['features'] << {
+                              type: 'Feature',
+                              id: photo.id,
+                              geometry: { type: 'Point', coordinates: [photo.lat, photo.long] },
+                              properties: { hintContent: "#{ photo.description }", photo_img: photo_img },
+                             }
+      end
+
+      out.merge!({ marks: marks })
+
+      @show_marks = out.values.first
+    else
+      redirect_to :root, alert: 'Something goes wrong'
     end
-
-    out.merge!({ marks: marks })
-
-    @show_marks = out.values.first.to_json
   end
-
-  # def ym_balloon_data
-  #   out               = {}
-  #   out[:photo]       = "#{ 
-  #                           ActionController::Base.helpers.link_to(
-  #                             ActionController::Base.helpers.image_tag(
-  #                               @photo.photo.thumb.url, style: 'width: 100px', alt: 'Фото'
-  #                             ), photo_path(@photo), target: '_blank', rel: 'nofollow'
-  #                           ) 
-  #                         }"
-  #   out[:description] = @photo.description
-
-  #   respond_with out.to_json
-  # end
 
   private
 
