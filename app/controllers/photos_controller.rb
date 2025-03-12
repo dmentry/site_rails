@@ -180,41 +180,40 @@ class PhotosController < ApplicationController
               end
 
     photos.each do |photo|
+      photo_img  = "#{ 
+                      ActionController::Base.helpers.link_to(
+                        ActionController::Base.helpers.image_tag(
+                          photo.photo.thumb.url, style: 'width: 100px; border-radius: 5px;', alt: 'Фото'
+                        ), photo_path(photo), target: '_blank', rel: 'nofollow'
+                      ) 
+                    }"
+
       marks['features'] << {
                             type: 'Feature',
                             id: photo.id,
                             geometry: { type: 'Point', coordinates: [photo.lat, photo.long] },
-                            properties: { hintContent: "#{ photo.description }" }
+                            properties: { hintContent: "#{ photo.description }", photo_img: photo_img },
                            }
     end
 
     out.merge!({ marks: marks })
 
-    respond_to do |format|
-      format.html do
-        respond_with nil
-      end
-
-      format.json do
-        response.headers['Vary'] = 'Accept'
-        respond_with out.to_json
-      end
-    end
+    @show_marks = out.values.first.to_json
   end
 
-  def ym_balloon_data
-    out               = {}
-    out[:photo]       = "#{ 
-                            ActionController::Base.helpers.link_to(
-                              ActionController::Base.helpers.image_tag(
-                                @photo.photo.thumb.url, style: 'width: 100px', alt: 'Фото'
-                              ), photo_path(@photo), target: '_blank', rel: 'nofollow'
-                            ) 
-                          }"
-    out[:description] = @photo.description
+  # def ym_balloon_data
+  #   out               = {}
+  #   out[:photo]       = "#{ 
+  #                           ActionController::Base.helpers.link_to(
+  #                             ActionController::Base.helpers.image_tag(
+  #                               @photo.photo.thumb.url, style: 'width: 100px', alt: 'Фото'
+  #                             ), photo_path(@photo), target: '_blank', rel: 'nofollow'
+  #                           ) 
+  #                         }"
+  #   out[:description] = @photo.description
 
-    respond_with out.to_json
-  end
+  #   respond_with out.to_json
+  # end
 
   private
 

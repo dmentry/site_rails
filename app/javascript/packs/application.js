@@ -23,3 +23,11 @@ window.Aos = require('./aos')
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+// Указать путь к 5 иконкам leaflet
+// delete L.Icon.Default.prototype._getIconUrl - эта строка не нужна, наверное...
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('../images/leaflet_images/marker-icon-2x.png'),
+  iconUrl: require('../images/leaflet_images/marker-icon.png'),
+  shadowUrl: require('../images/leaflet_images/marker-shadow.png')
+})

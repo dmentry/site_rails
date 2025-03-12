@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     get 'photohosting_page' => 'photos#photohosting_page', as: :photohosting_page
 
     get 'map' => 'photos#map', as: :map
-    get 'ym_balloon_data' => 'photos#ym_balloon_data', defaults: { format: :json }
+    # get 'ym_balloon_data' => 'photos#ym_balloon_data', defaults: { format: :json }
 
     get 'get_data' => 'analytics#get_data', as: :get_data
     get 'show_visitors_info' => 'analytics#show_visitors_info', as: :show_visitors_info

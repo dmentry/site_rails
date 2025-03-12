@@ -1,89 +1,51 @@
-<%= breadcrumbs [t('views.home.announces.header'), root_path], [t('views.map.header'), nil] %>
+<%= breadcrumbs [t('views.home.announces.header'), root_path], [t('app.navbar.menu.admin_options'), nil], [t('app.navbar.menu.map_countries'), nil] %>
 
-<div class="container main_bg_color rounded_corners mt-4">
-  <div class="row mt-3">
-    <div class="col-sm-12 col-md-10">
-      <div id="map" class="my-2"></div>
-    </div>
-  </div>
-</div>
+<div id="map"></div>
 
-<div id="loading_process_overlay"></div>
+<script>
+  $(function(){
 
-<script src="https://api-maps.yandex.ru/2.1/?apikey=<%= Rails.application.credentials.dig(Rails.env.to_sym, :yandex_api_key) %>&lang=ru_RU"></script>
-<script type="text/javascript">
-  function showBalloon(photo_id, previousObjectId, objectManagerMarks) {
-            let objectId = photo_id;
+    const map = L.map('map', {
+      attributionControl: true // Включаем контроль
+    }).setView([40, 40], 3);
 
-            let obj = objectManagerMarks.objects.getById(objectId);
+    // Настройка атрибуции
+    map.attributionControl
+      .setPrefix('')
+      .addAttribution('© <a href="https://leafletjs.com">leaflet</a>')
+      .addAttribution('© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors');
 
-            if (previousObjectId) { 
-              objectManagerMarks.objects.setObjectOptions(previousObjectId, { preset: "islands#darkBlueCircleDotIcon" })
-            }
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+    }).addTo(map);
 
-            objectManagerMarks.objects.setObjectOptions(objectId, { preset: "islands#lightBlueCircleDotIcon" });
+    // Функция для добавления точек на карту
+    function addMarkersToMap(data) {
+      data.features.forEach(feature => {
+        let coords = feature.geometry.coordinates;
+        let properties = feature.properties;
 
-            obj.properties.balloonContent = "Идет загрузка данных...";
-            objectManagerMarks.objects.balloon.open(objectId);
+        // Создаем маркер
+        let marker = L.marker([coords[0], coords[1]]);
 
-            $.ajax({ data: { id: objectId }, dataType: "json", url: "/ym_balloon_data" })
-                    .done(function (data) {
-                                            obj.properties.balloonContentBody = '<div class="ym_balloon_text">' + data['description'] + '</div>' + '<div class="ym_balloon_photo_div">' + data['photo'] + '</div>';
+        // Создаем содержимое popup
+        let popupContent = `
+          <div class="custom-popup">
+            <div style='width:100px; font-size:80%'>${ properties.hintContent }</div>
+            ${ properties.photo_img }
+          </div>
+        `;
 
-                                           objectManagerMarks.objects.balloon.setData(obj);
-                                           // Костыль для увеличения полезного места в балуне. Версия в классе ymaps-2-1-79-balloon__content как бы намекает... Если отображение фотки СКО и ее описание в балуне сломается, нужно будет изменить имя класса на актуальное/скорректировать значениея этих свойств и, возможно, классы в style.css
-                                           $('.ymaps-2-1-79-balloon__content').css({'padding-left': '1px', 'padding-top': '6px', 'padding-bottom': '1px', 'margin-right': '23px'});
-                                          });
-            previousObjectId = objectId;
+        // Добавляем всплывающее окно с содержимым
+        marker.bindPopup(popupContent, { closeButton: true });
 
-            return previousObjectId;
-  }
+        // Добавляем маркер на карту
+        marker.addTo(map);
+      });
+    }
 
-  ymaps.ready(init);
-  function init(){
-    let previousObjectId;
+    // Вызываем функцию для добавления точек
+    addMarkersToMap(<%= raw @show_marks %>);
 
-
-    var myMap = new ymaps.Map("map", {
-        center: [53.46, 83.72],
-        zoom: 2,
-        controls: ['zoomControl']
-    });
-
-    let objectManagerMarks = new ymaps.ObjectManager({ clusterize: true });
-    // Задать опции кластерам
-    objectManagerMarks.clusters.options.set({ preset: 'islands#darkBlueClusterIcons' });
-    // Задать опции меткам
-    objectManagerMarks.objects.options.set({ 
-                                        hintOpenTimeout: 0, 
-                                        hideIconOnBalloonOpen: false, 
-                                        balloonOffset: [-2, -17], 
-                                        openBalloonOnClick: false,
-                                        preset: 'islands#darkBlueCircleDotIcon'
-                                      });
-
-    $("#loading_process_overlay").fadeIn(300);
-
-    $.ajax({ dataType: "json", url: "/map" }).done(function(out) {
-                                                      objectManagerMarks.add(out.marks);
-
-                                                      myMap.geoObjects.add(objectManagerMarks);
-
-                                                      myMap.setBounds(myMap.geoObjects.getBounds());
-
-                                                      if (out.marks.features.length == 1) { myMap.setZoom(14) }
-
-                                                      if (out.photo_id) {
-                                                        previousObjectId = showBalloon(out.photo_id, previousObjectId, objectManagerMarks)
-                                                      }
-                                                    });
-
-    $("#loading_process_overlay").fadeOut(300);
-
-    objectManagerMarks.objects.events.add('click', function (e) {
-      let objectId = e.get('objectId');
-
-      previousObjectId = showBalloon(objectId, previousObjectId, objectManagerMarks)
-    });      
-  }
+  });
 </script>
