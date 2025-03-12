@@ -245,7 +245,10 @@ en:
         admin_options: Admin
         load_photo: Load photo
         visitors: Visitors
+        uniq_visitors: Uniq visitors
+        visitor_with: Visitor with
         visits: Visits
+        map_countries: Countries on the map
         chatbot: Chatbot
         profile: Profile
         exit: Logout

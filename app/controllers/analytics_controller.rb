@@ -79,29 +79,7 @@ class AnalyticsController < ApplicationController
 
     @visits_monthly = [uniq_visits_monthly, repeat_visits_monthly, overall_visits_monthly]
 
-############ Данные для посещений по странам ################################################
-    query_countries = <<-SQL
-      SELECT visitors.country, COUNT(visitors.country) AS quantity
-      FROM visitors 
-      WHERE visitors.uniq_visitor = TRUE 
-        AND visitors.country IS NOT NULL
-      GROUP BY visitors.country
-      ORDER BY COUNT(visitors.country) DESC;
-    SQL
-
-    data_countries = ActiveRecord::Base.connection.execute(query_countries).to_a.flatten
-
-    sourse_countries = []
-
-    data_countries.each do |datum|
-      country = {}
-      country[:name] = datum['country']
-      country[:data] = datum['quantity']
-
-      sourse_countries << country
-    end
-
-    @countries = sourse_countries
+    @countries = countries_data
 
 ############# Данные для посещений по регионам выбранной страны #############################
     @chosen_country = if params[:chosen_country].present?
@@ -184,5 +162,48 @@ class AnalyticsController < ApplicationController
           end
 
     respond_with out.to_json if out
+  end
+
+  def map_countries
+    countries_to_show = countries_data(en: true)
+
+    countries_to_show = countries_to_show.map { |item| item[:name] }
+
+    @countries_to_show = CountryShapeService.call(countries: countries_to_show)
+  end
+
+  private
+
+  def countries_data(en: nil)
+    ############ Данные для посещений по странам ################################################
+
+    country_language = if en
+                         'country_en'
+                       else
+                         'country'
+                       end
+
+    query_countries = <<-SQL
+      SELECT visitors.#{ country_language }, COUNT(visitors.#{ country_language }) AS quantity
+      FROM visitors 
+      WHERE visitors.uniq_visitor = TRUE 
+        AND visitors.#{ country_language } IS NOT NULL
+      GROUP BY visitors.#{ country_language }
+      ORDER BY COUNT(visitors.#{ country_language }) DESC;
+    SQL
+
+    data_countries = ActiveRecord::Base.connection.execute(query_countries).to_a.flatten
+
+    sourse_countries = []
+
+    data_countries.each do |datum|
+      country = {}
+      country[:name] = datum[country_language]
+      country[:data] = datum['quantity']
+
+      sourse_countries << country
+    end
+
+    sourse_countries
   end
 end

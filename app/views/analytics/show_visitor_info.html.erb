@@ -1,4 +1,4 @@
-<%= breadcrumbs [t('views.home.announces.header'), root_path], [t('app.navbar.menu.admin_options'), nil], ['Уникальные посетители', show_visitors_info_path], ["Посетитель с u_id: #{ @visitor.first.u_id }. Визитов: #{ @visitor_all_visits }", nil] %>
+<%= breadcrumbs [t('views.home.announces.header'), root_path], [t('app.navbar.menu.admin_options'), nil], [t('app.navbar.menu.uniq_visitors'), show_visitors_info_path], ["#{ t('app.navbar.menu.visitor_with') } u_id: #{ @visitor.first.u_id }. #{ t('app.navbar.menu.visits') }: #{ @visitor_all_visits }", nil] %>
 
 <div class="container cont_paddings col-sm-12 col-md-12">
   <table class="table table-sm table-buffers-vertical table-font-my">

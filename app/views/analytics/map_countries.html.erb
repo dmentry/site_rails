@@ -1,0 +1,89 @@
+<%= breadcrumbs [t('views.home.announces.header'), root_path], [t('app.navbar.menu.admin_options'), nil], [t('app.navbar.menu.map_countries'), nil] %>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geojson-labels/1.0.0/leaflet-geojson-labels.min.js"></script>
+
+<div id="map"></div>
+
+<script>
+  $(function(){
+
+    const map = L.map('map', {
+      attributionControl: true // Включаем контроль
+    }).setView([40, 40], 3);
+
+    // Настройка атрибуции
+    map.attributionControl
+      .setPrefix('')
+      .addAttribution('© <a href="https://leafletjs.com">leaflet</a>')
+      .addAttribution('© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors');
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+    }).addTo(map);
+
+    const countries = {
+      "type": "FeatureCollection",
+      "features": <%= raw @countries_to_show.to_json %>
+    };
+
+    const countryStyle = {
+      fillColor: '#3388ff',
+      fillOpacity: 0.2,
+      color: '#3388ff',
+      weight: 1
+    };
+
+    // popup с названием страны
+    // const countryLayer = L.geoJSON(countries, {
+    //   style: countryStyle,
+    //   onEachFeature: (feature, layer) => { layer.bindPopup(feature.properties.name); }
+    // }).addTo(map);
+
+    const countryLayer = L.geoJSON(countries, {
+      style: countryStyle,
+      onEachFeature: (feature, layer) => {
+        // Добавляем обработчики событий mouseover и mouseout
+        layer.on({
+          mouseover: (event) => {
+            const layer = event.target;
+            // Изменяем стиль при наведении
+            layer.setStyle({
+              fillColor: '#51ce6f',
+              color: '#51ce6f',
+              fillOpacity: 0.5,
+              // weight: 2
+            });
+
+            // Открываем tooltip с названием страны
+            if (!layer.getTooltip()) {
+              layer.bindTooltip(feature.properties.name, {
+                permanent: false, // Не постоянный tooltip
+                direction: 'top', // Позиция tooltip сверху
+                className: 'country-tooltip', // Стиль tooltip
+                sticky: true // Tooltip "прилипает" к курсору
+              }).openTooltip();
+            } else {
+              layer.openTooltip();
+            }
+
+          },
+          mouseout: (event) => {
+            const layer = event.target;
+            // Возвращаем исходный стиль
+            countryLayer.resetStyle(layer);
+            // Закрываем popup
+            layer.closePopup();
+          }
+        });
+      }
+    }).addTo(map);
+
+    L.geoJsonLabels(countryLayer, {
+      labelText: (feature) => feature.properties.name,
+      labelStyle: { className: 'country-label' }
+    }).addTo(map);
+
+  });
+</script>

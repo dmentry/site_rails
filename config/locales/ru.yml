@@ -299,7 +299,10 @@ ru:
         admin_options: Админка
         load_photo: Загрузить фотку
         visitors: Посетители
+        uniq_visitors: Уникальные посетители
+        visitor_with: Посетитель с
         visits: Посещения
+        map_countries: Страны на карте
         chatbot: Чатбот
         profile: Профиль
         exit: Выйти
