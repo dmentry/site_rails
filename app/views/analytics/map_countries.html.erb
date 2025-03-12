@@ -1,9 +1,5 @@
 <%= breadcrumbs [t('views.home.announces.header'), root_path], [t('app.navbar.menu.admin_options'), nil], [t('app.navbar.menu.map_countries'), nil] %>
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geojson-labels/1.0.0/leaflet-geojson-labels.min.js"></script>
-
 <div id="map"></div>
 
 <script>
@@ -58,7 +54,7 @@
 
             // Открываем tooltip с названием страны
             if (!layer.getTooltip()) {
-              layer.bindTooltip(feature.properties.name, {
+              layer.bindTooltip(`${feature.properties.name}, кол-во: ${feature.properties.qnt}`, {
                 permanent: false, // Не постоянный tooltip
                 direction: 'top', // Позиция tooltip сверху
                 className: 'country-tooltip', // Стиль tooltip

@@ -165,11 +165,19 @@ class AnalyticsController < ApplicationController
   end
 
   def map_countries
-    countries_to_show = countries_data(en: true)
+    countries_to_show_data = countries_data(en: true)
 
-    countries_to_show = countries_to_show.map { |item| item[:name] }
+    countries_to_show = countries_to_show_data.map { |item| item[:name] }
 
-    @countries_to_show = CountryShapeService.call(countries: countries_to_show)
+    countries_to_show = CountryShapeService.call(countries: countries_to_show)
+
+    countries_to_show.compact!
+
+    countries_to_show_data.each do |country_data|
+      countries_to_show[country_data[:name]][:properties][:qnt] = country_data[:data]
+    end
+
+    @countries_to_show = countries_to_show.values
   end
 
   private
