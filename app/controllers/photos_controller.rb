@@ -179,19 +179,13 @@ class PhotosController < ApplicationController
 
     if photos.size > 0
       photos.each do |photo|
-        photo_img  = "#{ 
-                        ActionController::Base.helpers.link_to(
-                          ActionController::Base.helpers.image_tag(
-                            photo.photo.thumb.url, style: 'width: 100px; border-radius: 5px;', alt: 'Фото'
-                          ), photo_path(photo), target: '_blank', rel: 'nofollow'
-                        ) 
-                      }"
+        popup_content = "<a target='_blank' rel='nofollow' class='article_title_link' href='#{ photo_path(photo) }'><div class='custom-popup'><div style='width:100px; font-size:80%; color:black;'>#{ photo.description }</div><img style='width: 100px; border-radius: 5px;' alt='Фото' src='#{ photo.photo.thumb.url }'></div></a>"
 
         marks['features'] << {
                               type: 'Feature',
                               id: photo.id,
                               geometry: { type: 'Point', coordinates: [photo.lat, photo.long] },
-                              properties: { hintContent: "#{ photo.description }", photo_img: photo_img },
+                              properties: { popup_content: popup_content },
                              }
       end
 

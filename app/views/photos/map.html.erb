@@ -9,8 +9,8 @@
 
       map.attributionControl
         .setPrefix('')
-        .addAttribution('© <a href="https://leafletjs.com">leaflet</a>')
-        .addAttribution('© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors');
+        .addAttribution('© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors')
+        .addAttribution('© <a href="https://leafletjs.com">leaflet</a>');
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
 
@@ -18,16 +18,9 @@
 
       function addMarkersToMap(data) {
         data.features.forEach(feature => {
-          let coords     = feature.geometry.coordinates;
-          let properties = feature.properties;
-          let marker     = L.marker([coords[0], coords[1]]);
-
-          let popupContent = `
-            <div class="custom-popup">
-              <div style='width:100px; font-size:80%'>${ properties.hintContent }</div>
-              ${ properties.photo_img }
-            </div>
-          `;
+          let coords       = feature.geometry.coordinates;
+          let marker       = L.marker([coords[0], coords[1]]);
+          let popupContent = `${ feature.properties.popup_content }`;
 
           marker.bindPopup(popupContent, { closeButton: true });
 
@@ -46,23 +39,16 @@
 
       map.attributionControl
         .setPrefix('')
-        .addAttribution('© <a href="https://leafletjs.com">leaflet</a>')
-        .addAttribution('© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors');
+        .addAttribution('© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors')
+        .addAttribution('© <a href="https://leafletjs.com">leaflet</a>');
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
 
       function addMarkersToMap(data) {
         data.features.forEach(feature => {
-          let coords     = feature.geometry.coordinates;
-          let properties = feature.properties;
-          let marker     = L.marker([coords[0], coords[1]]);
-
-          let popupContent = `
-            <div class="custom-popup">
-              <div style='width:100px; font-size:80%'>${ properties.hintContent }</div>
-              ${ properties.photo_img }
-            </div>
-          `;
+          let coords       = feature.geometry.coordinates;
+          let marker       = L.marker([coords[0], coords[1]]);
+          let popupContent = `${ feature.properties.popup_content }`;
 
           marker.bindPopup(popupContent, { closeButton: true });
 
