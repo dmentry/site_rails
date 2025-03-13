@@ -169,17 +169,26 @@ class PhotosController < ApplicationController
 
     photo_id = params[:photo_id] if params[:photo_id].present? && params[:photo_id].match?(/\A\d+\z/)
 
-    photos =  if photo_id.present?
-                Photo.where(id: photo_id)
-              else
-                Photo.where('length(lat) > 0').where.not(lat: [nil, false])
-              end
+    if photo_id.present?
+      photo_zoomed = Photo.where(id: photo_id).first
 
-    @photos_qnt = photos.size
+      marks['photo_zoomed_coordinates'] = [photo_zoomed&.lat, photo_zoomed&.long] if photo_zoomed.present?
+    end
+
+    photos = Photo.where.not(lat: [nil, false])
 
     if photos.size > 0
       photos.each do |photo|
-        popup_content = "<a target='_blank' rel='nofollow' class='article_title_link' href='#{ photo_path(photo) }'><div class='custom-popup'><div style='width:100px; font-size:80%; color:black;'>#{ photo.description }</div><img style='width: 100px; border-radius: 5px;' alt='Фото' src='#{ photo.photo.thumb.url }'></div></a>"
+        popup_content = <<-STR
+          <a target='_blank' rel='nofollow' class='article_title_link' href='#{ photo_path(photo) }'>
+            <div class='custom-popup'>
+              <div style='width:100px; font-size:80%; color:black;'>
+                #{ photo.description }
+              </div>
+              <img style='width: 100px; border-radius: 5px;' alt='Фото' src='#{ photo.photo.thumb.url }'>
+            </div>
+          </a>
+        STR
 
         marks['features'] << {
                               type: 'Feature',

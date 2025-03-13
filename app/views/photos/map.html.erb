@@ -4,61 +4,47 @@
 
 <script>
   $(function(){
-    <% if @photos_qnt > 1 %>
-      const map = L.map('map', { attributionControl: true }).setView([40, 40], 3);
-
-      map.attributionControl
-        .setPrefix('')
-        .addAttribution('© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors')
-        .addAttribution('© <a href="https://leafletjs.com">leaflet</a>');
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
-
-      const markers = L.markerClusterGroup({ maxClusterRadius: 50, disableClusteringAtZoom: 14, spiderfyOnMaxZoom: false, showCoverageOnHover: false });
-
-      function addMarkersToMap(data) {
-        data.features.forEach(feature => {
-          let coords       = feature.geometry.coordinates;
-          let marker       = L.marker([coords[0], coords[1]]);
-          let popupContent = `${ feature.properties.popup_content }`;
-
-          marker.bindPopup(popupContent, { closeButton: true });
-
-          markers.addLayer(marker);
-
-          map.addLayer(markers);
-        });
-      }
-
-      addMarkersToMap(<%= raw @show_marks.to_json %>);
+    <% if @show_marks['photo_zoomed_coordinates'].present? %>
+      let lat = <%= @show_marks['photo_zoomed_coordinates'][0] %>
+      let long = <%= @show_marks['photo_zoomed_coordinates'][1] %>
+      let zoom = <%= 13 %>
     <% else %>
-      <% lat  = @show_marks['features'].first[:geometry][:coordinates][0] %>
-      <% long = @show_marks['features'].first[:geometry][:coordinates][1] %>
-
-      const map = L.map('map', { attributionControl: true }).setView([<%= lat %>, <%= long %>], 13);
-
-      map.attributionControl
-        .setPrefix('')
-        .addAttribution('© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors')
-        .addAttribution('© <a href="https://leafletjs.com">leaflet</a>');
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
-
-      function addMarkersToMap(data) {
-        data.features.forEach(feature => {
-          let coords       = feature.geometry.coordinates;
-          let marker       = L.marker([coords[0], coords[1]]);
-          let popupContent = `${ feature.properties.popup_content }`;
-
-          marker.bindPopup(popupContent, { closeButton: true });
-
-          marker.addTo(map).openPopup();
-
-          marker.addTo(map);
-        });
-      }
-
-      addMarkersToMap(<%= raw @show_marks.to_json %>);
+      let lat = 40
+      let long = 40
+      let zoom = 3
     <% end %>
+
+    const map = L.map('map', { attributionControl: true }).setView([lat, long], zoom);
+
+    map.attributionControl
+      .setPrefix('')
+      .addAttribution('© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors')
+      .addAttribution('© <a href="https://leafletjs.com">leaflet</a>');
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
+
+    const markers = L.markerClusterGroup({ maxClusterRadius: 50, disableClusteringAtZoom: 14, spiderfyOnMaxZoom: false, showCoverageOnHover: false });
+
+    function addMarkersToMap(data) {
+      data.features.forEach(feature => {
+        let coords       = feature.geometry.coordinates;
+        let marker       = L.marker([coords[0], coords[1]]);
+        let popupContent = `${ feature.properties.popup_content }`;
+
+        marker.bindPopup(popupContent, { closeButton: true });
+
+        <% if @show_marks['photo_zoomed_coordinates'].present? %>
+          if(lat == coords[0] && long == coords[1]) {
+            marker.addTo(map).openPopup();
+          }
+        <% end %>
+
+        markers.addLayer(marker);
+
+        map.addLayer(markers);
+      });
+    }
+
+    addMarkersToMap(<%= raw @show_marks.to_json %>);
   });
 </script>
