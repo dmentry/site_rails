@@ -269,6 +269,14 @@
   opacity: 1;
 }
 
+.font_120 {
+  font-size: 120%;
+}
+
+.font_80 {
+  font-size: 80%;
+}
+
 .header img{
   opacity: .15;
   position: absolute;

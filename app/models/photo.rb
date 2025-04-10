@@ -26,14 +26,11 @@ class Photo < ApplicationRecord
   def split_coordinates
     return if !one_string_coordinates.present?
 
-    lat  = '55.748560'
-    long = '37.618766'
-
     out  = one_string_coordinates.match(/(\-?\d+\.\d+),\s(\-?\d+\.\d+)/)
     lat  = out[1]
     long = out[2]
 
-    self.lat = lat
-    self.long = long
+    self.lat = lat if lat.present?
+    self.long = long if long.present?
   end
 end

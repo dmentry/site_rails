@@ -175,7 +175,7 @@ class PhotosController < ApplicationController
       marks['photo_zoomed_coordinates'] = [photo_zoomed&.lat, photo_zoomed&.long] if photo_zoomed.present?
     end
 
-    photos = Photo.where.not(lat: [nil, false])
+    photos = Photo.where.not(lat: [nil, false, ''], long: [nil, false, ''])
 
     if photos.size > 0
       photos.each do |photo|
