@@ -3,4 +3,8 @@
 <div class="row gallery_img_borders gallery gallery_top_buffer">
   <%= render partial: 'photos/photo', collection: @photos %>
 </div>
-<div class="pagy-bottom-article"><%== pagy_nav(@pagy) if @pagy && @pagy&.pages > 1 %></div>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+  </div>
+</div>

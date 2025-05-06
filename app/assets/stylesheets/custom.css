@@ -426,13 +426,16 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   font-size: small;
 }
 
-.pagination {
-  margin-left: 44vw;
+.pagy-nav {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  margin: 1rem 0;
 }
 
-.pagination > .page {
-  margin-left: 5px;
-  margin-right: 5px;
+.pagy-nav .page {
+  margin: 0 5px;
 }
 
 .pagy-bottom {

@@ -51,4 +51,8 @@
     </div>
   </div>
 </div>
-<div class="pagy-bottom-article"><%== pagy_nav(@pagy) if @pagy.pages > 1 %></div>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+  </div>
+</div>
