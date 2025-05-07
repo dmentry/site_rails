@@ -43,19 +43,19 @@
               <a id='photos' class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                 <%= t('app.navbar.menu.drop_down.photos') %>
               </a>
-              <div class="dropdown-menu mobile_font_size py-0">
+              <div class="dropdown-menu">
                 <% if current_user && current_user.admin? %>
-                  <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: 'dropdown-item bottom_line_blog' %>
-                  <%=link_to t('app.navbar.menu.drop_down.all'), all_page_path, class: 'dropdown-item' %>
-                  <%=link_to t('app.navbar.menu.drop_down.photohosting'), photohosting_page_path, class: 'dropdown-item' %>
+                  <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: 'dropdown-item text-secondary' %>
+                  <%=link_to t('app.navbar.menu.drop_down.all'), all_page_path, class: 'dropdown-item text-secondary' %>
+                  <%=link_to t('app.navbar.menu.drop_down.photohosting'), photohosting_page_path, class: 'dropdown-item text-secondary' %>
                 <% end %>
-                <%= link_to t('app.navbar.menu.drop_down.recent'), photos_path, class: 'dropdown-item' %>
-                <%= link_to t('app.navbar.menu.drop_down.macro'), macro_page_path, class: 'dropdown-item' %>
-                <%= link_to t('app.navbar.menu.drop_down.landscape'), landscape_page_path, class: 'dropdown-item' %>
-                <%= link_to t('app.navbar.menu.drop_down.portrait'), portrait_page_path, class: 'dropdown-item' %>
-                <%= link_to t('app.navbar.menu.drop_down.drone'), drone_page_path, class: 'dropdown-item' %>
-                <%= link_to t('app.navbar.menu.drop_down.collage'), collage_page_path, class: 'dropdown-item' %>
-                <%= link_to t('app.navbar.menu.drop_down.other'), other_page_path, class: 'dropdown-item' %>
+                <%= link_to t('app.navbar.menu.drop_down.recent'), photos_path, class: 'dropdown-item text-secondary' %>
+                <%= link_to t('app.navbar.menu.drop_down.macro'), macro_page_path, class: 'dropdown-item text-secondary' %>
+                <%= link_to t('app.navbar.menu.drop_down.landscape'), landscape_page_path, class: 'dropdown-item text-secondary' %>
+                <%= link_to t('app.navbar.menu.drop_down.portrait'), portrait_page_path, class: 'dropdown-item text-secondary' %>
+                <%= link_to t('app.navbar.menu.drop_down.drone'), drone_page_path, class: 'dropdown-item text-secondary' %>
+                <%= link_to t('app.navbar.menu.drop_down.collage'), collage_page_path, class: 'dropdown-item text-secondary' %>
+                <%= link_to t('app.navbar.menu.drop_down.other'), other_page_path, class: 'dropdown-item text-secondary' %>
               </div>
             </li>
             <li class="nav-item">
@@ -70,10 +70,10 @@
                 <%= t('app.navbar.menu.about') %>
               </a>
               <div class="dropdown-menu mobile_font_size">
-                <%= link_to t('app.navbar.menu.common_info'), about_path(About&.first&.id), class: 'dropdown-item' %>
-                <%= link_to t('app.navbar.menu.portfolio'), portfolio_path, class: 'dropdown-item', target: "blanc", rel: "noreferrer"  %>
-                <%= link_to t('app.navbar.menu.cv_rus'), cv_rus_path, class: 'dropdown-item', target: "blanc", rel: "noreferrer" %>
-                <%= link_to t('app.navbar.menu.cv_eng'), cv_eng_path, class: 'dropdown-item', target: "blanc", rel: "noreferrer" %>
+                <%= link_to t('app.navbar.menu.common_info'), about_path(About&.first&.id), class: 'dropdown-item text-secondary' %>
+                <%= link_to t('app.navbar.menu.portfolio'), portfolio_path, class: 'dropdown-item text-secondary', target: "blanc", rel: "noreferrer"  %>
+                <%= link_to t('app.navbar.menu.cv_rus'), cv_rus_path, class: 'dropdown-item text-secondary', target: "blanc", rel: "noreferrer" %>
+                <%= link_to t('app.navbar.menu.cv_eng'), cv_eng_path, class: 'dropdown-item text-secondary', target: "blanc", rel: "noreferrer" %>
               </div>
             </li>
             <li class="nav-item">
@@ -97,11 +97,11 @@
                                <% else %>
                                  <% nil %>
                                <% end %>
-                  <%= link_to "#{t('app.navbar.menu.visitors')} #{show_badge}".html_safe, show_visitors_info_path, class: 'dropdown-item' %>
-                  <%= link_to t('app.navbar.menu.visits'), show_visits_path, class: 'dropdown-item' %>
-                  <%= link_to t('app.navbar.menu.map_countries'), map_countries_path, class: 'dropdown-item' %>
-                  <%= link_to t('app.navbar.menu.chatbot'), chat_bot_topics_path, class: 'dropdown-item' %>
-                  <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: 'dropdown-item' %>
+                  <%= link_to "#{t('app.navbar.menu.visitors')} #{show_badge}".html_safe, show_visitors_info_path, class: 'dropdown-item text-secondary' %>
+                  <%= link_to t('app.navbar.menu.visits'), show_visits_path, class: 'dropdown-item text-secondary' %>
+                  <%= link_to t('app.navbar.menu.map_countries'), map_countries_path, class: 'dropdown-item text-secondary' %>
+                  <%= link_to t('app.navbar.menu.chatbot'), chat_bot_topics_path, class: 'dropdown-item text-secondary' %>
+                  <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: 'dropdown-item text-secondary' %>
                 </div>
               </li>
             <% else %>
