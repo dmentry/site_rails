@@ -75,7 +75,7 @@ class AboutsController < ApplicationController
   end
 
   def portfolio_case
-    base_directory = "#{ Rails.root }/app/javascript/images/portfolio/"
+    base_directory = "#{ Rails.root }/public/portfolio/"
     user_directory = params[:images_path]
 
     unless user_directory.match?(/\A[a-zA-Z]+\z/)
@@ -83,18 +83,20 @@ class AboutsController < ApplicationController
       return
     end
 
-    allowed_directories = ['arhtextile', 'kukumberryx', 'trainings', 'cloud', 'landing', 'photosite']
+    allowed_directories = ['arhtextile', 'kukumberryx', 'trainings', 'cloud', 'landing', 'photosite', 'medanketa']
 
     unless allowed_directories.include?(user_directory)
       redirect_to portfolio_path, notice: ('Что-то пошло не так 2')
       return
     end
 
-    full_path = File.expand_path(user_directory, base_directory)
+    @full_path = File.expand_path(user_directory, base_directory)
 
     @images_path = user_directory
 
-    file_count = Dir.glob(File.join(full_path, '*')).count { |file| File.file?(file) }
+    file_count = Dir.glob(File.join(@full_path, '*')).count { |file| File.file?(file) }
+
+    file_count -= 1 if File.exist?(File.join(@full_path, 'description.txt'))
 
     if file_count <= 0
       redirect_to portfolio_path, notice: ('Что-то пошло не так 3')
