@@ -78,8 +78,10 @@
 
                   <h5 class="skills-title">Deploy</h5>
                   <ul>
-                    <li><strong>Nginx</strong> + <strong>Phusion Passenger</strong> and <strong>PostgreSQL</strong> setup. Initial setup (<strong>ufw</strong>/<strong>iptables</strong> + <strong>fail2ban</strong>). Rails application deploy with <span class="badge badge-secondary">Capistrano</span>.</li>
-                    <li><strong>Heroku: </strong>application deploy.</li>
+                    <li><strong>Linux</strong> safety initial setup (<strong>ufw</strong>/<strong>iptables</strong> + <strong>fail2ban</strong>, ssh, etc)</li>
+                    <li><strong>Nginx</strong> + <strong>Phusion Passenger</strong> + <strong>PostgreSQL</strong> setup</li>
+                    <li>Rails application deploy with <span class="badge badge-secondary">Capistrano</span></li>
+                    <li><strong>Heroku: </strong>application deploy</li>
                   </ul>
                   <li class="list-list">
 
@@ -112,7 +114,7 @@
           <div class="row box-shadow mt-2 px-2 bg-white rounded-sm">
             <div class="col-12 pt-3 text-secondary int-info">
               <h3 class="bottom-line">Work experience</h3>
-              <a class="text-info" href="https://mednet.ru" rel="noopener noreferrer" target="_blank">Russian Research Institute of Health (Ministry of Health)</a>
+              <a class="text-info" href="https://mednet.ru/en" rel="noopener noreferrer" target="_blank">Russian Research Institute of Health (Ministry of Health)</a>
               <div>Software engineer</div>
               <ul>
               <li class="list-text-about"> - New web applications development (frontend, backend)</li>
@@ -165,17 +167,16 @@
             <div class="col-12 pt-3 text-secondary int-info">
               <h3 class="bottom-line">Some pet-projects</h3>
               <div class="bottom-line-applications">
-                  <h5 class="card-title text-dark">BBQ</h5>
+                  <h5 class="card-title text-dark mb-0">BBQ</h5>
                   <p class="card-text text-secondary">Web application Bbq for organization of meetings with friends in different places</p>
                   <div>
                     <%= image_pack_tag("cv/screenshot_bbq.jpg", alt: 'screenshot', class: 'appl-screenshot') %>
                   </div>
                   <a href="https://github.com/dmentry/bbq" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="GitHub repository">GitHub</a>
-                  <!-- <a href="http://bbq.dack9.ru" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank">Open</a> -->
               </div>
               <br>
               <div  class="bottom-line-applications">
-                <h5 class="card-title text-dark">Good questions</h5>
+                <h5 class="card-title text-dark mb-0">Good questions</h5>
                 <p class="card-text text-secondary">Similar to ASKfm where users could ask and answer questions</p>
                 <div>
                   <%= image_pack_tag("cv/screenshot_ask.jpg", alt: 'screenshot', class: 'appl-screenshot') %>
@@ -184,7 +185,7 @@
               </div>
               <br>
               <div  class="bottom-line-applications">
-                <h5 class="card-title text-dark">Weather forecast Telegram bot</h5>
+                <h5 class="card-title text-dark mb-0">Weather forecast Telegram bot</h5>
                 <p class="card-text text-secondary">It shows weather forecast for present and next 7 days in chosen place (could be entered manually or choose from the list). Only in Russian language at the moment</p>
                 <div>
                   <%= image_pack_tag("cv/screenshot_forecast_bot.png", alt: 'screenshot', class: 'appl-screenshot') %>
