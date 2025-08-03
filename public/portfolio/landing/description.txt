@@ -1,1 +1,5 @@
-Простой лендинг. Но его можно усложнить, добавив форму заказа, обратную связь и т.д.
+Простой лендинг. Но его можно усложнить, добавив форму заказа, обратную связь и т.д.<br>
+
+<div class="text-center">
+  <a href="https://github.com/dmentry/landing" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="Ссылка на репозиторий">GitHub</a>
+</div>

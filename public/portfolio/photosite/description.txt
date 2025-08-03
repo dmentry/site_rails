@@ -11,4 +11,5 @@
 
 <div class="text-center">
   <a href="https://github.com/dmentry/site_rails" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="Ссылка на репозиторий">GitHub</a>
+  <a href="https://dack9.ru" class="btn btn-primary mt-2" rel="noopener noreferrer" target="_blank">Перейти</a>
 </div>
