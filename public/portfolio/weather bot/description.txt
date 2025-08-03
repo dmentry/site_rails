@@ -1,0 +1,11 @@
+Телеграм-бот показывает прогноз погоды на 15 дней для населенного пункта.<br>
+Основной функционал:
+<ul>
+<li>&bull;&nbsp;показывает фазу луны, время восхода-заката луны и солнца, давление, влажность, ветер, осадки и облачность</li>
+<li>&bull;&nbsp;название можно вводить по-русски, по-английски или по-русски латиницей или просто координаты</li>
+</ul>
+
+<div class="text-center">
+  <a href="https://github.com/dmentry/weather_forecast_bot" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="Ссылка на репозиторий">GitHub</a>
+  <a href="https://t.me/city_weath_bot" class="btn btn-primary mt-2" rel="noopener noreferrer" target="_blank">Перейти</a>
+</div>

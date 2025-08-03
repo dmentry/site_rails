@@ -1,0 +1,10 @@
+Аналог ASKfm. На сайте пользователи могут задавать свои вопросы и оставлять ответы на заданные им.<br>
+Основной функционал:
+<ul>
+<li>&bull;&nbsp;задавать вопросы могут незарегистрированные пользователи. Для исключения ботов используется капча</li>
+<li>&bull;&nbsp;пользователь может присваивать хэш-теги вопросам</li>
+</ul>
+
+<div class="text-center">
+  <a href="https://github.com/dmentry/askme" class="btn btn-secondary mt-2" rel="noopener noreferrer" target="_blank" title="Ссылка на репозиторий">GitHub</a>
+</div>

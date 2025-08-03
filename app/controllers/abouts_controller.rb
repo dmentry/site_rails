@@ -78,12 +78,12 @@ class AboutsController < ApplicationController
     base_directory = "#{ Rails.root }/public/portfolio/"
     user_directory = params[:images_path]
 
-    unless user_directory.match?(/\A[a-zA-Z]+\z/)
+    unless user_directory.match?(/\A[a-zA-Z\s]+\z/)
       redirect_to portfolio_path, notice: ('Что-то пошло не так 1')
       return
     end
 
-    allowed_directories = ['arhtextile', 'kukumberryx', 'trainings', 'cloud', 'landing', 'photosite', 'medanketa']
+    allowed_directories = ['arhtextile', 'kukumberryx', 'trainings', 'cloud', 'landing', 'photosite', 'medanketa', 'askme', 'bbq', 'weather bot', 'ozon bot']
 
     unless allowed_directories.include?(user_directory)
       redirect_to portfolio_path, notice: ('Что-то пошло не так 2')

@@ -588,6 +588,17 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   transform: scale(0.93); /* Уменьшает изображение до 93% от исходного размера */
 }
 
+.responsive-image-vert {
+  max-width: 80%; /* Изображение не выходит за пределы контейнера */
+  height: auto; /* Сохраняет пропорции */
+  transition: transform 0.4s ease; /* Плавное изменение размера */
+}
+
+/* Эффект уменьшения при наведении */
+.responsive-image-vert:hover {
+  transform: scale(0.93); /* Уменьшает изображение до 93% от исходного размера */
+}
+
 .search_field_w {
   width: 100%;
 }
@@ -815,6 +826,15 @@ nav[aria-label="breadcrumb"] .breadcrumb {
     display: block;
     margin-top: 22px;
     margin-left: 0px;
+  }
+
+  .portfolio_description {
+    font-size: 99%;
+  }
+
+  .responsive-image-vert {
+    height: 250px;
+    width: auto;
   }
 
   .flag_position {
