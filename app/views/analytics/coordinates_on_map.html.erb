@@ -1,0 +1,38 @@
+<%= breadcrumbs [t('views.home.announces.header'), root_path], [t('app.navbar.menu.admin_options'), nil], [t('views.map.coordinates_on_map'), nil] %>
+
+<div id="map"></div>
+
+<script>
+  $(function(){
+    let lat  = 40
+    let long = 40
+    let zoom = 3
+
+    const map = L.map('map', { attributionControl: true }).setView([lat, long], zoom);
+
+    map.attributionControl
+      .setPrefix('')
+      .addAttribution('© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors')
+      .addAttribution('© <a href="https://leafletjs.com">leaflet</a>');
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
+
+    const markers = L.markerClusterGroup({ maxClusterRadius: 50, disableClusteringAtZoom: 14, spiderfyOnMaxZoom: false, showCoverageOnHover: false });
+
+    function addMarkersToMap(data) {
+      data.features.forEach(feature => {
+        let coords       = feature.geometry.coordinates;
+        let marker       = L.marker([coords[0], coords[1]]);
+        let popupContent = `${ feature.properties.popup_content }`;
+
+        marker.bindPopup(popupContent, { closeButton: true });
+
+        markers.addLayer(marker);
+
+        map.addLayer(markers);
+      });
+    }
+
+    addMarkersToMap(<%= raw @show_marks.to_json %>);
+  });
+</script>

@@ -100,6 +100,7 @@
                   <%= link_to "#{t('app.navbar.menu.visitors')} #{show_badge}".html_safe, show_visitors_info_path, class: 'dropdown-item text-secondary' %>
                   <%= link_to t('app.navbar.menu.visits'), show_visits_path, class: 'dropdown-item text-secondary' %>
                   <%= link_to t('app.navbar.menu.map_countries'), map_countries_path, class: 'dropdown-item text-secondary' %>
+                  <%= link_to t('app.navbar.menu.coordinates_on_map'), coordinates_on_map_path, class: 'dropdown-item text-secondary' %>
                   <%= link_to t('app.navbar.menu.chatbot'), chat_bot_topics_path, class: 'dropdown-item text-secondary' %>
                   <%= link_to t('app.navbar.menu.exit'), destroy_user_session_path, :method => :delete, class: 'dropdown-item text-secondary' %>
                 </div>

@@ -180,6 +180,41 @@ class AnalyticsController < ApplicationController
     @countries_to_show = countries_to_show.values
   end
 
+  def coordinates_on_map
+    @nav_menu_active_item = 'nav_admin'
+
+    marks             = {}
+    marks['type']     = 'FeatureCollection'
+    marks['features'] = []
+
+    out = {}
+
+    coordinates_to_show = Visitor.select('DISTINCT ON (city_long, city_lat) *')
+
+    coordinates_to_show.each do |coordinates|
+      popup_content = <<-STR
+        <div class='custom-popup'>
+          <div style='width:220px; font-size:80%; color:black;'>
+            Страна: <b>#{ coordinates.country }</b><br>
+            Регион: <b>#{ coordinates.region }</b><br>
+            Город: <b>#{ coordinates.city }</b><br>
+            Координаты: <b>#{ coordinates.city_lat },  #{ coordinates.city_long }</b>
+          </div>
+        </div>
+      STR
+
+      marks['features'] << {
+                             type: 'Feature',
+                             geometry: { type: 'Point', coordinates: [coordinates.city_lat, coordinates.city_long] },
+                             properties: { popup_content: popup_content },
+                           }
+    end
+
+    out.merge!({ marks: marks })
+
+    @show_marks = out.values.first
+  end
+
   private
 
   def countries_data(en: nil)

@@ -303,6 +303,7 @@ ru:
         visitor_with: Посетитель с
         visits: Посещения
         map_countries: Страны на карте
+        coordinates_on_map: Координаты на карте
         chatbot: Чатбот
         profile: Профиль
         exit: Выйти
@@ -376,6 +377,7 @@ ru:
       breadcrumb_for_photo: Фотографии
     map:
       header: Фотки на карте
+      coordinates_on_map: Координаты посетителей на карте
     feedback:
       header: Форма обратной связи
       send: Отправить
