@@ -33,7 +33,7 @@
             <% end %>
 
             <%= link_to public_send("#{ announce.type.photo_type }_page_path"), title: "#{t('views.home.to_photo_category')} '#{category}'" do %>
-              <%= image_tag announce.photo.thumb.url, class: 'rounded_corners' %>
+              <%= image_tag announce.photo.thumb.url, class: 'rounded_corners height_and_width' %>
             <% end %>
 
             <% if announce.body.present? %>
