@@ -24,7 +24,12 @@ class Photo < ApplicationRecord
   private
 
   def split_coordinates
-    return if !one_string_coordinates.present?
+    if !one_string_coordinates.present?
+      self.lat = nil
+      self.long = nil
+
+      return
+    end
 
     out  = one_string_coordinates.match(/(\-?\d+\.\d+),\s(\-?\d+\.\d+)/)
     lat  = out[1]
