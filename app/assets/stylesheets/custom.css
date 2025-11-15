@@ -84,7 +84,7 @@
 }
 
 .height_and_width {
-  height: 100%;
+  max-height: 100%;
   width: auto;
 }
 
@@ -690,6 +690,11 @@ nav[aria-label="breadcrumb"] .breadcrumb {
     width: 90px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .height_and_width {
+    max-height: auto;
+    max-width: 100%;
   }
 
   .pagination {

@@ -2,7 +2,7 @@
 
 <div class="container cont_height rounded_corners mobile_font_size main_bg_color">
   <div class="row mt-3">
-    <div class="col-sm-6 col-md-6">
+    <div class="col-12 col-md-10">
 
       <% @announces.each_with_index do |announce, i| %>
         <% i == 0 ? mt5 = '' : mt5 = 'mt-5' %>
@@ -33,7 +33,7 @@
             <% end %>
 
             <%= link_to public_send("#{ announce.type.photo_type }_page_path"), title: "#{t('views.home.to_photo_category')} '#{category}'" do %>
-              <%= image_tag announce.photo.thumb.url, class: 'rounded_corners height_and_width' %>
+              <%= image_tag announce.photo.thumb.url, class: 'photo rounded_corners' %>
             <% end %>
 
             <% if announce.body.present? %>
@@ -56,3 +56,20 @@
     <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
   </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $('.photo').each(function() {
+      let img = new Image();
+      let originalImage = $(this);
+      
+      img.onload = function() {
+        if (this.height > this.width) {
+          originalImage.addClass('height_and_width');
+        }
+      };
+
+      img.src = originalImage.attr('src');
+    });
+  });
+</script>
