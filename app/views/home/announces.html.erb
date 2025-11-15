@@ -26,9 +26,9 @@
 
             <h2 class="mt-3 text_size"><%= link_to announce.description, public_send("#{ announce.type.photo_type }_page_path"), class: 'article_title_link', title: "#{t('views.home.to_photo_category')} '#{category}'" %></h2>
 
-            <% if !announce.lat.nil? && announce.lat.length > 0 %>
+            <% if announce.lat.present? %>
               <div class='announce_image'>
-                <%= link_to(image_pack_tag("gps.png", alt: 'feed', class: 'gps_img', title: t('views.photos.universal_page.has_coordinates')), map_path(photo_id: announce), target: "blanc", rel: "noreferrer") %>
+                <%= link_to(image_pack_tag("gps.png", alt: 'gps_img', class: 'gps_img', title: t('views.photos.universal_page.has_coordinates')), map_path(photo_id: announce), target: "blanc", rel: "noreferrer") %>
               </div>
             <% end %>
 
