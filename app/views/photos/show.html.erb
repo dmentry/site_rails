@@ -17,13 +17,15 @@
   <div class="center text_size"><%= @photo.body %></div>
 <% end %>
 <div class='center_image'>
-  <%= image_tag(@photo.photo.url, class: "img_max_height") %>
+  <%= link_to @photo.photo.url do %>
+    <%= image_tag(@photo.photo.url, class: "img_max_height") %>
+  <% end %>
 </div>
 
 <script>
-  $(function(){
-    $('.img_max_height').click(function() {
-      window.top.close();
-    });
-  });
+  // $(function(){
+  //   $('.img_max_height').click(function() {
+  //     window.top.close();
+  //   });
+  // });
 </script>

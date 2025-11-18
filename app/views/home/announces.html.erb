@@ -6,21 +6,21 @@
 
       <% @announces.each_with_index do |announce, i| %>
         <% i == 0 ? mt5 = '' : mt5 = 'mt-5' %>
-        <div class='announce_photo mx-auto <%= mt5 %>'>
+        <div class='col-12 col-lg-8 col-xl-6 mx-auto <%= mt5 %>'>
           <div class='announce_dt'><%= announce.created_at.strftime("%d.%m.%Y") %></div>
 
           <% if announce.is_a?(Article) %>
-        <div class="container rounded_corners px-0">
-          <a class='article_title_link' href='<%= article_path(announce) %>' title='<%= t("views.articles.index.article.read") %>'>
-            <h2 class="mt-3 text_size"><%= announce.article_title %></h2>
+            <div class="container rounded_corners px-0">
+              <a class='article_title_link' href='<%= article_path(announce) %>' title='<%= t("views.articles.index.article.read") %>'>
+                <h2 class="mt-3 text_size"><%= announce.article_title %></h2>
 
-            <% if announce.announce.present? %>
-              <%= raw(announce.announce) %>...<br>
-            <% else %>
-              <%= raw(announce.article_body[0..53]) %><br>
-            <% end %>
-          </a>
-        </div>
+                <% if announce.announce.present? %>
+                  <%= raw(announce.announce) %>...<br>
+                <% else %>
+                  <%= raw(announce.article_body[0..53]) %><br>
+                <% end %>
+              </a>
+            </div>
           <% elsif announce.is_a?(Photo) %>
             <% category = t("app.navbar.menu.drop_down.#{ announce.type.photo_type }") %>
 
@@ -33,20 +33,22 @@
             <% end %>
 
             <%= link_to public_send("#{ announce.type.photo_type }_page_path"), title: "#{t('views.home.to_photo_category')} '#{category}'" do %>
-              <%= image_tag announce.photo.thumb.url, class: 'photo rounded_corners' %>
+              <%= image_tag announce.photo.thumb.url, class: 'announce_photo_img rounded_corners' %>
             <% end %>
 
             <% if announce.body.present? %>
               <div class="mt-1"><%= announce.body %></div>
             <% end %>
 
+            <% if i + 1 != @announces.size %>
+              <div class="bottom_line"></div>
+            <% else %>
+              <div class="mb-3"></div>
+            <% end %>
+
           <% end %>
         </div>
-        <% if i + 1 != @announces.size %>
-          <div class="bottom_line mx-auto"></div>
-        <% else %>
-          <div class="mb-3"></div>
-        <% end %>
+
       <% end %>
     </div>
   </div>
