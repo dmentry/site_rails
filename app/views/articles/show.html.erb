@@ -12,7 +12,11 @@
 
 <div class="container rounded_corners mobile_font_size bg-<%= background_color %> text-<%= text_color %>">
   <div class="row mt-3">
-    <div class="col-sm-12 col-md-10">
+    <div class="col-sm-12 col-md-10 px-1">
+      <% if current_user %>
+        <%= link_to t('views.abouts.index.edit'), edit_article_path(@article), class: 'btn btn-sm btn-primary my-2' %>
+      <% end %>
+
       <h3 class="mt-0 text-center"><%= @article.article_title %></h3><br>
 
       <%= raw(@article.article_body) %><br>

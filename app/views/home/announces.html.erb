@@ -2,11 +2,11 @@
 
 <div class="container cont_height rounded_corners mobile_font_size main_bg_color">
   <div class="row mt-3">
-    <div class="col-12 col-md-10">
+    <div class="col-12 col-md-10 px-1">
 
       <% @announces.each_with_index do |announce, i| %>
         <% i == 0 ? mt5 = '' : mt5 = 'mt-5' %>
-        <div class='col-12 col-lg-8 col-xl-6 mx-auto <%= mt5 %>'>
+        <div class='col-12 col-lg-8 col-xl-6 mx-auto px-0 <%= mt5 %>'>
           <div class='announce_dt'><%= announce.created_at.strftime("%d.%m.%Y") %></div>
 
           <% if announce.is_a?(Article) %>
@@ -20,6 +20,12 @@
                   <%= raw(announce.article_body[0..53]) %><br>
                 <% end %>
               </a>
+
+              <% if i + 1 != @announces.size %>
+                <div class="bottom_line"></div>
+              <% else %>
+                <div class="mb-3"></div>
+              <% end %>
             </div>
           <% elsif announce.is_a?(Photo) %>
             <% category = t("app.navbar.menu.drop_down.#{ announce.type.photo_type }") %>

@@ -2,7 +2,7 @@
 
 <div class="container main_bg_color rounded_corners cont_height mobile_font_size">
   <div class="row mt-3">
-    <div class="col-sm-12 col-md-10">
+    <div class="col-sm-12 col-md-10 px-1">
 
       <% if current_user && current_user.admin? %>
         <div class='text-center'>
@@ -11,7 +11,7 @@
       <% end %>
       
       <% @articles.each do |article| %>
-        <div class="container rounded_corners">
+        <div class="container rounded_corners px-0">
           <a class='article_title_link' href='<%= article_path(article) %>' title='<%= t("views.articles.index.article.read") %>'>
             <h2 class="mt-3 text_size"><%= article.article_title %></h2><br>
 
