@@ -493,7 +493,7 @@ nav[aria-label="breadcrumb"] .breadcrumb {
 .bottom_line {
   border-bottom: 1px solid grey;
   padding-top: 8px;
-  width: 116%;
+  width: 106%;
 }
 
 .bottom_line_blog {
@@ -687,7 +687,7 @@ nav[aria-label="breadcrumb"] .breadcrumb {
 
 @media (max-width: 1200px) {
   .bottom_line {
-    width: 103%;
+    width: 95%;
   }
 
   .buffer-bottom_photos {
