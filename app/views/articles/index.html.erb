@@ -21,6 +21,10 @@
               <%= raw(article.article_body[0..53]) %><br>
             <% end %>
 
+            <% if article.hashtags.any? %>
+              <%= render 'hashtags/hashtags_list', entity: article %>
+            <% end %>
+
             <%#= link_to t('views.articles.index.article.read'), article, class: 'btn btn-sm btn-secondary my-2' %>
           </a>
 
