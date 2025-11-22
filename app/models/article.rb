@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
   ARTICLES_ON_PAGE = 5
 
+  include Hashtaggable
+
   translates :article_title, :article_body, :announce
 
   has_many :comments, dependent: :destroy

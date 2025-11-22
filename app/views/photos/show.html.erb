@@ -16,9 +16,14 @@
 <% if @photo.body.present? %>
   <div class="center text_size"><%= @photo.body %></div>
 <% end %>
+
 <div class='center_image'>
   <%= link_to @photo.photo.url do %>
     <%= image_tag(@photo.photo.url, class: "img_max_height") %>
+  <% end %>
+
+  <% if @photo.hashtags.any? %>
+    <%= render 'hashtags/hashtags_list', entity: @photo %>
   <% end %>
 </div>
 

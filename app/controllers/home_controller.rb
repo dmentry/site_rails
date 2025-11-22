@@ -81,6 +81,38 @@ class HomeController < ApplicationController
     end
   end
 
+  def by_hashtag
+    if !params[:q].present?
+      redirect_to root_path, alert: 'Вы не нажали на хэштег'
+
+      return
+    end
+
+    @q = params[:q]
+
+    articles  = if current_user.present?
+                 Article.all
+               else
+                 Article.where(is_visible: true)
+               end
+
+    articles = articles.ransack(hashtags_name_eq: @q).result
+
+    photos  = if current_user.present?
+                Photo.all
+              else
+                Photo.without_photohosting
+              end
+
+    photos = photos.ransack(hashtags_name_eq: @q).result
+
+    results = (articles + photos).sort_by(&:created_at).reverse
+
+    @pagy, @results = pagy_array(results, items: 10)
+
+    @nav_menu_active_item = 'photos'
+  end
+
   private
 
   def feedback_params

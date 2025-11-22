@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
                  Article.where(is_visible: true)
                end
 
-    @pagy, @articles = pagy(articles.order(created_at: :desc), items: Article::ARTICLES_ON_PAGE)
+    @pagy, @articles = pagy(articles.includes(:hashtags).order(created_at: :desc), items: Article::ARTICLES_ON_PAGE)
   end
 
   # GET /articles/1
@@ -100,7 +100,8 @@ class ArticlesController < ApplicationController
       :announce_en, 
       :text_color, 
       :background_color, 
-      :is_visible
+      :is_visible,
+      :hashtag_names
     )
   end
 end

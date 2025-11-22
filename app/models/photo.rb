@@ -1,4 +1,6 @@
 class Photo < ApplicationRecord
+  include Hashtaggable
+
   before_save :split_coordinates
 
   attr_accessor :one_string_coordinates

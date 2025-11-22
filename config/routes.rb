@@ -15,6 +15,12 @@ Rails.application.routes.draw do
       resources :chat_bot_questions, except: [:show] 
     end
 
+    resources :hashtags do
+      collection do
+        get :by_entity
+      end
+    end
+
     get 'all_page' => 'photos#all_page', as: :all_page
     get 'macro_page' => 'photos#macro_page', as: :macro_page
     get 'landscape_page' => 'photos#landscape_page', as: :landscape_page
@@ -40,6 +46,7 @@ Rails.application.routes.draw do
     get 'dack9_rss', to: 'home#rss_feed', defaults: { format: :rss }
     get 'sitemap.xml' => 'home#sitemap', format: "xml"
     get 'announces' => 'home#announces', as: :announces
+    get 'by_hashtag' => 'home#by_hashtag', as: :by_hashtag
     get 'searching', to: 'home#searching'
     get 'feedback_page' => 'home#feedback_page', as: :feedback_page
     post 'feedback_page_send' => 'home#feedback_page_send', as: :feedback_page_send

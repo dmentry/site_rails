@@ -21,6 +21,10 @@
                 <% end %>
               </a>
 
+              <% if announce.hashtags.any? %>
+                <%= render 'hashtags/hashtags_list', entity: announce %>
+              <% end %>
+
               <% if i + 1 != @announces.size %>
                 <div class="bottom_line"></div>
               <% else %>
@@ -44,6 +48,10 @@
 
             <% if announce.body.present? %>
               <div class="mt-1"><%= announce.body %></div>
+            <% end %>
+
+            <% if announce.hashtags.any? %>
+              <%= render 'hashtags/hashtags_list', entity: announce %>
             <% end %>
 
             <% if i + 1 != @announces.size %>

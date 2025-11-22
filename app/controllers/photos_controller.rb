@@ -11,7 +11,7 @@ class PhotosController < ApplicationController
   def index
     @nav_menu_active_item = 'photos'
 
-    @photos = Photo.without_photohosting.order(created_at: :desc).limit(10)
+    @photos = Photo.without_photohosting.order(created_at: :desc).limit(10).includes(:hashtags).all
 
     @header = t('controllers.photos.index.header')
 
@@ -223,6 +223,6 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.require(:photo).permit(:photo, :description_ru, :description_en, :body_ru, :body_en, :type_id, :lat, :long, :photo_id, :one_string_coordinates)
+    params.require(:photo).permit(:photo, :description_ru, :description_en, :body_ru, :body_en, :type_id, :lat, :long, :photo_id, :one_string_coordinates, :hashtag_names)
   end
 end

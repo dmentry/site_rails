@@ -51,17 +51,41 @@
     <%= form.text_field :one_string_coordinates, class: 'form-control' %>
   </div>
 
-<!--   <div class="form-group">
-    <%= form.label t('models.photo.lat') %>
-    <%= form.text_field :lat, class: 'form-control' %>
+  <div class="form-group">
+    <%= form.label :hashtag_names, "Хэштеги" %>
+
+    <!-- Скрытое поле для хранения хэштегов -->
+    <%= form.hidden_field :hashtag_names, id: "entity_hashtag_names", value: photo.hashtag_names, class: "hashtags-hidden-input" %>
+
+    <!-- Поле для ввода новых хэштегов -->
+    <input type="text" 
+           id="hashtag-input" 
+           class="form-control hashtags-input" 
+           placeholder="Введите хэштег и нажмите Enter или запятую..." 
+           autocomplete="off">
+
+    <!-- Контейнер для отображения добавленных хэштегов -->
+    <div id="hashtags-container" class="mt-2 d-flex flex-wrap gap-2 hashtags-container">
+      <% if photo.hashtags.any? %>
+        <% photo.hashtags.each do |hashtag| %>
+          <span class="badge badge-info hashtag-tag mr-1" data-tag-name="<%= hashtag.name %>">
+            #<%= hashtag.name %> 
+            <button type="button" class="btn-close btn-close-white ml-1 btn btn-light">❎</button>
+          </span>
+        <% end %>
+      <% end %>
+    </div>
+    
+    <div class="form-text">
+      <small class="text-muted">
+        • Начните вводить хэштег для автодополнения<br>
+        • Нажмите Enter, запятую или Tab для добавления<br>
+      </small>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= form.label t('models.photo.long') %>
-    <%= form.text_field :long, class: 'form-control' %>
-  </div> -->
-
-  <div class="actions">
-    <%= form.submit t('views.photos.form.save'), class: 'btn btn-secondary' %>
+  <div class="actions mb-3">
+    <%= form.submit t('views.photos.form.save'), class: 'btn btn-success btn-sm' %>
+    <%= link_to t('views.photos.show.back'), :back, class: 'btn btn-secondary btn-sm' %>
   </div>
 <% end %>
