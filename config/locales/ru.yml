@@ -358,6 +358,8 @@ ru:
         blog: Блог
       edit:
         header: Редактировать пост
+    announces:
+      article_badge: Запись в блоге
     photos:
       form:
         uploaded: Загружена

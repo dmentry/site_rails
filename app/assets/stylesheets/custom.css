@@ -348,12 +348,35 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   color: red;
 }
 
-.row {
-  justify-content: center;
+.rotated-element {
+  background-color: #08a0f7;
+  color: white;
+  transform: rotate(35deg);
+  transform-origin: top left;
+  position: absolute;
+  top: 15px;
+  right: -65px;
+  z-index: 1;
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  opacity: 0.9;
 }
 
 .rounded_corners {
   border-radius: 7px;
+}
+
+.rounded_corners_img {
+  border-radius: 7px;
+}
+
+.row {
+  justify-content: center;
 }
 
 .margins-images {
@@ -706,6 +729,12 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   .pagination {
     margin-left: 40%;
   }
+
+  .rotated-element {
+    top: 15px;
+    right: -25px;
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 1065px) {
@@ -855,6 +884,12 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   .responsive-image-vert {
     height: 250px;
     width: auto;
+  }
+
+  .rotated-element {
+    top: 15px;
+    right: -16px;
+    font-size: 12px;
   }
 
   .flag_position {

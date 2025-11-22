@@ -304,6 +304,8 @@ en:
         blog: Blog
       edit:
         header: Edit post
+    announces:
+      article_badge: Blog entry
     photos:
       form:
         uploaded: Uploaded
