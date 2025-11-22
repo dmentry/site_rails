@@ -4,9 +4,13 @@ class HashtagsController < ApplicationController
   def index
     @nav_menu_active_item = 'admin_options'
 
-    @hashtags = Hashtag.all.order(:name)
+    hashtags = Hashtag.all.order(:name)
 
-    authorize @hashtags
+    authorize hashtags
+
+    @hashtags_overall = hashtags.size
+
+    @pagy, @hashtags = pagy(hashtags, items: 25)
   end
 
   def new

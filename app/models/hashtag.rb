@@ -1,4 +1,3 @@
-# app/models/hashtag.rb
 class Hashtag < ApplicationRecord
   has_many :entity_hashtags, dependent: :destroy
   has_many :entities, through: :entity_hashtags
@@ -7,9 +6,9 @@ class Hashtag < ApplicationRecord
             presence: true, 
             uniqueness: { case_sensitive: false },
             length: { minimum: 2, maximum: 50 },
-            format: { with: /\A[\p{Word}]+\z/, message: "can only contain letters, numbers and underscores" }
+            format: { with: /\A[a-zA-Z0-9_а-яА-ЯЁё\s]+\z/, message: "может содержать только буквы, цифры и подчеркивание" }
 
-  before_validation :normalize_name
+  before_save :normalize_name
 
   def self.search(query)
     where("name ILIKE ?", "%#{sanitize_sql_like(query)}%").limit(10)
@@ -23,6 +22,7 @@ class Hashtag < ApplicationRecord
 
   def normalize_name
     return if name.blank?
-    self.name = name.gsub(/[^\p{Word}]/, '').downcase
+
+    self.name = name.gsub(/[^\p{Word}]/, '_').downcase
   end
 end

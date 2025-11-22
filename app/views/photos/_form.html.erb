@@ -65,7 +65,7 @@
     <!-- Контейнер для отображения добавленных хэштегов -->
     <div id="hashtags-container" class="mt-2 d-flex flex-wrap hashtags-container">
       <% if photo.hashtags.any? %>
-        <% photo.hashtags.each do |hashtag| %>
+        <% photo.hashtags.order(:name).each do |hashtag| %>
           <span class="hashtag_badge hashtag-tag margin_r_2" data-tag-name="<%= hashtag.name %>">
             #<%= hashtag.name %> 
             <button type="button" class="btn-close btn-close-white ml-1 btn btn-light">❌</button>
