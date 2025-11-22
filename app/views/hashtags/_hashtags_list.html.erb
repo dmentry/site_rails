@@ -3,3 +3,7 @@
     <%= link_to "##{ hashtag.name }", by_hashtag_path(q: hashtag.name), class: "hashtag_badge" %>
   <% end %>
 </div>
+
+<% if current_user.present? && current_user.admin? %>
+  <%= link_to('📋 Копировать', '#', class: 'btn btn-sm btn-info', data: { 'hss' => entity.hashtags.order(:name).pluck(:name).join(' ') }) %>
+<% end %>

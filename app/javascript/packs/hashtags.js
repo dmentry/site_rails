@@ -1,5 +1,12 @@
 $(document).ready(function() {
   initHashtagsSystem();
+
+  // Копирование хэштегов в буфер
+  $("[data-hss]").on("click", function(event) {
+    let hss = this.getAttribute('data-hss');
+
+    navigator.clipboard.writeText(hss);
+  })
 });
 
 function initHashtagsSystem() {
