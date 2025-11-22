@@ -1,0 +1,12 @@
+<h1 class="center text_size header_top_buffer"><%= t('views.chatbots.chatbot') %></h1>
+<div class="container bg-light">
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-10">
+      <h5 class="mt-0"><%= @hashtag.name %></h5><br>
+
+      <%= link_to t('views.abouts.index.edit'), edit_hashtag_path(@hashtag), class: 'btn btn-sm btn-primary mt-2' %>
+      <%= link_to t('views.articles.index.article.destroy'), @hashtag, method: :delete, data: { confirm: t('views.articles.index.article.sure') }, class: 'btn btn-sm btn-danger mt-2' %>
+      <%= link_to t('views.articles.show.back'), hashtags_path, class: 'btn btn-sm btn-secondary mt-2' %>
+    </div>
+  </div>
+</div>

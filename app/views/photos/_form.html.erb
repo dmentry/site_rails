@@ -58,19 +58,17 @@
     <%= form.hidden_field :hashtag_names, id: "entity_hashtag_names", value: photo.hashtag_names, class: "hashtags-hidden-input" %>
 
     <!-- Поле для ввода новых хэштегов -->
-    <input type="text" 
-           id="hashtag-input" 
-           class="form-control hashtags-input" 
-           placeholder="Введите хэштег и нажмите Enter или запятую..." 
-           autocomplete="off">
+    <select id="hashtag-input" class="form-control hashtags-input">
+      <!-- Опции будут добавляться динамически -->
+    </select>
 
     <!-- Контейнер для отображения добавленных хэштегов -->
-    <div id="hashtags-container" class="mt-2 d-flex flex-wrap gap-2 hashtags-container">
+    <div id="hashtags-container" class="mt-2 d-flex flex-wrap hashtags-container">
       <% if photo.hashtags.any? %>
         <% photo.hashtags.each do |hashtag| %>
-          <span class="badge badge-info hashtag-tag mr-1" data-tag-name="<%= hashtag.name %>">
+          <span class="hashtag_badge hashtag-tag margin_r_2" data-tag-name="<%= hashtag.name %>">
             #<%= hashtag.name %> 
-            <button type="button" class="btn-close btn-close-white ml-1 btn btn-light">❎</button>
+            <button type="button" class="btn-close btn-close-white ml-1 btn btn-light">❌</button>
           </span>
         <% end %>
       <% end %>

@@ -70,12 +70,12 @@
            autocomplete="off">
 
     <!-- Контейнер для отображения добавленных хэштегов -->
-    <div id="hashtags-container" class="mt-2 d-flex flex-wrap gap-2 hashtags-container">
+    <div id="hashtags-container" class="mt-2 d-flex flex-wrap hashtags-container">
       <% if article.hashtags.any? %>
         <% article.hashtags.each do |hashtag| %>
-          <span class="badge badge-info hashtag-tag mr-1" data-tag-name="<%= hashtag.name %>">
+          <span class="hashtag_badge hashtag-tag margin_r_2" data-tag-name="<%= hashtag.name %>">
             #<%= hashtag.name %> 
-            <button type="button" class="btn-close btn-close-white ml-1 btn btn-light">❎</button>
+            <button type="button" class="btn-close btn-close-white ml-1 btn btn-light">❌</button>
           </span>
         <% end %>
       <% end %>

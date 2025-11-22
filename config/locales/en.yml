@@ -250,6 +250,7 @@ en:
         visits: Visits
         map_countries: Countries on the map
         coordinates_on_map: Coordinates on the map
+        hashtag: Hashtags
         chatbot: Chatbot
         profile: Profile
         exit: Logout
@@ -378,6 +379,13 @@ en:
     searching:
       header: Search
       enter_search_phrase: Enter search phrase!
+    hashtags:
+      index:
+        header: Hashtags
+      new:
+        header: New hashteg
+      edit:
+        header: Edit hashteg
     chatbots:
         new:
           header: "New dialog's topic"
@@ -440,3 +448,5 @@ en:
       body_ru: Text in Russian
       body_en: Text in Engish
       next_id: Next replic ID
+    hashtag:
+      name: Hashtag

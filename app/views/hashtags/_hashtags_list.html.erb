@@ -1,7 +1,5 @@
-<div class="py-0">
-  <div class="mb-3">
-    <% entity.hashtags.each do |hashtag| %>
-      <%= link_to "##{ hashtag.name }", by_hashtag_path(q: hashtag.name), class: "badge badge-info hs_tag", rel: "noopener noreferrer", target: "_blank" %>
-    <% end %>
-  </div>
+<div class="py-0 mb-3 hashtags-container">
+  <% entity.hashtags.each do |hashtag| %>
+    <%= link_to "##{ hashtag.name }", by_hashtag_path(q: hashtag.name), class: "hashtag_badge" %>
+  <% end %>
 </div>

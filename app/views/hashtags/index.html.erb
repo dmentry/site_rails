@@ -1,0 +1,31 @@
+<%= breadcrumbs [t('views.home.announces.header'), root_path], [t('app.navbar.menu.admin_options'), nil], [t('views.hashtags.index.header'), nil] %>
+
+<div class='text-center'>
+  <div><b>Всего хэштегов: <%= @hashtags.size %></b></div>
+  <%= link_to t('views.hashtags.new.header'), new_hashtag_path, class: 'btn btn-sm btn-success my-2' %>
+</div>
+
+<div class="container bg-light cont_height pt-3 pb-1">
+  <% if @hashtags.size > 0 %>
+    <table class="d-md-table table table-sm table-striped border table_rounded_corners">
+      <tbody>
+        <% @hashtags.each do |hashtag| %>
+          <tr>
+            <td> 
+              <%= hashtag.name %>
+            </td>
+            <td>
+              <div class="row">
+                <div class="col-12">
+                  <%= link_to t('views.abouts.index.edit'), edit_hashtag_path(hashtag), class: 'btn btn-sm btn-warning' %>
+
+                  <%= link_to t('views.abouts.index.destroy'), hashtag, method: :delete, data: { confirm: t('views.articles.index.article.sure') }, class: 'btn btn-sm btn-danger' %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

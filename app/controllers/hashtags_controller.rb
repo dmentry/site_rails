@@ -1,26 +1,82 @@
 class HashtagsController < ApplicationController
-  def index
-    query = params[:q].to_s.strip
+  before_action :set_hashtag, only: [:edit, :update, :destroy]
 
-    if query.present?
-      hashtags = Hashtag.search(query)
-      render json: hashtags.map { |h| { id: h.id, name: h.name } }
+  def index
+    @nav_menu_active_item = 'admin_options'
+
+    @hashtags = Hashtag.all.order(:name)
+
+    authorize @hashtags
+  end
+
+  def new
+    @nav_menu_active_item = 'admin_options'
+
+    @hashtag = Hashtag.new
+
+    authorize @hashtag
+  end
+
+  def edit
+    @nav_menu_active_item = 'admin_options'
+
+    authorize @hashtag
+  end
+
+  def create
+    @hashtag = Hashtag.new(hashtag_params)
+
+    authorize @hashtag
+
+    @nav_menu_active_item = 'admin_options'
+
+    if @hashtag.save
+      redirect_to hashtags_path, notice: "Хэштег был успешно создан."
     else
-      render json: []
+      render :edit, alert: "Хэштег не был создан."
     end
   end
 
-  # Дополнительный метод для поиска хэштегов по сущности
-  def by_entity
-    entity_type = params[:entity_type]
-    entity_id = params[:entity_id]
+  def update
+    authorize @hashtag
 
-    if entity_type.present? && entity_id.present?
-      entity = entity_type.constantize.find(entity_id)
-      hashtags = entity.hashtags
-      render json: hashtags.map { |h| { id: h.id, name: h.name } }
+    if @hashtag.update(hashtag_params)
+      redirect_to hashtags_path, notice: "Хэштег был успешно изменен."
     else
-      render json: []
+      render :edit, alert: "Хэштег не был изменен."
     end
+  end
+
+  def destroy
+    if @hashtag.destroy!
+      message = { notice: 'Хэштег удален успешно.' }
+    else
+      message = { alert: 'Хэштег не был удален.' }
+    end
+
+    redirect_to hashtags_path, message
+  end
+
+  def index_autocomplete
+    query = params[:q].to_s.strip
+    
+    if query.present?
+      hashtags = Hashtag.where("name ILIKE ?", "%#{query}%").limit(20)
+    else
+      hashtags = Hashtag.order(:name).limit(500) # Для первоначальной загрузки
+    end
+    
+    render json: hashtags.map { |h| { id: h.id, name: h.name } }
+  end
+
+  private
+
+  def set_hashtag
+    @hashtag = Hashtag.find(params[:id])
+  end
+
+  def hashtag_params
+    params.require(:hashtag).permit(:name)
   end
 end
+

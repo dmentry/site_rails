@@ -15,9 +15,9 @@ Rails.application.routes.draw do
       resources :chat_bot_questions, except: [:show] 
     end
 
-    resources :hashtags do
+    resources :hashtags, except: [:show] do
       collection do
-        get :by_entity
+        get :index_autocomplete
       end
     end
 

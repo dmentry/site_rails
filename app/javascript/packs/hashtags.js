@@ -1,10 +1,4 @@
 $(document).ready(function() {
-  // Инициализация системы хэштегов
-  initHashtagsSystem();
-});
-
-// Также инициализируем при каждом обновлении DOM на случай динамической загрузки
-$(function() {
   initHashtagsSystem();
 });
 
@@ -13,72 +7,89 @@ function initHashtagsSystem() {
   let $hashtagsContainer = $('#hashtags-container');
   let $hiddenInput = $('#entity_hashtag_names');
 
-  // Если элементы не найдены, выходим
   if (!$hashtagInput.length || !$hashtagsContainer.length || !$hiddenInput.length) {
     return;
   }
 
-  // Инициализация автодополнения
-  $hashtagInput.autocomplete({
-    source: function(request, response) {
-      $.ajax({
-        url: '/hashtags',
-        dataType: 'json',
-        data: {
-          q: request.term
-        },
-        success: function(data) {
-          response($.map(data, function(item) {
+  // Инициализация Select2
+  $hashtagInput.select2({
+    tags: true, // Разрешаем создание новых тегов
+    tokenSeparators: [',', ' '], // Разделители для добавления тегов
+    placeholder: 'Введите хэштег или выберите из списка...',
+    allowClear: false,
+    multiple: false, // Одиночный выбор, но с tags: true можно добавлять несколько
+    ajax: {
+      url: '/hashtags/index_autocomplete',
+      dataType: 'json',
+      delay: 250,
+      data: function (params) {
+        return {
+          q: params.term
+        };
+      },
+      processResults: function (data) {
+        return {
+          results: $.map(data, function (item) {
             return {
-              label: '#' + item.name,
-              value: item.name,
-              id: item.id
+              id: item.name,
+              text: '#' + item.name
             };
-          }));
-        },
-        error: function(xhr, status, error) {
-          console.error('Error fetching hashtags:', error);
-          response([]);
-        }
-      });
+          })
+        };
+      },
+      cache: true
     },
-    minLength: 2,
-    delay: 300,
-    select: function(event, ui) {
-      event.preventDefault();
-      addHashtag(ui.item.value);
-      $hashtagInput.val('').focus();
-      return false;
-    },
-    focus: function(event, ui) {
-      event.preventDefault();
-      $hashtagInput.val(ui.item.value);
-      return false;
-    }
-  });
+    createTag: function (params) {
+      let term = params.term.trim();
 
-  // Обработка нажатия клавиш
-  $hashtagInput.on('keydown', function(e) {
-    let keyCode = e.keyCode || e.which;
-    let value = $(this).val().trim();
-
-    // Enter (13) или запятая (188)
-    if (keyCode === 13 || keyCode === 188) {
-      e.preventDefault();
-      
-      if (value.length > 0) {
-        addHashtag(value.replace(',', ''));
-        $(this).val('');
+      if (term === '') {
+        return null;
       }
+
+      // Проверяем, нет ли уже такого хэштега в выпадающем списке
+      let exists = $(this).find('option').filter(function () {
+        return $(this).text().toLowerCase() === ('#' + term.toLowerCase());
+      }).length > 0;
+
+      if (exists) {
+        return null;
+      }
+
+      return {
+        id: term,
+        text: '#' + term,
+        isNew: true
+      };
     }
   });
 
-  // Обработка потери фокуса
-  $hashtagInput.on('blur', function() {
-    const value = $(this).val().trim();
-    if (value.length > 0) {
-      addHashtag(value);
-      $(this).val('');
+  // Обработчик выбора/добавления хэштега
+  $hashtagInput.on('select2:select', function (e) {
+    let data = e.params.data;
+    
+    if (data.isNew) {
+      // Новый хэштег
+      addHashtag(data.id);
+    } else {
+      // Существующий хэштег
+      addHashtag(data.id);
+    }
+    
+    // Очищаем поле после добавления
+    $hashtagInput.val(null).trigger('change');
+  });
+
+  // Обработка Enter в поле (на всякий случай)
+  $hashtagInput.on('keydown', function(e) {
+    if (e.keyCode === 13) { // Enter
+      e.preventDefault();
+
+      let value = $(this).val();
+
+      if (value && value.trim().length > 0) {
+        addHashtag(value.trim());
+        $(this).val(null).trigger('change');
+      }
     }
   });
 
@@ -87,7 +98,7 @@ function initHashtagsSystem() {
 
   // Функция добавления хэштега
   function addHashtag(tagName) {
-    const normalizedName = normalizeHashtagName(tagName);
+    let normalizedName = normalizeHashtagName(tagName);
     
     if (normalizedName.length === 0) {
       return;
@@ -100,10 +111,10 @@ function initHashtagsSystem() {
     }
 
     // Создаем элемент хэштега
-    const $tagElement = $('<span>', {
-      class: 'badge badge-info hashtag-tag mr-1',
+    let $tagElement = $('<span>', {
+      class: 'hashtag_badge hashtag-tag margin_r_2',
       'data-tag-name': normalizedName,
-      html: `#${normalizedName} <button type="button" class="btn-close btn-close-white ml-1 btn btn-light">❎</button>`
+      html: `#${normalizedName}  <button type="button" class="btn-close btn-close-white ml-1 btn btn-light">❌</button>`
     });
 
     // Добавляем обработчик удаления
@@ -114,7 +125,7 @@ function initHashtagsSystem() {
     $hashtagsContainer.append($tagElement);
     updateHiddenInput();
     
-    // Показываем анимацию добавления
+    // Анимация добавления
     $tagElement.hide().fadeIn(300);
   }
 
@@ -126,14 +137,6 @@ function initHashtagsSystem() {
     });
   }
 
-  // Удаление последнего хэштега
-  function removeLastHashtag() {
-    const $lastTag = $hashtagsContainer.children('.hashtag-tag').last();
-    if ($lastTag.length) {
-      removeHashtag($lastTag);
-    }
-  }
-
   // Проверка существования хэштега
   function isHashtagExists(tagName) {
     return $hashtagsContainer.find(`[data-tag-name="${tagName}"]`).length > 0;
@@ -141,7 +144,7 @@ function initHashtagsSystem() {
 
   // Подсветка дубликата хэштега
   function highlightDuplicateHashtag(tagName) {
-    const $duplicateTag = $hashtagsContainer.find(`[data-tag-name="${tagName}"]`);
+    let $duplicateTag = $hashtagsContainer.find(`[data-tag-name="${tagName}"]`);
     
     $duplicateTag
       .addClass('bg-warning text-dark')
@@ -161,7 +164,7 @@ function initHashtagsSystem() {
 
   // Обновление скрытого поля
   function updateHiddenInput() {
-    const tagNames = $hashtagsContainer.find('.hashtag-tag')
+    let tagNames = $hashtagsContainer.find('.hashtag-tag')
       .map(function() {
         return $(this).data('tag-name');
       })
@@ -169,23 +172,20 @@ function initHashtagsSystem() {
       .join(',');
 
     $hiddenInput.val(tagNames);
-    
-    // Триггерим событие изменения для возможных других скриптов
     $hiddenInput.trigger('change');
   }
 
   // Инициализация существующих хэштегов
   function initializeExistingHashtags() {
-    const existingTags = $hiddenInput.val();
+    let existingTags = $hiddenInput.val();
     
     if (existingTags && existingTags.length > 0) {
-      const tagsArray = existingTags.split(',');
+      let tagsArray = existingTags.split(',');
       
-      // Очищаем контейнер перед инициализацией
       $hashtagsContainer.empty();
       
       $.each(tagsArray, function(index, tagName) {
-        const trimmedTag = tagName.trim();
+        let trimmedTag = tagName.trim();
         if (trimmedTag.length > 0) {
           addHashtag(trimmedTag);
         }
@@ -194,61 +194,25 @@ function initHashtagsSystem() {
   }
 }
 
-// Глобальные функции для работы с хэштегами
-// Могут быть вызваны из других скриптов
-window.Hashtags = {
-  // Добавить хэштег программно
-  add: function(tagName) {
-    const $hashtagInput = $('#hashtag-input');
-    if ($hashtagInput.length) {
-      // Используем существующую логику
-      $hashtagInput.val(tagName).trigger('blur');
-    }
-  },
-  
-  // Очистить все хэштеги
-  clear: function() {
-    $('#hashtags-container').empty();
-    $('#entity_hashtag_names').val('');
-  },
-  
-  // Получить текущие хэштеги
-  getTags: function() {
-    const $hiddenInput = $('#entity_hashtag_names');
-    return $hiddenInput.val() ? $hiddenInput.val().split(',') : [];
-  }
-};
-
-// Обработчик для динамически добавленных элементов
+// Обработчик удаления хэштегов
 $(document).on('click', '.hashtag-tag .btn-close', function() {
-  const $tag = $(this).closest('.hashtag-tag');
+  let $tag = $(this).closest('.hashtag-tag');
+
   $tag.fadeOut(300, function() {
     $(this).remove();
-    updateHashtagHiddenInput();
-  });
-});
 
-// Функция обновления hidden input (глобальная)
-function updateHashtagHiddenInput() {
-  const $container = $('#hashtags-container');
-  const $hiddenInput = $('#entity_hashtag_names');
-  
-  if ($container.length && $hiddenInput.length) {
-    const tagNames = $container.find('.hashtag-tag')
-      .map(function() {
-        return $(this).data('tag-name');
-      })
-      .get()
-      .join(',');
+    let $container = $('#hashtags-container');
+    let $hiddenInput = $('#entity_hashtag_names');
     
-    $hiddenInput.val(tagNames).trigger('change');
-  }
-}
-
-// Реинициализация при AJAX запросах (если используется)
-$(document).ajaxComplete(function() {
-  // Проверяем, есть ли на странице элементы для хэштегов
-  if ($('#hashtag-input').length && !$('#hashtag-input').hasClass('ui-autocomplete-input')) {
-    initHashtagsSystem();
-  }
+    if ($container.length && $hiddenInput.length) {
+      let tagNames = $container.find('.hashtag-tag')
+        .map(function() {
+          return $(this).data('tag-name');
+        })
+        .get()
+        .join(',');
+      
+      $hiddenInput.val(tagNames).trigger('change');
+    }
+  });
 });

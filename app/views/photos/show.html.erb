@@ -23,7 +23,9 @@
   <% end %>
 
   <% if @photo.hashtags.any? %>
-    <%= render 'hashtags/hashtags_list', entity: @photo %>
+    <div class="text-center">
+      <%= render 'hashtags/hashtags_list', entity: @photo %>
+    </div>
   <% end %>
 </div>
 

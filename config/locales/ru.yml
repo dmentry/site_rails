@@ -304,6 +304,7 @@ ru:
         visits: Посещения
         map_countries: Страны на карте
         coordinates_on_map: Координаты на карте
+        hashtag: Хэштеги
         chatbot: Чатбот
         profile: Профиль
         exit: Выйти
@@ -434,6 +435,13 @@ ru:
       enter_search_phrase: Введите поисковую фразу!
       found: Найдено
       no_results: Результатов нет
+    hashtags:
+      index:
+        header: Хэштеги
+      new:
+        header: Новый хэштег
+      edit:
+        header: Редактировать хэштег
     chatbots:
         new:
           header: Новая тема диалога
@@ -496,3 +504,5 @@ ru:
       body_ru: Текст реплики на русском
       body_en: Текст реплики на английском
       next_id: ID следующей реплики
+    hashtag:
+      name: Хэштег
