@@ -35,6 +35,7 @@ module Hashtaggable
       # Находим или создаем хэштеги
       hashtag_objects = hashtag_names_array.map do |name|
         next if name.blank?
+
         Hashtag.find_or_create_by!(name: name)
       end.compact
 

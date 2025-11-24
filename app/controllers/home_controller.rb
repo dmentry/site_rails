@@ -108,9 +108,15 @@ class HomeController < ApplicationController
 
     results = (articles + photos).sort_by(&:created_at).reverse
 
-    @pagy, @results = pagy_array(results, items: 10)
+    if results.size > 0
+      @pagy, @results = pagy_array(results, items: 10)
 
-    @nav_menu_active_item = 'photos'
+      @nav_menu_active_item = 'photos'
+
+      return
+    else
+      redirect_to root_path
+    end
   end
 
   private

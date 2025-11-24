@@ -5,5 +5,5 @@
 </div>
 
 <% if current_user.present? && current_user.admin? %>
-  <%= link_to('📋', '#', class: 'btn btn-sm btn-info', data: { 'hss' => entity.hashtags.order(:name).pluck(:name).join(',') }) %>
+  <%= link_to('📋', '#', class: 'btn btn-sm btn-outline-secondary', data: { 'hss' => entity.hashtags.order(:name).pluck(:name).join(',') }) %>
 <% end %>
