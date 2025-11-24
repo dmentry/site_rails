@@ -55,11 +55,11 @@
     <%= form.label :hashtag_names, "Хэштеги" %>
 
     <!-- Скрытое поле для хранения хэштегов -->
-    <%#= form.hidden_field :hashtag_names, id: "entity_hashtag_names", value: photo.hashtag_names, class: "hashtags-hidden-input" %>
+    <%#= form.hidden_field :hashtag_names, id: "entity_hashtag_names", value: photo.hashtags.pluck(:name).join(','), class: "hashtags-hidden-input" %>
 
     <!-- Сделал его видимым для удобства копирования тэгов -->
     <div>Сюда вставлять теги через запятую</div>
-    <%= form.text_area :hashtag_names, id: "entity_hashtag_names", value: photo.hashtag_names, class: "hashtags-hidden-input mb-2 form-control", size: '50x3' %>
+    <%= form.text_area :hashtag_names, id: "entity_hashtag_names", value: photo.hashtags.pluck(:name).join(','), class: "hashtags-hidden-input mb-2 form-control", size: '50x3' %>
 
     <!-- Поле для ввода новых хэштегов -->
     <select id="hashtag-input" class="form-control hashtags-input">
