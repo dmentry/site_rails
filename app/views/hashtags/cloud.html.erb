@@ -3,8 +3,15 @@
 <script>
   let myTags = [];
 
+  // Функция для определения мобильного устройства
+  function isMobileDevice() {
+    return (('ontouchstart' in window) ||
+      (navigator.maxTouchPoints > 0) ||
+      (navigator.msMaxTouchPoints > 0));
+  }
+
   function loadTags() {
-    const currentLocale = '<%= I18n.locale %>';
+    let currentLocale = '<%= I18n.locale %>';
 
     return fetch(`/${currentLocale}/hashtags/cloud_data`)
       .then(response => response.json())
@@ -15,6 +22,73 @@
         console.error('Error loading tags:', error);
         myTags = [];
       });
+  }
+
+  function setupMobileControls() {
+    let container = document.querySelector('.container_hs');
+    if (!container || !isMobileDevice()) return;
+
+    let startX, startY, currentX, currentY;
+    let isInteracting = false;
+    let isSwiping = false; // Флаг для определения свайпа
+
+    container.addEventListener('touchstart', (e) => {
+      isInteracting = true;
+      isSwiping = false; // Сбрасываем флаг свайпа
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      
+      // Временно останавливаем автоматическое вращение
+      if (tagCloud && tagCloud.pause) {
+        tagCloud.pause();
+      }
+    }, { passive: true });
+
+    container.addEventListener('touchmove', (e) => {
+      if (!isInteracting) return;
+      
+      currentX = e.touches[0].clientX;
+      currentY = e.touches[0].clientY;
+      
+      let deltaX = Math.abs(currentX - startX);
+      let deltaY = Math.abs(currentY - startY);
+      
+      // Если движение достаточно большое - считаем это свайпом
+      if (deltaX > 10 || deltaY > 10) {
+        isSwiping = true;
+        
+        // Просто меняем направление вращения на основе свайпа
+        if (tagCloud && tagCloud.updateConfig) {
+          let newDirection = (Math.atan2(currentY - startY, currentX - startX) * 180 / Math.PI) + 180;
+          tagCloud.updateConfig({
+            direction: newDirection
+          });
+        }
+      }
+    }, { passive: true });
+
+    container.addEventListener('touchend', (e) => {
+      // Если это был короткий тап (не свайп) - разрешаем клик
+      if (!isSwiping) {
+        // Находим элемент под касанием
+        let touch = e.changedTouches[0];
+        let element = document.elementFromPoint(touch.clientX, touch.clientY);
+        
+        // Если это тег - симулируем клик
+        if (element && element.classList.contains('tagcloud--item')) {
+          element.click();
+        }
+      }
+      
+      isInteracting = false;
+      
+      // Возобновляем нормальное вращение
+      setTimeout(() => {
+        if (tagCloud && tagCloud.resume) {
+          tagCloud.resume();
+        }
+      }, 500);
+    }, { passive: true });
   }
 
   async function initTagCloud() {
@@ -36,14 +110,15 @@
         window.tagCloud.destroy();
     }
 
-    var tagCloud = TagCloud('.container_hs', myTags.map(item => `#${item.name}`), {
+    tagCloud = TagCloud('.container_hs', myTags.map(item => `#${item.name}`), {
       radius: radius,
       maxSpeed: 'normal',
       initSpeed: 'normal',
       direction: 135,
-      // interact with cursor move on mouse out
       keep: true
     });
+
+    setupMobileControls();
 
     // Добавляем обработчики клика на span элементы
     setTimeout(() => {
@@ -54,47 +129,71 @@
             let count = myTags[index].count;
             let fontSize;
 
-            if (count >= 100) {
-              fontSize = '24px';
-            } else if (count >= 50) {
-              fontSize = '20px';
-            } else if (count >= 20) {
-              fontSize = '16px';
-            } else if (count >= 10) {
-              fontSize = '14px';
-            } else {
-              fontSize = '10px';
+            if (containerWidth > 980) {
+              if (count >= 100) {
+                fontSize = '24px';
+              } else if (count >= 50) {
+                fontSize = '20px';
+              } else if (count >= 20) {
+                fontSize = '16px';
+              } else if (count >= 10) {
+                fontSize = '14px';
+              } else {
+                fontSize = '10px';
+              }
+            }
+            else {
+              if (count >= 100) {
+                fontSize = '18px';
+              } else if (count >= 50) {
+                fontSize = '15px';
+              } else if (count >= 20) {
+                fontSize = '13px';
+              } else if (count >= 10) {
+                fontSize = '9px';
+              } else {
+                fontSize = '6px';
+              }
             }
             
             tag.style.fontSize = fontSize;
-
             tag.style.cursor = 'pointer';
             //tag.style.textDecoration = 'underline';
             tag.title = count;
+
+            // Добавляем класс для идентификации
+            //tag.classList.add('tagcloud--item');
 
             // Сохраняем оригинальный цвет
             let originalColor = tag.style.color;
             
             // Обработчик наведения
             tag.addEventListener('mouseenter', function() {
-                this.style.color = '#ff6b6b'; // Цвет при наведении
-                this.style.transition = 'color 0.3s ease'; // Плавный переход
+                this.style.color = '#ff6b6b';
+                this.style.transition = 'color 0.3s ease';
                 this.style.textDecoration = 'underline';
             });
 
             // Обработчик ухода курсора
             tag.addEventListener('mouseleave', function() {
-                this.style.color = originalColor; // Возвращаем оригинальный цвет
-                //this.style.textDecoration = 'none';
+                this.style.color = originalColor;
+                this.style.textDecoration = 'none';
             });
 
             tag.addEventListener('click', function(e) {
                 e.preventDefault();
-
-                //window.location.href = myTags[index].link;
-
-                // ОТКРЫВАЕМ ССЫЛКУ В НОВОЙ ВКЛАДКЕ
+                //e.stopPropagation();
                 window.open(myTags[index].url, '_blank');
+            });
+
+            // Обработчик для touch устройств
+            tag.addEventListener('touchend', function(e) {
+                // Предотвращаем только если это не свайп
+                if (!window.isSwiping) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open(myTags[index].url, '_blank');
+                }
             });
           }
         });
