@@ -156,7 +156,7 @@
         </div>
       <% end %>
 
-      <%= render 'layouts/chatbot' %>
+      <%= render 'layouts/chatbot' if (controller_name != 'hashtags') && (action_name != 'cloud') %>
 
       <%= yield %>
 

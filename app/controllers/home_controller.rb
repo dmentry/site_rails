@@ -82,13 +82,13 @@ class HomeController < ApplicationController
   end
 
   def by_hashtag
-    if !params[:q].present?
+    if !params[:qq].present?
       redirect_to root_path, alert: 'Вы не нажали на хэштег'
 
       return
     end
 
-    @q = params[:q]
+    @q = params[:qq]
 
     articles  = if current_user.present?
                  Article.all

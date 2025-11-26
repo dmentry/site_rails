@@ -1,6 +1,6 @@
 <div class="py-0 mb-1 hashtags-container">
   <% entity.hashtags.order(:name).each do |hashtag| %>
-    <%= link_to "##{ hashtag.name }", by_hashtag_path(q: hashtag.name), class: "hashtag_badge" %>
+    <%= link_to "##{ hashtag.name }", by_hashtag_path(qq: hashtag.name), class: "hashtag_badge" %>
   <% end %>
 </div>
 

@@ -92,7 +92,7 @@ class HashtagsController < ApplicationController
       {
         name: hashtag.name,
         count: hashtag.usage_count,
-        url: "/#{ current_locale }/by_hashtag?q=#{ hashtag.name }"
+        url: "/#{ current_locale }/by_hashtag?qq=#{ hashtag.name }"
       }
     end
 
