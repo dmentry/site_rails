@@ -56,6 +56,9 @@
                 <%= link_to t('app.navbar.menu.drop_down.drone'), drone_page_path, class: 'dropdown-item text-secondary' %>
                 <%= link_to t('app.navbar.menu.drop_down.collage'), collage_page_path, class: 'dropdown-item text-secondary' %>
                 <%= link_to t('app.navbar.menu.drop_down.other'), other_page_path, class: 'dropdown-item text-secondary' %>
+                <% if current_user && current_user.admin? %>
+                  <%= link_to t('app.navbar.menu.drop_down.hs_cloud'), cloud_hashtags_path, class: 'dropdown-item text-info' %>
+                <% end %>
               </div>
             </li>
             <li class="nav-item">
@@ -290,6 +293,8 @@
         <%= '$("#photos").addClass("active");'.html_safe %>
     <% when 'blog' %>
         <%= '$("#blog").addClass("active");'.html_safe %>
+    <% when 'hs_cloud' %>
+        <%= '$("#hs_cloud").addClass("active");'.html_safe %>
     <% when 'nav_map' %>
         <%= '$("#nav_map").addClass("active");'.html_safe %>
     <% when 'about' %>

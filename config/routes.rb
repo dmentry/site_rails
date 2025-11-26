@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :hashtags, except: [:show] do
       collection do
         get :index_autocomplete
+        get :cloud
+        get :cloud_data
       end
     end
 

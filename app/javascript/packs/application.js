@@ -15,6 +15,7 @@ import './leaflet'
 import './leaflet_markercluster'
 import ApexCharts from 'apexcharts'
 window.ApexCharts = ApexCharts
+window.TagCloud = require('./TagCloud')
 
 const images = require.context('../images', true)
 

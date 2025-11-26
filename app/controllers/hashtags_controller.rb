@@ -73,6 +73,32 @@ class HashtagsController < ApplicationController
     render json: hashtags.map { |h| { id: h.id, name: h.name } }
   end
 
+  def cloud
+    @nav_menu_active_item = 'hs_cloud'
+  end
+
+  def cloud_data
+    # Получаем хэштеги с количеством использований через entity_hashtags
+    hashtags_data = Hashtag.joins(:entity_hashtags)
+                          .select('hashtags.*, COUNT(entity_hashtags.id) as usage_count')
+                          .group('hashtags.id')
+                          .having('COUNT(entity_hashtags.id) > 2')
+                          .order('usage_count DESC')
+                          .limit(200)
+
+    current_locale = I18n.locale.to_s
+
+    hashtags = hashtags_data.map do |hashtag|
+      {
+        name: hashtag.name,
+        count: hashtag.usage_count,
+        url: "/#{ current_locale }/by_hashtag?q=#{ hashtag.name }"
+      }
+    end
+
+    render json: hashtags
+  end
+
   private
 
   def set_hashtag

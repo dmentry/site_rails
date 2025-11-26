@@ -1,0 +1,107 @@
+<div class="container_hs" data-tags='<%= @hashtags.to_json %>'></div>
+
+<script>
+  let myTags = [];
+
+  function loadTags() {
+    const currentLocale = '<%= I18n.locale %>';
+
+    return fetch(`/${currentLocale}/hashtags/cloud_data`)
+      .then(response => response.json())
+      .then(tags => {
+        myTags = tags;
+      })
+      .catch(error => {
+        console.error('Error loading tags:', error);
+        myTags = [];
+      });
+  }
+
+  async function initTagCloud() {
+    // Ждем загрузки данных
+    await loadTags();
+
+    let container = document.querySelector('.container_hs');
+
+    // Получаем размеры контейнера или окна
+    let containerHeight = window.innerHeight - 140;
+    let containerWidth = (container.clientWidth || window.innerWidth) - 50;
+
+    // Радиус = половина от МЕНЬШЕЙ стороны (высоты или ширины)
+    let minDimension = Math.min(containerHeight, containerWidth);
+    let radius = Math.min(minDimension / 2, 500); // Максимум 500px
+
+    // Если уже есть облако тегов - уничтожаем его
+    if (window.tagCloud) {
+        window.tagCloud.destroy();
+    }
+
+    var tagCloud = TagCloud('.container_hs', myTags.map(item => `#${item.name}`), {
+      radius: radius,
+      maxSpeed: 'normal',
+      initSpeed: 'normal',
+      direction: 135,
+      // interact with cursor move on mouse out
+      keep: true
+    });
+
+    // Добавляем обработчики клика на span элементы
+    setTimeout(() => {
+        let tags = document.querySelectorAll('.container_hs span');
+        
+        tags.forEach((tag, index) => {
+          if (myTags[index]) {
+            let count = myTags[index].count;
+            let fontSize;
+
+            if (count >= 100) {
+              fontSize = '24px';
+            } else if (count >= 50) {
+              fontSize = '20px';
+            } else if (count >= 20) {
+              fontSize = '16px';
+            } else if (count >= 10) {
+              fontSize = '14px';
+            } else {
+              fontSize = '10px';
+            }
+            
+            tag.style.fontSize = fontSize;
+
+            tag.style.cursor = 'pointer';
+            //tag.style.textDecoration = 'underline';
+            tag.title = count;
+
+            // Сохраняем оригинальный цвет
+            let originalColor = tag.style.color;
+            
+            // Обработчик наведения
+            tag.addEventListener('mouseenter', function() {
+                this.style.color = '#ff6b6b'; // Цвет при наведении
+                this.style.transition = 'color 0.3s ease'; // Плавный переход
+                this.style.textDecoration = 'underline';
+            });
+
+            // Обработчик ухода курсора
+            tag.addEventListener('mouseleave', function() {
+                this.style.color = originalColor; // Возвращаем оригинальный цвет
+                //this.style.textDecoration = 'none';
+            });
+
+            tag.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                //window.location.href = myTags[index].link;
+
+                // ОТКРЫВАЕМ ССЫЛКУ В НОВОЙ ВКЛАДКЕ
+                window.open(myTags[index].url, '_blank');
+            });
+          }
+        });
+    }, 50);
+  };
+
+  $(document).ready(function() {
+    initTagCloud();
+  });
+</script>
