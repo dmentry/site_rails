@@ -37,7 +37,7 @@
           <% elsif announce.is_a?(Photo) %>
             <% category = t("app.navbar.menu.drop_down.#{ announce.type.photo_type }") %>
 
-            <h5 class="mt-3 text_size"><%= link_to announce.description, photo_path(announce), class: 'article_title_link', title: "#{t('views.home.to_photo_category')} '#{category}'" %></h5>
+            <h5 class="mt-3 text_size"><%= link_to announce.description, photo_path(announce), class: 'article_title_link', title: announce.description %></h5>
 
             <% if announce.lat.present? %>
               <div class='announce_image'>
