@@ -56,9 +56,7 @@
                 <%= link_to t('app.navbar.menu.drop_down.drone'), drone_page_path, class: 'dropdown-item text-secondary' %>
                 <%= link_to t('app.navbar.menu.drop_down.collage'), collage_page_path, class: 'dropdown-item text-secondary' %>
                 <%= link_to t('app.navbar.menu.drop_down.other'), other_page_path, class: 'dropdown-item text-secondary' %>
-                <% if current_user && current_user.admin? %>
-                  <%= link_to t('app.navbar.menu.drop_down.hs_cloud'), cloud_hashtags_path, class: 'dropdown-item text-info' %>
-                <% end %>
+                <%= link_to t('app.navbar.menu.drop_down.hs_cloud'), cloud_hashtags_path, class: 'dropdown-item text-info' %>
               </div>
             </li>
             <li class="nav-item">

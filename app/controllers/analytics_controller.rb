@@ -18,7 +18,8 @@ class AnalyticsController < ApplicationController
 
       params[:visitor][:visitor_data].merge!(data)
 
-      AnalyticUpdater.call(params_visitor: params[:visitor]) if params[:visitor].present?
+                                                                                             # Игнорировать запросы от Googlebot
+      AnalyticUpdater.call(params_visitor: params[:visitor]) if params[:visitor].present? && !data[:ip]&.start_with?('66.249.66.')
     end
 
     head :ok

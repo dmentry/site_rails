@@ -56,9 +56,9 @@
 
             if (containerWidth > 980) {
               if (count >= 100) {
-                fontSize = '24px';
+                fontSize = '27px';
               } else if (count >= 50) {
-                fontSize = '20px';
+                fontSize = '23px';
               } else if (count >= 20) {
                 fontSize = '16px';
               } else if (count >= 10) {
@@ -69,15 +69,15 @@
             }
             else {
               if (count >= 100) {
-                fontSize = '19px';
+                fontSize = '22px';
               } else if (count >= 50) {
-                fontSize = '16px';
+                fontSize = '18px';
               } else if (count >= 20) {
-                fontSize = '13px';
+                fontSize = '15px';
               } else if (count >= 10) {
-                fontSize = '10px';
+                fontSize = '13px';
               } else {
-                fontSize = '7px';
+                fontSize = '9px';
               }
             }
             
@@ -99,7 +99,7 @@
             // Обработчик ухода курсора
             tag.addEventListener('mouseleave', function() {
                 this.style.color = originalColor; // Возвращаем оригинальный цвет
-                //this.style.textDecoration = 'none';
+                this.style.textDecoration = 'none';
             });
 
             tag.addEventListener('click', function(e) {
