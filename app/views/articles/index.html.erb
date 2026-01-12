@@ -5,7 +5,7 @@
     <div class="col-sm-12 col-md-10 px-1 mb-2">
 
       <% if current_user && current_user.admin? %>
-        <div class='text-center'>
+        <div class='text-center mb-3'>
           <%= link_to t('views.articles.index.article.new'), new_article_path, class: 'btn btn-sm btn-success mt-2' %>
         </div>
       <% end %>
@@ -13,7 +13,10 @@
       <% @articles.each do |article| %>
         <div class="container rounded_corners px-0">
           <a class='article_title_link' href='<%= article_path(article) %>' title='<%= t("views.articles.index.article.read") %>'>
-            <h2 class="text_size"><%= article.article_title %></h2><br>
+            <div class='center'>
+              <h2 class="text_size"><%= article.article_title %></h2><br>
+            </div>
+
 
             <% if article.announce.present? %>
               <%= raw(article.announce) %>...<br>

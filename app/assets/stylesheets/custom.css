@@ -519,6 +519,12 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   width: 106%;
 }
 
+.bottom_line_chat_bot {
+  border-bottom: 1px solid grey;
+  padding-top: 8px;
+  width: 90%;
+}
+
 .bottom_line_blog {
   border-bottom: 1px solid grey;
   padding-top: 8px;
@@ -765,6 +771,10 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   }
 
   .bottom_line {
+    width: 100%;
+  }
+
+  .bottom_line_chat_bot {
     width: 100%;
   }
 

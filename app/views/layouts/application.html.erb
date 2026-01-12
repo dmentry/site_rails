@@ -227,7 +227,7 @@
       visitor['visitor_data']['u_id'] = existed_uid;
     }
 
-    if (!(visitor['visitor_data']['common_info'] && visitor['visitor_data']['common_info'].match(/bot|Bot|meta/))) {
+    if (!(visitor['visitor_data']['common_info'] && visitor['visitor_data']['common_info'].match(/bot|Bot|meta|Baiduspider/))) {
       if (window.history.length <= 3) {
         $.ajax({ url: '/get_data', data: { visitor: visitor }})
       }

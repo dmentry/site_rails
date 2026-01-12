@@ -6,12 +6,12 @@
 
       <%= link_to t('views.chatbots.new.header'), new_chat_bot_topic_path, class: 'btn btn-sm btn-primary my-2' %>
 
-      <div class="bottom_line"></div>
+      <div class="bottom_line_chat_bot"></div>
       <div class="row">
         <div class="col-9 mt-3 text_size_smaller"><%= t('views.chatbots.index.table_topic') %></div>
         <div class="col-3 mt-3 text_size_smaller"><%= t('views.chatbots.index.table_is_shown') %></div>
       </div>
-      <div class="bottom_line"></div>
+      <div class="bottom_line_chat_bot"></div>
 
       <% @chat_bot_topics.each do |topic| %>
         <div class="row">
@@ -25,7 +25,7 @@
           </div>
 
         </div>
-        <div class="bottom_line mb-2"></div>
+        <div class="bottom_line_chat_bot mb-2"></div>
       <% end %>
     </div>
   </div>
