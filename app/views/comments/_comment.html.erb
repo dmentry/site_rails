@@ -23,8 +23,14 @@
   <% end %>
 <% end %>
 
+<% if comment[0]&.user&.admin? %>
+  <% comment_color = 'comment_color_admin' %>
+<% else %>
+  <% comment_color = 'comment_color' %>
+<% end %>
+
 <div class="reply_align_right">
-  <div class="container-fluid border rounded_corners <%= css_class %> comment_color">
+  <div class="container-fluid border rounded_corners <%= css_class %> <%= comment_color %>">
     <em class="quatation_general_2 rounded_corners"><%= l comment[0].created_at, format: :short %></em>
 
     <% if current_user %>

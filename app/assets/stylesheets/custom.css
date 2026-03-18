@@ -534,6 +534,11 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   background-color: #e1e6ea;
 }
 
+.comment_color_admin {
+  background-color: #D7D8D9;
+}
+
+
 .locale_class_na {
   display: none;
 }
