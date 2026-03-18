@@ -7,13 +7,25 @@ class CommentsController < ApplicationController
   def create
     @new_comment = @article.comments.build(comment_params)
 
-    if verify_recaptcha(model: @new_comment) && @new_comment.save
-    # if @new_comment.save
-      redirect_to @article, notice: t('controllers.comments.success_creation')
-    else
-      flash.now[:alert] = t('controllers.comments.failed_creation')
+    @new_comment.current_user = current_user
 
-      render 'articles/show'
+    if current_user.present?
+      if @new_comment.save
+        redirect_to @article, notice: t('controllers.comments.success_creation')
+      else
+        flash.now[:alert] = t('controllers.comments.failed_creation')
+
+        render 'articles/show'
+      end
+    else
+      if verify_recaptcha(model: @new_comment) && @new_comment.save
+      # if @new_comment.save
+        redirect_to @article, notice: t('controllers.comments.success_creation')
+      else
+        flash.now[:alert] = t('controllers.comments.failed_creation')
+
+        render 'articles/show'
+      end
     end
   end
 
@@ -43,13 +55,72 @@ class CommentsController < ApplicationController
   def create_answer_comment
     @new_comment = Comment.new(comment_params)
 
-    if verify_recaptcha(model: @new_comment) && @new_comment.save
-    # if @new_comment.save
-      redirect_to Article.find(@new_comment.article_id), notice: t('controllers.comments.success_creation')
-    else
-      flash.now[:alert] = t('controllers.comments.failed_creation')
+    @new_comment.current_user = current_user
 
-      render :answer_comment_new, status: :unprocessable_entity
+    if current_user.present?
+      if @new_comment.save
+        send_email_to_comment = @new_comment.opinion_id
+
+        article = Article.where(id: @new_comment.article_id).first
+
+        comment = @new_comment.comment_body.strip
+
+        locale = if params[:locale] == 'ru' || params[:locale] == nil
+                   'ru'
+                 else
+                   'en'
+                 end
+
+        if send_email_to_comment.present? && article.present? && comment.present?
+          article_full_link = article_url(article)
+
+          SendMailService.call(
+            send_email_to_comment: send_email_to_comment, 
+            article_full_link: article_full_link,
+            comment: comment,
+            locale: locale
+          )
+        end
+
+        redirect_to article_path(@new_comment.article_id), notice: t('controllers.comments.success_creation')
+      else
+        flash.now[:alert] = t('controllers.comments.failed_creation')
+
+        render :answer_comment_new, status: :unprocessable_entity
+      end
+    else
+      if verify_recaptcha(model: @new_comment) && @new_comment.save
+
+      send_email_to_comment = @new_comment.opinion_id
+
+      article = Article.where(id: @new_comment.article_id).first
+
+      comment = @new_comment.comment_body.strip
+
+      locale = if params[:locale] == 'ru' || params[:locale] == nil
+                 'ru'
+               else
+                 'en'
+               end
+
+      if send_email_to_comment.present? && article.present? 
+        article_full_link = article_url(article)
+
+        SendMailService.call(
+          send_email_to_comment: send_email_to_comment, 
+          article_full_link: article_full_link,
+          comment: comment,
+          locale: locale
+        )
+      end
+
+      # if @new_comment.save
+        redirect_to article_path(@new_comment.article_id), notice: t('controllers.comments.success_creation')
+      else
+        flash.now[:alert] = t('controllers.comments.failed_creation')
+
+        render :answer_comment_new, status: :unprocessable_entity
+      end
     end
   end
 

@@ -12,25 +12,29 @@
     </div>
   <% end %>
 
-  <p>
+  <p class='mt-4'>
     <b><%= t('views.comments.add_comment') %></b>
   </p>
 
   <div class="border my-2 rounded_corners">
     <div class="m-2">
-      <div class="form-group">
-        <%= form.label t('views.comments.email') %>
-        <%= form.text_field :comment_email, class: 'form-control' %>
-      </div>
+      <% if !current_user.present? %>
+        <div class="form-group">
+          <%= form.label t('views.comments.email') %>
+          <%= form.text_field :comment_email, class: 'form-control' %>
+        </div>
+      <% end %>
 
       <div class="form-group">
         <%= form.label t('views.comments.comment') %>
         <%= form.text_area :comment_body, class: 'form-control' %>
       </div>
 
-      <div>
-        <%= recaptcha_tags %>
-      </div>
+      <% if !current_user.present? %>
+        <div>
+          <%= recaptcha_tags %>
+        </div>
+      <% end %>
 
       <div class="actions my-2">
         <%= form.submit t('views.comments.submit'), class: 'btn btn-sm btn-secondary' %>

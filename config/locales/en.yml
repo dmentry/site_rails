@@ -289,6 +289,7 @@ en:
     articles:
       index:
         header: Blog
+        comments: Comments
         article:
           read: Read full
           edit: Edit
@@ -351,7 +352,7 @@ en:
         title: Portfolio
         title2: There are here some my appications which I created during my free time
     comments:
-      email: Your email
+      email: Your email (we send notification if your comment will be answered)
       comment: Your comment
       submit: Submit
       reply: Reply
@@ -453,3 +454,8 @@ en:
       next_id: Next replic ID
     hashtag:
       name: Hashtag
+  feedback_mailer:
+    visitor_comment_answer:
+      header: "Answer to your comment at photosite dack9.ru"
+      answer: "Answer:"
+      goto_article: "You can go to the blog with your comment:"

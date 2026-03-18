@@ -343,6 +343,7 @@ ru:
     articles:
       index:
         header: Блог
+        comments: Комментарии
         article:
           read: Читать полностью
           edit: Редактировать
@@ -405,7 +406,7 @@ ru:
         title: Портфолио
         title2: Здесь показаны несколько моих личных работ, которыми я занимался в свободное время
     comments:
-      email: Ваш email
+      email: Ваш email (на него придет уведомление, если на ваш комментарий ответят)
       comment: Ваш комментарий
       submit: Отправить
       reply: Ответить
@@ -509,3 +510,8 @@ ru:
       next_id: ID следующей реплики
     hashtag:
       name: Хэштег
+  feedback_mailer:
+    visitor_comment_answer:
+      header: "Ответ на ваш комментарий на фотосайте dack9.ru"
+      answer: "Ответ:"
+      goto_article: "Можете перейти к блогу с вашим комментарием:"

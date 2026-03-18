@@ -28,7 +28,12 @@
     <em><%= l comment[0].created_at, format: :short %></em>
 
     <% if current_user %>
-      | <%= comment[0].comment_email %> | <%= link_to 'X', article_comment_path(comment[0].article, comment[0]), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% if comment[0].comment_email.present? %>
+        | <%= comment[0].comment_email %> | 
+      <% end %>
+      <%= link_to 'X', article_comment_path(comment[0].article, comment[0]), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+      <!-- <span class="badge badge-primary float-right mt-1">Админ</span> -->
     <% end %>
 
     <% if comment[0].opinion_id == nil %>

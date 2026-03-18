@@ -24,6 +24,10 @@
               <%= raw(article.article_body[0..53]) %><br>
             <% end %>
 
+            <% if article.comments.size > 0 %>
+              <h5><span class="badge badge-info"><%= t('views.articles.index.comments') %>: <%= article.comments.size %></span></h5>
+            <% end %>
+
             <% if article.hashtags.any? %>
               <%= render 'hashtags/hashtags_list', entity: article %>
             <% end %>
