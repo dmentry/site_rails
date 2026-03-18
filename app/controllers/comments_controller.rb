@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
 
     if current_user.present?
       @new_comment.comment_email = Rails.application.credentials.dig(Rails.env.to_sym, :mail, :default_to)
+      @new_comment.user_id = current_user.id
 
       if @new_comment.save
         redirect_to @article, notice: t('controllers.comments.success_creation')
@@ -61,6 +62,7 @@ class CommentsController < ApplicationController
 
     if current_user.present?
       @new_comment.comment_email = Rails.application.credentials.dig(Rails.env.to_sym, :mail, :default_to)
+      @new_comment.user_id = current_user.id
 
       if @new_comment.save
         send_email_to_comment = @new_comment.opinion_id

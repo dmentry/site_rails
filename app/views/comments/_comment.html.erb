@@ -35,8 +35,10 @@
       <% end %>
 
       <%= link_to 'X', article_comment_path(comment[0].article, comment[0]), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ml-2' %>
+    <% end %>
 
-      <!-- <span class="badge badge-primary float-right mt-1">Админ</span> -->
+    <% if comment[0]&.user&.admin? %>
+      <span class="badge badge-primary float-right mt-1 mr-n2">Админ</span>
     <% end %>
 
     <% if comment[0].opinion_id == nil %>
