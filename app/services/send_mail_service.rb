@@ -9,9 +9,9 @@ module SendMailService
     return if !email_to.present?
 
     header = if locale == 'ru'
-               'На ваш комментарий на dack9.ru ответили'
+               'Ответ на ваш комментарий на фотосайте dack9.ru'
              else
-               'Your comment at dack9.ru was answered'
+               'Your comment at photosite dack9.ru was answered'
              end
 
     begin

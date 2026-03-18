@@ -58,6 +58,8 @@ class CommentsController < ApplicationController
     @new_comment.current_user = current_user
 
     if current_user.present?
+      @new_comment.comment_email = Rails.application.credentials.dig(Rails.env.to_sym, :mail, :default_to)
+
       if @new_comment.save
         send_email_to_comment = @new_comment.opinion_id
 
