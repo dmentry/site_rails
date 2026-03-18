@@ -24,6 +24,10 @@
                 <% end %>
               </a>
 
+              <% if announce.comments.size > 0 %>
+                <h6><span class="badge badge-info"><%= t('views.articles.index.comments') %>: <%= announce.comments.size %></span></h6>
+              <% end %>
+
               <% if announce.hashtags.any? %>
                 <%= render 'hashtags/hashtags_list', entity: announce %>
               <% end %>
