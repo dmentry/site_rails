@@ -25,13 +25,16 @@
 
 <div class="reply_align_right">
   <div class="container-fluid border rounded_corners <%= css_class %> comment_color">
-    <em><%= l comment[0].created_at, format: :short %></em>
+    <em class="quatation_general_2 rounded_corners"><%= l comment[0].created_at, format: :short %></em>
 
     <% if current_user %>
       <% if comment[0].comment_email.present? %>
-        | <%= comment[0].comment_email %> | 
+        <em class="quatation_general_2 rounded_corners mr-1">
+          <%= comment[0].comment_email %>
+        </em>
       <% end %>
-      <%= link_to 'X', article_comment_path(comment[0].article, comment[0]), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+      <%= link_to 'X', article_comment_path(comment[0].article, comment[0]), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ml-2' %>
 
       <!-- <span class="badge badge-primary float-right mt-1">Админ</span> -->
     <% end %>

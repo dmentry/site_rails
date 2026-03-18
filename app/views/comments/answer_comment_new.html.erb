@@ -35,7 +35,7 @@
             </div>
           <% end %>
 
-          <div class="form-group">
+          <div class="form-group mt-3">
             <%= form.label t('views.comments.comment') %>
             <%= form.text_area :comment_body, class: 'form-control' %>
           </div>
@@ -46,12 +46,13 @@
             </div>
           <% end %>
 
-          <div class="actions my-3">
-            <%= form.submit t('views.comments.submit'), class: 'btn btn-secondary' %>
+          <div class="actions mt-3 mb-1">
+            <%= form.submit t('views.comments.submit'), class: 'btn btn-sm btn-success' %>
+
+            <%= link_to t('views.comments.reply_to_comment.back'), article_path(id: @article&.id || Article.find(params[:comment][:article_id]).id), class: 'btn btn-sm btn-secondary my-2' %>
+
           </div>
       <% end %>
-
-      <%= link_to t('views.comments.reply_to_comment.back'), article_path(id: @article&.id || Article.find(params[:comment][:article_id]).id) %>
     </div>
   </div>
 </div>

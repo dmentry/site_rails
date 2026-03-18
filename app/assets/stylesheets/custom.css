@@ -547,6 +547,12 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   margin-bottom: 4px;
 }
 
+.quatation_general_2 {
+  background-color: #E0FFFF;
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
 .quatation_header {
   background-color: #E0FFFF;
   padding-left: 5px;
