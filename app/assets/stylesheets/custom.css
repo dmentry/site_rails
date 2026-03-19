@@ -63,6 +63,10 @@
   text-align: center;
 }
 
+.comments_font {
+  font-size: 100%;
+}
+
 .content {
   min-height: calc(100vh - 61px);
 }
@@ -811,6 +815,10 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   .circle_badge_visible_eng_inside_dropdwn {
     top: 51px;
     left: 67px;
+  }
+
+  .comments_font {
+    font-size: 80%;
   }
 
   .new_year_cap {

@@ -2,7 +2,7 @@ class Comment < ApplicationRecord
   attr_accessor :current_user
 
   belongs_to :article
-  belongs_to :user
+  belongs_to :user, optional: true
 
   has_many :replies, class_name: "Comment", foreign_key: "opinion_id", dependent: :destroy
   belongs_to :opinion, class_name: "Comment", foreign_key: "opinion_id", optional: true

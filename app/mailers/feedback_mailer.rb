@@ -13,4 +13,11 @@ class FeedbackMailer < ApplicationMailer
 
     mail(to: email_to, subject: header)
   end
+
+  def new_comment(email_to:, article_link:, comment:)
+    @article_link = article_link
+    @comment      = comment
+
+    mail(to: email_to, subject: 'Новый комментарий на фотосайте dack9.ru')
+  end
 end

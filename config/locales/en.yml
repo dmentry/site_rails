@@ -459,3 +459,6 @@ en:
       header: "Answer to your comment at photosite dack9.ru"
       answer: "Answer:"
       goto_article: "You can go to the blog with your comment:"
+    new_comment:
+      answer: "Comment:"
+      goto_article: "Go to the blog with comment:"

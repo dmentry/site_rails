@@ -25,7 +25,7 @@
             <% end %>
 
             <% if article.comments.size > 0 %>
-              <h5><span class="badge badge-info"><%= t('views.articles.index.comments') %>: <%= article.comments.size %></span></h5>
+              <div class='comments_font'><span class="badge badge-info"><%= t('views.articles.index.comments') %>: <%= article.comments.size %></span></div>
             <% end %>
 
             <% if article.hashtags.any? %>
