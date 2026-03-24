@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :set_article, only: [:create, :destroy]
+  before_action :set_article, only: [:create, :edit, :update, :destroy]
 
-  before_action :set_comment, only: [:destroy]
+  before_action :set_comment, only: [:edit, :update, :destroy]
 
   # POST /comments
   def create
@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
       @new_comment.current_user = current_user
 
       if @new_comment.save
-        redirect_to @article, notice: t('controllers.comments.success_creation')
+        redirect_to article_path(@article, anchor: 'comments'), notice: t('controllers.comments.success_creation')
       else
         flash.now[:alert] = t('controllers.comments.failed_creation')
 
@@ -24,12 +24,29 @@ class CommentsController < ApplicationController
         mail_handling(sent_mail_to_admin: current_user.present? ? false : true)
 
       # if @new_comment.save
-        redirect_to @article, notice: t('controllers.comments.success_creation')
+        redirect_to article_path(@article, anchor: 'comments'), notice: t('controllers.comments.success_creation')
       else
         flash.now[:alert] = t('controllers.comments.failed_creation')
 
         render 'articles/show'
       end
+    end
+  end
+
+  def edit
+    authorize @comment
+
+    @nav_menu_active_item = 'blog'
+  end
+
+  def update
+    authorize @comment
+
+    if @comment.update(comment_params)
+      redirect_to article_path(@article, anchor: 'comments'), notice: 'Комментарий обновлен успешно!'
+    else
+      flash.now[:alert] = 'Комментарий обновить не удалось!'
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -67,7 +84,7 @@ class CommentsController < ApplicationController
       if @new_comment.save
         mail_handling(sent_mail_to_admin: current_user.present? ? false : true)
 
-        redirect_to article_path(@new_comment.article_id), notice: t('controllers.comments.success_creation')
+        redirect_to article_path(@new_comment.article_id, anchor: 'comments'), notice: t('controllers.comments.success_creation')
       else
         flash.now[:alert] = t('controllers.comments.failed_creation')
 
@@ -78,7 +95,7 @@ class CommentsController < ApplicationController
         mail_handling(sent_mail_to_admin: current_user.present? ? false : true)
 
       # if @new_comment.save
-        redirect_to article_path(@new_comment.article_id), notice: t('controllers.comments.success_creation')
+        redirect_to article_path(@new_comment.article_id, anchor: 'comments'), notice: t('controllers.comments.success_creation')
       else
         flash.now[:alert] = t('controllers.comments.failed_creation')
 

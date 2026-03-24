@@ -256,6 +256,13 @@
   padding: 0;
 }
 
+.del_comment_img {
+  height: 15px;
+  width: 15px;
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+
 .entrance_img {
   height: 20px;
   width: 20px;
@@ -781,6 +788,10 @@ nav[aria-label="breadcrumb"] .breadcrumb {
 }
 
 @media (max-width: 991px) {
+  .admin_badge_font {
+    font-size: 70%;
+  }
+
   .announce_photo_img {
     width: 100%;
   }
@@ -849,6 +860,10 @@ nav[aria-label="breadcrumb"] .breadcrumb {
     top: 5px;
     display: block;
     opacity: 0.8;
+  }
+
+  .quatation_general_2 {
+    font-size: 80%;
   }
 
   .qnt_visitors_remove_l_margin {

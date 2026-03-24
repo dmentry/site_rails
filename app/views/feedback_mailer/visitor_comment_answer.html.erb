@@ -1,6 +1,14 @@
-<h4><%= t('.header') %></h4>
-
-<p><%= t('.answer') %> <b><%= @comment %></b></p>
-
-<p><%= t('.goto_article') %></p>
-<a href='<%= @article_link %>'><%= @article_link %></a>
+<div>
+  <%= t('.initial_comment') %><br>
+  <b><%= @initial_comment %></b>
+</div>
+<br>
+<div>
+  <%= t('.answer') %><br>
+  <b><%= @comment %></b>
+</div>
+<br>
+<div>
+  <%= t('.goto_article') %><br>
+  <a href='<%= @article_link %>'><%= @article_link %></a>
+</div>

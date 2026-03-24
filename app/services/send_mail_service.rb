@@ -16,6 +16,7 @@ module SendMailService
     return if !comment_to_send_email.present?
 
     email_to = comment_to_send_email.comment_email
+    initial_comment = comment_to_send_email.comment_body
 
     return if !email_to.present?
 
@@ -26,7 +27,13 @@ module SendMailService
              end
 
     begin
-      FeedbackMailer.visitor_comment_answer(email_to: email_to, article_link: article_full_link, comment: comment, header: header).deliver_now
+      FeedbackMailer.visitor_comment_answer(
+        email_to: email_to, 
+        article_link: article_full_link, 
+        initial_comment: initial_comment, 
+        comment: comment, 
+        header: header
+      ).deliver_now
     rescue => e
       # Логируем ошибку, но не ломаем пользовательский опыт
       Rails.logger.error "Ошибка отправки мейла - про ответ на коммент: #{ e.message }"

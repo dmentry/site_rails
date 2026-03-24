@@ -346,7 +346,8 @@ en:
         header: Edit
         back: Back
       form:
-        main_text: Text
+        main_text_ru: Russian text
+        main_text_en: English text
         save: Save
       portfolio:
         title: Portfolio
@@ -361,6 +362,7 @@ en:
         header: Reply to comment
         back: Back
       add_comment: Add comment
+      edit_comment: Edit comment
     user:
       show:
         header: Admin profile
@@ -457,6 +459,7 @@ en:
   feedback_mailer:
     visitor_comment_answer:
       header: "Answer to your comment at photosite dack9.ru"
+      initial_comment: "Your comment:"
       answer: "Answer:"
       goto_article: "You can go to the blog with your comment:"
     new_comment:

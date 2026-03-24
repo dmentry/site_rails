@@ -1,4 +1,12 @@
 class CommentPolicy < ApplicationPolicy
+  def edit?
+    user.present?
+  end
+
+  def update?
+    user.present?
+  end
+
   def destroy?
     user.present?
   end

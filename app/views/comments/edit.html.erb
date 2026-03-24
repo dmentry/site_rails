@@ -1,0 +1,39 @@
+<div class="container main_bg_color rounded_corners">
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-10">
+
+      <%= form_with(model: [@article, @comment], local: true) do |form| %>
+
+        <% if @comment.errors.any? %>
+          <div id="error_explanation">
+            <h2>Ошибки (<%= pluralize(comment.errors.count, "error") %>):</h2>
+
+            <ul>
+              <% comment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class='mt-4'>
+          <b><%= t('views.comments.edit_comment') %></b>
+        </div>
+
+        <div class="border mb-2 rounded_corners">
+          <div class="m-2">
+            <div class="form-group">
+              <%= form.text_area :comment_body, size: '50x3', class: 'form-control' %>
+            </div>
+
+            <div class="actions my-2">
+              <%= form.submit t('views.comments.submit'), class: 'btn btn-sm btn-success' %>
+              <%= link_to t('views.articles.new.back'), article_path(@article, anchor: 'comments'), class: 'btn btn-sm btn-primary' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

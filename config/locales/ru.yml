@@ -400,7 +400,8 @@ ru:
         header: Редактировать
         back: Обратно
       form:
-        main_text: Текст
+        main_text_ru: Текст на русском
+        main_text_en: Текст на английском
         save: Сохранить
       portfolio:
         title: Портфолио
@@ -415,6 +416,7 @@ ru:
         header: Ответ на комментарий
         back: Обратно
       add_comment: Добавить комментарий
+      edit_comment: Редактировать комментарий
     user:
       show:
         header: Профиль админа
@@ -513,6 +515,7 @@ ru:
   feedback_mailer:
     visitor_comment_answer:
       header: "Ответ на ваш комментарий на фотосайте dack9.ru"
+      initial_comment: "Ваш комментарий:"
       answer: "Ответ:"
       goto_article: "Можете перейти к блогу с вашим комментарием:"
     new_comment:

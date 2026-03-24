@@ -7,9 +7,10 @@ class FeedbackMailer < ApplicationMailer
     mail(to: EMAIL_TO, subject: "Новое сообщение с фотосайта")
   end
 
-  def visitor_comment_answer(email_to:, article_link:, comment:, header:)
+  def visitor_comment_answer(email_to:, article_link:, comment:, initial_comment:, header:)
     @article_link = article_link
-    @comment      = comment
+    @initial_comment = initial_comment
+    @comment = comment
 
     mail(to: email_to, subject: header)
   end

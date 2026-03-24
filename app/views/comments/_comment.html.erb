@@ -40,11 +40,12 @@
         </em>
       <% end %>
 
-      <%= link_to 'X', article_comment_path(comment[0].article, comment[0]), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ml-2' %>
+      <%= link_to  image_pack_tag("edit.png", alt: 'delete', class: 'del_comment_img'), edit_article_comment_path(comment[0].article, comment[0]), class: 'ml-2' %>
+      <%= link_to image_pack_tag("del.png", alt: 'delete', class: 'del_comment_img'), article_comment_path(comment[0].article, comment[0], anchor: 'comments'), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ml-2' %>
     <% end %>
 
     <% if comment[0]&.user&.admin? %>
-      <span class="badge badge-primary float-right mt-1 mr-n2">Админ</span>
+      <span class="admin_badge_font badge badge-primary float-right mt-1 mr-n2">Админ</span>
     <% end %>
 
     <% if comment[0].opinion_id == nil %>

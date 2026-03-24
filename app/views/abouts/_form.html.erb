@@ -12,17 +12,17 @@
   <% end %>
 
   <div class="form-group mt-3">
-    <%= form.label t('views.abouts.form.main_text') %>
+    <%= form.label t('views.abouts.form.main_text_ru') %>
     <%= form.text_area :main_text_ru, class: 'form-control my_height' %>
   </div>
 
   <div class="form-group mt-3">
-    <%= form.label t('views.abouts.form.main_text') %>
+    <%= form.label t('views.abouts.form.main_text_en') %>
     <%= form.text_area :main_text_en, class: 'form-control my_height' %>
   </div>
 
   <div class="actions">
-    <%= form.submit t('views.abouts.form.save'), class: 'btn btn-success mb-2' %>
-    <%= link_to t('views.abouts.edit.back'), about_path(about.id), class: 'btn btn-secondary mb-2' %>
+    <%= form.submit t('views.abouts.form.save'), class: 'btn btn-sm btn-success mb-2' %>
+    <%= link_to t('views.abouts.edit.back'), about_path(about.id), class: 'btn btn-sm btn-secondary mb-2' %>
   </div>
 <% end %>

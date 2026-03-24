@@ -25,7 +25,9 @@
               </a>
 
               <% if announce.comments.size > 0 %>
-                <h6><span class="badge badge-info"><%= t('views.articles.index.comments') %>: <%= announce.comments.size %></span></h6>
+                <%= link_to article_path(announce, anchor: 'comments'), class: 'my-2',  title: t('views.articles.index.comments') do %>
+                  <h6><span class="badge badge-info"><%= t('views.articles.index.comments') %>: <%= announce.comments.size %></span></h6>
+                <% end %>
               <% end %>
 
               <% if announce.hashtags.any? %>

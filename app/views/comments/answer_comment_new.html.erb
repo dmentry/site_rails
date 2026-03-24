@@ -14,7 +14,7 @@
       <%= form_with(model: @new_comment, url: answer_comment_new_path(), local: true) do |form| %>
         <% if @new_comment.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(@new_comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+            <h2>Ошибки (<%= pluralize(@new_comment.errors.count, "error") %>):</h2>
 
             <ul>
               <% @new_comment.errors.full_messages.each do |message| %>
@@ -49,7 +49,7 @@
           <div class="actions mt-3 mb-1">
             <%= form.submit t('views.comments.submit'), class: 'btn btn-sm btn-success' %>
 
-            <%= link_to t('views.comments.reply_to_comment.back'), article_path(id: @article&.id || Article.find(params[:comment][:article_id]).id), class: 'btn btn-sm btn-secondary my-2' %>
+            <%= link_to t('views.comments.reply_to_comment.back'), article_path(id: @article&.id || Article.find(params[:comment][:article_id]).id, anchor: 'comments'), class: 'btn btn-sm btn-secondary my-2' %>
 
           </div>
       <% end %>
