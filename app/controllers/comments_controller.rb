@@ -21,7 +21,9 @@ class CommentsController < ApplicationController
       end
     else
       if verify_recaptcha(model: @new_comment) && @new_comment.save
-        mail_handling(sent_mail_to_admin: current_user.present? ? false : true)
+        # mail_handling(sent_mail_to_admin: current_user.present? ? false : true)
+
+        AdminNotification.create(kind: :comment, comment_id: @new_comment.id, new_rec: true)
 
       # if @new_comment.save
         redirect_to article_path(@article, anchor: 'comments'), notice: t('controllers.comments.success_creation')
@@ -93,6 +95,8 @@ class CommentsController < ApplicationController
     else
       if verify_recaptcha(model: @new_comment) && @new_comment.save
         mail_handling(sent_mail_to_admin: current_user.present? ? false : true)
+
+        AdminNotification.create(kind: :comment_answer, comment_id: @new_comment.id, new_rec: true)
 
       # if @new_comment.save
         redirect_to article_path(@new_comment.article_id, anchor: 'comments'), notice: t('controllers.comments.success_creation')

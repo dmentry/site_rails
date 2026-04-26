@@ -6,6 +6,12 @@ ru:
         restrict_dependent_destroy:
           has_one: 'Невозможно удалить запись, так как существует зависимость: %{record}'
           has_many: 'Невозможно удалить запись, так как существуют зависимости: %{record}'
+    enums:
+      admin_notification:
+        kind:
+          message: "Сообщение"
+          comment: "Комментарий"
+          comment_answer: "Ответ на комментарий"
   date:
     abbr_day_names:
     - Вс
@@ -298,6 +304,7 @@ ru:
         feedback: Написать
         rss_subscribe: RSS-подписка на новости
         admin_options: Админка
+        admin_notifications: Уведомления
         load_photo: Загрузить фотку
         visitors: Посетители
         uniq_visitors: Уникальные посетители
@@ -512,6 +519,8 @@ ru:
       next_id: ID следующей реплики
     hashtag:
       name: Хэштег
+    admin_notification:
+      kind: "Тип"
   feedback_mailer:
     visitor_comment_answer:
       header: "Ответ на ваш комментарий на фотосайте dack9.ru"

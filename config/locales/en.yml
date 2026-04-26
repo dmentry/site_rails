@@ -244,6 +244,7 @@ en:
         feedback: Feedback
         rss_subscribe: RSS-news subscribtion
         admin_options: Admin
+        admin_notifications: Notifications
         load_photo: Load photo
         visitors: Visitors
         uniq_visitors: Uniq visitors

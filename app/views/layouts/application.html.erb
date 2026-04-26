@@ -82,23 +82,26 @@
             </li>
 
             <% if current_user && current_user.admin? %>
-              <% badge_class, badge_quantity = new_uniq_visitors %>
-              <% badge_inside_dropdwn = if badge_class == 'circle_badge_visible_ru' %>
-                                          <% 'circle_badge_visible_ru_inside_dropdwn' %>
-                                     <% elsif badge_class == 'circle_badge_visible_eng' %>
-                                          <% 'circle_badge_visible_eng_inside_dropdwn' %>
-                                     <% end %>
+              <%# badge_class, badge_quantity = new_uniq_visitors %>
+              <%# badge_inside_dropdwn = if badge_class == 'circle_badge_visible_ru' %>
+                                          <%# 'circle_badge_visible_ru_inside_dropdwn' %>
+                                     <%# elsif badge_class == 'circle_badge_visible_eng' %>
+                                          <%# 'circle_badge_visible_eng_inside_dropdwn' %>
+                                     <%# end %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id='nav_admin' href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                  <%= "#{ t('app.navbar.menu.admin_options') } <span class='#{ badge_class }'>#{badge_quantity}</span>".html_safe %>
+                  <%#= "#{ t('app.navbar.menu.admin_options') } <span class='#{ badge_class }'>#{badge_quantity}</span>".html_safe %>
+                  <%= t('app.navbar.menu.admin_options') %>
                 </a>
                 <div class="dropdown-menu mobile_font_size">
-                  <% show_badge = if badge_inside_dropdwn.present? %>
-                                 <% "<span class='#{ badge_inside_dropdwn }'>#{ badge_quantity }</span>" %>
-                               <% else %>
-                                 <% nil %>
-                               <% end %>
-                  <%= link_to "#{t('app.navbar.menu.visitors')} #{show_badge}".html_safe, show_visitors_info_path, class: 'dropdown-item text-secondary' %>
+                  <%# show_badge = if badge_inside_dropdwn.present? %>
+                                 <%# "<span class='#{ badge_inside_dropdwn }'>#{ badge_quantity }</span>" %>
+                               <%# else %>
+                                 <%# nil %>
+                               <%# end %>
+                  <%#= link_to "#{t('app.navbar.menu.visitors')} #{show_badge}".html_safe, show_visitors_info_path, class: 'dropdown-item text-secondary' %>
+                  <%= link_to t('app.navbar.menu.admin_notifications'), admin_notifications_path, class: "dropdown-item #{ new_notifications_class }" %>
+                  <%= link_to t('app.navbar.menu.visitors'), show_visitors_info_path, class: 'dropdown-item text-secondary' %>
                   <%= link_to t('app.navbar.menu.visits'), show_visits_path, class: 'dropdown-item text-secondary' %>
                   <%= link_to t('app.navbar.menu.map_countries'), map_countries_path, class: 'dropdown-item text-secondary' %>
                   <%= link_to t('app.navbar.menu.coordinates_on_map'), coordinates_on_map_path, class: 'dropdown-item text-secondary' %>
@@ -135,12 +138,12 @@
       </nav>
 
       <div class="d-block d-lg-none badge_mobile">
-        <% badge_class_mobile = if badge_class == 'circle_badge_visible_ru' || badge_class == 'circle_badge_visible_eng' %>
-          <% 'badge_class_mobile' %>
-        <% else %>
-          <% 'circle_badge_no' %>
-        <% end %>
-        <div class='<%= badge_class_mobile %>'><%= badge_quantity %></div>
+        <%# badge_class_mobile = if badge_class == 'circle_badge_visible_ru' || badge_class == 'circle_badge_visible_eng' %>
+          <%# 'badge_class_mobile' %>
+        <%# else %>
+          <%# 'circle_badge_no' %>
+        <%# end %>
+        <div class='<%#= badge_class_mobile %>'><%#= badge_quantity %></div>
 <!-- Новогодняя шапка mobile -->
         <%#= image_pack_tag('ny.png', alt: 'Happy New Year!', class: 'new_year_cap_mobile', title: 'Happy New Year!') %>
       </div>

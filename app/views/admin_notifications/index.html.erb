@@ -1,0 +1,86 @@
+<%= breadcrumbs [t('views.home.announces.header'), root_path], [t('app.navbar.menu.admin_options'), nil], [t('app.navbar.menu.admin_notifications'), nil] %>
+
+<div class="container cont_paddings col-sm-12 col-md-12">
+  <table class="d-none d-lg-table table table-sm table-buffers-vertical table-font-my">
+    <thead>
+      <tr class="table-buffers-vertical">
+        <th class="table-info table-buffers-vertical">Тип уведомления</th>
+        <th class="table-info table-buffers-vertical">Дата</th>
+        <th class="table-info table-buffers-vertical">Email отправителя</th>
+        <th class="table-info table-buffers-vertical">Сообщение\Комментарий</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @notifications.each do |notification| %>
+        <tr class='<%= not_seen_notifications_class(notification: notification) %>'>
+          <td>
+            <%= link_to admin_notification_path(notification) do %>
+              <span class="badge badge-<%= notification_badge(kind: notification.kind) %>">
+                <%= t("activerecord.enums.admin_notification.kind.#{ notification.kind }") %>
+              </span>
+            <% end %>
+          </td>
+          <td>
+            <%= notification.created_at.strftime("%d.%m.%Y, %H:%M") %>
+          </td>
+          <td>            
+            <% if notification.message.present? %>      
+              <%= notification.email_from %>
+            <% elsif notification.comment_id.present? %>
+              <%= Comment.where(id: notification.comment_id).first&.comment_email %>
+            <% end %> 
+          </td>
+          <td>
+            <% if notification.message.present? %>      
+              <%= notification.message %>
+            <% elsif notification.comment_id.present? %>
+              <%= Comment.where(id: notification.comment_id).first&.comment_body&.truncate(150) %>
+            <% end %> 
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% @notifications.each do |notification| %>
+    <%= link_to admin_notification_path(notification) do %>
+      <div class='d-block d-lg-none border rounded bg-body mb-1 mx-1 px-1 <%= new_notifications_bkg_class(notification: notification) %>'>
+        <div class='my-1'>
+          <span class="badge badge-<%= notification_badge(kind: notification.kind) %>">
+            <%= t("activerecord.enums.admin_notification.kind.#{ notification.kind }") %>
+          </span>
+        </div>
+        <div class='form_font_color mt-1'>
+          Дата:
+        </div>
+        <h6 class="mt-0"><%= notification.created_at.strftime("%d.%m.%Y, %H:%M") %></h6>
+        <div class='form_font_color mt-1'>
+          Email отправителя:
+        </div>
+        <h6 class="mt-0">
+          <% if notification.message.present? %>      
+            <%= notification.email_from %>
+          <% elsif notification.comment_id.present? %>
+            <%= Comment.where(id: notification.comment_id).first&.comment_email %>
+          <% end %>
+        </h6>
+        <div class='form_font_color mt-1'>
+          Сообщение\Комментарий:
+        </div>
+        <h6 class="mt-0">
+          <% if notification.message.present? %>      
+            <%= notification.message %>
+          <% elsif notification.comment_id.present? %>
+            <%= Comment.where(id: notification.comment_id).first&.comment_body&.truncate(150) %>
+          <% end %>
+        </h6>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+    </div>
+  </div>
+</div>

@@ -97,8 +97,16 @@
   opacity: 1;
 }
 
+.form_font_color {
+  color: #6c757d;
+}
+
 .fr {
   width: 45%;
+}
+
+.green_bkg {
+  background-color: #c2e6ca;
 }
 
 .logo {

@@ -61,7 +61,9 @@ class HomeController < ApplicationController
     if verify_recaptcha(model: @feedback) && @feedback.valid?
       flash[:notice] = t('controllers.photos.feedback_page_send.success')
 
-      FeedbackMailer.feedback_message(@feedback).deliver_now
+      # FeedbackMailer.feedback_message(@feedback).deliver_now
+
+      AdminNotification.create(kind: :message, email_from: @feedback.feedback_email, message: @feedback.feedback_body.strip, new_rec: true)
 
       redirect_to :root
     else
