@@ -2,7 +2,7 @@
 
 <div class="container cont_paddings col-sm-12 col-md-12">
 
-  <table class="table table-sm table-buffers-vertical table-font-my">
+  <table class="d-none d-lg-table table table-sm table-buffers-vertical table-font-my">
     <thead>
       <tr class="table-buffers-vertical">
         <th class="table-info table-buffers-vertical">Визит</th>
@@ -63,6 +63,24 @@
       <% end %>
     </tbody>
   </table>
+
+  <% @visitors.each do |visitor| %>
+    <div class='d-block d-lg-none border rounded bg-body mb-1 mx-1 px-1 <%= new_visitor_bkg_class(new_visitors_ids: @new_visitors_ids, visitor: visitor) %>'>
+      <h6 class="mt-1"><span class='form_font_color mt-1'>Визит:</span> <b><%= link_to(visitor.time_visited.strftime("%d.%m.%Y, %H:%M"), show_visitor_info_path(u_id: visitor.u_id)) %></b></h6>
+      <h6 class="mt-0"><span class='form_font_color mt-1'>Страна: </span><%= visitor.country %></h6>
+      <h6 class="mt-0"><span class='form_font_color mt-1'>Регион: </span><%= visitor.region %></h6>
+      <h6 class="mt-0"><span class='form_font_color mt-1'>Город: </span><%= visitor.city %></h6>
+      <h6 class="mt-0"><span class='form_font_color mt-1'>Страница: </span><%= visitor.page_name.truncate(50) %></h6>
+      <h6 class="mt-0"><span class='form_font_color mt-1'>Переход: </span><%= visitor&.referrer&.truncate(50) %></h6>
+      <h6 class="mt-0"><span class='form_font_color mt-1'>Система: </span> <%= visitor.common_info %></h6>
+      <h6 class="mt-0"><span class='form_font_color mt-1'>Экран: </span><%= visitor.size_screen_w %>x<%= visitor.size_screen_h %></h6>
+      <h6 class="mt-0"><span class='form_font_color mt-1'>Язык: </span><%= visitor.browser_language %></h6>
+      <h6 class="mt-0"><span class='form_font_color mt-1'>Час. пояс: </span><%= visitor.timezone %></h6>
+      <% coordinates_formatted = visitor.city_lat.present? && visitor.city_long.present? ? "#{ visitor.city_lat }, #{ visitor.city_long }" : nil %>     
+      <h6 class="mt-0"><span class='form_font_color mt-1'>Координаты: </span><%= coordinates_formatted %></h6>
+      <h6 class="mt-0"><span class='form_font_color mt-1'>IP: </span><%= visitor.ip %></h6>
+    </div>
+  <% end %>
 
   <div class="container">
     <div class="d-flex justify-content-center">

@@ -4,4 +4,10 @@ module LastSeenVisitorsHelper
 
     return ''
   end
+
+  def new_visitor_bkg_class(new_visitors_ids: nil, visitor:)
+    return 'green_bkg' if new_visitors_ids && new_visitors_ids.include?(visitor.id)
+
+    'bg-light'
+  end
 end

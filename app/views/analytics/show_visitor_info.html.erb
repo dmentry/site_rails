@@ -1,43 +1,19 @@
 <%= breadcrumbs [t('views.home.announces.header'), root_path], [t('app.navbar.menu.admin_options'), nil], [t('app.navbar.menu.uniq_visitors'), show_visitors_info_path], ["#{ t('app.navbar.menu.visitor_with') } u_id: #{ @visitor.first.u_id }. #{ t('app.navbar.menu.visits') }: #{ @visitor_all_visits }", nil] %>
 
-<div class="container cont_paddings col-sm-12 col-md-12">
-  <table class="table table-sm table-buffers-vertical table-font-my">
-    <thead>
-      <tr class="table-buffers-vertical">
-        <th class="table-info table-buffers-vertical">IP</th>
-        <th class="table-info table-buffers-vertical">Координаты</th>
-        <th class="table-info table-buffers-vertical">Визит</th>
-        <th class="table-info table-buffers-vertical">Просмотренная страница</th>
-        <th class="table-info table-buffers-vertical">Переход со страницы</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @visitor.each do |visitor| %>
-        <tr>
-          <td>            
-            <%= visitor.ip %>
-          </td>
-          <% coordinates_formatted = visitor.city_lat.present? && visitor.city_long.present? ? "#{ visitor.city_lat }, #{ visitor.city_long }" : nil %>
-          <td>            
-            <%= coordinates_formatted %>
-          </td>
-          <td>
-            <%= visitor.time_visited.strftime("%d.%m.%Y, %H:%M") %>
-          </td>
-          <td>            
-            <%= visitor.page_name.truncate(50) %>
-          </td>
-          <td>            
-            <%= visitor&.referrer&.truncate(50) %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <div class="pagy-bottom">
-    <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+<% @visitor.each do |visitor| %>
+  <div class='d-block border rounded bg-body mb-1 mx-1 mx-lg-2 px-1 px-lg-2 py-2 bg-light'>
+    <h6 class="mt-0"><span class='form_font_color mt-1'>Визит: </span><%= visitor.time_visited.strftime("%d.%m.%Y, %H:%M") %></h6>
+    <h6 class="mt-0"><span class='form_font_color mt-1'>IP: </span><%= visitor.ip %></h6>
+    <% coordinates_formatted = visitor.city_lat.present? && visitor.city_long.present? ? "#{ visitor.city_lat }, #{ visitor.city_long }" : nil %>
+    <h6 class="mt-0"><span class='form_font_color'>Координаты: </span><%= coordinates_formatted %></h6>
+    <h6 class="mt-0"><span class='form_font_color'>Просмотренная страница: </span><%= visitor.page_name %></h6>
+    <h6 class="mt-0 mb-0"><span class='form_font_color'>Переход со страницы: </span><%= visitor&.referrer %></h6>
   </div>
-  <div class='text-center'>
-    <%= link_to t('views.articles.new.back'), show_visitors_info_path, class: 'btn btn-sm btn-primary mb-2 text-center' %>
-  </div>
+<% end %>
+
+<div class="pagy-bottom mt-2">
+  <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+</div>
+<div class='text-center'>
+  <%= link_to t('views.articles.new.back'), show_visitors_info_path, class: 'btn btn-sm btn-primary mb-2 text-center' %>
 </div>
