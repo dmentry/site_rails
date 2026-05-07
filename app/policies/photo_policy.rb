@@ -15,11 +15,11 @@ class PhotoPolicy < ApplicationPolicy
     create?
   end
 
-  def all_page?
+  def show_page?
     create?
   end
 
-  def photohosting_page?
+  def index?
     create?
   end
 

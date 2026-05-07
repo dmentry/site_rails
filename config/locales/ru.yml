@@ -272,6 +272,18 @@ ru:
       long: "%H:%M, %d %B %Y"
       short: "%H:%M, %d.%m.%Y"
     pm: вечера
+  enums:
+    photo:
+      kind:
+        all: Все
+        macro: Макро
+        landscape: Пейзажи
+        portrait: Портреты
+        drone: Сверху
+        collage: Коллажи
+        other: Остальное
+        photohosting: Фотохостинг
+        recent: Недавние
   app:
     tab: Дмитрий Dack9 Архипов
     rss:
@@ -498,6 +510,7 @@ ru:
       body_ru: Описание (рус)
       body_en: Описание (англ)
       type_id: Тип
+      kind: Тип
       lat: Широта
       long: Долгота
     type:

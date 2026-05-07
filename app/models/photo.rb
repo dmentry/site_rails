@@ -5,23 +5,32 @@ class Photo < ApplicationRecord
 
   attr_accessor :one_string_coordinates
 
+  enum kind: { macro: 1, landscape: 2, portrait: 3, drone: 4, collage: 5, other: 6, photohosting: 7 }
+
   translates :description, :body
 
   PHOTOS_ON_PAGE = 10
 
   belongs_to :user
-  belongs_to :type
 
-  validates :photo, presence: true
+  validates :photo, :kind, presence: true
 
   validates :lat, :long, format: { with: /\A([-+]?[0-9]{1,3})(\.[0-9]+)?\z/, message: 'Разряды должны быть разделены точкой' }, allow_blank: true
 
-  scope :without_photohosting, -> { includes(:type).where.not(types: {photo_type: 'photohosting'}) }
-
-  scope :photos_by_type, -> (id) { where("type_id = ?", id).order("created_at DESC") }
+  scope :without_photohosting, -> { where.not(kind: :photohosting) }
 
   # Добавляем uploader, чтобы заработал carrierwave
   mount_uploader :photo, PhotoUploader
+
+  def human_kind
+    I18n.t("enums.photo.kind.#{ kind }", default: kind.to_s.humanize)
+  end
+
+  def self.kind_options
+    kinds.keys.map do |kind|
+      [I18n.t("enums.photo.kind.#{ kind }", default: kind.to_s.humanize), kind]
+    end
+  end
 
   private
 

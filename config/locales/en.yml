@@ -212,6 +212,18 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+  enums:
+    your_model:
+      kind:
+        all: All
+        macro: Macros
+        landscape: Landscapes
+        portrait: Portraits
+        drone: From above
+        collage: Collages
+        other: Others
+        photohosting: Photohosting
+        recent: Latest
   app:
     tab: Dmitry Dack9 Arkhipov
     rss:
@@ -436,6 +448,7 @@ en:
       body_ru: Description (rus)
       body_en: Description (en)
       type_id: Type
+      kind: Type
       lat: Latitude
       long: Longitude
     type:

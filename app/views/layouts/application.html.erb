@@ -46,16 +46,16 @@
               <div class="dropdown-menu">
                 <% if current_user && current_user.admin? %>
                   <%= link_to t('app.navbar.menu.load_photo'), new_photo_path, class: 'dropdown-item text-success' %>
-                  <%=link_to t('app.navbar.menu.drop_down.all'), all_page_path, class: 'dropdown-item text-secondary' %>
-                  <%=link_to t('app.navbar.menu.drop_down.photohosting'), photohosting_page_path, class: 'dropdown-item text-secondary' %>
+                  <%=link_to t('app.navbar.menu.drop_down.all'), photos_path(page_name: 'all'), class: 'dropdown-item text-secondary' %>
+                  <%=link_to t('app.navbar.menu.drop_down.photohosting'), photos_path(page_name: 'photohosting'), class: 'dropdown-item text-secondary' %>
                 <% end %>
-                <%= link_to t('app.navbar.menu.drop_down.recent'), photos_path, class: 'dropdown-item text-secondary' %>
-                <%= link_to t('app.navbar.menu.drop_down.macro'), macro_page_path, class: 'dropdown-item text-secondary' %>
-                <%= link_to t('app.navbar.menu.drop_down.landscape'), landscape_page_path, class: 'dropdown-item text-secondary' %>
-                <%= link_to t('app.navbar.menu.drop_down.portrait'), portrait_page_path, class: 'dropdown-item text-secondary' %>
-                <%= link_to t('app.navbar.menu.drop_down.drone'), drone_page_path, class: 'dropdown-item text-secondary' %>
-                <%= link_to t('app.navbar.menu.drop_down.collage'), collage_page_path, class: 'dropdown-item text-secondary' %>
-                <%= link_to t('app.navbar.menu.drop_down.other'), other_page_path, class: 'dropdown-item text-secondary' %>
+                <%#=link_to t('app.navbar.menu.drop_down.recent'), photos_path(page_name: 'recent'), class: 'dropdown-item text-secondary' %>
+                <%=link_to t('app.navbar.menu.drop_down.macro'), photos_path(page_name: 'macro'), class: 'dropdown-item text-secondary' %>
+                <%=link_to t('app.navbar.menu.drop_down.landscape'), photos_path(page_name: 'landscape'), class: 'dropdown-item text-secondary' %>
+                <%=link_to t('app.navbar.menu.drop_down.portrait'), photos_path(page_name: 'portrait'), class: 'dropdown-item text-secondary' %>
+                <%=link_to t('app.navbar.menu.drop_down.drone'), photos_path(page_name: 'drone'), class: 'dropdown-item text-secondary' %>
+                <%=link_to t('app.navbar.menu.drop_down.collage'), photos_path(page_name: 'collage'), class: 'dropdown-item text-secondary' %>
+                <%=link_to t('app.navbar.menu.drop_down.other'), photos_path(page_name: 'other'), class: 'dropdown-item text-secondary' %>
                 <%= link_to t('app.navbar.menu.drop_down.hs_cloud'), cloud_hashtags_path, class: 'dropdown-item text-info' %>
               </div>
             </li>

@@ -32,9 +32,9 @@
               <% end %>
             </div>
           <% elsif result.is_a?(Photo) %>
-            <% category = t("app.navbar.menu.drop_down.#{ result.type.photo_type }") %>
+            <% category = t("enums.photo.kind.#{ result.kind }") %>
 
-            <h2 class="mt-3 text_size"><%= link_to result.description, public_send("#{ result.type.photo_type }_page_path"), class: 'article_title_link', title: "#{t('views.home.to_photo_category')} '#{category}'" %></h2>
+            <h2 class="mt-3 text_size"><%= link_to result.description, photo_path(result), class: 'article_title_link', title: "#{ t('views.home.to_photo_category') } '#{ category }'" %></h2>
 
             <% if result.lat.present? %>
               <div class='announce_image'>

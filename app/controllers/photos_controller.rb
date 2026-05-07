@@ -9,13 +9,55 @@ class PhotosController < ApplicationController
 
   # GET /photos
   def index
+    kinds = Photo.kinds.keys + ['all', 'recent']
+
+    redirect_to :root if !kinds.include?(params[:page_name])
+
     @nav_menu_active_item = 'photos'
 
-    @photos = Photo.without_photohosting.order(created_at: :desc).limit(10).includes(:hashtags).all
+    if params[:page_name] == 'all'
+      @pagy, @photos = pagy(Photo.order(created_at: :desc), items: Photo::PHOTOS_ON_PAGE)
 
-    @header = t('controllers.photos.index.header')
+      @header = t('enums.photo.kind.all')
 
-    render :universal_page
+      authorize @photos
+    elsif params[:page_name] == 'photohosting'
+      @header = t('enums.photo.kind.photohosting')
+
+      @pagy, @photos = pagy(Photo.where(kind: :photohosting).order(created_at: :desc), items: Photo::PHOTOS_ON_PAGE)
+
+      authorize @photos
+    elsif params[:page_name] == 'macro'
+      @header = t('enums.photo.kind.macro')
+
+      @pagy, @photos = pagy(Photo.where(kind: :macro).order(created_at: :desc), items: Photo::PHOTOS_ON_PAGE)
+    elsif params[:page_name] == 'landscape'
+      @header = t('enums.photo.kind.landscape')
+
+      @pagy, @photos = pagy(Photo.where(kind: :landscape).order(created_at: :desc), items: Photo::PHOTOS_ON_PAGE)
+    elsif params[:page_name] == 'portrait'
+      @header = t('enums.photo.kind.portrait')
+
+      @pagy, @photos = pagy(Photo.where(kind: :portrait).order(created_at: :desc), items: Photo::PHOTOS_ON_PAGE)
+    elsif params[:page_name] == 'drone'
+      @header = t('enums.photo.kind.drone')
+
+      @pagy, @photos = pagy(Photo.where(kind: :drone).order(created_at: :desc), items: Photo::PHOTOS_ON_PAGE)
+    elsif params[:page_name] == 'collage'
+      @header = t('enums.photo.kind.collage')
+
+      @pagy, @photos = pagy(Photo.where(kind: :collage).order(created_at: :desc), items: Photo::PHOTOS_ON_PAGE)
+    elsif params[:page_name] == 'other'
+      @header = t('enums.photo.kind.other')
+
+      @pagy, @photos = pagy(Photo.where(kind: :other).order(created_at: :desc), items: Photo::PHOTOS_ON_PAGE)
+    elsif params[:page_name] == 'recent'
+      @header = t('enums.photo.kind.recent')
+
+      @pagy, @photos = pagy(Photo.without_photohosting.order(created_at: :desc).limit(10).includes(:hashtags).all.order(created_at: :desc), items: Photo::PHOTOS_ON_PAGE)
+    else
+      redirect_to :root
+    end
   end
 
   # GET /photos/1
@@ -94,70 +136,6 @@ class PhotosController < ApplicationController
     )
   end
 
-  #страницы
-  def all_page
-    @nav_menu_active_item = 'photos'
-
-    @pagy, @photos = pagy(Photo.order(created_at: :desc), items: Photo::PHOTOS_ON_PAGE)
-
-    @header = t('controllers.photos.all_page.header')
-
-    authorize @photos
-
-    render :universal_page
-  end
-
-  def macro_page
-    @nav_menu_active_item = 'photos'
-
-    type_id = Type.where(photo_type: 'macro').first.id
-    collect_photos_and_type(type_id)
-  end
-
-  def landscape_page
-    @nav_menu_active_item = 'photos'
-
-    type_id = Type.where(photo_type: 'landscape').first.id
-    collect_photos_and_type(type_id)
-  end
-
-  def portrait_page
-    @nav_menu_active_item = 'photos'
-
-    type_id = Type.where(photo_type: 'portrait').first.id
-    collect_photos_and_type(type_id)
-  end
-
-  def drone_page
-    @nav_menu_active_item = 'photos'
-
-    type_id = Type.where(photo_type: 'drone').first.id
-    collect_photos_and_type(type_id)
-  end
-
-  def collage_page
-    @nav_menu_active_item = 'photos'
-
-    type_id = Type.where(photo_type: 'collage').first.id
-    collect_photos_and_type(type_id)
-  end
-
-  def other_page
-    @nav_menu_active_item = 'photos'
-
-    type_id = Type.where(photo_type: 'other').first.id
-    collect_photos_and_type(type_id)
-  end
-
-  def photohosting_page
-    authorize Photo
-
-    @nav_menu_active_item = 'photos'
-
-    type_id = Type.where(photo_type: 'photohosting').first.id
-    collect_photos_and_type(type_id)
-  end
-
   def map
     @nav_menu_active_item = 'nav_map'
 
@@ -214,15 +192,11 @@ class PhotosController < ApplicationController
     redirect_to :root if !@photo
   end
 
-  def collect_photos_and_type(type)
-    @pagy, @photos = photos_by_type(type)
-
-    @header = photos_header(type)
-
-    render :universal_page
-  end
-
   def photo_params
-    params.require(:photo).permit(:photo, :description_ru, :description_en, :body_ru, :body_en, :type_id, :lat, :long, :photo_id, :one_string_coordinates, :hashtag_names)
+    params.require(:photo).permit(
+      :photo, :description_ru, :description_en, :body_ru, 
+      :body_en, :type_id, :lat, :long, :photo_id, 
+      :one_string_coordinates, :hashtag_names, :kind
+    )
   end
 end
