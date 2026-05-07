@@ -1,11 +1,3 @@
-Type.create!(photo_type: 'macro')
-Type.create!(photo_type: 'landscape')
-Type.create!(photo_type: 'portrait')
-Type.create!(photo_type: 'drone')
-Type.create!(photo_type: 'collage')
-Type.create!(photo_type: 'other')
-Type.create!(photo_type: 'photohosting')
-
 Article.create!(article_title_ru: 'Макро: от большого к малому', article_body_ru: "
   <img src='/blog/macro_post1/1.jpg' class='img-fluid'>
   <p>Данный пост — попытка систематизировать набиваемые мной шишки на поприще макрофотографии. Для этого собрал свои разрозненные наброски в один конспект. Возможно, информация окажется кому-нибудь полезной.</p>
