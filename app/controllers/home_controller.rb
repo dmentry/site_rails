@@ -121,6 +121,9 @@ class HomeController < ApplicationController
     end
   end
 
+  def conf_policy
+  end
+
   private
 
   def feedback_params

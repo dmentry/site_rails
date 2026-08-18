@@ -314,7 +314,7 @@ ru:
         cv_eng: Резюме (анг)
         map: Карта
         feedback: Написать
-        rss_subscribe: RSS-подписка на новости
+        rss_subscribe: RSS-канал
         admin_options: Админка
         admin_notifications: Уведомления
         load_photo: Загрузить фотку
@@ -330,6 +330,10 @@ ru:
         exit: Выйти
         admin: Для админа
         search_placeholder: 'Искать...'
+    conf_policy:
+      name: Политика конфиденциальности
+      agreed1: 'Согласен с обработкой персональных данных, указанной в'
+      agreed2: ' Политике конфиденциальности'
   controllers:
     photos:
       index:
@@ -425,8 +429,10 @@ ru:
       portfolio:
         title: Портфолио
         title2: Здесь показаны несколько моих личных работ, которыми я занимался в свободное время
+    conf_policy:
+      header: Политика конфиденциальности
     comments:
-      email: Ваш email (на него придет уведомление, если на ваш комментарий ответят)
+      email: Email (на него придет уведомление, если на ваш комментарий ответят)
       comment: Ваш комментарий
       submit: Отправить
       reply: Ответить

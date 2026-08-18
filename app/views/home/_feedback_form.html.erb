@@ -26,7 +26,29 @@
     <%= recaptcha_tags %>
   </div>
 
+  <div class="mb-3 form-check">
+    <%= check_box_tag :agree_personal_data, 1, false, class: 'form-check-input', id: 'agree_personal_data' %>
+    <%= label_tag :agree_personal_data, (t('app.conf_policy.agreed1') + link_to(t('app.conf_policy.agreed2'), conf_policy_path, class: "copyright", target: "_blank", rel: "noreferrer")).html_safe, class: 'form-check-label' %>
+  </div>
+
   <div class="actions mb-3">
     <%= form.submit t('views.feedback.send'), class: 'btn btn-sm btn-success' %>
   </div>
 <% end %>
+
+<script>
+  $(document).ready(function() {
+    let $submitButton = $('.actions .btn-success');
+    let $agreeCheckbox = $('#agree_personal_data');
+
+    $submitButton.prop('disabled', true);
+
+    $agreeCheckbox.on('change', function() {
+      if ($(this).is(':checked')) {
+        $submitButton.prop('disabled', false);
+      } else {
+        $submitButton.prop('disabled', true);
+      }
+    });
+  });
+</script>

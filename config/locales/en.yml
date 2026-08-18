@@ -254,7 +254,7 @@ en:
         cv_eng: CV Eng
         cv_rus: CV Rus
         feedback: Feedback
-        rss_subscribe: RSS-news subscribtion
+        rss_subscribe: RSS-channel
         admin_options: Admin
         admin_notifications: Notifications
         load_photo: Load photo
@@ -270,6 +270,10 @@ en:
         exit: Logout
         admin: For admin
         search_placeholder: 'Search...'
+    conf_policy:
+      name: Privacy policy
+      agreed1: 'I agree to the processing of my personal data in accordance with the'
+      agreed2: ' Privacy Policy'
   controllers:
     photos:
       index:
@@ -365,6 +369,8 @@ en:
       portfolio:
         title: Portfolio
         title2: There are here some my appications which I created during my free time
+    conf_policy:
+      header: Privacy policy
     comments:
       email: Your email (we send notification if your comment will be answered)
       comment: Your comment

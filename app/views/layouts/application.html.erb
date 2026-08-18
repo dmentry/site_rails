@@ -166,15 +166,25 @@
       </div>
     </div>
 
-    <footer class="footer main_bg_color mt-4">
-      <div class='buffer-bottom center pt-2'>
-        <% if params[:locale] == 'ru' || params[:locale] == nil %>
-          <%= link_to "Dack9 #{ Time.now.year }", cv_rus_path, class: "copyright", target: "blanc", rel: "noreferrer" %>
-        <% else %>
-          <%= link_to "Dack9 #{ Time.now.year }", cv_eng_path, class: "copyright", target: "blanc", rel: "noreferrer" %>
-        <% end %>
+    <footer class='main_bg_color'>
+      <div class="container mt-2">
+        <div class="row pt-1 pt-lg-3">
+          <% if params[:locale] == 'ru' || params[:locale] == nil %>
+            <div class="col-xs-12 text-center buffer-bottom">
+              <%= link_to "Dack9 #{ Time.now.year }", cv_rus_path, class: "copyright", target: "blanc", rel: "noreferrer" %>
+            </div>
+          <% else %>
+            <div class="col-xs-12 text-center buffer-bottom">
+              <%= link_to "Dack9 #{ Time.now.year }", cv_eng_path, class: "copyright", target: "blanc", rel: "noreferrer" %>
+            </div>
+          <% end %>
+          <div class="col-xs-12 text-center buffer-bottom">
+            <%= link_to t('app.conf_policy.name'), conf_policy_path, class: "copyright" %>
+          </div>
+        </div>
       </div>
     </footer>
+
   </body>
 </html>
 

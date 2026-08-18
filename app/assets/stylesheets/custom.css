@@ -345,6 +345,14 @@ nav[aria-label="breadcrumb"] .breadcrumb {
   padding: 5px;
 }
 
+.policy-list {
+  margin-bottom: 0 !important;
+}
+
+.policy-list li {
+  list-style-type: disc !important;
+}
+
 .zoom {
   overflow: hidden;
   border-radius: 7px;
@@ -459,9 +467,9 @@ nav[aria-label="breadcrumb"] .breadcrumb {
 
 .buffer-bottom {
   position: relative;
-  bottom: 0;
+  bottom: 8px;
   font-size: small;
-  width: 90px;
+  /* width: 90px; */
   margin-left: auto;
   margin-right: auto;
 }
@@ -894,8 +902,8 @@ nav[aria-label="breadcrumb"] .breadcrumb {
 
   .buffer-bottom {
     position: relative;
-    bottom: 0;
-    width: 90px;
+    bottom: 4px;
+    /* width: 90px; */
     margin-left: auto;
     margin-right: auto;
   }
