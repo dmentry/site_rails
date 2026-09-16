@@ -56,6 +56,9 @@ class CommentsController < ApplicationController
   def destroy
     authorize @comment
 
+    an = AdminNotification.find_by(comment_id: @comment.id)
+    an.destroy if an
+
     @comment.destroy
 
     redirect_to @article, notice: ('Коммент удален')
